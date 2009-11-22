@@ -18,16 +18,16 @@ runTests rec {
   testCmp = testAllTrue [ (eq 0) (gt 3) (lt mO) (lte mO) (lte 0) (gte 1) (gte 0)  ];
 
   testVersionString = testAllTrue [
-    (matchVersion [ 1 2 ] { v  = [ 1 2 ]; })
-    (matchVersion [ 1 2 ] { gt = [ 1 1 ]; })
-    (matchVersion [ 1 2 ] { lt = [ 3 1 ]; })
+    (matchVersion "1.2" { v  = "1.2"; })
+    (matchVersion "1.2" { gt = "1.1"; })
+    (matchVersion "1.2" { lt = "3.1"; })
 
-    (matchVersion [ 3 1 ] { lte = [ 3 1 ]; })
-    (matchVersion [ 2 1 ] { lte = [ 3 1 ]; })
-    (matchVersion [ 3 1 ] { gte = [ 3 1 ]; })
-    (matchVersion [ 8 1 ] { gte = [ 3 1 ]; })
-    (matchVersion [ 4 5 ] { gte = [ 4   ]; })
-    (matchVersion [ 4 5 ] { lt  = [ 5   ]; })
+    (matchVersion "3.1" { lte = "3.1"; })
+    (matchVersion "2.1" { lte = "3.1"; })
+    (matchVersion "3.1" { gte = "3.1"; })
+    (matchVersion "8.1" { gte = "3.1"; })
+    (matchVersion "4.5" { gte = "4"; })
+    (matchVersion "4.5" { lt  = "5"; })
   ];
 
   testReduceCond = 
@@ -82,7 +82,7 @@ runTests rec {
 
 
   testDepListToString = {
-    expr = depListToStr (toDepList [["abc" [2 0]]]);
+    expr = depListToStr (toDepList [["abc" "2.0"]]);
     expected = "[abc-2.0]";
   };
 
@@ -104,8 +104,8 @@ runTests rec {
               cond = {
                 flag = "b";
               };
-              if_deps   = { cdeps = []; deps = toDepList [["abc" [2 0]]]; };
-              else_deps = { cdeps = []; deps = toDepList [["def" [3 0]]]; };
+              if_deps   = { cdeps = []; deps = toDepList [["abc" "2.0"]]; };
+              else_deps = { cdeps = []; deps = toDepList [["def" "3.0"]]; };
             }
           ];
           deps = {};
@@ -132,7 +132,7 @@ runTests rec {
       expected = [
         { abc = true; snd = true; }
         { builde1 = true; b = true; }
-        (toDepList [["abc" [2 0]]])
+        (toDepList [["abc" "2.0"]])
       ];
   };
 
@@ -177,34 +177,34 @@ runTests rec {
   };
 
   # utility function 
-  # toDepList [["abc" [2 0]]]  = { abc = { abc-2.0 = [ 2 0 ]; }; }
+  # toDepList [["abc" "2.0"]]  = { abc = { abc-2.0 = "2.0"; }; }
   toDepList = list :
             fold ( mergeAttrsWithFunc mergeAttrs)
             {}
             (map (x : let name = head x;
                           version = head (tail x);
-                          value = listToAttrs [ { name = "${name}-${versionStr version}"; value = version; } ];
+                          value = listToAttrs [ { name = "${name}-${version}"; value = version; } ];
                       in attrSingleton name value
                   ) list);
 
   testMergeDepI =
-    let abc_2_0 =  ["abc" [2 0]];
+    let abc_2_0 =  ["abc" "2.0"];
         dl_abc_2_0 = toDepList [abc_2_0];
     in {
     expr = [
-      (toDepList [ ["abc" [2 0]] ] )
+      (toDepList [ ["abc" "2.0"] ] )
       (mergeDepsI dl_abc_2_0 dl_abc_2_0)
-      (mergeDepsI dl_abc_2_0 { abc = attrSingleton "abc-2.0" [2 0] // attrSingleton "abc-2.5" [2 5]; })
-      (mergeDepsI dl_abc_2_0 (toDepList [["other" [ 2 5 ] ]]))
+      (mergeDepsI dl_abc_2_0 { abc = attrSingleton "abc-2.0" "2.0" // attrSingleton "abc-2.5" "2.5"; })
+      (mergeDepsI dl_abc_2_0 (toDepList [["other" "2.5" ]]))
       (mergeDepsI { abc = {}; } {})
       (mergeDepsI {} { abc = {}; })
     ];
      
     expected = [
-      { abc = attrSingleton "abc-2.0" [ 2 0 ]; }
+      { abc = attrSingleton "abc-2.0" "2.0"; }
       dl_abc_2_0
       dl_abc_2_0
-      (dl_abc_2_0 // (toDepList [["other" [ 2 5 ] ]]))
+      (dl_abc_2_0 // (toDepList [["other" "2.5" ]]))
       ({ abc = {}; })
       ({ abc = {}; })
     ];
@@ -219,13 +219,13 @@ runTests rec {
   #};
   testFromDb = 
     let HackNixAttr = {
-          name = "test";  version = [0  0  1];  fullName = "test";
+          name = "test";  version = "0.0.1";  fullName = "test";
           edeps = 
           [
             {
               cdeps = [];
               deps = 
-              [{lt = [4  0];  n = "base";}  {gt = [2  0];  n = "exec2";}];
+              [{lt = "4.0";  n = "base";}  {gt = "2.0";  n = "exec2";}];
             }
             {
               cdeps = 
@@ -234,7 +234,7 @@ runTests rec {
                 [{flag = "b";}  {cdeps = [];  deps = [{n = "exec1Bonly";}];}]
               ];
               deps = 
-              [{gt = [2  0];  n = "base";}  {gt = [2  0];  n = "exec1";}];
+              [{gt = "2.0";  n = "base";}  {gt = "2.0";  n = "exec1";}];
             }
           ];
           ldeps = 
@@ -254,8 +254,8 @@ runTests rec {
             ];
             deps = 
             [
-              {n = "haskell98";}  {gte = [1  19];  n = "HaXml";}
-              {gt = [0  5];  n = "base";}
+              {n = "haskell98";}  {gte = "1.19";  n = "HaXml";}
+              {gt = "0.5";  n = "base";}
             ];
           };
           sha256 = "0000000000000000000000000000000000000000000000000000";
@@ -263,19 +263,19 @@ runTests rec {
 
         availiblePackages = {
           base = [
-              { name = "base"; version = [ 1 0 0 ]; fullName = "base-1.0.0"; } # version too old (executable constraint)
-              { name = "base"; version = [ 2 0 3 ]; fullName = "base-2.0.3"; } # ok
-              { name = "base"; version = [ 8 0 3 ]; fullName = "base-8.0.3"; } # version too new (executable constraint)
+              { name = "base"; version = "1.0.0"; fullName = "base-1.0.0"; } # version too old (executable constraint)
+              { name = "base"; version = "2.0.3"; fullName = "base-2.0.3"; } # ok
+              { name = "base"; version = "8.0.3"; fullName = "base-8.0.3"; } # version too new (executable constraint)
             ];
-          haskell98 = [ { name = "haskell98"; version = [ 1 ]; fullName = "haskell98-1"; } ];
-          exec2only = [ { name = "exec2only"; version = [ 1 ]; fullName = "exec2only-1"; } ];
-          HaXml = [ { name = "HaXml"; version = [ 1 19 ]; fullName = "HaXml-1.19"; } ];
-          filepath = [ { name = "filepath"; version = [ 1 ]; fullName = "filepath-1"; } ];
-          depFlagA = [ { name = "depFlagA"; version = [ 1 ]; fullName = "depFlagA-1"; } ];
-          depFlagNoA = [ { name = "depFlagNoA"; version = [ 1 ]; fullName = "depFlagNoA-1"; } ];
-          exec1 = [ { name = "exec1"; version = [ 2 1 ]; fullName = "exec1-2.1"; } ];
-          exec2 = [ { name = "exec2"; version = [ 2 1 ]; fullName = "exec2-2.1"; } ];
-          exec1Bonly = [ { name = "exec1Bonly"; version = [ 1]; fullName = "exec1Bonly-1"; } ];
+          haskell98 = [ { name = "haskell98"; version = "1"; fullName = "haskell98-1"; } ];
+          exec2only = [ { name = "exec2only"; version = "1"; fullName = "exec2only-1"; } ];
+          HaXml = [ { name = "HaXml"; version = "1.19"; fullName = "HaXml-1.19"; } ];
+          filepath = [ { name = "filepath"; version = "1"; fullName = "filepath-1"; } ];
+          depFlagA = [ { name = "depFlagA"; version = "1"; fullName = "depFlagA-1"; } ];
+          depFlagNoA = [ { name = "depFlagNoA"; version = "1"; fullName = "depFlagNoA-1"; } ];
+          exec1 = [ { name = "exec1"; version = "2.1"; fullName = "exec1-2.1"; } ];
+          exec2 = [ { name = "exec2"; version = "2.1"; fullName = "exec2-2.1"; } ];
+          exec1Bonly = [ { name = "exec1Bonly"; version = "1"; fullName = "exec1Bonly-1"; } ];
         };
 
         from = pkgFromDb HackNixAttr;
@@ -348,16 +348,16 @@ runTests rec {
 
           { builde1 = true; b = true; a = true; dummy =true; }
 
-          (toDepList [ ["depFlagA" [1]]
-                     ["haskell98" [1]]
-                     ["HaXml" [1 19]]
-                     ["filepath" [1] ]
-                     ["base" [ 2 0 3 ] ]
+          (toDepList [ ["depFlagA" "1"]
+                     ["haskell98" "1"]
+                     ["HaXml" "1.19"]
+                     ["filepath" "1" ]
+                     ["base" "2.0.3" ]
                    ])
 
-          (toDepList [ ["exec2" [2 1]]
-                     ["exec1Bonly" [1]]
-                     ["exec1" [2 1]]
+          (toDepList [ ["exec2" "2.1"]
+                     ["exec1Bonly" "1"]
+                     ["exec1" "2.1"]
                     ])
 
           4
@@ -365,29 +365,29 @@ runTests rec {
         second = [
            # edeps  :4.0 > base > 2.0 , exec1 > 2.0, exec2 > 2.0, exec1Bonly
            # ldeps  : haskell98, HaXml >= 1.19, filepath, base > 0.5, depFlagA
-           (toDepList [ ["exec1" [2 1]] ["exec2" [2 1]] ["exec1Bonly" [1]] ])
-           (toDepList [ ["haskell98" [1]] ["HaXml" [1 19]] ["filepath" [1]] ["base" [2 0 3]] ["depFlagA" [1]] ])
+           (toDepList [ ["exec1" "2.1"] ["exec2" "2.1"] ["exec1Bonly" "1"] ])
+           (toDepList [ ["haskell98" "1"] ["HaXml" "1.19"] ["filepath" "1"] ["base" "2.0.3"] ["depFlagA" "1"] ])
         ];
 
         third = [
            # edeps  :4.0 > base > 2.0 , exec1 > 2.0, exec2 > 2.0
            # ldeps  : haskell98, HaXml >= 1.19, filepath, base > 0.5, depFlagA
-           (toDepList [ ["exec1" [2 1]] ["exec2" [2 1]] ])
-           (toDepList [ ["haskell98" [1]] ["HaXml" [1 19]] ["filepath" [1]] ["base" [2 0 3]] ["depFlagA" [1]]])
+           (toDepList [ ["exec1" "2.1"] ["exec2" "2.1"] ])
+           (toDepList [ ["haskell98" "1"] ["HaXml" "1.19"] ["filepath" "1"] ["base" "2.0.3"] ["depFlagA" "1"]])
         ];
 
         fourth = [
            # edeps  :4.0 > base > 2.0 , exec1 > 2.0, exec2 > 2.0, exec1Bonly
            # ldeps  : haskell98, HaXml >= 1.19, filepath, base > 0.5, depFlagNoA
-           (toDepList [ ["exec1" [2 1]] ["exec2" [2 1]] ["exec1Bonly" [1]] ])
-           (toDepList [ ["haskell98" [1]] ["HaXml" [1 19]] ["filepath" [1]] ["base" [2 0 3]] ["depFlagNoA" [1]] ])
+           (toDepList [ ["exec1" "2.1"] ["exec2" "2.1"] ["exec1Bonly" "1"] ])
+           (toDepList [ ["haskell98" "1"] ["HaXml" "1.19"] ["filepath" "1"] ["base" "2.0.3"] ["depFlagNoA" "1"] ])
         ];
 
         fifth = [
            # edeps  :4.0 > base > 2.0 , exec1 > 2.0, exec2 > 2.0
            # ldeps  : haskell98, HaXml >= 1.19, filepath, base > 0.5, depFlagNoA
-           (toDepList [ ["exec1" [2 1]] ["exec2" [2 1]] ])
-           (toDepList [ ["haskell98" [1]] ["HaXml" [1 19]] ["filepath" [1]] ["base" [2 0 3]] ["depFlagNoA" [1]] ])
+           (toDepList [ ["exec1" "2.1"] ["exec2" "2.1"] ])
+           (toDepList [ ["haskell98" "1"] ["HaXml" "1.19"] ["filepath" "1"] ["base" "2.0.3"] ["depFlagNoA" "1"] ])
         ];
       };
    };
@@ -411,7 +411,7 @@ note: ldep must be the same version because it's used by both deps of target
   let 
     preprocessedHackageInput = map pkgFromDb [
       { # target
-        name = "target"; version = [1];
+        name = "target"; version = "1";
         edeps = [];
         ldeps = {
           cdeps = [];
@@ -423,69 +423,69 @@ note: ldep must be the same version because it's used by both deps of target
         sha256 = "0000000000000000000000000000000000000000000000000000";
       }
       { # depA
-        name = "depA"; version = [1];
+        name = "depA"; version = "1";
         edeps = [{
           cdeps = [];
-          deps = [{ n = "ex-dep"; v = [1 0]; }];
+          deps = [{ n = "ex-dep"; v = "1.0"; }];
         }];
         ldeps = {
           cdeps = [];
-          deps  = [ { n = "ldep"; gte = [1]; } ];
+          deps  = [ { n = "ldep"; gte = "1"; } ];
         };
         sha256 = "0000000000000000000000000000000000000000000000000000";
       }
       { # depB
-        name = "depB"; version = [1];
+        name = "depB"; version = "1";
         edeps = [{
           cdeps = [];
-          deps = [ { n = "ex-dep"; v = [2 0]; } ];
+          deps = [ { n = "ex-dep"; v = "2.0"; } ];
         }];
         ldeps = {
           cdeps = [];
-          deps  = [ { n = "ldep"; lte = [2]; } ];
+          deps  = [ { n = "ldep"; lte = "2"; } ];
         };
         sha256 = "0000000000000000000000000000000000000000000000000000";
       }
       # ldep
       { # ldep to low for debB
-        name = "ldep"; version = [0];
+        name = "ldep"; version = "0";
         edeps = [];
         ldeps = { cdeps = []; deps  = []; };
         sha256 = "0000000000000000000000000000000000000000000000000000";
       }
       { # ldep solution must build this:
-        name = "ldep"; version = [1];
+        name = "ldep"; version = "1";
         edeps = [];
         ldeps = { cdeps = []; deps  = []; };
         sha256 = "0000000000000000000000000000000000000000000000000000";
       }
       { # ldep  too high for debA
-        name = "ldep"; version = [5];
+        name = "ldep"; version = "5";
         edeps = [];
         ldeps = { cdeps = []; deps  = []; };
         sha256 = "0000000000000000000000000000000000000000000000000000";
       }
 
       { # ex-dep-1.0
-        name = "ex-dep"; version = [1 0 ];
+        name = "ex-dep"; version = "1.0";
         edeps = [];
         ldeps = { cdeps = []; deps  = []; };
         sha256 = "0000000000000000000000000000000000000000000000000000";
       }
       { # ex-dep-2.0
-        name = "ex-dep"; version = [2 0 ];
+        name = "ex-dep"; version = "2.0";
         edeps = [];
         ldeps = { cdeps = []; deps  = []; };
         sha256 = "0000000000000000000000000000000000000000000000000000";
       }
 
       {
-        name = "AC-Vector";  version = [1  1  1];
+        name = "AC-Vector";  version = "1.1.1";
         edeps = [];
         ldeps = 
         {
           cdeps = [];
-          deps = [{i1 = {gte = [4];};  i2 = {lt = [5];};  n = "base";}];
+          deps = [{i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}];
         };
         sha256 = "1m2c9kgk8g05cmx7fgl7ch10nyw6biism9c3w1kabwr6l9wvx1df";
       }
@@ -501,9 +501,9 @@ note: ldep must be the same version because it's used by both deps of target
         packageFlags = {};
         targetPackages = ["AC-Vector"];
         packages = preprocessedHackageInput;
-        provided = [["base" [4 5]]];
+        provided = [["base" "4.5"]];
         os = "Linux";
-        mkHaskellDerivation = args: removeAttrs args ["src"];
+        mkHaskellDerivation = args: removeAttrs args ["src" "patches" "version"];
       };
 
       
@@ -512,9 +512,9 @@ note: ldep must be the same version because it's used by both deps of target
         packageFlags = {};
         targetPackages = ["target" "depA" "depB" ];
         packages = preprocessedHackageInput;
-        provided = [["base" [4 5]]];
+        provided = [["base" "4.5"]];
         os = "Linux";
-        mkHaskellDerivation = args: removeAttrs args ["src"];
+        mkHaskellDerivation = args: removeAttrs args ["src" "patches" "version"];
         debugS = true;
       };
 
@@ -577,9 +577,10 @@ note: ldep must be the same version because it's used by both deps of target
     };
   };
 
+  tests = ["manualTestRealData"];
   manualTestRealData =
   let 
-    preprocessedHackageInput = map pkgFromDb (import /tmp/hack-nix.nix);
+    preprocessedHackageInput = map pkgFromDb (import ../hackage/hack-nix-db.nix);
   in {
     expr = {
 
@@ -589,9 +590,9 @@ note: ldep must be the same version because it's used by both deps of target
         packageFlags = {};
         targetPackages = ["happs-hsp"];
         packages = preprocessedHackageInput;
-        # provided = [["base" [4 5]]];
+        # provided = [["base" "4.5"]];
         os = "Linux";
-        mkHaskellDerivation = args: removeAttrs args ["src"];
+        mkHaskellDerivation = args: removeAttrs args ["src" "patches"];
         debugS = true;
       };
 

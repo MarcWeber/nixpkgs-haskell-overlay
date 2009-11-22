@@ -1,6 +1,6 @@
 { fetchurl, lib } : 
 let inherit (builtins) add getAttr hasAttr head tail lessThan sub
-    removeAttrs isBool isAttrs isInt isFunction attrNames isString isList
+    removeAttrs isBool isAttrs isInt isFunction attrNames isString isList compareVersions
     toString addErrorContext listToAttrs trace;
 
     inherit (lib) id mergeAttrs fold
@@ -60,7 +60,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
 
     {
       name = "name";
-      version = [ 2 3 ];
+      version = "2.3";
       fullName = "name-2.3";
 
       # conditional library dependency tree containing version ranges such as filepath > 2.0
@@ -88,7 +88,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
 
     {
       name = "name";
-      version = [ 2 0 ];
+      version = "2.0";
       fullName = "name-2.0";
       ldeps = i-dep-node(i-set); # conditional dependency tree containing version ranges such as filepath > 2.0
       edeps = i-dep-node(i-set);     # the same
@@ -129,15 +129,15 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     i-dep-item :
       { "bytestring" = { # represented as attrs so that hasAttr can be used
           # one of
-          "bytestring-0.3" = [0 3];
-          "bytestring-0.4" = [0 4];
+          "bytestring-0.3" = "0.3";
+          "bytestring-0.4" = "0.4";
       };
 
     i-dep-list :
      dep-item1 // dep-item2 // ... ;
 
     i-available-packages: {
-        "foo-bar" = [ { name = "foo-bar"; version = [  1 2 0 ]; fullName = "foo-bar-1.2.0"; } ]
+        "foo-bar" = [ { name = "foo-bar"; version = "1.2.0"; fullName = "foo-bar-1.2.0"; } ]
       };
 
     i-rigid-flags : attr list of flags { flag = true; flag2 = true; .. }
@@ -167,8 +167,8 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     i-set: attribute list:
     {
       filepath : {
-        "fileptath-1.0" : [ 1 0 ];
-        "fileptath-2.0" : [ 2 0 ];
+        "fileptath-1.0" : "1.0";
+        "fileptath-2.0" : "2.0";
       };
       [ .. ]
     }
@@ -251,9 +251,8 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       assert pkg ? ldeps;
 
       checkDeps pkg.edeps && checkDeps pkg.ldeps
-      && lm.isVersion (pkg.version);
+      && isString (pkg.version);
 
-    isVersion = all isInt;
 
     isCond = x : true; # TODO
 
@@ -265,13 +264,13 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     isDepRangeList = x : true; # TODO
 
     /*
-      { name = { name-2.0 = [ 2 0 ]; };
-        otherName = { otherName-3.0 = [ 3 0 ]; };
+      { name = { name-2.0 = "2.0"; };
+        otherName = { otherName-3.0 = "3.0"; };
       }
     */
     isPreparedDepList = x:
       assert isAttrs x;
-      all ( byName : all (x : assert isList x; all isInt x) (attrValues byName)
+      all ( byName : all (x : isString x) (attrValues byName)
           ) (attrValues x);
 
     isDepNode = isDep : node :
@@ -324,28 +323,14 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     lte = i : ! lm.gt i;        # <= 0
     gte = i : ! lm.lt i;        # >= 0
 
-    # simple implemenation which resembles one of haskells Data.Version 
-    # ! TODO ! check whether the primop compareVersions can do this as well.
-    # maybe using that on strings instead of lists is even faster. Probably it
-    # will take less memory as well!
-    compVersions = version1 : version2 : lm.addErrorContext2 "compVersions" (
-      if version1 == []
-      then if version2 == [] then 0 else lm.mO
-      else if version2 == [] then 1
-           else let h1 = head version1; t1 = tail version1;
-                    h2 = head version2; t2 = tail version2;
-                in let r = lm.cmpInts h1 h2; in
-                   if lm.eq r  then lm.compVersions t1 t2 else r);
-
-
     # vR = serialized haskells VersionRange
     # v  = version
     matchVersion = v : vR : lm.addErrorContext2 "matchVersion" (
       if      hasAttr "v" vR then vR.v == v
-      else if hasAttr "gt"  vR then lm.gt (lm.compVersions v vR.gt)
-      else if hasAttr "gte" vR then lm.gte (lm.compVersions v vR.gte)
-      else if hasAttr "lt"  vR then lm.lt (lm.compVersions v vR.lt)
-      else if hasAttr "lte" vR then lm.lte (lm.compVersions v vR.lte)
+      else if hasAttr "gt"  vR then lm.gt (compareVersions v vR.gt)
+      else if hasAttr "gte" vR then lm.gte (compareVersions v vR.gte)
+      else if hasAttr "lt"  vR then lm.lt (compareVersions v vR.lt)
+      else if hasAttr "lte" vR then lm.lte (compareVersions v vR.lte)
       else if hasAttr "i1"  vR then (lm.matchVersion v vR.i1) && (lm.matchVersion v vR.i2)
       else if hasAttr "u1"  vR then (lm.matchVersion v vR.u1) || (lm.matchVersion v vR.u2)
       else true); # any version
@@ -393,10 +378,8 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
 
     #### preparing package from pkg db list {{{1
 
-      versionStr = version : lm.addErrorContext2 "versionStr" "${concatStringsSep "." (map toStr version)}";
-
       # name + version which can be used as attr (no hyphens, dots, ..)
-      mkNixId = pkg : lm.addErrorContext2 "mkNixId" "${pkg.name}-${lm.versionStr pkg.version}";
+      mkNixId = pkg : lm.addErrorContext2 "mkNixId" "${pkg.name}-${pkg.version}";
 
       emptyDeps = { cdeps = []; deps = []; };
 
@@ -413,7 +396,6 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
             in { inherit cond if_deps else_deps; };
           mapCDeps = x : x // { cdeps = mapList x.cdeps; };
           mapList = map ifElseToAttrs;
-          versionS = lm.versionStr pkg.version;
       in {
         inherit (pkg) version name;
         fullName = lm.mkNixId { inherit (pkg) name version; }; 
@@ -432,11 +414,11 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                     mapCDeps pkg.ldeps
                 else lm.emptyDeps);
         src = fetchurl {
-          url = "http://hackage.haskell.org/packages/archive/${pkg.name}/${versionS}/${pkg.name}-${versionS}.tar.gz";
+          url = "http://hackage.haskell.org/packages/archive/${pkg.name}/${pkg.version}/${pkg.name}-${pkg.version}.tar.gz";
           inherit (pkg) sha256;
         };
         # for debugging its more useful to have the path only:
-        # src = "http://hackage.haskell.org/packages/archive/${pkg.name}/${versionS}/${pkg.name}-${versionS}.tar.gz";
+        # src = "http://hackage.haskell.org/packages/archive/${pkg.name}/${version}/${pkg.name}-${version}.tar.gz";
       });
 
     #### preparing package for planner {{{1
@@ -445,7 +427,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       # versionRangeToAttr rewrites versionRanges by a list of possible packages.
       #
       # availablePackages = {
-      #   foo_bar = [ { name = "foo-bar"; version = [  1 2 0 ]; fullName = "foo_bar_1_2_0"; } ]
+      #   foo_bar = [ { name = "foo-bar"; version = "1.2.0"; fullName = "foo_bar_1_2_0"; } ]
       # };
       # range = { n = "foo-bar"; gt lt .. };
       # listToAttrs allows "- ." in attr names
@@ -745,14 +727,14 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
            flags.splitBase = false;
         };
         Cabal = {
-           versionRange = { gt : [1 2 0]; }
+           versionRange = { gt : "1.2.0"; }
         };
       }
       */
       packageFlags ? {},
 
       /* the packages to create derivations for
-         for example: [ { n = "Cabal"; v = [1 4 0 0]; }
+         for example: [ { n = "Cabal"; v = "1.4.0.0"; }
                         { n = "byestring"; }
                         "network-bytestring" # shortcut for { n = ..; }
                       ];
@@ -769,31 +751,31 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       provided
         # example list (ghc-6.10.4)
         ? [
-            [ "Cabal" [ 1 6 0 3 ] ]
-            [ "array" [0 2 0 0 ] ]
-            [ "base" [3 0 3 1 ] ]
-            [ "base" [4 1 0 0 ] ]
-            [ "bytestring" [0 9 1 4 ] ]
-            [ "containers" [0 2 0 1 ] ]
-            [ "directory" [1 0 0 3 ] ]
-            [ "extensible-exceptions" [0 1 1 0 ] ]
-            [ "filepath" [1 1 0 2 ] ]
-            [ "ghc" [6 10 4 ] ]
-            [ "ghc-prim" [0 1 0 0 ] ]
-            [ "haddock" [2 4 2 ] ]
-            [ "haskell98" [1 0 1 0 ] ]
-            [ "hpc" [0 5 0 3 ] ]
-            [ "integer" [0 1 0 1 ] ]
-            [ "old-locale" [1 0 0 1 ] ]
-            [ "old-time" [1 0 0 2 ] ]
-            [ "packedstring" [0 1 0 1 ] ]
-            [ "pretty" [1 0 1 0 ] ]
-            [ "process" [1 0 1 1 ] ]
-            [ "random" [1 0 0 1 ] ]
-            [ "rts" [1 0 ] ]
-            [ "syb" [0 1 0 1 ] ]
-            [ "template-haskell" [2 3 0 1 ] ]
-            [ "unix" [2 3 2 0 ] ]
+            [ "Cabal" "1.6.0.3" ]
+            [ "array" "0.2.0.0" ]
+            [ "base" "3.0.3.1" ]
+            [ "base" "4.1.0.0" ]
+            [ "bytestring" "0.9.1.4" ]
+            [ "containers" "0.2.0.1" ]
+            [ "directory" "1.0.0.3" ]
+            [ "extensible-exceptions" "0.1.1.0" ]
+            [ "filepath" "1.1.0.2" ]
+            [ "ghc" "6.10.4" ]
+            [ "ghc-prim" "0.1.0.0" ]
+            [ "haddock" "2.4.2" ]
+            [ "haskell98" "1.0.1.0" ]
+            [ "hpc" "0.5.0.3" ]
+            [ "integer" "0.1.0.1" ]
+            [ "old-locale" "1.0.0.1" ]
+            [ "old-time" "1.0.0.2" ]
+            [ "packedstring" "0.1.0.1" ]
+            [ "pretty" "1.0.1.0" ]
+            [ "process" "1.0.1.1" ]
+            [ "random" "1.0.0.1" ]
+            [ "rts" "1.0" ]
+            [ "syb" "0.1.0.1" ]
+            [ "template-haskell" "2.3.0.1" ]
+            [ "unix" "2.3.2.0" ]
           ],
 
         os ? "Linux",
@@ -803,7 +785,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
         # this function should merge in package specific things like
         # C dependencies etc. Dependencies should be fed into propagatedBuildInputs
         mkHaskellDerivation ?
-          { name, fullName, src, dependencies, flags, patches, ... }:
+          { name, fullName, src, dependencies, flags, patches, version, ... }:
           throw "you didn't pass mkDerivation !",
 
         debugS ? false # set to true to get *many* trace messages about failures
@@ -831,7 +813,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       # create special package depending on targets to find solution for all targets
       targetPackage = rec {
         name = "nix-special-target-extra-package";
-        version = [ 0 ];
+        version = "0";
         fullName = "${name}-0";
 
         # conditional library dependency tree containing version ranges such as filepath > 2.0
@@ -1015,7 +997,6 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                     # dependendencies of executables
                     ++ map (toDerivation re.state) re.names
                   );
-                versionStr = lm.versionStr resolved.version;
                 patches =
                   let patch = ../patches + "/${resolved.fullName}.patch";
                   in  lib.optional (builtins.pathExists patch)  patch;
