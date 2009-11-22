@@ -1,0 +1,25 @@
+haskell-nix-overlay
+===================
+
+status: experimental
+
+GOAL
+====
+make all hackage packages availible to the nix repository manager (-> http://nixos.org).
+Why have a separate package ? Writing the hackage index into a file which is readable by nix
+results in a > 500kb file. Generating this file takes some time because all
+source files are downloaded once in order to calculate hashes required by fetchurl.
+
+Tracking many revisions of this file in nixpkgs can
+have an impact on users tracking nixpkgs using git. So it would have been
+enough to track everything but the hackage contents. However generating this
+file takes quite some time that's why I do include it.
+
+HOWTO
+=====
+Get and compile hack-nix. 
+
+TODO
+====
+* tidy up code. Optimise for speed
+* think about how packages defined in here can be reused in nixpgks
