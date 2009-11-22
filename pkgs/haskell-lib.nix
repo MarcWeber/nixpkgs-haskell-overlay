@@ -431,12 +431,12 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
         ldeps = lm.addErrorContext2 "ldeps in pkgFromDb" (if hasAttr "ldeps" pkg then
                     mapCDeps pkg.ldeps
                 else lm.emptyDeps);
-        #src = fetchurl {
-        #  url = "http://hackage.haskell.org/packages/archive/${pkg.name}/${versionS}/${pkg.name}-${versionS}.tar.gz";
-        #  inherit (pkg) sha256;
-        #};
+        src = fetchurl {
+          url = "http://hackage.haskell.org/packages/archive/${pkg.name}/${versionS}/${pkg.name}-${versionS}.tar.gz";
+          inherit (pkg) sha256;
+        };
         # for debugging its more useful to have the path only:
-        src = "http://hackage.haskell.org/packages/archive/${pkg.name}/${versionS}/${pkg.name}-${versionS}.tar.gz";
+        # src = "http://hackage.haskell.org/packages/archive/${pkg.name}/${versionS}/${pkg.name}-${versionS}.tar.gz";
       });
 
     #### preparing package for planner {{{1
@@ -803,7 +803,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
         # this function should merge in package specific things like
         # C dependencies etc. Dependencies should be fed into propagatedBuildInputs
         mkHaskellDerivation ?
-          { name, fullName, src, dependencies, flags, ... }:
+          { name, fullName, src, dependencies, flags, patches, ... }:
           throw "you didn't pass mkDerivation !",
 
         debugS ? false # set to true to get *many* trace messages about failures
@@ -1007,7 +1007,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
               re = resolved.resolvedEdeps;
           in if resolved.provided then null # provided means the package is shipped with the ghc compiler
              else mkHaskellDerivation {
-                inherit (resolved) flags fullName name src;
+                inherit (resolved) flags fullName name src version;
                 dependencies = filter (x : x != null)
                   (
                     # dependencies of libraries
@@ -1015,6 +1015,10 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                     # dependendencies of executables
                     ++ map (toDerivation re.state) re.names
                   );
+                versionStr = lm.versionStr resolved.version;
+                patches =
+                  let patch = ../patches + "/${resolved.fullName}.patch";
+                  in  lib.optional (builtins.pathExists patch)  patch;
               });
 
         # start the (infinite ? :-/) brute force work

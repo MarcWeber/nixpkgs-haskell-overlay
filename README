@@ -17,9 +17,19 @@ file takes quite some time that's why I do include it.
 
 HOWTO
 =====
-Get and compile hack-nix. 
+
+a) optional: update hack-nix-db.nix file
+  Get and compile hack-nix. (http://github.com/MarcWeber/hack-nix)
+  Run it (creating the configuration file)
+  Put the file in hackage/hack-nix-db.nix
+
+  TODO
+
+b) compile example package:
+  nix-build -A haskellOverlayPackages.parsec $PATH_TO_OVERLAY
 
 TODO
 ====
 * tidy up code. Optimise for speed
 * think about how packages defined in here can be reused in nixpgks
+* maybe create nix channel (rename overlay to channel)
