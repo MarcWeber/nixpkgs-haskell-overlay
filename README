@@ -20,10 +20,15 @@ HOWTO
 
 a) optional: update hack-nix-db.nix file
   Get and compile hack-nix. (http://github.com/MarcWeber/hack-nix)
-  Run it (creating the configuration file)
-  Put the file in hackage/hack-nix-db.nix
+  # create the configuration file
+  hack-nix --write-config
 
-  TODO
+  # make target-file point to $THIS_REPO/hackage/hack-nix-db.nix
+  $EDITOR .hack-nix
+
+  # prepare a cup of tea
+  Run hack-nix without any arguments.
+  All sources will be fetched to calculate hashes so get ready to take a cup of tea!
 
 b) compile example package:
   nix-build -A haskellOverlayPackages.parsec $PATH_TO_OVERLAY
