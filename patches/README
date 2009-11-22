@@ -1,0 +1,12 @@
+This directory contains patches making hackage packages compile.
+
+Two kinds of patches are most common:
+a) Patching constraints. Eg replace base < 4.0 by base < 4.current
+
+b) add additional header and lib locations so that C libraries are found by
+cabal and the compiler.
+
+This directory is also read by hack-nix when generating the hackage db file for
+nix.
+
+The patches are named by the full package name. Example: bytestring-3.0.patch
