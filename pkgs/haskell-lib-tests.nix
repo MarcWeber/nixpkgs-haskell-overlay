@@ -586,7 +586,7 @@ note: ldep must be the same version because it's used by both deps of target
 
       # very simple test without dependencies
       myTest = resolveDependenciesBruteforce {
-        globalFlags =  {}; # { base4 = false; };
+        globalFlags =  { base4 = true; };
         packageFlags = {};
         targetPackages = ["happs-hsp"];
         packages = preprocessedHackageInput;

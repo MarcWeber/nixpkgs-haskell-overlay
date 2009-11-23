@@ -897,7 +897,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
         else
 
         if hasAttr name resolved then
-          let r = getAttr resolved name;
+          let r = getAttr name resolved;
           in if r.version == version then [ state ]
              else traceFailure "request to resolve package but version missmatch ${fullName}"
         else
