@@ -1,7 +1,7 @@
 { fetchurl, lib } : 
 let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     removeAttrs isBool isAttrs isInt isFunction attrNames isString isList compareVersions
-    toString addErrorContext listToAttrs trace;
+    toString addErrorContext listToAttrs trace substring;
 
     inherit (lib) id mergeAttrs fold
     filter concatLists catAttrs concatStrings mapRecordFlatten concatMapStrings
@@ -11,6 +11,10 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     strict traceCall2 traceVal traceCallXml;
 
   debug = false; # don't use true when using all packgaes from hackage db. Probably this will exceed your RAM!
+
+  errorContext = false;
+
+  checkTypes = false;
 
   libHaskell = {
 
@@ -215,8 +219,8 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     hstrict = if debug then strict else id;
 
     addErrorContext2 = x: b:
-      addErrorContext "error context : ${x}" b;
-
+      if errorContext then addErrorContext "error context : ${x}" b
+      else b;
 
     #### to string functions {{{1
 
@@ -306,7 +310,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     # it may also have version constraints
     isTargetPkg = pkg:
       assert pkg ? n;
-      pkg;
+      true;
 
 
     ### simple comparison - maybe this can be replaced by compareVersions {{{1
@@ -801,7 +805,9 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
 
       traceFailure = msg: if debugS then trace msg [] else [];
 
-      preparedTP = map (p: lm.isTargetPkg (if isString p then { n = p; } else p) ) targetPackages;
+      preparedTP = map (p:
+          let r = if isString p then { n = p;} else p;
+          in assert lm.isTargetPkg r; r) targetPackages;
 
       # replace target strings by package version range with name so that they
       # can be used as dependency description
@@ -1027,12 +1033,15 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     # lib modified. optionally strictify arguments. This helps tracking down errors
     lm = if !debug then libHaskell
       else mapAttrs ( name: value:
-        if name == "strict" 
-        || name == "strictf"
-        || name == "hstrict"
-        || name == "addErrorContext2"
-        then value
-        else strictifyArgs 1 name value
+        if (substring 0 2 name == "is" && !checkTypes) then
+          x : true
+        else
+          if name == "strict" 
+          || name == "strictf"
+          || name == "hstrict"
+          || name == "addErrorContext2"
+          then value
+          else strictifyArgs 1 name value
     ) libHaskell;
 
 in lm
