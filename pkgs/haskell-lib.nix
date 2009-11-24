@@ -427,10 +427,11 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
         ldeps = lm.addErrorContext2 "ldeps in pkgFromDb" (if hasAttr "ldeps" pkg then
                     mapCDeps pkg.ldeps
                 else lm.emptyDeps);
-        src = fetchurl {
-          url = "http://hackage.haskell.org/packages/archive/${pkg.name}/${pkg.version}/${pkg.name}-${pkg.version}.tar.gz";
-          inherit (pkg) sha256;
-        };
+        src = if pkg ? srcFile then pkg.srcFile
+              else fetchurl {
+                url = "http://hackage.haskell.org/packages/archive/${pkg.name}/${pkg.version}/${pkg.name}-${pkg.version}.tar.gz";
+                inherit (pkg) sha256;
+              };
         # for debugging its more useful to have the path only:
         # src = "http://hackage.haskell.org/packages/archive/${pkg.name}/${version}/${pkg.name}-${version}.tar.gz";
       });
@@ -736,8 +737,8 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       globalFlags ? {},
 
       /* example:
-      { # both constraints will be applied to Cabal_1_4_4 
-        Cabal_1_4_4 = {
+      { # both constraints will be applied to Cabal-1.4.4 
+        Cabal-1.4.4 = {
            flags.splitBase = false;
         };
         Cabal = {

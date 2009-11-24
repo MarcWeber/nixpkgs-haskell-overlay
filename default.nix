@@ -29,7 +29,12 @@ let
       import pkgs/haskell-lib.nix { inherit (pkgs) fetchurl; inherit lib; };
 
 
+    /* the function calling the main worker fucntion.
+       You can overwride everything using .merge and .replace
+       (See defaultOverridableDelayableArgs for details)
 
+       Example usage: see haskellOverlayPackagesExample below
+    */
     haskellOverlayPackagesFun = lib.defaultOverridableDelayableArgs
       (args: 
        # make result more lazy by causing its evaluation when accessing result only
@@ -100,6 +105,23 @@ let
         "haskell-src"
       ];
     }).result;
+
+    envFromHaskellLibs = buildInputs: pkgs.runCommand "haskell-env" { inherit buildInputs; } ''
+        ensureDir $out/bin
+        
+        cat >> $out/source-me/haskell-env << EOF
+          # add GHC and tools to the PATH
+          PATH=$(dirname $(type -p ghc)):\"$PATH\"
+
+          # export GHC_PACKAGE_PATH so that all libraries are known
+          export GHC_PACKAGE_PATH="`ghc-packages`"
+        EOF
+      '';
+
+    # args is usually something like this: { targetPackages = [" ..." ]; };
+    envByTargetPackages = args:
+      let pkgs = (haskellOverlayPackagesFun.merge args).result;
+      in envFromHaskellLibs (lib.catAttrs pkgs);
   };
 
 in haskellPackages
