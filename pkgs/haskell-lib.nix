@@ -16,6 +16,8 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
 
   checkTypes = false;
 
+  traceCalls = false;
+
   libHaskell = {
 
     # tests in ./tests.nix
@@ -222,6 +224,14 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       if errorContext then addErrorContext "error context : ${x}" b
       else b;
 
+    funcBody = name: body:
+      if traceCalls then
+        # poor mans profiling:
+        builtins.trace "profiling: ${name}" body
+      else
+        lm.addErrorContext2 name body;
+
+
     #### to string functions {{{1
 
     # only show names
@@ -329,7 +339,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
 
     # vR = serialized haskells VersionRange
     # v  = version
-    matchVersion = v : vR : lm.addErrorContext2 "matchVersion" (
+    matchVersion = v : vR : lm.funcBody "matchVersion" (
       if      hasAttr "v" vR then vR.v == v
       else if hasAttr "gt"  vR then lm.gt (compareVersions v vR.gt)
       else if hasAttr "gte" vR then lm.gte (compareVersions v vR.gte)
@@ -346,7 +356,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
        r(igid)f(lags) = { flag  = true; flag2 = true; .. } # list represented as attr for uniqness
      }
     */
-    reduceCond = { flags, os ? "Linux" } : expr : lm.addErrorContext2 "reduceCond" (
+    reduceCond = { flags, os ? "Linux" } : expr : lm.funcBody "reduceCond" (
       let simp = lm.reduceCond { inherit flags os; };
       in if isBool expr then expr
          else if isAttrs expr then
@@ -383,14 +393,14 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     #### preparing package from pkg db list {{{1
 
       # name + version which can be used as attr (no hyphens, dots, ..)
-      mkNixId = pkg : lm.addErrorContext2 "mkNixId" "${pkg.name}-${pkg.version}";
+      mkNixId = pkg : lm.funcBody "mkNixId" "${pkg.name}-${pkg.version}";
 
       emptyDeps = { cdeps = []; deps = []; };
 
       # map attr set from file to common format
       # input: read hack-nix output
       # output: as described above in the documentation
-      pkgFromDb = pkg : lm.addErrorContext2 "pkgFromDb" (
+      pkgFromDb = pkg : lm.funcBody "pkgFromDb" (
       let # rewrites the shorter representation to attrs
           ifElseToAttrs = list :
             let cond = head list;
@@ -436,7 +446,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       # range = { n = "foo-bar"; gt lt .. };
       # listToAttrs allows "- ." in attr names
       # returns i-dep-list
-      versionRangeToAttr = ( availablePackages : range : lm.addErrorContext2 "versionRangeToAttr" (
+      versionRangeToAttr = ( availablePackages : range : lm.funcBody "versionRangeToAttr" (
         assert isString range.n;
         let alList = listToAttrs
             (map (i : nameValuePair i.fullName i.version )
@@ -447,7 +457,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
 
       # availablePackages: i-available-packages: 
       # pkg
-      preparePkg = availablePackages : pkg : lm.addErrorContext2 "preparePkg" (
+      preparePkg = availablePackages : pkg : lm.funcBody "preparePkg" (
       let # input : i-dep-node(v-ranges)
           mapDepNode = strictifyArgs 1 "mapDepNode" ( {deps, cdeps} : {
             deps = lm.mergeDepsIList (map (lm.versionRangeToAttr availablePackages) deps);
@@ -491,7 +501,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
             rf = i-rigid-flags
           }
       */
-      redDepNode = ( opts : a : lm.addErrorContext2 "redDepNode"
+      redDepNode = ( opts : a : lm.funcBody "redDepNode"
         (
         let inherit (a) deps cdeps; in
         let red_cdeps = map (lm.redDepCond opts) cdeps;
@@ -518,7 +528,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
            rf = i-rigid-flags
          }
       */
-      redDepCond = opts : node : lm.addErrorContext2 "redDepCond" (
+      redDepCond = opts : node : lm.funcBody "redDepCond" (
         let if_deps   = lm.redDepNode opts node.if_deps;
             else_deps = lm.redDepNode opts node.else_deps;
             red_cond = lm.reduceCond opts node.cond;
@@ -557,7 +567,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
         };
 
     */
-    rigidFlagsAndDeps = opts : expr : lm.addErrorContext2 "rigidFlagsAndDeps" (
+    rigidFlagsAndDeps = opts : expr : lm.funcBody "rigidFlagsAndDeps" (
       assert isAttrs expr;
       let
         red_edeps = lm.redDepNode opts expr.edeps;
@@ -608,7 +618,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
         
     */
     
-    missingDepsOrPkg = pkg: lm.addErrorContext2 "missingDepsOrPkg" (
+    missingDepsOrPkg = pkg: lm.funcBody "missingDepsOrPkg" (
       let list =    lm.mapFlattenAttrs (k : v : if v == {} then [k] else []) pkg.ldeps
                  ++ lm.mapFlattenAttrs (k : v : if v == {} then [k] else []) pkg.edeps;
       in if list == [] then pkg else list);
@@ -619,7 +629,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     # combinations such as  [ {flagA = true; ..} {flagA = false; ..} { ... } ];
     # tflags: all flags with default value "true"
     # add default flag value at the beginning
-    allFlagCombinations = list : tflags : lm.addErrorContext2 "allFlagCombinations" ( emptyHeadTail [ {} ] (name : t :
+    allFlagCombinations = list : tflags : lm.funcBody "allFlagCombinations" ( emptyHeadTail [ {} ] (name : t :
           let m = if hasAttr name tflags then id else x: !x;
               tru  = listToAttrs [ (nameValuePair name  (m true)) ];
               fals = listToAttrs [ (nameValuePair name (m false)) ];
@@ -663,7 +673,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
         }
     */
 
-    pkgVariations = (opts: pkg: lm.addErrorContext2 "pkgVariations" (
+    pkgVariations = (opts: pkg: lm.funcBody "pkgVariations" (
       assert isAttrs pkg;
       let r = lm.rigidFlagsAndDeps opts (lm.addErrorContext2 "pkg in pkgVariations" pkg);
           toSolution = r: flags: let R = r.r; in
@@ -792,11 +802,16 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
           { name, fullName, src, dependencies, flags, patches, version, ... }:
           throw "you didn't pass mkDerivation !",
 
-        debugS ? false # set to true to get *many* trace messages about failures
-                       # resolving package dependencies
-                       # This may give you a hint on how to optimise finding a solution
-                       # by adding constraints or find out why no solution can be found
-                       # TODO enhance this
+
+        # set to true to get *many* trace messages about failures
+        # resolving package dependencies
+        # This may give you a hint on how to optimise finding a solution
+        # by adding constraints or find out why no solution can be found
+        # TODO enhance this
+        debugS ? false,         
+
+        # allow but ignore passing additional arguments
+        ... 
     }:
 
     assert isList targetPackages;
@@ -990,7 +1005,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
             in if variations ? failure then traceFailure "getting variations for of ${fullName} reason: ${variations.failure}"
                else concatMap finish (variations.ok)));
 
-        toDerivation = state: name: lm.addErrorContext2 "toDerivation" (
+        toDerivation = state: name: lm.funcBody "toDerivation" (
           let resolved = getAttr name state.resolved;
               re = resolved.resolvedEdeps;
           in if resolved.provided then null # provided means the package is shipped with the ghc compiler
