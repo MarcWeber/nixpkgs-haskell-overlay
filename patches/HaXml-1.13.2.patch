@@ -1,0 +1,16 @@
+Common subdirectories: a/docs and b/docs
+Common subdirectories: a/examples and b/examples
+diff -U 3 a/HaXml.cabal b/HaXml.cabal
+--- a/HaXml.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/HaXml.cabal	2009-11-23 14:54:57.000000000 +0100
+@@ -34,7 +34,7 @@
+ 	Text.XML.HaXml.Xtract.Lex,
+ 	Text.XML.HaXml.Xtract.Parse
+ hs-source-dir:	src
+-build-depends:	base, haskell98
++build-depends:	base, haskell98, pretty, containers
+ extensions:	CPP
+ 
+ Executable: Canonicalise
+Common subdirectories: a/script and b/script
+Common subdirectories: a/src and b/src

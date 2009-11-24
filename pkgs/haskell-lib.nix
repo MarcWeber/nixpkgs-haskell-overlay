@@ -702,7 +702,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                       && (p1.ldeps_str == p2.ldeps_str);
               in { ok = uniqBy compareDeps solutions; }
           else
-            { failure = "no solutions found for pkg ${pkg.name}.\nMissing deps depending on flag assignments: ${toStr judged}"; }
+            { failure = "\nno solutions found for pkg ${pkg.name}. Missing deps depending on flag assignments: ${toStr judged}"; }
       ));
 
     # failIfEmpty = l : msg : map : if l == [] then { l : [ msg ]; } else { r : map l };
@@ -921,7 +921,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
         if hasAttr name resolved then
           let r = getAttr name resolved;
           in if r.version == version then [ state ]
-             else traceFailure "request to resolve package but version missmatch ${fullName}"
+             else traceFailure "request to resolve package but version missmatch ${fullName}, resolved version: ${r.version}"
         else
           # package hasn't been resolved yet, do so by looking it up in availablePackages
           if !hasAttr fullName available then traceFailure "no package information about ${fullName} "

@@ -62,6 +62,7 @@ let
             ammendments =
               {
                 happy.propagatedBuildInputs = [pkgs.perl];
+                zlib.propagatedBuildInputs = [pkgs.zlib];
               }
               // lib.attrSingleton "haskell-src" { buildInputs = [ happyFixed ]; }
               // lib.attrSingleton "haskell-src-exts" { buildInputs = [ happyFixed ]; }
@@ -107,11 +108,11 @@ let
     }).result;
 
     envFromHaskellLibs = buildInputs: pkgs.runCommand "haskell-env" { inherit buildInputs; } ''
-        ensureDir $out/bin
+        ensureDir $out/source-me
         
         cat >> $out/source-me/haskell-env << EOF
           # add GHC and tools to the PATH
-          PATH=$(dirname $(type -p ghc)):\"$PATH\"
+          PATH=$(dirname $(type -p ghc)):"$PATH"
 
           # export GHC_PACKAGE_PATH so that all libraries are known
           export GHC_PACKAGE_PATH="`ghc-packages`"

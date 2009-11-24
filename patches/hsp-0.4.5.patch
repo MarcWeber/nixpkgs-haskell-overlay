@@ -1,0 +1,13 @@
+diff -U 3 a/hsp.cabal b/hsp.cabal
+--- a/hsp.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/hsp.cabal	2009-11-23 14:15:39.000000000 +0100
+@@ -20,7 +20,7 @@
+                         For details on usage, please see the website, and the author's thesis.
+ Homepage:               http://code.google.com/p/hsp
+ 
+-Build-Depends:          base >3 && < 4, mtl, harp, hsx>=0.4.4, HJScript>=0.4.4
++Build-Depends:          base >3 && < 5, mtl, harp, hsx>=0.4.4, HJScript>=0.4.4
+ Build-Type:             Simple
+ Cabal-Version:          >= 1.2.3
+ Tested-With:            GHC==6.8.3
+Common subdirectories: a/src and b/src

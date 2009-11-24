@@ -1,0 +1,13 @@
+diff -U 3 a/HTTP.cabal b/HTTP.cabal
+--- a/HTTP.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/HTTP.cabal	2009-11-23 14:04:25.000000000 +0100
+@@ -69,7 +69,7 @@
+                  Network.HTTP.MD5Aux,
+                  Network.HTTP.Utils
+   GHC-options: -fwarn-missing-signatures -Wall
+-  Build-depends: base >= 2 && < 4 , network, parsec, mtl
++  Build-depends: base >= 2 && < 5 , network, parsec, mtl
+   if flag(old-base)
+     Build-depends: base < 3
+   else
+Common subdirectories: a/Network and b/Network

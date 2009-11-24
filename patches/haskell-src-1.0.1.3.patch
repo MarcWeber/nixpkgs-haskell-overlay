@@ -1,0 +1,18 @@
+Common subdirectories: a/examples and b/examples
+diff -U 3 a/haskell-src.cabal b/haskell-src.cabal
+--- a/haskell-src.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/haskell-src.cabal	2009-11-23 15:36:34.000000000 +0100
+@@ -23,10 +23,10 @@
+         Language.Haskell.Syntax,
+         Language.Haskell.ParseUtils
+   if flag(split-base)
+-    build-depends:	base >= 3 && < 4, pretty, array
++    build-depends:	base >= 3 && < 5, pretty, array, syb
+   else
+     build-depends:	base < 3
+-  build-depends: haskell98
++  build-depends: haskell98
+   -- The dependency on Haskell 98 is only because
+   -- Happy generates a parser that imports Array
+   extensions:	CPP
+Common subdirectories: a/Language and b/Language

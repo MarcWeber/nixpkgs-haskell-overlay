@@ -3134,62 +3134,6 @@
   sha256 = "08d9wy0rg9m66dd10x0zvkl74l25vxdakz7xp3j88s2gd31jp1v0";
 }
 {
-  name = "HaXml";  version = "1.13.2";
-  edeps = 
-  [
-    {
-      cdeps = [];
-      deps = 
-      [
-        {n = "base";}  {n = "haskell98";}  {n = "pretty";}
-        {n = "containers";}
-      ];
-    }
-    {
-      cdeps = [];
-      deps = 
-      [
-        {n = "base";}  {n = "haskell98";}  {n = "pretty";}
-        {n = "containers";}
-      ];
-    }
-    {
-      cdeps = [];
-      deps = 
-      [
-        {n = "base";}  {n = "haskell98";}  {n = "pretty";}
-        {n = "containers";}
-      ];
-    }
-    {
-      cdeps = [];
-      deps = 
-      [
-        {n = "base";}  {n = "haskell98";}  {n = "pretty";}
-        {n = "containers";}
-      ];
-    }
-    {
-      cdeps = [];
-      deps = 
-      [
-        {n = "base";}  {n = "haskell98";}  {n = "pretty";}
-        {n = "containers";}
-      ];
-    }
-  ];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {n = "base";}  {n = "haskell98";}  {n = "pretty";}
-      {n = "containers";}
-    ];
-  };
-  sha256 = "18calnc3rcqhbxis1n8486k76jzbxkab4vs5q4a2ag3ayxvkjix4";
-}
-{
   name = "HackMail";  version = "0.0.1";
   edeps = 
   [{
@@ -5072,28 +5016,6 @@
   };
   sha256 = "1vflx1qh22wc9ihbk5bchah1bwfhslni0zzxsfv7mb0kg60jsrr1";
   tflags = ["split-base"];
-}
-{
-  name = "QuickCheck";  version = "1.1.0.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = 
-    [[
-       {flag = "split_base";}
-       {
-         cdeps = [];  deps = [{gte = "3";  n = "base";}  {n = "random";}];
-       }
-       {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
-     ]];
-    deps = [];
-  };
-  sha256 = "1mpa48pq51fscigddilc7n5chfag77qf70h5s34p2qgqlk0ijbp3";
-  tflags = ["split-base"];
-}
-{
-  name = "QuickCheck";  version = "1.0";  edeps = [];
-  ldeps = {cdeps = [];  deps = [{n = "base";}];};
-  sha256 = "1sx13bba3fsx60b3bb4c58j4s7cixh5s1l22w293fwjim0abag6j";
 }
 {
   name = "RESTng";  version = "0.1";  edeps = [];
@@ -8795,301 +8717,6 @@
      ];
    }];
   sha256 = "06ml0ky1x99cswzxmz72nlmm6azhrr4gxpajryqllqia1ayr3snq";
-  tflags = ["bytestring-in-base"];
-}
-{
-  name = "cabal-install";  version = "0.6.0";
-  edeps = 
-  [{
-     cdeps = 
-     [
-       [
-         {flag = "old_base";}
-         {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
-         {
-           cdeps = [];
-           deps = 
-           [
-             {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "process";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "directory";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "pretty";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "random";}
-             {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "containers";}
-             {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "array";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "old-time";}
-           ];
-         }
-       ]
-       [
-         {flag = "bytestring_in_base";}
-         {
-           cdeps = [];
-           deps = 
-           [{i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "base";}];
-         }
-         {
-           cdeps = [];
-           deps = 
-           [
-             {n = "base";  u1 = {lt = "2.0";};  u2 = {gte = "3.0";};}
-             {gte = "0.9";  n = "bytestring";}
-           ];
-         }
-       ]
-       [
-         {os = "Windows";}
-         {
-           cdeps = [];
-           deps = [{i1 = {gte = "2";};  i2 = {lt = "3";};  n = "Win32";}];
-         }
-         {
-           cdeps = [];
-           deps = 
-           [{i1 = {gte = "2.0";};  i2 = {lt = "2.4";};  n = "unix";}];
-         }
-       ]
-     ];
-     deps = 
-     [
-       {i1 = {gte = "1.6";};  i2 = {lt = "1.7";};  n = "Cabal";}
-       {gte = "1.0";  n = "filepath";}
-       {i1 = {gte = "1";};  i2 = {lt = "3";};  n = "network";}
-       {i1 = {gte = "3000";};  i2 = {lt = "3002";};  n = "HTTP";}
-       {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "zlib";}
-     ];
-   }];
-  sha256 = "0qzmps6r46cra49k4d0wrynif27aci4gh7vfp48ajl74wf03150n";
-  tflags = ["bytestring-in-base"];
-}
-{
-  name = "cabal-install";  version = "0.5.2";
-  edeps = 
-  [{
-     cdeps = 
-     [
-       [
-         {flag = "old_base";}
-         {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
-         {
-           cdeps = [];
-           deps = 
-           [
-             {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "process";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "directory";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "pretty";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "random";}
-             {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "containers";}
-             {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "array";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "old-time";}
-           ];
-         }
-       ]
-       [
-         {flag = "bytestring_in_base";}
-         {
-           cdeps = [];
-           deps = 
-           [{i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "base";}];
-         }
-         {
-           cdeps = [];
-           deps = 
-           [
-             {n = "base";  u1 = {lt = "2.0";};  u2 = {gte = "3.0";};}
-             {gte = "0.9";  n = "bytestring";}
-           ];
-         }
-       ]
-       [
-         {os = "Windows";}
-         {
-           cdeps = [];
-           deps = [{i1 = {gte = "2";};  i2 = {lt = "3";};  n = "Win32";}];
-         }
-         {
-           cdeps = [];
-           deps = 
-           [{i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "unix";}];
-         }
-       ]
-     ];
-     deps = 
-     [
-       {i1 = {gte = "1.4";};  i2 = {lt = "1.5";};  n = "Cabal";}
-       {gte = "1.0";  n = "filepath";}
-       {i1 = {gte = "1";};  i2 = {lt = "3";};  n = "network";}
-       {i1 = {gte = "3000";};  i2 = {lt = "3002";};  n = "HTTP";}
-       {gte = "0.4";  n = "zlib";}
-     ];
-   }];
-  sha256 = "0sxczk2p3309gn47c08rw79ksh3yf7z4ri1132hr61rixllss2fs";
-  tflags = ["bytestring-in-base"];
-}
-{
-  name = "cabal-install";  version = "0.5.1";
-  edeps = 
-  [{
-     cdeps = 
-     [
-       [
-         {flag = "old_base";}
-         {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
-         {
-           cdeps = [];
-           deps = 
-           [
-             {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "process";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "directory";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "pretty";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "random";}
-             {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "containers";}
-             {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "array";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "old-time";}
-           ];
-         }
-       ]
-       [
-         {flag = "bytestring_in_base";}
-         {
-           cdeps = [];
-           deps = 
-           [{i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "base";}];
-         }
-         {
-           cdeps = [];
-           deps = 
-           [
-             {n = "base";  u1 = {lt = "2.0";};  u2 = {gte = "3.0";};}
-             {gte = "0.9";  n = "bytestring";}
-           ];
-         }
-       ]
-       [
-         {os = "Windows";}
-         {
-           cdeps = [];
-           deps = [{i1 = {gte = "2";};  i2 = {lt = "3";};  n = "Win32";}];
-         }
-       ]
-     ];
-     deps = 
-     [
-       {i1 = {gte = "1.4";};  i2 = {lt = "1.5";};  n = "Cabal";}
-       {gte = "1.0";  n = "filepath";}
-       {i1 = {gte = "1";};  i2 = {lt = "3";};  n = "network";}
-       {i1 = {gte = "3000";};  i2 = {lt = "3002";};  n = "HTTP";}
-       {gte = "0.4";  n = "zlib";}
-     ];
-   }];
-  sha256 = "04nsgs4j6p4l2f7r8d37p4x4ld82sa5qg443hcgzg3g4spd9d574";
-  tflags = ["bytestring-in-base"];
-}
-{
-  name = "cabal-install";  version = "0.5.0";
-  edeps = 
-  [{
-     cdeps = 
-     [
-       [
-         {flag = "old_base";}
-         {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
-         {
-           cdeps = [];
-           deps = 
-           [
-             {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "process";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "directory";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "pretty";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "random";}
-             {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "containers";}
-             {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "array";}
-             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "old-time";}
-           ];
-         }
-       ]
-       [
-         {flag = "bytestring_in_base";}
-         {
-           cdeps = [];
-           deps = 
-           [{i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "base";}];
-         }
-         {
-           cdeps = [];
-           deps = 
-           [
-             {n = "base";  u1 = {lt = "2.0";};  u2 = {gte = "3.0";};}
-             {gte = "0.9";  n = "bytestring";}
-           ];
-         }
-       ]
-       [
-         {os = "Windows";}
-         {
-           cdeps = [];
-           deps = [{i1 = {gte = "2";};  i2 = {lt = "3";};  n = "Win32";}];
-         }
-       ]
-     ];
-     deps = 
-     [
-       {i1 = {gte = "1.4";};  i2 = {lt = "1.5";};  n = "Cabal";}
-       {gte = "1.0";  n = "filepath";}
-       {i1 = {gte = "1";};  i2 = {lt = "3";};  n = "network";}
-       {i1 = {gte = "3000";};  i2 = {lt = "3002";};  n = "HTTP";}
-       {gte = "0.4";  n = "zlib";}
-     ];
-   }];
-  sha256 = "1f3c5a314bqly477s8vvllmhlzpmcr60lqp2j5bpmfdz94n8cn75";
-  tflags = ["bytestring-in-base"];
-}
-{
-  name = "cabal-install";  version = "0.4.0";
-  edeps = 
-  [{
-     cdeps = 
-     [
-       [
-         {flag = "old_base";}
-         {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
-         {
-           cdeps = [];
-           deps = 
-           [
-             {gte = "3";  n = "base";}  {n = "process";}  {n = "directory";}
-             {n = "pretty";}
-           ];
-         }
-       ]
-       [
-         {flag = "bytestring_in_base";}
-         {
-           cdeps = [];
-           deps = 
-           [{i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "base";}];
-         }
-         {
-           cdeps = [];
-           deps = 
-           [
-             {n = "base";  u1 = {lt = "2.0";};  u2 = {gte = "3.0";};}
-             {gte = "0.9";  n = "bytestring";}
-           ];
-         }
-       ]
-     ];
-     deps = 
-     [
-       {gte = "1.2";  n = "Cabal";}  {gte = "1.0";  n = "filepath";}
-       {n = "network";}  {gte = "0.3";  n = "zlib";}
-       {i1 = {gte = "3000.0";};  i2 = {lt = "3001.1";};  n = "HTTP";}
-     ];
-   }];
-  sha256 = "17r1ny79rqmhsnjka8i9k63mjgz6fc8aggar4s67vn8nllh3gfj8";
   tflags = ["bytestring-in-base"];
 }
 {
@@ -16296,7 +15923,7 @@
        }
        {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
      ]];
-    deps = [{n = "haskell98";}  {n = "happy";}];
+    deps = [{n = "haskell98";}];
   };
   sha256 = "129yi2qibzyxjhiiwb9dws0cv323f27xrimxlrskfafjmh02k1x7";
   tflags = ["split-base"];
@@ -23945,16 +23572,6 @@
   sha256 = "1psnqr2vkrgrzrn7jdii10fb6izsnwfpxrkw0d0z7cdjr2syb19d";
 }
 {
-  name = "parsec";  version = "2.1.0.0";  edeps = [];
-  ldeps = {cdeps = [];  deps = [{n = "base";}];};
-  sha256 = "0n329cqvx4gcl4bzkvqqhckfdiqdpqjyik8gpajng450b7sqzh23";
-}
-{
-  name = "parsec";  version = "2.0";  edeps = [];
-  ldeps = {cdeps = [];  deps = [{n = "base";}];};
-  sha256 = "1n29qsny9qdf1gj8rmgsgb5hi9xd1nqnyxc691k6pdj1w6r1l32x";
-}
-{
   name = "parsedate";  version = "3000.0.0";  edeps = [];
   ldeps = 
   {
@@ -29057,7 +28674,6 @@
       {n = "filepath";}  {gt = "0.5";  n = "base";}
     ];
   };
-  sha256 = "0000000000000000000000000000000000000000000000000000";
   tflags = ["builde1"];
 }
 {
