@@ -3070,7 +3070,7 @@
     ];
     deps = 
     [
-      {n = "base";}  {n = "haskell98";}  {n = "polyparse";  v = "1.2";}
+      {n = "base";}  {n = "haskell98";}  {lte = "1.3";  n = "polyparse";}
       {n = "filepath";}
     ];
   };
@@ -28643,38 +28643,6 @@
     ];
   };
   sha256 = "1n6yszhhdgixvpjhi97i1crk1yyb66hmzjb9whp19m9by0biws9n";
-}
-{
-  name = "test";  version = "0.0.1";
-  edeps = 
-  [
-    {
-      cdeps = [];
-      deps = [{lt = "4.0";  n = "base";}  {gt = "2.0";  n = "exec2";}];
-    }
-    {
-      cdeps = 
-      [
-        [{not = {flag = "builde1";};}  {cdeps = [];  deps = [];}]
-        [{flag = "b";}  {cdeps = [];  deps = [{n = "exec1Bonly";}];}]
-      ];
-      deps = [{gt = "2.0";  n = "base";}  {gt = "2.0";  n = "exec1";}];
-    }
-  ];
-  ldeps = 
-  {
-    cdeps = 
-    [[
-       {flag = "a";}  {cdeps = [];  deps = [{n = "depFlagA";}];}
-       {cdeps = [];  deps = [{n = "depFlagNoA";}];}
-     ]];
-    deps = 
-    [
-      {n = "haskell98";}  {gte = "1.19";  n = "HaXml";}
-      {n = "filepath";}  {gt = "0.5";  n = "base";}
-    ];
-  };
-  tflags = ["builde1"];
 }
 {
   name = "test-framework";  version = "0.2.4";
