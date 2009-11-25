@@ -5,15 +5,15 @@ status: experimental
 
 GOAL
 ====
-make all hackage packages availible to the nix repository manager (-> http://nixos.org).
-Why have a separate package ? Writing the hackage index into a file which is readable by nix
-results in a > 500kb file. Generating this file takes some time because all
-source files are downloaded once in order to calculate hashes required by fetchurl.
+  make all hackage packages availible to the nix repository manager (-> http://nixos.org).
+  Why have a separate package ? Writing the hackage index into a file which is readable by nix
+  results in a > 500kb file. Generating this file takes some time because all
+  source files are downloaded once in order to calculate hashes required by fetchurl.
 
-Tracking many revisions of this file in nixpkgs can
-have an impact on users tracking nixpkgs using git. So it would have been
-enough to track everything but the hackage contents. However generating this
-file takes quite some time that's why I do include it.
+  Tracking many revisions of this file in nixpkgs can
+  have an impact on users tracking nixpkgs using git. So it would have been
+  enough to track everything but the hackage contents. However generating this
+  file takes quite some time that's why I do include it.
 
 HOWTO
 =====
@@ -33,8 +33,48 @@ a) optional: update hack-nix-db.nix file
 b) compile example package:
   nix-build -A haskellOverlayPackagesExample.HAppS-Server
 
+
+HOWTO build a .cabal project
+============================
+
+  hack-nix supports building environments.
+
+  cd into a folder containing a cabal project
+
+  # write a config file containing cabal flag assignments:
+  hack-nix --write-hack-nix-cabal-config
+
+  # throw away the ways you don't want to test and assign appropriate names
+  $EDITOR .hack-nix-cabal-config
+
+  # build an environment based on those flags:
+  hack-nix --build-env $NAME
+
+  # source the bash file exporting PATH and GHC_PACKAGE_PATH
+  # in order to run the well known cabal commands:
+  source hack-nix-env/$NAME/source-me/haskel-env
+  ghc --make Setup.hs
+  ./Setup configure
+  ./Setup build
+
+
+  You can also add dev versions of packages to the list of available
+  packages quite easily:
+
+  Create ~/.nixpkgs/config.nix:
+
+    {pkgs, ... }: {
+      hackNix.additionalPackages = [
+        (import $PATH_TO_CABAL_REPO/dist/$CABAL_PROJECT_NAME.nix)
+        # repeat the line above
+      ];
+    }
+
+  The $CABAL_PROJECT_NAME.nix file is created by running
+    hack-nix --to-nix
+
 TODO
 ====
-* tidy up code. Optimise for speed
+* tidy up code. Optimise for speed !
 * think about how packages defined in here can be reused in nixpgks
 * maybe create nix channel (rename overlay to channel)
