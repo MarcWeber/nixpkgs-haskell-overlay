@@ -1,0 +1,15 @@
+Common subdirectories: a/examples and b/examples
+Common subdirectories: a/Network and b/Network
+diff -U 3 a/network-bytestring.cabal b/network-bytestring.cabal
+--- a/network-bytestring.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/network-bytestring.cabal	2009-11-25 18:48:54.000000000 +0100
+@@ -26,7 +26,7 @@
+       Network.Socket.ByteString.MsgHdr
+ 
+   build-depends:
+-    base       < 4.1,
++    base       < 5,
+     bytestring < 1.0,
+     network    >= 2.2.1.1 && < 2.3
+ 
+Common subdirectories: a/tests and b/tests

@@ -739,10 +739,11 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       /* example:
       { # both constraints will be applied to Cabal-1.4.4 
         Cabal-1.4.4 = {
-           flags.splitBase = false;
+           splitBase = false;
         };
+        # for all Cabal versions use:
         Cabal = {
-           versionRange = { gt : "1.2.0"; }
+           splitBase = false;
         };
       }
       */

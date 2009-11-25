@@ -22626,7 +22626,7 @@
     ];
     deps = 
     [
-      {lt = "4.1";  n = "base";}  {lt = "1.0";  n = "bytestring";}
+      {lt = "5";  n = "base";}  {lt = "1.0";  n = "bytestring";}
       {i1 = {gte = "2.2.1.1";};  i2 = {lt = "2.3";};  n = "network";}
     ];
   };

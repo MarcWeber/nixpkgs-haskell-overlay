@@ -107,15 +107,26 @@ let
       ];
     }).result;
 
-    envFromHaskellLibs = buildInputs: pkgs.runCommand "haskell-env" { inherit buildInputs; } ''
+    runHasktags = deriv :
+      let inherit (pkgs.sourceAndTags) sourceWithTagsDerivation sourceWithTagsFromDerivation addHasktagsTaggingInfo;
+      in sourceWithTagsDerivation (sourceWithTagsFromDerivation (addHasktagsTaggingInfo deriv) );
+
+    envFromHaskellLibs = { buildInputs, createHaskellTagsFor ? [], ...}:
+      pkgs.runCommand "haskell-env" {
+        buildInputs = buildInputs ++ map (runHasktags) createHaskellTagsFor;
+      } ''
         ensureDir $out/source-me
         
         cat >> $out/source-me/haskell-env << EOF
-          # add GHC and tools to the PATH
-          PATH=$(dirname $(type -p ghc)):"$PATH"
+          # add GHC and libraries to PATH. ghc, ghc-pkg, ghci are wrapped
+          # making them find package databases found those store paths
+          PATH=$PATH:"\$PATH"
 
           # export GHC_PACKAGE_PATH so that all libraries are known
           export GHC_PACKAGE_PATH="`ghc-packages`"
+          $(
+            [ -n "$TAG_FILES" ] && echo "export TAG_FILES='$TAG_FILES'"
+          )
         EOF
       '';
 
