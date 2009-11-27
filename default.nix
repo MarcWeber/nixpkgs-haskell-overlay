@@ -140,13 +140,14 @@ let
       ];
     }).result;
 
-    runHasktags = deriv :
+    runHasktags = deriv:
       let inherit (pkgs.sourceAndTags) sourceWithTagsDerivation sourceWithTagsFromDerivation addHasktagsTaggingInfo;
       in sourceWithTagsDerivation (sourceWithTagsFromDerivation (addHasktagsTaggingInfo deriv) );
 
     envFromHaskellLibs = { buildInputs, createHaskellTagsFor ? [], ...}:
-      pkgs.runCommand "haskell-env" {
-        buildInputs = buildInputs ++ map (runHasktags) createHaskellTagsFor;
+      let tagDerivations = map (runHasktags) createHaskellTagsFor;
+      in pkgs.runCommand "haskell-env" {
+        buildInputs = buildInputs ++ tagDerivations;
       } ''
         ensureDir $out/source-me
         
@@ -160,6 +161,7 @@ let
           $(
             [ -n "$TAG_FILES" ] && echo "export TAG_FILES='$TAG_FILES'"
           )
+          export TAGGED_SOURCES="${lib.concatStringsSep " " tagDerivations}"
         EOF
       '';
 
