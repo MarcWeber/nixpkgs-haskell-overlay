@@ -21,7 +21,10 @@
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {gte = "0.2.0.0";};  i2 = {lt = "0.3";};  n = "array";}
-      {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "gtk";}
+      {
+        i1 = {gte = "0.10";};  i2 = {lt = "0.11";};
+        n = "gtk2hs-meta-package-hack";
+      }
     ];
   };
   sha256 = "0gaxbc6zar8ll3gqs352iqprbvc84b3c6qvpiwprc7pf104496q6";
@@ -140,10 +143,14 @@
       {gte = "0.5";  n = "AERN-RnToRm";}
       {lt = "0.5.1";  n = "AERN-RnToRm";}
       {gte = "2.3";  n = "OpenGL";}  {lt = "2.4";  n = "OpenGL";}
-      {gte = "0.10";  n = "gtk";}  {gte = "0.10";  n = "gtkglext";}
-      {gte = "0.10";  n = "glib";}  {gte = "0.10";  n = "glade";}
-      {lt = "0.11";  n = "gtk";}  {lt = "0.11";  n = "gtkglext";}
-      {lt = "0.11";  n = "glib";}  {lt = "0.11";  n = "glade";}
+      {gte = "0.10";  n = "gtk2hs-meta-package-hack";}
+      {gte = "0.10";  n = "gtkglext";}
+      {gte = "0.10";  n = "gtk2hs-meta-package-hack";}
+      {gte = "0.10";  n = "gtk2hs-meta-package-hack";}
+      {lt = "0.11";  n = "gtk2hs-meta-package-hack";}
+      {lt = "0.11";  n = "gtkglext";}
+      {lt = "0.11";  n = "gtk2hs-meta-package-hack";}
+      {lt = "0.11";  n = "gtk2hs-meta-package-hack";}
     ];
   };
   sha256 = "0zpp0s90q2jhpagf6iswbmm6hyi0x2hns8vqd5swwa8d258avrbq";
@@ -421,12 +428,13 @@
        {gte = "1.17";  n = "HaXml";}  {n = "utf8-string";}
        {n = "array";}  {gt = "0.9";  n = "bytestring";}
        {n = "containers";}  {n = "dataenc";}  {n = "directory";}
-       {gte = "1.0";  n = "filepath";}  {n = "gtk";}  {n = "mtl";}
-       {n = "network";}  {n = "old-locale";}
-       {gte = "2.0";  n = "parsec";}  {n = "random";}
-       {n = "regex-compat";}  {gte = "2.0";  n = "stm";}  {n = "time";}
-       {n = "unix";}  {gte = "1.0.2";  n = "pkcs1";}
-       {gte = "0.2";  n = "heap";}  {gte = "0.2.3";  n = "hsgnutls";}
+       {gte = "1.0";  n = "filepath";}
+       {n = "gtk2hs-meta-package-hack";}  {n = "mtl";}  {n = "network";}
+       {n = "old-locale";}  {gte = "2.0";  n = "parsec";}
+       {n = "random";}  {n = "regex-compat";}
+       {gte = "2.0";  n = "stm";}  {n = "time";}  {n = "unix";}
+       {gte = "1.0.2";  n = "pkcs1";}  {gte = "0.2";  n = "heap";}
+       {gte = "0.2.3";  n = "hsgnutls";}
        {gte = "1.0.2";  n = "xml-parsec";}
        {gte = "1.0.2";  n = "adhoc-network";}
      ];
@@ -440,12 +448,13 @@
       {gte = "1.17";  n = "HaXml";}  {n = "utf8-string";}
       {n = "array";}  {gt = "0.9";  n = "bytestring";}
       {n = "containers";}  {n = "dataenc";}  {n = "directory";}
-      {gte = "1.0";  n = "filepath";}  {n = "gtk";}  {n = "mtl";}
-      {n = "network";}  {n = "old-locale";}
-      {gte = "2.0";  n = "parsec";}  {n = "random";}
-      {n = "regex-compat";}  {gte = "2.0";  n = "stm";}  {n = "time";}
-      {n = "unix";}  {gte = "1.0.2";  n = "pkcs1";}
-      {gte = "0.2";  n = "heap";}  {gte = "0.2.3";  n = "hsgnutls";}
+      {gte = "1.0";  n = "filepath";}
+      {n = "gtk2hs-meta-package-hack";}  {n = "mtl";}  {n = "network";}
+      {n = "old-locale";}  {gte = "2.0";  n = "parsec";}
+      {n = "random";}  {n = "regex-compat";}
+      {gte = "2.0";  n = "stm";}  {n = "time";}  {n = "unix";}
+      {gte = "1.0.2";  n = "pkcs1";}  {gte = "0.2";  n = "heap";}
+      {gte = "0.2.3";  n = "hsgnutls";}
       {gte = "1.0.2";  n = "xml-parsec";}
       {gte = "1.0.2";  n = "adhoc-network";}
     ];
@@ -797,8 +806,9 @@
      ]];
     deps = 
     [
-      {gte = "0.9.11";  n = "gtk";}  {gte = "0.9.11";  n = "cairo";}
-      {n = "time";}  {n = "mtl";}  {n = "array";}
+      {gte = "0.9.11";  n = "gtk2hs-meta-package-hack";}
+      {gte = "0.9.11";  n = "gtk2hs-meta-package-hack";}  {n = "time";}
+      {n = "mtl";}  {n = "array";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "data-accessor";}
       {
         i1 = {gte = "0.2.1.1";};  i2 = {lt = "0.3";};
@@ -1045,7 +1055,9 @@
      [
        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
        {n = "filepath";}  {n = "directory";}  {n = "mtl";}
-       {n = "time";}  {n = "containers";}  {n = "gtk";}  {n = "cairo";}
+       {n = "time";}  {n = "containers";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
      ];
    }];
   sha256 = "1yyr63r6ziljvcxacs7zn66lnkzgmlvcr36ic60c3z1r2rd2nflk";
@@ -1286,7 +1298,8 @@
      deps = 
      [
        {n = "base";}  {n = "parsec";}  {n = "fgl";}  {n = "mtl";}
-       {n = "array";}  {n = "gtk";}  {n = "containers";}
+       {n = "array";}  {n = "gtk2hs-meta-package-hack";}
+       {n = "containers";}
      ];
    }];
   sha256 = "131h71fgn0zbsmbqmvbfl57is0dbm37xsi5g87gpjgq0k2cq0nkr";
@@ -1963,7 +1976,9 @@
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {n = "array";}  {n = "containers";}  {n = "haskell98";}
-      {n = "mtl";}  {n = "glib";}  {n = "cairo";}  {n = "gtk";}
+      {n = "mtl";}  {n = "gtk2hs-meta-package-hack";}
+      {n = "gtk2hs-meta-package-hack";}
+      {n = "gtk2hs-meta-package-hack";}
     ];
   };
   sha256 = "1gj775yny73qvi3inc38c6yy1av503m5ilbz7ch0xx4a3ywnw5l9";
@@ -1975,7 +1990,8 @@
     cdeps = [];
     deps = 
     [
-      {lt = "5";  n = "base";}  {n = "time";}  {n = "gtk";}
+      {lt = "5";  n = "base";}  {n = "time";}
+      {n = "gtk2hs-meta-package-hack";}
       {gte = "0.6.7";  n = "TypeCompose";}  {n = "TV";}
     ];
   };
@@ -1989,9 +2005,11 @@
      deps = 
      [
        {gte = "2.0";  n = "base";}  {gte = "1.0";  n = "filepath";}
-       {gte = "0.1";  n = "proplang";}  {gte = "0.9.11";  n = "gtk";}
-       {gte = "0.9.11";  n = "glade";}  {n = "parsec";}
-       {n = "process";}  {n = "containers";}  {n = "directory";}
+       {gte = "0.1";  n = "proplang";}
+       {gte = "0.9.11";  n = "gtk2hs-meta-package-hack";}
+       {gte = "0.9.11";  n = "gtk2hs-meta-package-hack";}
+       {n = "parsec";}  {n = "process";}  {n = "containers";}
+       {n = "directory";}
      ];
    }];
   sha256 = "1rgyrbnlbvsqgd8m36fccq7qzxj2n682lz2rdq04j35zsgajyk11";
@@ -2509,9 +2527,10 @@
      cdeps = [];
      deps = 
      [
-       {n = "base";}  {gte = "0.9.13";  n = "gtk";}  {n = "glib";}
-       {n = "mtl";}  {n = "unix";}  {n = "regex-posix";}
-       {n = "process";}  {n = "containers";}  {n = "haskell98";}
+       {n = "base";}  {gte = "0.9.13";  n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}  {n = "mtl";}  {n = "unix";}
+       {n = "regex-posix";}  {n = "process";}  {n = "containers";}
+       {n = "haskell98";}
      ];
    }];
   ldeps = 
@@ -2519,10 +2538,10 @@
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {gte = "0.9.13";  n = "gtk";}  {n = "glib";}
-      {n = "mtl";}  {n = "unix";}  {n = "regex-posix";}
-      {n = "process";}  {n = "containers";}  {n = "haskell98";}
-      {n = "directory";}
+      {n = "base";}  {gte = "0.9.13";  n = "gtk2hs-meta-package-hack";}
+      {n = "gtk2hs-meta-package-hack";}  {n = "mtl";}  {n = "unix";}
+      {n = "regex-posix";}  {n = "process";}  {n = "containers";}
+      {n = "haskell98";}  {n = "directory";}
     ];
   };
   sha256 = "04325gwmlrx4iy9609vzaw2dhs4kg3ydr4r6af6rllrf500f6w9j";
@@ -2579,9 +2598,13 @@
      deps = 
      [
        {i1 = {gte = "4.0";};  i2 = {lt = "4.2";};  n = "base";}
-       {n = "gtk";}  {n = "glade";}  {n = "glib";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
        {i1 = {gte = "4.0";};  i2 = {lt = "4.2";};  n = "base";}
-       {n = "gtk";}  {n = "glade";}  {n = "glib";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
      ];
    }];
   ldeps = 
@@ -2590,7 +2613,9 @@
     deps = 
     [
       {i1 = {gte = "4.0";};  i2 = {lt = "4.2";};  n = "base";}
-      {n = "gtk";}  {n = "glade";}  {n = "glib";}
+      {n = "gtk2hs-meta-package-hack";}
+      {n = "gtk2hs-meta-package-hack";}
+      {n = "gtk2hs-meta-package-hack";}
     ];
   };
   sha256 = "022642xp13fl34y854n4j7kxn0nyxhrz4gxgn3nfqs67m13bcsqy";
@@ -2616,7 +2641,7 @@
      deps = 
      [
        {gt = "3";  n = "base";}  {n = "array";}  {n = "directory";}
-       {gte = "0.9.7";  n = "gtk";}
+       {gte = "0.9.7";  n = "gtk2hs-meta-package-hack";}
      ];
    }];
   sha256 = "16dixhckmyvihb68nk5zhdyvp7nbgnqqhkclsgfk3935c4nkddcb";
@@ -3258,8 +3283,10 @@
     [
       {n = "IfElse";}  {lte = "2.2.3.0";  n = "OpenGL";}  {n = "array";}
       {n = "base";  v = "4.1.0.0";}  {n = "buster";  v = "2.51";}
-      {n = "bytestring";}  {n = "cairo";}  {n = "colour";}
-      {n = "containers";}  {n = "glib";}  {gte = "0.10.0";  n = "gtk";}
+      {n = "bytestring";}  {n = "gtk2hs-meta-package-hack";}
+      {n = "colour";}  {n = "containers";}
+      {n = "gtk2hs-meta-package-hack";}
+      {gte = "0.10.0";  n = "gtk2hs-meta-package-hack";}
       {n = "gtkglext";}  {n = "mtl";}  {n = "parallel";}
       {n = "pretty";}  {n = "random";}  {lt = "2.2.0.0";  n = "GLUT";}
     ];
@@ -3817,8 +3844,14 @@
           cdeps = [];
           deps = 
           [
-            {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "cairo";}
-            {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "gtk";}
+            {
+              i1 = {gte = "0.10";};  i2 = {lt = "0.11";};
+              n = "gtk2hs-meta-package-hack";
+            }
+            {
+              i1 = {gte = "0.10";};  i2 = {lt = "0.11";};
+              n = "gtk2hs-meta-package-hack";
+            }
           ];
         }
       ]
@@ -3948,7 +3981,10 @@
              {
                cdeps = [];
                deps = 
-               [{i1 = {gte = "0.9.12";};  i2 = {lt = "0.11";};  n = "gtk";}];
+               [{
+                  i1 = {gte = "0.9.12";};  i2 = {lt = "0.11";};
+                  n = "gtk2hs-meta-package-hack";
+                }];
              }
              {cdeps = [];  deps = [{gte = "3";  n = "vty";}];}
            ]];
@@ -4187,9 +4223,9 @@
   tflags = ["small_base"];
 }
 {
-  name = "MemoTrie";  version = "0.4.5";  edeps = [];
-  ldeps = {cdeps = [];  deps = [{n = "base";}];};
-  sha256 = "09zq3zkxj14wld971cf8pi7k7rfqkybdsjmfvffy6jzkfxmn8ipz";
+  name = "MemoTrie";  version = "0.4.7";  edeps = [];
+  ldeps = {cdeps = [];  deps = [{lt = "5";  n = "base";}];};
+  sha256 = "1z7prp975cp6a0s54145dd3ma26psj8v8q2qfwmham4wxgk8qmdk";
 }
 {
   name = "MetaObject";  version = "0.0.6";  edeps = [];
@@ -4275,7 +4311,7 @@
   sha256 = "1x8gxas2qh0vvqsai6ms7y3jjmvsj8jyj5j273k7q66h378r53h3";
 }
 {
-  name = "MonadCatchIO-transformers";  version = "0.0.1.0";
+  name = "MonadCatchIO-transformers";  version = "0.0.2.0";
   edeps = [];
   ldeps = 
   {
@@ -4286,7 +4322,7 @@
       {n = "extensible-exceptions";}  {n = "transformers";}
     ];
   };
-  sha256 = "1ll1zngfaz9p34nx3p202jrkf2za18z569l52wb164js83zbal34";
+  sha256 = "01daw3fvsx1dghx5v6a85bvdqdiwjc3kz7nmniap1qx0k36kdq6r";
 }
 {
   name = "MonadLab";  version = "0.0.2";
@@ -4387,6 +4423,42 @@
     [{lte = "4";  n = "base";}  {n = "array";}  {n = "integer";}];
   };
   sha256 = "0cp71hkx8cccx7jxf5qw1bxdylcc56v68mvjp0dn9hkh1idxplzq";
+}
+{
+  name = "NoSlow";  version = "0.1";
+  edeps = 
+  [
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+        {n = "containers";}  {gte = "0.2";  n = "criterion";}
+      ];
+    }
+    {
+      cdeps = 
+      [
+        [
+          {flag = "dph_prim_seq";}
+          {cdeps = [];  deps = [{n = "dph-prim-seq";}  {n = "dph-base";}];}
+        ]
+        [{flag = "vector";}  {cdeps = [];  deps = [{n = "vector";}];}]
+        [{flag = "uvector";}  {cdeps = [];  deps = [{n = "uvector";}];}]
+        [
+          {flag = "storablevector";}
+          {cdeps = [];  deps = [{n = "storablevector";}];}
+        ]
+      ];
+      deps = 
+      [
+        {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+        {n = "template-haskell";}  {gte = "0.2";  n = "criterion";}
+      ];
+    }
+  ];
+  sha256 = "14zp1sln02g3lwmkxvd12v0hra7kiqa3syqy9v4w9md1ggjg6wq4";
+  tflags = ["dph-prim-seq"  "vector"  "uvector"  "storablevector"];
 }
 {
   name = "NonEmpty";  version = "0.1";  edeps = [];
@@ -5551,7 +5623,7 @@
     cdeps = [];
     deps = 
     [
-      {lt = "4";  n = "base";}  {gte = "2.0";  n = "QuickCheck";}
+      {lt = "5";  n = "base";}  {gte = "2.0";  n = "QuickCheck";}
       {gte = "0.3";  n = "lazysmallcheck";}
     ];
   };
@@ -5785,7 +5857,10 @@
   {
     cdeps = [];
     deps = 
-    [{n = "cairo";}  {n = "base";}  {n = "mtl";}  {n = "gtk";}];
+    [
+      {n = "gtk2hs-meta-package-hack";}  {n = "base";}  {n = "mtl";}
+      {n = "gtk2hs-meta-package-hack";}
+    ];
   };
   sha256 = "0fl6pk2vp765gyzc4afjdg0lgbnh5v08gfbp0kzny4ng25bmxqwa";
 }
@@ -6291,7 +6366,9 @@
            deps = 
            [
              {n = "base";}  {n = "array";}  {n = "containers";}  {n = "OpenAL";}
-             {n = "glade";}  {n = "gtk";}  {n = "Yampa";}  {n = "HCodecs";}
+             {n = "gtk2hs-meta-package-hack";}
+             {n = "gtk2hs-meta-package-hack";}  {n = "Yampa";}
+             {n = "HCodecs";}
            ];
          }
          {cdeps = [];  deps = [];}
@@ -6420,8 +6497,9 @@
      cdeps = [];
      deps = 
      [
-       {gt = "3";  n = "base";}  {n = "mtl";}  {n = "gtk";}
-       {n = "array";}  {n = "random";}
+       {gt = "3";  n = "base";}  {n = "mtl";}
+       {n = "gtk2hs-meta-package-hack";}  {n = "array";}
+       {n = "random";}
      ];
    }];
   sha256 = "1s005k892z9651mr2jj0jdwpm8aa0y72vi405xi4h6czg52i4rb3";
@@ -7026,10 +7104,12 @@
      [
        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
        {n = "filepath";}  {n = "bytestring";}  {n = "Glob";}
-       {n = "containers";}  {n = "syb";}  {n = "hint";}  {n = "glib";}
-       {n = "gtk";}  {n = "glade";}  {n = "gtksourceview2";}
-       {n = "astview-utils";}  {n = "directory";}  {n = "mtl";}
-       {n = "process";}
+       {n = "containers";}  {n = "syb";}  {n = "hint";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}  {n = "astview-utils";}
+       {n = "directory";}  {n = "mtl";}  {n = "process";}
      ];
    }];
   sha256 = "0lv4wbblv4r0vwfynswsxzyrl6qp45byjdmg4cs760qq3jj749zl";
@@ -7048,7 +7128,7 @@
   sha256 = "1rqqlngmcdd7i1gww95lyim971w8xv0hjg20h0j8av4y29pjxfyn";
 }
 {
-  name = "atom";  version = "0.1.1";  edeps = [];
+  name = "atom";  version = "0.1.2";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -7061,9 +7141,10 @@
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {gte = "1.1.0.1";};  i2 = {lt = "1.2";};  n = "mtl";}
       {i1 = {gte = "1.0.1.1";};  i2 = {lt = "1.2";};  n = "process";}
+      {gte = "0.0.0.4";  n = "yices";}
     ];
   };
-  sha256 = "01kkjgwslx8q61mr0vh98imabp56f3xlci8zjsqkc0d8v5rglvw5";
+  sha256 = "1nqc186m6b1nscax1354rnk13sm9r5n9bicp6d5s3c6dswyg47nc";
 }
 {
   name = "attempt";  version = "0.0.2";  edeps = [];
@@ -7335,7 +7416,7 @@
   sha256 = "162a4l5p1jlvikfrpyzql8jpg7zkxdvxmx0d494jxllplxzlfyln";
 }
 {
-  name = "bamboo-theme-mini-html5";  version = "2009.11.7";
+  name = "bamboo-theme-mini-html5";  version = "2009.11.27";
   edeps = [];
   ldeps = 
   {
@@ -7349,11 +7430,11 @@
       {n = "zlib";}  {n = "directory";}  {n = "filepath";}
       {n = "containers";}  {n = "process";}
       {gte = "3000.0.0";  n = "parsedate";}
-      {n = "rss";  v = "3000.0.1";}  {n = "xhtml";}
+      {gte = "3000.1.0";  n = "rss";}  {n = "xhtml";}
       {gte = "0.3.3";  n = "utf8-string";}  {gte = "2";  n = "parsec";}
       {gte = "0.3";  n = "gravatar";}
       {gte = "0.2";  n = "data-default";}
-      {gte = "2009.9.18";  n = "mps";}
+      {gte = "2009.11.7";  n = "mps";}
       {gte = "2009.6.25";  n = "hcheat";}
       {gte = "2009.10.30";  n = "hack";}
       {gte = "2009.11.1";  n = "hack-contrib";}
@@ -7362,7 +7443,7 @@
       {gte = "2009.10.23.2";  n = "yuuko";}
     ];
   };
-  sha256 = "0pzb79h8jm0ciyal3cmqcl1v50zgllspl58gb70j9rkg66p6fgf0";
+  sha256 = "02zh9jqq46gg3hrsfjfq2skajr4jni3cisak4nd3shl6aqapw9d6";
 }
 {
   name = "bamse";  version = "0.9.5";
@@ -7418,8 +7499,10 @@
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "filepath";}  {gte = "0.10.0";  n = "gtk";}
-      {gte = "0.10.0";  n = "glib";}  {n = "containers";}
+      {n = "base";}  {n = "filepath";}
+      {gte = "0.10.0";  n = "gtk2hs-meta-package-hack";}
+      {gte = "0.10.0";  n = "gtk2hs-meta-package-hack";}
+      {n = "containers";}
     ];
   };
   sha256 = "10iraid6v333374mx9vinvaw6r1903ipa92xjxhl8qh4w7xmr9yv";
@@ -7625,6 +7708,43 @@
     ];
   };
   sha256 = "1kqdssbap03cfbz2k9h609q3n9fl7ymfd6j5j157rn03x1bs9f8l";
+}
+{
+  name = "bibtex";  version = "0.0.1";
+  edeps = 
+  [{
+     cdeps = 
+     [[{not = {flag = "buildexamples";};}  {cdeps = [];  deps = [];}]];
+     deps = [];
+   }];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {flag = "base2";}
+       {
+         cdeps = [];
+         deps = [{i1 = {gte = "2";};  i2 = {lt = "5";};  n = "base";}];
+       }
+       {
+         cdeps = [];
+         deps = 
+         [
+           {i1 = {gte = "1.0";};  i2 = {lt = "2";};  n = "base";}
+           {
+             i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "special-functors";
+           }
+         ];
+       }
+     ]];
+    deps = 
+    [
+      {i1 = {gte = "2.1";};  i2 = {lt = "2.2";};  n = "parsec";}
+      {i1 = {gte = "0.0.5";};  i2 = {lt = "0.1";};  n = "utility-ht";}
+    ];
+  };
+  sha256 = "0rbxg9nz2ks8jrpb5x56frghm71f8cldzns1k68vk3xg3848z487";
+  tflags = ["base2"];
 }
 {
   name = "bimap";  version = "0.2.4";  edeps = [];
@@ -8032,7 +8152,7 @@
   sha256 = "17nx52a3v91lkpb17vnm7c27masc83by9kkyqahm15vqqfb8b6dh";
 }
 {
-  name = "bktrees";  version = "0.2.1";  edeps = [];
+  name = "bktrees";  version = "0.2.2";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -8041,13 +8161,16 @@
        {
          cdeps = [];
          deps = 
-         [{gte = "3";  n = "base";}  {n = "containers";}  {n = "array";}];
+         [
+           {gte = "3";  n = "base";}  {lt = "4";  n = "base";}
+           {n = "containers";}  {n = "array";}
+         ];
        }
        {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
      ]];
     deps = [];
   };
-  sha256 = "0km2vaq8wcpm19zkyvlp3rian6b7k6ii0dghrlsgj6bsxc1ya2f0";
+  sha256 = "1i5jrvidl20wg0yx6q9f22r0n38b1kqr1ssddfhk1ycdbh4gggdp";
   tflags = ["splitbase"];
 }
 {
@@ -8163,15 +8286,17 @@
       deps = 
       [
         {gte = "3";  n = "base";}  {lt = "4";  n = "base";}
-        {n = "directory";}  {n = "filepath";}  {n = "glade";}
-        {n = "gtk";}
+        {n = "directory";}  {n = "filepath";}
+        {n = "gtk2hs-meta-package-hack";}
+        {n = "gtk2hs-meta-package-hack";}
       ];
     }
     {
       cdeps = [];
       deps = 
       [
-        {gte = "3";  n = "base";}  {lt = "4";  n = "base";}  {n = "gtk";}
+        {gte = "3";  n = "base";}  {lt = "4";  n = "base";}
+        {n = "gtk2hs-meta-package-hack";}
       ];
     }
     {
@@ -8179,7 +8304,8 @@
       deps = 
       [
         {gte = "3";  n = "base";}  {lt = "4";  n = "base";}  {n = "unix";}
-        {n = "glade";}  {n = "gtk";}  {gte = "1.4";  n = "X11";}
+        {n = "gtk2hs-meta-package-hack";}
+        {n = "gtk2hs-meta-package-hack";}  {gte = "1.4";  n = "X11";}
       ];
     }
     {
@@ -8202,7 +8328,8 @@
      cdeps = [];
      deps = 
      [
-       {gte = "3";  n = "base";}  {lt = "4";  n = "base";}  {n = "gtk";}
+       {gte = "3";  n = "base";}  {lt = "4";  n = "base";}
+       {n = "gtk2hs-meta-package-hack";}
      ];
    }];
   sha256 = "1qna8rr50mmd90xp7pwhcknx12dv2n7w5pdsw28kpbxykljrszgm";
@@ -8324,10 +8451,11 @@
     cdeps = [];
     deps = 
     [
-      {gte = "2.0";  n = "buster";}  {n = "gtk";}  {n = "binary";}
-      {gte = "3.0.0";  n = "parsec";}  {n = "pretty";}  {n = "mtl";}
-      {n = "bytestring";}  {n = "base";}  {n = "containers";}
-      {n = "time";}  {n = "old-locale";}  {n = "dataenc";}
+      {gte = "2.0";  n = "buster";}  {n = "gtk2hs-meta-package-hack";}
+      {n = "binary";}  {gte = "3.0.0";  n = "parsec";}  {n = "pretty";}
+      {n = "mtl";}  {n = "bytestring";}  {n = "base";}
+      {n = "containers";}  {n = "time";}  {n = "old-locale";}
+      {n = "dataenc";}
     ];
   };
   sha256 = "1ajmwdrx7cq5dh7zj0viipnhas0p910ax1yb37ina4nddrpx0gd1";
@@ -9307,7 +9435,7 @@
     cdeps = [];
     deps = 
     [
-      {lte = "4";  n = "base";}  {n = "random";}
+      {lte = "5";  n = "base";}  {n = "random";}
       {gte = "2.1.0.2";  n = "QuickCheck";}
       {gte = "0.1";  n = "array";}
     ];
@@ -9315,7 +9443,7 @@
   sha256 = "0qqg14kj5wa2q5mjbhsny0vbzbql4w9fklwsr3hah21pnrjpna8i";
 }
 {
-  name = "chp";  version = "1.6.0";  edeps = [];
+  name = "chp";  version = "1.7.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -9328,7 +9456,7 @@
       {gte = "2";  n = "QuickCheck";}  {n = "stm";}
     ];
   };
-  sha256 = "118djkm6rjkg04y7zbcr7p8dm8338krrxp3i587p3j6i58alms2y";
+  sha256 = "1vaz434njsjczyrpcq3pr5yyls1sysqii1h8r297xz8g62ydhca8";
 }
 {
   name = "chunks";  version = "2007.4.18";  edeps = [];
@@ -11042,9 +11170,9 @@
   sha256 = "0g9bkgsbprgvcflfs5s5vm0z8bq2v693433323fqsvp7nsfh7phh";
 }
 {
-  name = "data-aviary";  version = "0.1.0";  edeps = [];
+  name = "data-aviary";  version = "0.2.0";  edeps = [];
   ldeps = {cdeps = [];  deps = [{lt = "5";  n = "base";}];};
-  sha256 = "1s4nrd6h6h3aqinlvs0i8ad5p4anw908qynachh43kpsa9g762q1";
+  sha256 = "02q4kr5sz2qmhz0dy50ad68m4b8mb3j243zhpag9r4z2gm7qgynl";
 }
 {
   name = "data-binary-ieee754";  version = "0.4";  edeps = [];
@@ -11653,7 +11781,10 @@
       {i1 = {gte = "2";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "mtl";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "containers";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "cairo";}
+      {
+        i1 = {gte = "0.9";};  i2 = {lt = "0.11";};
+        n = "gtk2hs-meta-package-hack";
+      }
       {i1 = {gte = "2.2.1";};  i2 = {lt = "2.4";};  n = "colour";}
     ];
   };
@@ -12064,17 +12195,17 @@
   sha256 = "02ba0x3w19ami01c66i8vk4xcahqsjpah0c8gjq462kmdjwjjz0b";
 }
 {
-  name = "elerea";  version = "1.0.0";  edeps = [];
+  name = "elerea";  version = "1.1.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {n = "containers";}
+      {n = "containers";}  {n = "ghc-prim";}
     ];
   };
-  sha256 = "1f3jirqn28hrdnnz6hziyqipbd3zxh3dr3jgnsjcdnxhpca1r24a";
+  sha256 = "1lp94gvzgji6fka0vpv3rn2y4gpyqsc46mhqzib4lwqfrvwlc8hh";
 }
 {
   name = "elerea-examples";  version = "1.0.2";
@@ -12792,36 +12923,36 @@
       cdeps = [];
       deps = 
       [
-        {n = "base";}  {n = "HaXml";}  {n = "gtk";}  {n = "mtl";}
-        {n = "unix";}  {n = "cairo";}  {n = "harp";}
-        {n = "template-haskell";}
+        {n = "base";}  {n = "HaXml";}  {n = "gtk2hs-meta-package-hack";}
+        {n = "mtl";}  {n = "unix";}  {n = "gtk2hs-meta-package-hack";}
+        {n = "harp";}  {n = "template-haskell";}
       ];
     }
     {
       cdeps = [];
       deps = 
       [
-        {n = "base";}  {n = "HaXml";}  {n = "gtk";}  {n = "mtl";}
-        {n = "unix";}  {n = "cairo";}  {n = "harp";}
-        {n = "template-haskell";}
+        {n = "base";}  {n = "HaXml";}  {n = "gtk2hs-meta-package-hack";}
+        {n = "mtl";}  {n = "unix";}  {n = "gtk2hs-meta-package-hack";}
+        {n = "harp";}  {n = "template-haskell";}
       ];
     }
     {
       cdeps = [];
       deps = 
       [
-        {n = "base";}  {n = "HaXml";}  {n = "gtk";}  {n = "mtl";}
-        {n = "unix";}  {n = "cairo";}  {n = "harp";}
-        {n = "template-haskell";}
+        {n = "base";}  {n = "HaXml";}  {n = "gtk2hs-meta-package-hack";}
+        {n = "mtl";}  {n = "unix";}  {n = "gtk2hs-meta-package-hack";}
+        {n = "harp";}  {n = "template-haskell";}
       ];
     }
     {
       cdeps = [];
       deps = 
       [
-        {n = "base";}  {n = "HaXml";}  {n = "gtk";}  {n = "mtl";}
-        {n = "unix";}  {n = "cairo";}  {n = "harp";}
-        {n = "template-haskell";}
+        {n = "base";}  {n = "HaXml";}  {n = "gtk2hs-meta-package-hack";}
+        {n = "mtl";}  {n = "unix";}  {n = "gtk2hs-meta-package-hack";}
+        {n = "harp";}  {n = "template-haskell";}
       ];
     }
   ];
@@ -13379,7 +13510,7 @@
   sha256 = "062zaxvdiswpsb5zjilb9amfvawdwwbbbk3bg7q12nny386jm3fd";
 }
 {
-  name = "full-sessions";  version = "0.4.189";  edeps = [];
+  name = "full-sessions";  version = "0.6.1.1";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -13394,9 +13525,9 @@
          deps = [{gte = "3";  n = "base";}  {lt = "4";  n = "base";}];
        }
      ]];
-    deps = [{gt = "6.8";  n = "ghc";}];
+    deps = [{gt = "6.8";  n = "ghc";}  {n = "network";}];
   };
-  sha256 = "1yaj49mby0p0lrhzva04070idivbv7l8j56ws8pn3rdq0zj4y9ws";
+  sha256 = "1s9xa2rf7mqgiphb8n4akdjf5nsncp3z6hr768cz8czisadfy3bf";
 }
 {
   name = "funcmp";  version = "1.2";  edeps = [];
@@ -13471,7 +13602,12 @@
         }
         {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
       ]];
-     deps = [{n = "cairo";}  {n = "gtk";}  {n = "glib";}];
+     deps = 
+     [
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
+     ];
    }];
   sha256 = "192rn2d8bil8wqilnaqxba8nzq0fjlbf0innv6rdcjs1kxw1ga0l";
   tflags = ["small_base"];
@@ -13623,9 +13759,13 @@
   sha256 = "14din5g40iix41ixx7q0gibxq2d8dypjyh836lkfc4cmz7nf112j";
 }
 {
-  name = "ghc-paths";  version = "0.1.0.5";  edeps = [];
-  ldeps = {cdeps = [];  deps = [{n = "base";}];};
-  sha256 = "045s7ikz04x8cvfx4gr9x2v0gz77w83y202yj7bxpqwlb119g7pa";
+  name = "ghc-paths";  version = "0.1.0.6";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = [{i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}];
+  };
+  sha256 = "0hsjqmqv0a31v73gyli05iyinf0wr2rlj0ci5rwjs61grvkc1n4m";
 }
 {
   name = "ghc-syb";  version = "0.1.2.1";  edeps = [];
@@ -13779,7 +13919,7 @@
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {n = "template-haskell";}  {gte = "1.19.7";  n = "HaXml";}
-      {gte = "0.10.1";  n = "glade";}
+      {gte = "0.10.1";  n = "gtk2hs-meta-package-hack";}
     ];
   };
   sha256 = "06kzakvssmldjgx0s8qm0a3cd9glmwrdnh690sv708jcvg8x45y3";
@@ -13821,7 +13961,8 @@
        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
        {gte = "1.0.0.1";  n = "random";}
        {gte = "1.0.0.3";  n = "directory";}
-       {gte = "0.10.1";  n = "gtk";}  {gte = "0.10.1";  n = "glib";}
+       {gte = "0.10.1";  n = "gtk2hs-meta-package-hack";}
+       {gte = "0.10.1";  n = "gtk2hs-meta-package-hack";}
        {gte = "0.10.1";  n = "gconf";}
      ];
    }];
@@ -14051,13 +14192,16 @@
         n = "grapefruit-records";
       }
       {i1 = {gte = "0.0";};  i2 = {lt = "0.1";};  n = "grapefruit-ui";}
-      {i1 = {gte = "0.9.13";};  i2 = {lt = "0.11";};  n = "gtk";}
+      {
+        i1 = {gte = "0.9.13";};  i2 = {lt = "0.11";};
+        n = "gtk2hs-meta-package-hack";
+      }
     ];
   };
   sha256 = "1i6v0wlwiwsl8j70bzchf157y5q3wg86md1wq9l2lnv320rhjsc8";
 }
 {
-  name = "graphics-drawingcombinators";  version = "0.42";
+  name = "graphics-drawingcombinators";  version = "0.43";
   edeps = [];
   ldeps = 
   {
@@ -14069,7 +14213,7 @@
       {n = "OpenGL";}
     ];
   };
-  sha256 = "1lnx6vvhbrv7x6vc5dzgi9kgkqn4kmm567w2ih3v9ycc67d3iaj4";
+  sha256 = "1ylryyxy4xxl4w533gfml5wqcy3lrh30nj88bpp2xi0v6y3kcl6k";
 }
 {
   name = "graphicsFormats";  version = "0.1";  edeps = [];
@@ -14229,15 +14373,20 @@
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "hint";}  {n = "glade";}  {n = "gtk";}
-      {n = "gtk2hs-cast-glib";}  {n = "template-haskell";}
+      {n = "base";}  {n = "hint";}  {n = "gtk2hs-meta-package-hack";}
+      {n = "gtk2hs-meta-package-hack";}  {n = "gtk2hs-cast-glib";}
+      {n = "template-haskell";}
     ];
   };
   sha256 = "0azyf3h53r5dqvz66bbvqk9qp418v0mq0yzd1ia6pc6d7ypknkx6";
 }
 {
   name = "gtk2hs-cast-glib";  version = "0.10.1.1";  edeps = [];
-  ldeps = {cdeps = [];  deps = [{n = "base";}  {n = "glib";}];};
+  ldeps = 
+  {
+    cdeps = [];
+    deps = [{n = "base";}  {n = "gtk2hs-meta-package-hack";}];
+  };
   sha256 = "1bsz1zyz2hxf07q6xr232aciwxl3819jklj16hqqbfjwm4mzn2mp";
 }
 {
@@ -14261,7 +14410,7 @@
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "hint";}  {n = "gtk";}
+      {n = "base";}  {n = "hint";}  {n = "gtk2hs-meta-package-hack";}
       {n = "gtk2hs-cast-glib";}  {n = "gtk2hs-cast-th";}
       {n = "template-haskell";}
     ];
@@ -14290,7 +14439,7 @@
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "hint";}  {n = "gtksourceview2";}
+      {n = "base";}  {n = "hint";}  {n = "gtk2hs-meta-package-hack";}
       {n = "gtk2hs-cast-glib";}  {n = "gtk2hs-cast-th";}
       {n = "template-haskell";}
     ];
@@ -14313,8 +14462,9 @@
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {gte = "0.10";  n = "gtk";}  {n = "cairo";}
-      {n = "mtl";}  {n = "glib";}
+      {n = "base";}  {gte = "0.10";  n = "gtk2hs-meta-package-hack";}
+      {n = "gtk2hs-meta-package-hack";}  {n = "mtl";}
+      {n = "gtk2hs-meta-package-hack";}
     ];
   };
   sha256 = "1a85227pchq1a9nqyx0kyv1hmpg1h2zwys81plfd9s4k9dqz3m08";
@@ -16561,7 +16711,10 @@
      deps = 
      [
        {n = "haskell98";}  {n = "process";}  {n = "filepath";}
-       {n = "glade";}  {n = "gtk";}  {n = "cairo";}  {n = "svgcairo";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
      ];
    }];
   sha256 = "01wx4dls0ccl0q09hvydjhj0lfpqfd32z76rjgc89p5889czkm5j";
@@ -16768,7 +16921,7 @@
      [
        {gte = "3.0.3.0";  n = "base";}
        {gte = "1.0.1.0";  n = "haskell98";}
-       {gte = "0.9.13";  n = "cairo";}
+       {gte = "0.9.13";  n = "gtk2hs-meta-package-hack";}
        {gte = "0.9.1.4";  n = "bytestring";}
        {gte = "1.1.0.1";  n = "filepath";}
      ];
@@ -16784,7 +16937,7 @@
      [
        {gte = "3.0.3.0";  n = "base";}
        {gte = "1.0.1.0";  n = "haskell98";}
-       {gte = "0.9.13";  n = "cairo";}
+       {gte = "0.9.13";  n = "gtk2hs-meta-package-hack";}
        {gte = "0.9.1.4";  n = "bytestring";}
        {gte = "0.3";  n = "dph-seq";}
        {gte = "1.1.0.1";  n = "filepath";}
@@ -17135,13 +17288,14 @@
      [
        {n = "haskell98";}  {n = "base";}  {n = "unix";}
        {n = "directory";}  {n = "process";}  {n = "old-time";}
-       {n = "parallel";}  {n = "gtk";}  {n = "mozembed";}  {n = "glib";}
+       {n = "parallel";}  {n = "gtk2hs-meta-package-hack";}
+       {n = "mozembed";}  {n = "gtk2hs-meta-package-hack";}
      ];
    }];
   sha256 = "0ivrl5wymqzwcn7vyr3anychlk35003ksxsvr463qz768vbcql00";
 }
 {
-  name = "hinotify";  version = "0.2";  edeps = [];
+  name = "hinotify";  version = "0.3";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -17151,14 +17305,15 @@
          cdeps = [];
          deps = 
          [
-           {gte = "3";  n = "base";}  {n = "containers";}  {n = "directory";}
+           {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+           {n = "containers";}  {n = "directory";}
          ];
        }
        {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
      ]];
     deps = [{n = "unix";}];
   };
-  sha256 = "1x9mnlqy8lsq3qy9d559kxwqlj32smr9an76nf5i4hj67vicw1al";
+  sha256 = "10k0sm5fmfvbcg3xpk0p9sl3nyc3xfypr3ar78k1syrzif84yfrb";
   tflags = ["split-base"];
 }
 {
@@ -17263,9 +17418,10 @@
      deps = 
      [
        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-       {gte = "0.10.0";  n = "gtk";}  {n = "utf8-string";}
-       {n = "time";}  {n = "containers";}  {n = "mtl";}
-       {n = "directory";}  {n = "network";}  {n = "old-time";}
+       {gte = "0.10.0";  n = "gtk2hs-meta-package-hack";}
+       {n = "utf8-string";}  {n = "time";}  {n = "containers";}
+       {n = "mtl";}  {n = "directory";}  {n = "network";}
+       {n = "old-time";}
      ];
    }];
   sha256 = "1mqgfjck8f52j1p460d1v6699gnqbizmcvdzya0g7pzgskrj6z4r";
@@ -17932,15 +18088,17 @@
      [
        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
        {n = "containers";}  {n = "array";}  {n = "filepath";}
-       {n = "time";}  {n = "glib";}  {n = "gtk";}  {n = "gtkglext";}
-       {n = "glade";}  {n = "cairo";}  {n = "OpenGL";}
+       {n = "time";}  {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}  {n = "gtkglext";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}  {n = "OpenGL";}
        {n = "bytestring";}  {n = "hp2any-core";}  {n = "hp2any-graph";}
      ];
    }];
   sha256 = "0q1xxs98iv6a83r5dhp9a8f87wf8h22xa5by70iiccw4ldn22ks4";
 }
 {
-  name = "hpage";  version = "0.4.5";
+  name = "hpage";  version = "0.4.7";
   edeps = 
   [{
      cdeps = [];
@@ -17970,7 +18128,7 @@
        {lt = "2";  n = "hint-server";}
      ];
    }];
-  sha256 = "0qbjxcp49vah3f1smrp3hrigw2mj0mdian9rp9y7fr5cfsd3i65s";
+  sha256 = "0d0w3x28drqlpj48hhiihvb77b7lwhypf0vgag0v451wvmmc0rms";
 }
 {
   name = "hpapi";  version = "0.0.1.0";  edeps = [];
@@ -18103,7 +18261,8 @@
     deps = 
     [
       {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
-      {n = "cairo";}  {n = "gtk";}  {n = "hps";  v = "0.1";}
+      {n = "gtk2hs-meta-package-hack";}
+      {n = "gtk2hs-meta-package-hack";}  {n = "hps";  v = "0.1";}
     ];
   };
   sha256 = "0ff05ygg9kmlyzjdj2bz0nk1hfcs3491l26f1vmvxksflkjb843l";
@@ -18245,7 +18404,9 @@
       ]];
      deps = 
      [
-       {gte = "1.0.0.1";  n = "MonadPrompt";}  {n = "glib";}  {n = "gtk";}
+       {gte = "1.0.0.1";  n = "MonadPrompt";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
      ];
    }];
   ldeps = 
@@ -18476,7 +18637,12 @@
         }
         {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
       ]];
-     deps = [{n = "cairo";}  {n = "gtk";}  {n = "glib";}];
+     deps = 
+     [
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
+     ];
    }];
   sha256 = "0g853fq9vv33nga05rhls6hk5h4gaby8mws0i8yq2iday6j576nf";
   tflags = ["small_base"];
@@ -18518,7 +18684,7 @@
     deps = 
     [
       {gt = "3";  n = "base";}  {n = "containers";}  {n = "parsec";}
-      {n = "HUnit";}  {n = "cairo";}
+      {n = "HUnit";}  {n = "gtk2hs-meta-package-hack";}
     ];
   };
   sha256 = "0hqwpcf2bcrj36wg02mxd2zdg07dqh4b5mv9yn295xp64snrdw84";
@@ -18932,7 +19098,7 @@
   sha256 = "0ih70rjg56hvmjhjya9m0i5w7ljclcmwlbcf9pj4basviyvags0y";
 }
 {
-  name = "hssqlppp";  version = "0.0.9";
+  name = "hssqlppp";  version = "0.0.10";
   edeps = 
   [
     {
@@ -18964,7 +19130,7 @@
       {n = "directory";}  {n = "syb";}
     ];
   };
-  sha256 = "1yniay8rncjj3mj1jkwxknf23a269dh5472bp49iyflr21i2wixl";
+  sha256 = "0jhf3pfg4r4jg081mhmjr7cw7v153v5900qrbav0ck54j2h1vswn";
 }
 {
   name = "hstats";  version = "0.3";  edeps = [];
@@ -19313,8 +19479,14 @@
        {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
        {n = "haskell98";}
        {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "HUnit";}
-       {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "gtk";}
-       {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "cairo";}
+       {
+         i1 = {gte = "0.10";};  i2 = {lt = "0.11";};
+         n = "gtk2hs-meta-package-hack";
+       }
+       {
+         i1 = {gte = "0.10";};  i2 = {lt = "0.11";};
+         n = "gtk2hs-meta-package-hack";
+       }
      ];
    }];
   ldeps = 
@@ -19325,8 +19497,14 @@
       {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
       {n = "haskell98";}
       {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "HUnit";}
-      {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "gtk";}
-      {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "cairo";}
+      {
+        i1 = {gte = "0.10";};  i2 = {lt = "0.11";};
+        n = "gtk2hs-meta-package-hack";
+      }
+      {
+        i1 = {gte = "0.10";};  i2 = {lt = "0.11";};
+        n = "gtk2hs-meta-package-hack";
+      }
     ];
   };
   sha256 = "13hwqp9k4mdw5z7ki3xpwvp5905lgiy9nm4rxfa04bkk9rfll0rc";
@@ -20322,7 +20500,7 @@
   sha256 = "15x7n6xyxqxdjgx2ywgc47di2kaqah8pbs0m4ra3g1kv95wbknf8";
 }
 {
-  name = "lambdacube-engine";  version = "0.1.1";  edeps = [];
+  name = "lambdacube-engine";  version = "0.1.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -20335,15 +20513,16 @@
       {i1 = {gte = "2.2.3";};  i2 = {lt = "3";};  n = "OpenGL";}
       {i1 = {gte = "0.9.1.4";};  i2 = {lt = "1";};  n = "bytestring";}
       {i1 = {gte = "1.3";};  i2 = {lt = "2";};  n = "xml";}
-      {i1 = {gte = "0.1.3";};  i2 = {lt = "1";};  n = "stb-image";}
+      {i1 = {gte = "0.1.3";};  i2 = {lt = "0.2";};  n = "stb-image";}
       {i1 = {gte = "1.1.0.1";};  i2 = {lt = "2";};  n = "filepath";}
       {i1 = {gte = "1.0.0.2";};  i2 = {lt = "2";};  n = "directory";}
-      {n = "array";}
+      {i1 = {gte = "0.2.0.0";};  i2 = {lt = "1";};  n = "array";}
       {i1 = {gte = "0.2";};  i2 = {lt = "1";};  n = "containers";}
-      {n = "fgl";}  {n = "hslogger";}
+      {i1 = {gte = "5.4.2.2";};  i2 = {lt = "6";};  n = "fgl";}
+      {i1 = {gte = "1.0.7";};  i2 = {lt = "2";};  n = "hslogger";}
     ];
   };
-  sha256 = "10fgxzfvb43ihjxknijndm80ljk10xd6j43gb1hs3iwr2n3bv84a";
+  sha256 = "1sd48vmjkk9c6jfvlfzj2xasj2gk8qp7cafxyq18k83ij7q0ric6";
 }
 {
   name = "lambdacube-examples";  version = "0.1.1";
@@ -20591,9 +20770,10 @@
         {gte = "0.2.0.0";  n = "containers";}
         {gte = "1.0.0.2";  n = "directory";}
         {gte = "1.1.0.1";  n = "filepath";}
-        {gte = "6.10.1";  n = "ghc";}  {gte = "0.10";  n = "glib";}
-        {gte = "0.10";  n = "gtk";}
-        {gte = "0.10.0";  n = "gtksourceview2";}
+        {gte = "6.10.1";  n = "ghc";}
+        {gte = "0.10";  n = "gtk2hs-meta-package-hack";}
+        {gte = "0.10";  n = "gtk2hs-meta-package-hack";}
+        {gte = "0.10.0";  n = "gtk2hs-meta-package-hack";}
         {gte = "1.1.0.2";  n = "mtl";}
         {gte = "1.0.0.1";  n = "old-time";}
         {gte = "2.1.0.1";  n = "parsec";}
@@ -20803,6 +20983,19 @@
   tflags = ["splitbase"];
 }
 {
+  name = "libexpect";  version = "0.1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "haskell98";}  {n = "unix";}
+    ];
+  };
+  sha256 = "076dl4bjjnd9im108bgnayxap2vp0ain3y8n6zminw7490hyk0ww";
+}
+{
   name = "libffi";  version = "0.1";  edeps = [];
   ldeps = 
   {cdeps = [];  deps = [{n = "base";}  {n = "bytestring";}];};
@@ -20969,7 +21162,8 @@
      deps = 
      [
        {n = "base";}  {n = "haskell98";}  {n = "regex-compat";}
-       {n = "unix";}  {n = "popenhs";}  {n = "gtk";}
+       {n = "unix";}  {n = "popenhs";}
+       {n = "gtk2hs-meta-package-hack";}
      ];
    }];
   sha256 = "0fzszn8nb5kglg4s5hk9k51vdkarlc08bdp67rbrj0cwfxpkn6wd";
@@ -21155,23 +21349,27 @@
   sha256 = "1avlq28k0jcfbnd0pfww80ixz5lvpp4jkf20dybjl7pfqyhj3s9p";
 }
 {
-  name = "ls-usb";  version = "0.1";
+  name = "ls-usb";  version = "0.1.0.1";
   edeps = 
   [{
      cdeps = [];
      deps = 
      [
-       {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "ansi-wl-pprint";}
+       {
+         i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "ansi-wl-pprint";
+       }
        {i1 = {gte = "4.0";};  i2 = {lt = "4.2";};  n = "base";}
-       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
+       {
+         i1 = {gte = "0.9.1.4";};  i2 = {lt = "0.10";};  n = "bytestring";
+       }
        {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "cmdargs";}
-       {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "usb";}
+       {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "usb";}
        {
          i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "usb-id-database";
        }
      ];
    }];
-  sha256 = "0j547vnfx65kvfwl203868n3kyf6lfqin3bz7mc9drim91mx8rj2";
+  sha256 = "15jcdl03c744sv3vhvd17dwy2xch4qd6iwkamj4zhgy204wggibw";
 }
 {
   name = "lscabal";  version = "0.1";
@@ -21491,13 +21689,24 @@
   sha256 = "13i4lb74m69k6ij3rq0dqwghdazwmc60fs55prc1h3p7b0rz15mv";
 }
 {
-  name = "mecha";  version = "0.0.3";  edeps = [];
+  name = "mecha";  version = "0.0.4";  edeps = [];
   ldeps = 
   {
     cdeps = [];
-    deps = [{i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "1.0.1.1";};  i2 = {lt = "1.1";};  n = "process";}
+      {i1 = {gte = "0.0.0.8";};  i2 = {lt = "0.0.1";};  n = "digest";}
+      {
+        i1 = {gte = "0.9.1.4";};  i2 = {lt = "0.9.2";};  n = "bytestring";
+      }
+      {
+        i1 = {gte = "1.0.0.2";};  i2 = {lt = "1.0.1";};  n = "directory";
+      }
+    ];
   };
-  sha256 = "0kclwm2m5p8lj1n2q9r428xi53vakf1bf2mgrlc2sggy8rlw5ih1";
+  sha256 = "166znrp6kxbpdk58xpia10129wkxnd3ijls6vm2q0klgv73m9jc8";
 }
 {
   name = "mediawiki";  version = "0.2.4";
@@ -21766,8 +21975,9 @@
        {i1 = {gte = "3.0";};  i2 = {lt = "5.0";};  n = "base";}
        {n = "containers";}  {n = "time";}  {n = "random";}
        {n = "directory";}  {n = "filepath";}  {n = "binary";}
-       {n = "derive";}  {gte = "0.10";  n = "gtk";}
-       {gte = "0.10";  n = "cairo";}  {n = "glade";}
+       {n = "derive";}  {gte = "0.10";  n = "gtk2hs-meta-package-hack";}
+       {gte = "0.10";  n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
      ];
    }];
   sha256 = "1m73f0y48fyf2qqmziisrmnvv5n5sznygpq7vvizwvyv3ixl0yz2";
@@ -22943,7 +23153,7 @@
   sha256 = "1aazk1dr64i4majwchhdq8mrq6gq6vgn40gxjh8swfb0x67m6yi9";
 }
 {
-  name = "numeric-prelude";  version = "0.1.2";
+  name = "numeric-prelude";  version = "0.1.3";
   edeps = 
   [
     {
@@ -23013,7 +23223,7 @@
       {i1 = {gte = "0.0.4";};  i2 = {lt = "0.1";};  n = "utility-ht";}
     ];
   };
-  sha256 = "0gkkzqyyif84a8amlsfmyy49inklra4g36sm1qnkkjag31fpwfnv";
+  sha256 = "0zxbn7cv28l64a75bk0xn19sh0qi2gbc4z076j1pfy9hs1f0piag";
   tflags = ["splitbase"];
 }
 {
@@ -23055,8 +23265,11 @@
      deps = 
      [
        {lte = "4.1.0.0";  n = "base";}  {n = "random";}
-       {n = "containers";}  {n = "mtl";}  {n = "parsec";}  {n = "glib";}
-       {gte = "0.10.0";  n = "gtk";}  {n = "glade";}  {n = "cairo";}
+       {n = "containers";}  {n = "mtl";}  {n = "parsec";}
+       {n = "gtk2hs-meta-package-hack";}
+       {gte = "0.10.0";  n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
      ];
    }];
   sha256 = "1nlnz7mvdkhcqp4v1fyfb6r6v18xpxi0ddqqp84dsqg6ahdypc13";
@@ -23340,6 +23553,25 @@
     ];
   };
   sha256 = "10wcbj3wxnpn7k80kg0n5rb92s05zph4r5fzsjv9jljyfpybz3kc";
+}
+{
+  name = "package-vt";  version = "0.1.3.3";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "0.1.2";};  i2 = {lt = "0.1.3";};  n = "Diff";}
+       {
+         i1 = {gte = "1.3.0";};  i2 = {lt = "1.3.1";};
+         n = "haskell-src-exts";
+       }
+       {i1 = {gte = "1.1.0";};  i2 = {lt = "1.2.0";};  n = "filepath";}
+       {i1 = {gte = "1.6.0";};  i2 = {lt = "1.7";};  n = "Cabal";}
+       {i1 = {gte = "4.1.0";};  i2 = {lt = "5";};  n = "base";}
+     ];
+   }];
+  sha256 = "0rsv60n6fd9kkjihdjzi7hadxj8yd6bd640w92y2wx1y9qxl8lhm";
 }
 {
   name = "packedstring";  version = "0.1.0.1";  edeps = [];
@@ -24591,8 +24823,10 @@
     cdeps = [];
     deps = 
     [
-      {gte = "2.0";  n = "base";}  {gte = "0.9.11";  n = "gtk";}
-      {gte = "0.9.11";  n = "glib";}  {gte = "0.9.11";  n = "glade";}
+      {gte = "2.0";  n = "base";}
+      {gte = "0.9.11";  n = "gtk2hs-meta-package-hack";}
+      {gte = "0.9.11";  n = "gtk2hs-meta-package-hack";}
+      {gte = "0.9.11";  n = "gtk2hs-meta-package-hack";}
     ];
   };
   sha256 = "1vm01qvd0jgcdpqx3p2h6gafhxi5x7bs8r5a6xsk4zz6cc1cbw4m";
@@ -26451,8 +26685,9 @@
      cdeps = [];
      deps = 
      [
-       {i1 = {gte = "2";};  i2 = {lte = "4";};  n = "base";}  {n = "gtk";}
-       {n = "glade";}  {n = "random";}
+       {i1 = {gte = "2";};  i2 = {lte = "4";};  n = "base";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}  {n = "random";}
      ];
    }];
   sha256 = "1gpjb8lw5zmnsd8ic739j91iqsv9a707nd9j5mbnhq6gilk61nrh";
@@ -26642,8 +26877,8 @@
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {gte = "0.9.12";  n = "gtk";}
-      {gte = "0.9.12";  n = "cairo";}
+      {n = "base";}  {gte = "0.9.12";  n = "gtk2hs-meta-package-hack";}
+      {gte = "0.9.12";  n = "gtk2hs-meta-package-hack";}
     ];
   };
   sha256 = "00bwqj787k5zwhjplqlkpzaflksh1an9w1n1zmagbfhx0wbyk4nb";
@@ -26862,6 +27097,19 @@
      ];
    }];
   sha256 = "05ydsh4ippapxcx7j3fq8s64qiskcrmndgvilxkdp4qhxyi80gj9";
+}
+{
+  name = "starling";  version = "0.0.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "binary";}  {n = "bytestring";}
+    ];
+  };
+  sha256 = "08ivqdlq0g0nrh82sa2mlvmvxy39ygb4q2zbah8l8s4v0d8pbkx9";
 }
 {
   name = "state";  version = "0.1";  edeps = [];
@@ -28257,10 +28505,10 @@
      cdeps = [];
      deps = 
      [
-       {gte = "4.0";  n = "base";}  {n = "gtk";}  {n = "regex-base";}
-       {gte = "0.93";  n = "regex-posix";}  {n = "bytestring";}
-       {n = "process";}  {n = "containers";}  {n = "hint";}
-       {n = "parallel";}
+       {gte = "4.0";  n = "base";}  {n = "gtk2hs-meta-package-hack";}
+       {n = "regex-base";}  {gte = "0.93";  n = "regex-posix";}
+       {n = "bytestring";}  {n = "process";}  {n = "containers";}
+       {n = "hint";}  {n = "parallel";}
      ];
    }];
   sha256 = "1qcay15g6g2c9h6vfc7pi7rl4d8fsl09vrq33pdqvgg2fp2xclh3";
@@ -28632,17 +28880,17 @@
   sha256 = "10nkzlpd0m7vgkkg5ypsgzl05f0rzic1k2mgwqchw7cmh3wqbvva";
 }
 {
-  name = "terrahs";  version = "0.7";  edeps = [];
+  name = "terrahs";  version = "0.8";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
       {n = "haskell98";}  {n = "old-time";}
+      {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "base";}
     ];
   };
-  sha256 = "1n6yszhhdgixvpjhi97i1crk1yyb66hmzjb9whp19m9by0biws9n";
+  sha256 = "0ahwkmq3bqza6ijhb4i11iw1nbkid40ip500pj5hb766xgh90is7";
 }
 {
   name = "test-framework";  version = "0.2.4";
@@ -28859,7 +29107,10 @@
   edeps = 
   [{
      cdeps = [];
-     deps = [{n = "base";}  {n = "gtk";}  {n = "filepath";}];
+     deps = 
+     [
+       {n = "base";}  {n = "gtk2hs-meta-package-hack";}  {n = "filepath";}
+     ];
    }];
   sha256 = "0a0kw5546z5jydk6dq2p16p2kpwv7fnmy1m907m3x6n580i1vh3l";
 }
@@ -29065,7 +29316,10 @@
   [{
      cdeps = [];
      deps = 
-     [{n = "base";}  {n = "gtk";}  {n = "glade";}  {n = "haskell98";}];
+     [
+       {n = "base";}  {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}  {n = "haskell98";}
+     ];
    }];
   sha256 = "0bdls2xz281zdxq5z6vbkahmf6bpiqr0ra823j21783jwiyh8j01";
 }
@@ -29146,9 +29400,10 @@
       ]];
      deps = 
      [
-       {gte = "0.12";  n = "Chart";}  {n = "cairo";}  {n = "bytestring";}
-       {n = "bytestring-lexing";}  {n = "strptime";}  {n = "time";}
-       {n = "containers";}  {n = "colour";}
+       {gte = "0.12";  n = "Chart";}  {n = "gtk2hs-meta-package-hack";}
+       {n = "bytestring";}  {n = "bytestring-lexing";}
+       {n = "strptime";}  {n = "time";}  {n = "containers";}
+       {n = "colour";}
        {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "data-accessor";}
        {
          i1 = {gte = "0.2.1.1";};  i2 = {lt = "0.3";};
@@ -29300,7 +29555,7 @@
            deps = 
            [
              {n = "base";}  {n = "filepath";}  {n = "array";}  {n = "random";}
-             {n = "cairo";}
+             {n = "gtk2hs-meta-package-hack";}
            ];
          }
          {cdeps = [];  deps = [];}
@@ -29378,7 +29633,11 @@
   ldeps = 
   {
     cdeps = [];
-    deps = [{n = "base";}  {n = "glib";}  {n = "containers";}];
+    deps = 
+    [
+      {n = "base";}  {n = "gtk2hs-meta-package-hack";}
+      {n = "containers";}
+    ];
   };
   sha256 = "1jkcwkkzg3hkvffg6y2vz2c8y0iypij4ngryc4bca9q3g4zvxzs2";
 }
@@ -30289,9 +30548,11 @@
     deps = 
     [
       {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
-      {gte = "0.0.5.1";  n = "vacuum";}  {n = "gtk";}  {n = "cairo";}
-      {n = "svgcairo";}  {n = "process";}  {n = "pretty";}
-      {n = "directory";}  {n = "parallel";}
+      {gte = "0.0.5.1";  n = "vacuum";}
+      {n = "gtk2hs-meta-package-hack";}
+      {n = "gtk2hs-meta-package-hack";}
+      {n = "gtk2hs-meta-package-hack";}  {n = "process";}
+      {n = "pretty";}  {n = "directory";}  {n = "parallel";}
       {n = "strict-concurrency";}
     ];
   };
@@ -30505,8 +30766,9 @@
        {gte = "1.0.0.3";  n = "directory";}
        {gte = "1.0.1.1";  n = "process";}
        {gte = "5.4.2.2";  n = "fgl";}  {gte = "1.0.1.0";  n = "pretty";}
-       {gte = "0.10.0";  n = "gtk";}  {gte = "0.10.0";  n = "svgcairo";}
-       {gte = "0.10.0";  n = "cairo";}
+       {gte = "0.10.0";  n = "gtk2hs-meta-package-hack";}
+       {gte = "0.10.0";  n = "gtk2hs-meta-package-hack";}
+       {gte = "0.10.0";  n = "gtk2hs-meta-package-hack";}
      ];
    }];
   ldeps = 
@@ -30908,6 +31170,21 @@
     ];
   };
   sha256 = "090f11vcbpnirccr0xiqnyf6pixsz9pqkj2nchpv1rsr3sqyzyc1";
+}
+{
+  name = "wumpus-core";  version = "0.12.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {lt = "5";  n = "base";}  {n = "containers";}  {n = "old-time";}
+      {n = "wl-pprint";}  {n = "vector-space";}  {n = "monadLib";}
+      {n = "xml";}  {n = "dlist";}  {n = "algebra";}
+      {gt = "0.1.0";  n = "data-aviary";}
+    ];
+  };
+  sha256 = "1q8q2jwknywczvk1hffg8f2g5b12yyswvsd63l58fdj7391r77qa";
 }
 {
   name = "wx";  version = "0.12.1.2";  edeps = [];
@@ -31738,8 +32015,14 @@
             ]];
            deps = 
            [
-             {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "gtk";}
-             {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "glib";}
+             {
+               i1 = {gte = "0.10";};  i2 = {lt = "0.11";};
+               n = "gtk2hs-meta-package-hack";
+             }
+             {
+               i1 = {gte = "0.10";};  i2 = {lt = "0.11";};
+               n = "gtk2hs-meta-package-hack";
+             }
            ];
          }
        ]

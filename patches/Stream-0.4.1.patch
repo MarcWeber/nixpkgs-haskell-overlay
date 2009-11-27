@@ -1,0 +1,13 @@
+Common subdirectories: a/Data and b/Data
+diff -U 3 a/Stream.cabal b/Stream.cabal
+--- a/Stream.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/Stream.cabal	2009-11-26 01:58:34.000000000 +0100
+@@ -17,7 +17,7 @@
+ 			nothing to do with the work on /Stream Fusion/ by 
+ 			Duncan Coutts, Roman Leshchinskiy, and Don Stewart.
+ Category:               Data
+-Build-Depends:          base < 4, QuickCheck >= 2.0, lazysmallcheck >= 0.3
++Build-Depends:          base < 5, QuickCheck >= 2.0, lazysmallcheck >= 0.3
+ Build-Type:		Simple
+ Exposed-modules:        Data.Stream
+ 

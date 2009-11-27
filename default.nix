@@ -29,6 +29,21 @@ let
       import pkgs/haskell-lib.nix { inherit (pkgs) fetchurl; inherit lib; };
 
 
+    # this contains haskell packages: gtk svgcairo glib cairo gtk2hs soegtk gio gtksourceview2 glade
+    # the dependencies to those packgaes are all replaced by gtk2hs-neta-package by hack-nix.
+    gtk2hsMetaPackage = {
+      name = "gtk2hs-meta-package-hack";  version = "0.10.0";
+      ldeps = 
+      {
+        cdeps = [];
+        deps = [ {n = "mtl";} ];
+      };
+      srcFile = pkgs.fetchurl {
+        url = http://nixos.org/tarballs/gtk2hs-0.10.0-20090419.tar.gz;
+        sha256 = "18a7cfph83yvv91ks37nrgqrn21fvww8bhb8nd8xy1mgb8lnfds1";
+      };
+    };
+
     /* the function calling the main worker fucntion.
        You can overwride everything using .merge and .replace
        (See defaultOverridableDelayableArgs for details)
@@ -49,6 +64,7 @@ let
               happyFixed = fixed.happy;
               ammendmentsFixed = fixed.ammendments;
               haskellDerivation = fixed.haskellPackages.cabal.mkDerivation;
+              thisGhc = fixed.haskellPackages.ghc;
           in args // {
 
             # this contains ghc. see nixpkgs for details.
@@ -58,11 +74,18 @@ let
             alex = (haskellOverlayPackagesFun.merge  { targetPackages = ["alex"]; } ).result.alex;
             happy = (haskellOverlayPackagesFun.merge { targetPackages = ["happy"]; } ).result.happy;
 
+
             # add additional build inputs such as C libraries here, used by mkHaskellDerivation below
             ammendments =
               {
                 happy.propagatedBuildInputs = [pkgs.perl];
                 zlib.propagatedBuildInputs = [pkgs.zlib];
+                digest.propagatedBuildInputs = [pkgs.zlib];
+                OpenGLRaw.propagatedBuildInputs = [pkgs.mesa];
+                GLUT.propagatedBuildInputs = [pkgs.freeglut];
+                readline.propagatedBuildInputs = [pkgs.readline];
+                GLFW.propagatedBuildInputs = [pkgs.glefw] ++ pkgs.glefw.buildInputs /* to get X libs into buildPath */;
+                wxcore.propagatedBuildInputs = [pkgs.wxGTK28];
               }
               // lib.attrSingleton "haskell-src" { buildInputs = [ happyFixed ]; }
               // lib.attrSingleton "haskell-src-exts" { buildInputs = [ happyFixed ]; }
@@ -73,6 +96,7 @@ let
 
             packages = map libOverlay.pkgFromDb (
               (import hackage/hack-nix-db.nix)
+              ++ [ gtk2hsMetaPackage ]
               ++ (getConfig ["hackNix" "additionalPackages"] [])
             );
 
@@ -80,7 +104,16 @@ let
             packageFlags = {} // getConfig ["hackNix" "packageFlags"] {};
 
             mkHaskellDerivation = { name, fullName, src, dependencies, flags, patches, version, ... }:
-              haskellDerivation (self: {
+              # Use special builder for gtk2hs-meta-package-hack only
+
+              if name == "gtk2hs-meta-package-hack" then
+                import "${nixpkgs}/pkgs/development/libraries/haskell/gtk2hs/default.nix" {
+                  ghc = thisGhc;
+                  mtl = builtins.head (lib.filter (x: x.pname == "mtl") dependencies);
+                  inherit (pkgs) stdenv fetchurl pkgconfig gnome cairo;
+                }
+
+              else haskellDerivation (self: {
                 pname = name;
                 name = fullName;
                 inherit src patches version;
