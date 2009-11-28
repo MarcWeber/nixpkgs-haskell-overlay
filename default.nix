@@ -86,6 +86,9 @@ let
                 readline.propagatedBuildInputs = [pkgs.readline];
                 GLFW.propagatedBuildInputs = [pkgs.glefw] ++ pkgs.glefw.buildInputs /* to get X libs into buildPath */;
                 wxcore.propagatedBuildInputs = [pkgs.wxGTK28];
+                terminfo.propagatedBuildInputs = [pkgs.ncurses];
+                berkeleydb.propagatedBuildInputs = [pkgs.db45];
+                BerkeleyDB.propagatedBuildInputs = [pkgs.db45];
               }
               // lib.attrSingleton "haskell-src" { buildInputs = [ happyFixed ]; }
               // lib.attrSingleton "haskell-src-exts" { buildInputs = [ happyFixed ]; }
@@ -94,13 +97,25 @@ let
 
             # == resolveDependenciesBruteforce arguments:
 
+            compilerFlavor = { compiler = "GHC"; version = thisGhc.name; };
+
+            filtersByName = {
+              base = { gte = "4"; };
+              #QuickCheck = { gt = "1.2.0.0"; };
+            };
+
             packages = map libOverlay.pkgFromDb (
               (import hackage/hack-nix-db.nix)
               ++ [ gtk2hsMetaPackage ]
               ++ (getConfig ["hackNix" "additionalPackages"] [])
             );
 
-            globalFlags =  { base4 = true; } // getConfig ["hackNix" "globalFlags"] {};
+            globalFlags =  {
+                base4 = true;
+                splitbase = true;
+              }
+              // lib.attrSingleton "split-base" true
+              // getConfig ["hackNix" "globalFlags"] {};
             packageFlags = {} // getConfig ["hackNix" "packageFlags"] {};
 
             mkHaskellDerivation = { name, fullName, src, dependencies, flags, patches, version, ... }:

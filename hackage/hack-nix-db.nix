@@ -2282,7 +2282,7 @@
           [
             {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
             {n = "old-time";}
-            {i1 = {gte = "1.1.2.4";};  i2 = {lt = "1.1.3";};  n = "time";}
+            {i1 = {gte = "1.1.2.4";};  i2 = {lte = "1.1.4";};  n = "time";}
             {n = "bytestring";}  {n = "containers";}  {n = "old-locale";}
           ];
         }
@@ -2309,7 +2309,7 @@
     cdeps = [];
     deps = 
     [
-      {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "base";}
+      {i1 = {gte = "2";};  i2 = {lt = "5";};  n = "base";}
       {n = "bytestring";}  {n = "time";}  {gte = "2.1.0";  n = "HDBC";}
     ];
   };
@@ -4248,7 +4248,7 @@
      deps = 
      [
        {n = "testpack";}
-       {i1 = {gte = "1.0";};  i2 = {lt = "2.0";};  n = "QuickCheck";}
+       {i1 = {gte = "1.0";};  i2 = {lt = "3";};  n = "QuickCheck";}
        {n = "HUnit";}
      ];
    }];
@@ -4279,7 +4279,7 @@
       {n = "network";}  {n = "parsec";}  {n = "base";}
       {n = "haskell98";}  {n = "mtl";}  {n = "HUnit";}
       {n = "regex-compat";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "2.0";};  n = "QuickCheck";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "3";};  n = "QuickCheck";}
       {n = "filepath";}  {n = "hslogger";}
     ];
   };
@@ -5075,10 +5075,14 @@
     [[
        {flag = "split_base";}
        {
-         cdeps = [];
+         cdeps = 
+         [[
+            {flag = "base4";}  {cdeps = [];  deps = [];}
+            {cdeps = [];  deps = [];}
+          ]];
          deps = 
          [
-           {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
+           {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
            {n = "random";}
          ];
        }
@@ -5087,7 +5091,7 @@
     deps = [];
   };
   sha256 = "1vflx1qh22wc9ihbk5bchah1bwfhslni0zzxsfv7mb0kg60jsrr1";
-  tflags = ["split-base"];
+  tflags = ["split-base"  "base4"];
 }
 {
   name = "RESTng";  version = "0.1";  edeps = [];
@@ -7612,10 +7616,22 @@
   name = "berkeleydb";  version = "2008.10.31";  edeps = [];
   ldeps = 
   {
-    cdeps = [];
-    deps = [{n = "base";}  {n = "bytestring";}  {n = "binary";}];
+    cdeps = 
+    [[
+       {flag = "split_base";}
+       {
+         cdeps = [];
+         deps = 
+         [
+           {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}  {n = "syb";}
+         ];
+       }
+       {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
+     ]];
+    deps = [{n = "bytestring";}  {n = "binary";}];
   };
   sha256 = "1qqzxi011xmb4b09r1j5x1b7slgrazh19csfilk4a9f91zvq6l3p";
+  tflags = ["split-base"];
 }
 {
   name = "bert";  version = "1.1";
@@ -8271,7 +8287,7 @@
      cdeps = [];
      deps = 
      [
-       {i1 = {gt = "3";};  i2 = {lt = "4";};  n = "base";}
+       {i1 = {gt = "3";};  i2 = {lt = "5";};  n = "base";}
        {n = "OpenGL";}  {n = "GLFW";}
      ];
    }];
@@ -10038,9 +10054,9 @@
          cdeps = [];
          deps = 
          [
-           {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
+           {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
            {n = "old-time";}
-           {i1 = {gte = "1.1.2.4";};  i2 = {lt = "1.1.3";};  n = "time";}
+           {i1 = {gte = "1.1.2.4";};  i2 = {lte = "1.1.4";};  n = "time";}
            {n = "bytestring";}  {n = "containers";}  {n = "old-locale";}
          ];
        }
@@ -16234,7 +16250,7 @@
     deps = 
     [
       {n = "mtl";}  {gte = "0.12";  n = "haskelldb";}
-      {i1 = {gte = "2.0.0";};  i2 = {lt = "2.2.0";};  n = "HDBC";}
+      {i1 = {gte = "2.0.0";};  i2 = {lte = "2.2.1";};  n = "HDBC";}
       {gte = "1.0.1";  n = "convertible";}
     ];
   };
@@ -16249,10 +16265,10 @@
     cdeps = [];
     deps = 
     [
-      {lte = "4";  n = "base";}  {n = "mtl";}
+      {lte = "5";  n = "base";}  {n = "mtl";}
       {gte = "0.12";  n = "haskelldb";}
       {gte = "0.12";  n = "haskelldb-hdbc";}
-      {i1 = {gte = "2.0.0";};  i2 = {lt = "2.2.0";};  n = "HDBC";}
+      {i1 = {gte = "2.0.0";};  i2 = {lte = "2.2.1";};  n = "HDBC";}
       {gte = "0.1";  n = "HDBC-mysql";}
     ];
   };
@@ -16268,8 +16284,10 @@
     [
       {n = "base";}  {n = "mtl";}  {gte = "0.12";  n = "haskelldb";}
       {gte = "0.12";  n = "haskelldb-hdbc";}
-      {i1 = {gte = "2.0.0";};  i2 = {lt = "2.2.0";};  n = "HDBC";}
-      {i1 = {gte = "2.0.0";};  i2 = {lt = "2.2.0";};  n = "HDBC-odbc";}
+      {i1 = {gte = "2.0.0";};  i2 = {lte = "2.2.1";};  n = "HDBC";}
+      {
+        i1 = {gte = "2.0.0";};  i2 = {lte = "2.2.1";};  n = "HDBC-odbc";
+      }
     ];
   };
   sha256 = "0xqyrlj9xr0h0qk4jdqyaf2f3a36j22qpa4wwbvl0bkwp5znfv61";
@@ -16284,9 +16302,9 @@
     [
       {n = "base";}  {n = "mtl";}  {gte = "0.12";  n = "haskelldb";}
       {gte = "0.12";  n = "haskelldb-hdbc";}
-      {i1 = {gte = "2.0.0";};  i2 = {lt = "2.2.0";};  n = "HDBC";}
+      {i1 = {gte = "2.0.0";};  i2 = {lte = "2.2.1";};  n = "HDBC";}
       {
-        i1 = {gte = "2.0.0";};  i2 = {lt = "2.2.0";};
+        i1 = {gte = "2.0.0";};  i2 = {lte = "2.2.1";};
         n = "HDBC-postgresql";
       }
     ];
@@ -16308,9 +16326,9 @@
     [
       {n = "mtl";}  {gte = "0.12";  n = "haskelldb";}
       {gte = "0.12";  n = "haskelldb-hdbc";}
-      {i1 = {gte = "2.0.0";};  i2 = {lt = "2.2.0";};  n = "HDBC";}
+      {i1 = {gte = "2.0.0";};  i2 = {lte = "2.2.1";};  n = "HDBC";}
       {
-        i1 = {gte = "2.0.0";};  i2 = {lt = "2.2.0";};  n = "HDBC-sqlite3";
+        i1 = {gte = "2.0.0";};  i2 = {lte = "2.2.1";};  n = "HDBC-sqlite3";
       }
     ];
   };
@@ -16881,18 +16899,18 @@
   sha256 = "1j495j3kc43d34aviln6jrab3ydzsp1hrnk079p53mcnx2rpjz81";
 }
 {
-  name = "hesql";  version = "0.5";
+  name = "hesql";  version = "0.6";
   edeps = 
   [{
      cdeps = [];
      deps = 
      [
-       {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "base";}  {n = "HDBC";}
+       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}  {n = "HDBC";}
        {n = "HDBC-postgresql";}  {n = "haskell-src";}  {n = "filepath";}
-       {n = "parsec";}  {gte = "0.0.9";  n = "hssqlppp";}
+       {n = "parsec";}  {gte = "0.0.10";  n = "hssqlppp";}
      ];
    }];
-  sha256 = "089l22qixi8w1qkznjg1dlsrqdhgjzksd2dic6mfay4r36krzywp";
+  sha256 = "1mkc9iiizmql8l54wyby4j9314vbmk44wmgp4996cw9jdqd470pd";
 }
 {
   name = "hetero-map";  version = "0.21";  edeps = [];
@@ -22276,7 +22294,7 @@
   sha256 = "19vb1apiljkh2p1yzvqfn4i7yc8p76k0ag99mv6gc40dc6b1jqkd";
 }
 {
-  name = "monadiccp";  version = "0.6";  edeps = [];
+  name = "monadiccp";  version = "0.6.1";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -22294,7 +22312,7 @@
       {n = "random";}
     ];
   };
-  sha256 = "0fxnppy6nc9hjxjg9sqkmy0hnmygdssyyx2cg0azd2cfmwcwf81m";
+  sha256 = "03wnxvnivmkz8frca5v39ld3k3gz991vpd7d68l0hw2gbh2bcfxq";
 }
 {
   name = "monadloc";  version = "0.5";
@@ -25930,14 +25948,22 @@
   name = "rwlock";  version = "0.0.0.1";  edeps = [];
   ldeps = 
   {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {n = "monad-loops";}  {n = "stm";}
-    ];
+    cdeps = 
+    [[
+       {flag = "split_base";}
+       {
+         cdeps = [];
+         deps = 
+         [
+           {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}  {n = "syb";}
+         ];
+       }
+       {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
+     ]];
+    deps = [{n = "monad-loops";}  {n = "stm";}];
   };
   sha256 = "09qfi3gw1bfq5plr4x6vrwgk5qs7jdjrqc6lfa05mc0v5s4n843c";
+  tflags = ["split-base"];
 }
 {
   name = "safe";  version = "0.2";  edeps = [];
@@ -27168,7 +27194,7 @@
   tflags = ["usestm"  "usetmvar"];
 }
 {
-  name = "statistics";  version = "0.3.5";  edeps = [];
+  name = "statistics";  version = "0.4.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -27189,7 +27215,7 @@
       {gte = "0.2";  n = "uvector-algorithms";}
     ];
   };
-  sha256 = "0pr0nz0ik7dvqr0lml7qvy9g29h5p0vi2n3ml6xfp629hramqyh5";
+  sha256 = "1lqv9n3hpdrig2qb4bkc5kk1j4mdz4ww2fnp5my0zcxpvs0xwzyq";
 }
 {
   name = "statistics-fusion";  version = "1.0";  edeps = [];
@@ -31172,7 +31198,7 @@
   sha256 = "090f11vcbpnirccr0xiqnyf6pixsz9pqkj2nchpv1rsr3sqyzyc1";
 }
 {
-  name = "wumpus-core";  version = "0.12.0";  edeps = [];
+  name = "wumpus-core";  version = "0.13.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -31184,7 +31210,7 @@
       {gt = "0.1.0";  n = "data-aviary";}
     ];
   };
-  sha256 = "1q8q2jwknywczvk1hffg8f2g5b12yyswvsd63l58fdj7391r77qa";
+  sha256 = "0gnjcpccdmdvl37igmncgma8n528psqr1apsxsiwy4g1g1dfqqc3";
 }
 {
   name = "wx";  version = "0.12.1.2";  edeps = [];

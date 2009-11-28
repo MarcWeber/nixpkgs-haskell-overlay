@@ -356,8 +356,8 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
        r(igid)f(lags) = { flag  = true; flag2 = true; .. } # list represented as attr for uniqness
      }
     */
-    reduceCond = { flags, os ? "Linux" } : expr : lm.funcBody "reduceCond" (
-      let simp = lm.reduceCond { inherit flags os; };
+    reduceCond = { flags, os ? "Linux", compilerFlavor }@opts : expr : lm.funcBody "reduceCond" (
+      let simp = lm.reduceCond opts;
       in if isBool expr then expr
          else if isAttrs expr then
            if expr ? os then expr.os == os
@@ -384,9 +384,11 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
               in  if any id bools then true
                   else if attrs == [] && all (x: !x) bools then false
                   else { r = { or = catAttrs "r" attrs; }; rf = lm.catMergeAttrs "rf" attrs; }
+            else if expr ? compilerFlavor then
+                if compilerFlavor.compiler != (lib.traceVal expr).compilerFlavor then false
+                else lm.matchVersion compilerFlavor.version expr.versionRange
             else if isFunction expr then
               throw "can't reduce a function!"
-            else if expr ? compilerFlavor then false # we don't handle compilerFlavor for now
             else throw "missing implementation? unexpected! ${builtins.toXML expr}"
          else throw "expected attrs");
 
@@ -702,7 +704,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                       && (p1.ldeps_str == p2.ldeps_str);
               in { ok = uniqBy compareDeps solutions; }
           else
-            { failure = "\nno solutions found for pkg ${pkg.name}. Missing deps depending on flag assignments: ${toStr judged}"; }
+            { failure = "\nno solutions found for pkg ${pkg.name}-${pkg.version}. Missing deps depending on flag assignments (all variations): ${toStr judged}"; }
       ));
 
     # failIfEmpty = l : msg : map : if l == [] then { l : [ msg ]; } else { r : map l };
@@ -752,6 +754,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       /* the packages to create derivations for
          for example: [ { n = "Cabal"; v = "1.4.0.0"; }
                         { n = "byestring"; }
+                        { n = "byestring"; gt(e) /lt(e) = "1.4.0.0 }
                         "network-bytestring" # shortcut for { n = ..; }
                       ];
       */
@@ -794,7 +797,14 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
             [ "unix" "2.3.2.0" ]
           ],
 
+        # filter is used to remove packages from provided and packages list.
+        # Example: only keep base >= 4
+        # { base = { gte = "4"; }; }
+        filtersByName ? {},
+
         os ? "Linux",
+
+        compilerFlavor ? { compiler = "GHC"; version = "ghc-6.10"; },
 
 
         # function creating the final derivation
@@ -819,6 +829,11 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     assert isList targetPackages;
 
     let
+
+      filterByName = filter (x:
+          let name = x.name;
+          in if hasAttr name filtersByName then lm.matchVersion x.version (getAttr name filtersByName)
+          else true );
 
       traceFailure = msg: if debugS then trace msg [] else [];
 
@@ -854,7 +869,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       };
       
       # list of { fullName =, version = , name} for all the packages shipping with ghc
-      providedList = (map (x:
+      providedList = filterByName (map (x:
               let name = head x;
                   version = head (tail x);
               in {
@@ -866,7 +881,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                 src = "never used";
           }) provided);
 
-      allPackages = let ap = packages ++ providedList ++ [targetPackage];
+      allPackages = let ap = (filterByName packages) ++ providedList ++ [targetPackage];
                     in assert all lm.isPreparablePkg ap; ap;
 
       # now replace version constraint ranges (eg >3 && <5)  by version sets (eg one of 3.5 4 4.6).
@@ -933,7 +948,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                  flagsByName            = getA name packageFlags {};
                  flagsByNameAndVersion  = getA fullName packageFlags {};
                  flags = globalFlags // flagsByName // flagsByNameAndVersion;
-                 opts = { inherit os; inherit flags; };
+                 opts = { inherit os flags compilerFlavor; };
                  variations = lm.pkgVariations opts preparedPkg;
 
                  # return all solutions for deps maybe resolving different versions of the same package found in set

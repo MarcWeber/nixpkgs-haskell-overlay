@@ -1,0 +1,19 @@
+diff -U 3 a/rwlock.cabal b/rwlock.cabal
+--- a/rwlock.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/rwlock.cabal	2009-11-28 03:45:18.000000000 +0100
+@@ -15,7 +15,14 @@
+ description:            A simple implementation of a multiple-reader / single-writer
+                         lock, using STM.
+ 
++flag split-base
++
+ Library
+   hs-source-dirs:       src
+   exposed-modules:      Control.Concurrent.RWLock
+-  build-depends:        base >= 3 && <5, monad-loops, stm
++  build-depends:        monad-loops, stm
++
++  if flag(split-base)
++    build-depends:	base >= 3 && < 5, syb
++  else
++    build-depends:	base < 3

@@ -1,0 +1,12 @@
+diff -U 3 a/convertible.cabal b/convertible.cabal
+--- a/convertible.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/convertible.cabal	2009-11-28 04:36:29.000000000 +0100
+@@ -42,7 +42,7 @@
+ 
+ library
+   if flag(splitBase)
+-    Build-Depends: base>=3 && <4, old-time, time>=1.1.2.4 && <1.1.3,
++    Build-Depends: base>=3 && <5, old-time, time>=1.1.2.4 && <=1.1.4,
+      bytestring, containers, old-locale
+   else
+     Build-Depends: base<3
