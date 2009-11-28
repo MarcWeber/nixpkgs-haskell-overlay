@@ -63,8 +63,10 @@ let
               alexFixed = fixed.alex;
               happyFixed = fixed.happy;
               ammendmentsFixed = fixed.ammendments;
-              haskellDerivation = fixed.haskellPackages.cabal.mkDerivation;
-              thisGhc = fixed.haskellPackages.ghc;
+              thisHP = fixed.haskellPackages;
+              thisGhc = thisHP.ghc;
+              thisGhcReal = thisHP.ghcReal;
+              haskellDerivation = thisHP.cabal.mkDerivation;
           in args // {
 
             # this contains ghc. see nixpkgs for details.
@@ -97,7 +99,11 @@ let
 
             # == resolveDependenciesBruteforce arguments:
 
-            compilerFlavor = { compiler = "GHC"; version = thisGhc.name; };
+            compilerFlavor = {
+              compiler = "GHC";
+              # drop prefix "ghc-"
+              version = builtins.substring 4 9999 thisGhcReal.name;
+            };
 
             filtersByName = {
               base = { gte = "4"; };
