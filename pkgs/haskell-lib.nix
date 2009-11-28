@@ -385,7 +385,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                   else if attrs == [] && all (x: !x) bools then false
                   else { r = { or = catAttrs "r" attrs; }; rf = lm.catMergeAttrs "rf" attrs; }
             else if expr ? compilerFlavor then
-                if compilerFlavor.compiler != (lib.traceVal expr).compilerFlavor then false
+                if compilerFlavor.compiler != expr.compilerFlavor then false
                 else lm.matchVersion compilerFlavor.version expr.versionRange
             else if isFunction expr then
               throw "can't reduce a function!"
@@ -915,14 +915,6 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
 
       };
 
-      resolveDepTraceMsg = state: dep: 
-        if debugS then
-          res: builtins.trace
-              ("resolveDep path: ${concatStringsSep " " ( map (x: "\"") state.resolvingDepsOf)} => (${dep.fullName})"
-              +" resolved: ${concatStringsSep " " (mapAttrsFlatten (n: v: "${v.fullName} ${toStr v.flags}" ) state.resolved) }"
-              ) res
-        else id;
-
       # returns
       # - [ state ]: dep has aready been resolved
       # - []: dep can't be met
@@ -930,7 +922,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       # - [ state ... ]: ways to resolve package
       # args
       #   dep: item of i-dep-list { name =, version=, fullName= .. };
-      resolveDep = state@{resolved, resolvingDepsOf, ...}: dep@{name, version, fullName, ...}: lm.addErrorContext2 "resolveDep" ( resolveDepTraceMsg state dep (
+      resolveDep = state@{resolved, resolvingDepsOf, ...}: dep@{name, version, fullName, ...}: lm.addErrorContext2 "resolveDep" (
         if elem name resolvingDepsOf then throw "circular dependencies: ${showVal resolvingDepsOf} ${name}"
         else
 
@@ -966,6 +958,13 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                    in resolveDeps state
                        # [ [ a-1.0  a-2.0 ] [ b-1.0  b-2.0 ] ] where a-1.0 is { name=, version, fullName } etc
                        (mapAttrsFlatten (name: mapAttrsFlatten (fullName: version: {inherit name fullName version;}) ) set);
+                 finishtrace = var: 
+                   let r = finish var;
+                   in if debugS then
+                      builtins.trace
+                       ("variation : ${concatStringsSep "" ( map (x: "\"") state.resolvingDepsOf)} => (${dep.fullName}) flags: ${toStr var.flags}")
+                       r
+                   else r;
 
                  # resolve deps of pkg variation. return new state list, [] if
                  # there is no solution
@@ -1020,7 +1019,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                                   ) states;
 
             in if variations ? failure then traceFailure "getting variations for of ${fullName} reason: ${variations.failure}"
-               else concatMap finish (variations.ok)));
+               else concatMap finishtrace (variations.ok));
 
         toDerivation = state: name: lm.funcBody "toDerivation" (
           let resolved = getAttr name state.resolved;
