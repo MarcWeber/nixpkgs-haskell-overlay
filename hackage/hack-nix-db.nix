@@ -1,3 +1,7 @@
+/* TPMostRecentPreferred [Dependency (PackageName "Cabal") (ThisVersion (Version {versionBranch = [1,4,0,0], versionTags = []})),Dependency (PackageName "mmap") (ThisVersion (Version {versionBranch = [0,4], versionTags = []}))]
+mmap 0.4 has a different API from the more recent 0.52 one - I should patch hashed-storage
+
+*/
 [
 {
   name = "AC-Colour";  version = "1.1.1";  edeps = [];
@@ -8794,7 +8798,7 @@
   tflags = ["base3"];
 }
 {
-  name = "cabal-install";  version = "0.6.2";
+  name = "cabal-install";  version = "0.6.4";
   edeps = 
   [{
      cdeps = 
@@ -8846,7 +8850,7 @@
          {
            cdeps = [];
            deps = 
-           [{i1 = {gte = "2.0";};  i2 = {lt = "2.4";};  n = "unix";}];
+           [{i1 = {gte = "1.0";};  i2 = {lt = "2.4";};  n = "unix";}];
          }
        ]
      ];
@@ -8860,7 +8864,7 @@
        {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "zlib";}
      ];
    }];
-  sha256 = "06ml0ky1x99cswzxmz72nlmm6azhrr4gxpajryqllqia1ayr3snq";
+  sha256 = "0gi8gflp2k5gvmdn9abdm5icjw71zdq1jl7fi5krmlh48x9hr160";
   tflags = ["bytestring-in-base"];
 }
 {
@@ -13314,13 +13318,13 @@
   sha256 = "1vlnba9b3rg7blbzmi39si9vlk28s5ij5rqzmwd93a3li0248mvg";
 }
 {
-  name = "fmlist";  version = "0.7";  edeps = [];
+  name = "fmlist";  version = "0.8";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = [{i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}];
   };
-  sha256 = "0cmbgpd6flhv5j6ywkx6l9y793vdahspsw093sf4wbvrnaiwiswi";
+  sha256 = "1knr9yh58fwjpkm37hvrqghlchf5qibwf9q52app6zh3ys999rrs";
 }
 {
   name = "foo";  version = "1.0";
@@ -15971,7 +15975,7 @@
         {
           cdeps = 
           [[
-             {compilerFlavor = "GHC";  versionRange = {gte = "6.11";};}
+             {compilerFlavor = "GHC";  versionRange = {gte = "6.10.4";};}
              {
                cdeps = [];
                deps = 
@@ -16095,7 +16099,7 @@
   tflags = ["split-base"];
 }
 {
-  name = "haskell-src-exts";  version = "1.3.0";  edeps = [];
+  name = "haskell-src-exts";  version = "1.3.1";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -16116,7 +16120,7 @@
       {gte = "1.3";  n = "cpphs";}
     ];
   };
-  sha256 = "18i1xpbsd6ykplk65dpkw6m95d4r4z0f3flw5p085chkhv9dnsb1";
+  sha256 = "16cvl7i7jnfsx9y7w75k8lfc7ah14ravkkz1bjb8sqwdmw8hrd2p";
   tflags = ["base4"];
 }
 {
@@ -17843,7 +17847,7 @@
   sha256 = "0sfw9gmcn7qclgsgzqm9zalyxhz0mig91fabcfq3g0r98krgjnr2";
 }
 {
-  name = "hoauth";  version = "0.1.8";  edeps = [];
+  name = "hoauth";  version = "0.1.9";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -17855,7 +17859,7 @@
       {n = "system-uuid";}
     ];
   };
-  sha256 = "074pffl94n464zy8r6pwh57viyf9z1ggabnmma4m4j5y2vm1x6lc";
+  sha256 = "0d31ly5jqq6vyl5rhda10ggkg9g5ny9na8iv3vxsxwibr8yqy9y1";
 }
 {
   name = "hogg";  version = "0.4.1";
@@ -22122,6 +22126,19 @@
     deps = [{lt = "5";  n = "base";}  {n = "bytestring";}];
   };
   sha256 = "091f19laqlj8nqn8flds7ynkildzx3h6djy53k42qcjaq82s97pf";
+}
+{
+  name = "mmap";  version = "0.4";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {os = "Windows";}  {cdeps = [];  deps = [];}
+       {cdeps = [];  deps = [];}
+     ]];
+    deps = [{lt = "5";  n = "base";}  {n = "bytestring";}];
+  };
+  sha256 = "10bnzfhby99wi3zlxjzxxxmi7jmq9mw603vl5lrcsg072bh2z8ph";
 }
 {
   name = "mmtl";  version = "0.1";  edeps = [];
@@ -30104,6 +30121,27 @@
   sha256 = "06zrr2z9irbsxwf7fbnhp2sg36ykb2amfys2y78nzn0mw63xb3q1";
 }
 {
+  name = "unicode-symbols";  version = "0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {flag = "containers";}
+       {
+         cdeps = [];
+         deps = 
+         [{
+            i1 = {gte = "0.2.0.1";};  i2 = {lt = "0.3";};  n = "containers";
+          }];
+       }
+     ]];
+    deps = 
+    [{i1 = {gte = "3.0.3.1";};  i2 = {lt = "4.2";};  n = "base";}];
+  };
+  sha256 = "0y86gghjplxszx9njx95gsz1gzrypw80ms1wad8yfp350prglian";
+  tflags = ["containers"];
+}
+{
   name = "union-find";  version = "0.1";  edeps = [];
   ldeps = 
   {
@@ -31198,7 +31236,7 @@
   sha256 = "090f11vcbpnirccr0xiqnyf6pixsz9pqkj2nchpv1rsr3sqyzyc1";
 }
 {
-  name = "wumpus-core";  version = "0.13.0";  edeps = [];
+  name = "wumpus-core";  version = "0.13.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -31210,7 +31248,7 @@
       {gt = "0.1.0";  n = "data-aviary";}
     ];
   };
-  sha256 = "0gnjcpccdmdvl37igmncgma8n528psqr1apsxsiwy4g1g1dfqqc3";
+  sha256 = "1wb28ddy01yrjdg34zkspmhgxr18b26v96a1f4qjywi3y6xp7l2b";
 }
 {
   name = "wx";  version = "0.12.1.2";  edeps = [];

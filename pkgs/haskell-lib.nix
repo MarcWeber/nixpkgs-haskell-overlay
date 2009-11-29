@@ -356,7 +356,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
        r(igid)f(lags) = { flag  = true; flag2 = true; .. } # list represented as attr for uniqness
      }
     */
-    reduceCond = { flags, os ? "Linux", compilerFlavor }@opts : expr : lm.funcBody "reduceCond" (
+    reduceCond = { flags, os ? "Linux", compilerFlavor, ... }@opts : expr : lm.funcBody "reduceCond" (
       let simp = lm.reduceCond opts;
       in if isBool expr then expr
          else if isAttrs expr then
@@ -692,7 +692,9 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                  else [(toSolution r opts.flags)];
           # TODO filter no-solutions (due to missing deps) 
           judged = map lm.missingDepsOrPkg list;
-          solutions = filter (isAttrs) judged;
+          solutions =
+            (if opts.defaultFlagsOnly then take 1 else id)
+            (filter (isAttrs) judged);
         in if solutions != [] then
               # solutions are considered equal when edeps = ldeps
               # which flag assignment wins doesn't matter
@@ -796,6 +798,11 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
             [ "template-haskell" "2.3.0.1" ]
             [ "unix" "2.3.2.0" ]
           ],
+
+        # when set to true only default flags will be used unless you override them. 
+        # This is useful because foreign flag combinations are less tested and
+        # are more likely to cause compilation failures
+        defaultFlagsOnly ? true,
 
         # filter is used to remove packages from provided and packages list.
         # Example: only keep base >= 4
@@ -940,7 +947,8 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                  flagsByName            = getA name packageFlags {};
                  flagsByNameAndVersion  = getA fullName packageFlags {};
                  flags = globalFlags // flagsByName // flagsByNameAndVersion;
-                 opts = { inherit os flags compilerFlavor; };
+                 opts = { inherit os compilerFlavor flags defaultFlagsOnly; };
+                 # opts = { inherit os  compilerFlavor; flags = (builtins.trace " fullname: ${fullName}\n flagsByName ${name} ${toStr flagsByName }\n flagsByNameAndVersion ${fullName} ${toStr flagsByNameAndVersion} \n package Flags: ${toStr packageFlags} " flags); };
                  variations = lm.pkgVariations opts preparedPkg;
 
                  # return all solutions for deps maybe resolving different versions of the same package found in set
