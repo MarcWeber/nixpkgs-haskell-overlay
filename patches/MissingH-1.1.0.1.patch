@@ -1,0 +1,23 @@
+diff -U 3 a/MissingH.cabal b/MissingH.cabal
+--- a/MissingH.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/MissingH.cabal	2009-11-28 00:53:52.000000000 +0100
+@@ -70,7 +70,7 @@
+ 
+  Build-Depends: network, parsec, base,
+                haskell98, mtl, HUnit, regex-compat,
+-               QuickCheck >= 1.0 && < 2.0,
++               QuickCheck >= 1.0 && < 3,
+                filepath,
+                hslogger
+  If flag(splitBase)
+@@ -85,6 +85,6 @@
+   Buildable: False
+   Main-Is: runtests.hs
+   HS-Source-Dirs: testsrc, .
+-  Build-Depends: testpack, QuickCheck >= 1.0 && <2.0, HUnit
++  Build-Depends: testpack, QuickCheck >= 1.0 && <3, HUnit
+   Extensions: ExistentialQuantification, OverlappingInstances,
+     UndecidableInstances, CPP, PatternSignatures
+Only in b: MissingH.cabal.rej
+Common subdirectories: a/src and b/src
+Common subdirectories: a/testsrc and b/testsrc

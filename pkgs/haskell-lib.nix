@@ -799,9 +799,11 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
             [ "unix" "2.3.2.0" ]
           ],
 
-        # when set to true only default flags will be used unless you override them. 
-        # This is useful because foreign flag combinations are less tested and
-        # are more likely to cause compilation failures
+        # a list of all possible flag combinations is built.
+        # The head of the list is using default flag settings.
+        # combinations which have no solution (missing deps)
+        # are discarded. If you set defaultFlagsOnly to true
+        # only the head of the list having most default settitngs will be used.
         defaultFlagsOnly ? true,
 
         # filter is used to remove packages from provided and packages list.

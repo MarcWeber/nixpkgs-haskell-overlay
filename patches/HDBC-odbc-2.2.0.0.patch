@@ -1,0 +1,21 @@
+diff -r -U 3 a/HDBC-odbc.cabal b/HDBC-odbc.cabal
+--- a/HDBC-odbc.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/HDBC-odbc.cabal	2009-11-29 06:40:28.000000000 +0100
+@@ -41,7 +41,7 @@
+   if os(mingw32) || os(win32)
+     Extra-Libraries: odbc32
+   else
+-    Extra-Libraries: odbc
++    Extra-Libraries: odbc, dl
+   include-dirs: .
+   -- extra-lib-dirs: 
+ 
+@@ -72,7 +72,7 @@
+   if os(mingw32) || os(win32)
+     Extra-Libraries: odbc32
+   else
+-    Extra-Libraries: odbc
++    Extra-Libraries: odbc, dl
+   include-dirs: .
+   GHC-Options: -O2
+   Extensions: 

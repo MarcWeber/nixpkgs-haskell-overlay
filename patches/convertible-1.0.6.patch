@@ -1,12 +1,50 @@
-diff -U 3 a/convertible.cabal b/convertible.cabal
+diff -r -U 3 a/convertible.cabal b/convertible.cabal
 --- a/convertible.cabal	1970-01-01 01:00:01.000000000 +0100
-+++ b/convertible.cabal	2009-11-28 04:36:29.000000000 +0100
-@@ -42,7 +42,7 @@
++++ b/convertible.cabal	2009-11-29 05:44:24.000000000 +0100
+@@ -40,10 +40,18 @@
+   description: Build the executable to run unit tests
+   default: False
  
++flag time_gte_113
++  description: time > 1.1.3 has defined some more instances so omit them here
++
  library
    if flag(splitBase)
 -    Build-Depends: base>=3 && <4, old-time, time>=1.1.2.4 && <1.1.3,
 +    Build-Depends: base>=3 && <5, old-time, time>=1.1.2.4 && <=1.1.4,
       bytestring, containers, old-locale
++    if flag(time_gte_113)
++      Build-Depends: time>=1.1.3
++      CPP-OPTIONS: -DTIME_GT_113
++    else
++      Build-Depends: time<1.1.3
    else
      Build-Depends: base<3
+   Build-Depends: mtl
+diff -r -U 3 a/Data/Convertible/Instances/Time.hs b/Data/Convertible/Instances/Time.hs
+--- a/Data/Convertible/Instances/Time.hs	1970-01-01 01:00:01.000000000 +0100
++++ b/Data/Convertible/Instances/Time.hs	2009-11-29 05:48:34.000000000 +0100
+@@ -32,7 +32,9 @@
+ import Data.Time.Clock
+ import Data.Time.Clock.POSIX
+ import Data.Time.Calendar.OrdinalDate
++#ifndef TIME_GT_113
+ import Data.Typeable
++#endif
+ import Data.Ratio
+ import Foreign.C.Types
+ 
+@@ -58,11 +60,13 @@
+ 
+ ------------------------------ POSIX and UTC times
+ 
++#ifndef TIME_GT_113
+ instance Typeable NominalDiffTime where
+     typeOf _ = mkTypeName "NominalDiffTime"
+ 
+ instance Typeable UTCTime where
+     typeOf _ = mkTypeName "UTCTime"
++#endif
+ 
+ {- Covered under Real a
+ instance Convertible Rational POSIXTime where

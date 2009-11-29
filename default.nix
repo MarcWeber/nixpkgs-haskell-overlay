@@ -92,6 +92,13 @@ let
                 berkeleydb.propagatedBuildInputs = [pkgs.db45];
                 BerkeleyDB.propagatedBuildInputs = [pkgs.db45];
               }
+              // lib.attrSingleton "HDBC-mysql" { propagatedBuildInputs = [ pkgs.mysql pkgs.zlib ]; }
+              // lib.attrSingleton "HDBC-sqlite3" { propagatedBuildInputs = [ pkgs.mysql pkgs.sqlite ]; }
+              // lib.attrSingleton "HDBC-odbc" {
+                    propagatedBuildInputs = [ pkgs.unixODBC ];
+                    configureFlags = ["--extra-include-dirs=${pkgs.unixODBC}/include" "--extra-lib-dirs=${pkgs.unixODBC}/lib"];
+                }
+              // lib.attrSingleton "HDBC-postgresql" { propagatedBuildInputs = [ pkgs.postgresql ]; }
               // lib.attrSingleton "haskell-src" { buildInputs = [ happyFixed ]; }
               // lib.attrSingleton "haskell-src-exts" { buildInputs = [ happyFixed ]; }
               // lib.attrSingleton "happs-hsp" { buildInputs = [ happyFixed ]; }
@@ -142,8 +149,9 @@ let
                      (lib.attrByPath [name "buildInputs"] [] ammendmentsFixed);
                 propagatedBuildInputs = dependencies
                   ++ (lib.attrByPath [name "propagatedBuildInputs"] [] ammendmentsFixed);
-                configureFlags = lib.concatStringsSep " "
-                    (lib.mapAttrsFlatten (a: v: "-f${if v then "" else "-"}${a}") flags);
+                configureFlags = lib.concatStringsSep " " (
+                    (lib.mapAttrsFlatten (a: v: "-f${if v then "" else "-"}${a}") flags)
+                    ++ (lib.attrByPath [name "configureFlags"] [] ammendmentsFixed));
               });
         
       });

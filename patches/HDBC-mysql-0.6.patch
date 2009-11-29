@@ -1,0 +1,13 @@
+Common subdirectories: a/Database and b/Database
+diff -U 3 a/HDBC-mysql.cabal b/HDBC-mysql.cabal
+--- a/HDBC-mysql.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/HDBC-mysql.cabal	2009-11-28 04:37:55.000000000 +0100
+@@ -10,7 +10,7 @@
+ License:          LGPL
+ License-file:     COPYING
+ Homepage:         http://www.maubi.net/~waterson/hacks/hdbc-mysql.html
+-Build-Depends:    base >= 2 && < 4, bytestring, time, HDBC >= 2.1.0
++Build-Depends:    base >= 2 && < 5, bytestring, time, HDBC >= 2.1.0
+ Exposed-modules:  Database.HDBC.MySQL
+ Other-modules:    Database.HDBC.MySQL.Connection
+ ghc-options:      -Wall
