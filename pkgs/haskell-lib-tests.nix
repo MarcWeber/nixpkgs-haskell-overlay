@@ -34,25 +34,27 @@ runTests rec {
     let condTree1 = {not = {os = "Windows";};};
         condTree2 = {and = [{flag = "vty";}  {not = {os = "Windows";};}];};
         condTree3 = {or  = [{flag = "vty";}  {not = {os = "Windows";};}];};
+
+        reduceCond2 = a: reduceCond2 (a // { compilerFlavor = { compiler = "GHC"; version = "ghc-6.10"; }; });
     in {
     expr = [
              # full evaluation possible:
              true false
-             (reduceCond { os = "Linux"; flags ={}; } true )
-             (reduceCond { os = "Linux"; flags ={}; } condTree1 )
-             (reduceCond { os = "Linux"; flags ={ vty = true; }; } condTree2 )
-             (reduceCond { os = "Linux"; flags ={ vty = false; }; } condTree2 )
-             (reduceCond { os = "Windows"; flags ={ vty = true; }; } condTree2 )
+             (reduceCond2 { os = "Linux"; flags ={}; } true )
+             (reduceCond2 { os = "Linux"; flags ={}; } condTree1 )
+             (reduceCond2 { os = "Linux"; flags ={ vty = true; }; } condTree2 )
+             (reduceCond2 { os = "Linux"; flags ={ vty = false; }; } condTree2 )
+             (reduceCond2 { os = "Windows"; flags ={ vty = true; }; } condTree2 )
 
              # and unset flags:
-             (reduceCond { os = "Linux"; flags = {}; } condTree2 )
+             (reduceCond2 { os = "Linux"; flags = {}; } condTree2 )
              # and false stortcut
-             (reduceCond { os = "Windows"; flags = {}; } condTree2 )
+             (reduceCond2 { os = "Windows"; flags = {}; } condTree2 )
 
              # or unset flags:
-             (reduceCond { os = "Windows"; flags = {}; } condTree3 )
+             (reduceCond2 { os = "Windows"; flags = {}; } condTree3 )
              # or true stortcut
-             (reduceCond { os = "Linux"; flags = {}; } condTree3 )
+             (reduceCond2 { os = "Linux"; flags = {}; } condTree3 )
            ];
 
     expected = [ # full evaluation possible:
@@ -139,6 +141,15 @@ runTests rec {
   testUniqBy = {
     expr = uniqBy eqStrict [ 1 10 20 20 1 ];
     expected = [ 1 20 10 ];
+  };
+
+
+  tests = ["testUniqBy2"];
+  # test that the last item is kept
+  # this is important to get more default flags
+  testUniqBy2 = {
+    expr = uniqBy (x: y: eqStrict (head x) (head y)) [ [ 1 2 ] [ 1 3 ] [1 5] ];
+    expected = [ [ 1 5 ] ];
   };
 
   testAllFlagCombinations = {
@@ -281,26 +292,32 @@ runTests rec {
         from = pkgFromDb HackNixAttr;
         prepared = preparePkg availiblePackages from;
 
-        oneCase = let result = pkgVariations {
+        pkgVariations2 = a: prepared: pkgVariations2 (a // {
+                              defaultFlagsOnly = false;
+                              compilerFlavor = { compiler = "GHC"; version = "ghc-6.10"; };
+                            }) prepared;
+
+        oneCase = let result = pkgVariations2 {
                         flags = { a = true; builde1 = true; b = true; };
                         os = "Linux";
+                        defaultFlagsOnly = false;
                       } prepared;
                   in head result.ok;
 
         # first
-        var1     = pkgVariations { os = "doesn't matter"; flags = {}; } prepared; 
+        var1     = pkgVariations2 { os = "doesn't matter"; flags = {}; } prepared; 
 
         # second    flag A,     flag B
-        ab       = pkgVariations { os = "doesn't matter"; flags = { a = true; b = true;}; } prepared; 
+        ab       = pkgVariations2 { os = "doesn't matter"; flags = { a = true; b = true;}; } prepared; 
 
         # third    flag A, not flag B
-        anotb    = pkgVariations { os = "doesn't matter"; flags = { a = true; b = false;}; } prepared; 
+        anotb    = pkgVariations2 { os = "doesn't matter"; flags = { a = true; b = false;}; } prepared; 
 
         # fourth not flag A, flag B
-        notab    = pkgVariations { os = "doesn't matter"; flags = { a = false; b = true;}; } prepared; 
+        notab    = pkgVariations2 { os = "doesn't matter"; flags = { a = false; b = true;}; } prepared; 
 
         # fifth not flag A, flag B
-        notanotb = pkgVariations { os = "doesn't matter"; flags = { a = false; b = false;}; } prepared; 
+        notanotb = pkgVariations2 { os = "doesn't matter"; flags = { a = false; b = false;}; } prepared; 
 
     in {
       expr = {
@@ -577,7 +594,7 @@ note: ldep must be the same version because it's used by both deps of target
     };
   };
 
-  tests = ["manualTestRealData"];
+  # tests = ["manualTestRealData"];
   manualTestRealData =
   let 
     preprocessedHackageInput = map pkgFromDb (import ../hackage/hack-nix-db.nix);

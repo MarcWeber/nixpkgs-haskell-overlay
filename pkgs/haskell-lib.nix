@@ -7,7 +7,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     filter concatLists catAttrs concatStrings mapRecordFlatten concatMapStrings
     any all concatStringsSep mergeAttrsWithFunc nameValuePair attr
     emptyHeadTail attrValues eqStrict flattenAttrs concat mapAttrs elem showVal concatMap
-    nixType take mapAttrsFlatten attrSingleton uniqBy getA toStr
+    nixType take mapAttrsFlatten attrSingleton uniqBy getA toStr reverseList
     strict traceCall2 traceVal traceCallXml;
 
   debug = false; # don't use true when using all packgaes from hackage db. Probably this will exceed your RAM!
@@ -704,7 +704,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
               let  compareDeps = p1: p2:
                          (p1.edeps_str == p2.edeps_str)
                       && (p1.ldeps_str == p2.ldeps_str);
-              in { ok = uniqBy compareDeps solutions; }
+              in { ok = uniqBy compareDeps (reverseList solutions); }
           else
             { failure = "\nno solutions found for pkg ${pkg.name}-${pkg.version}. Missing deps depending on flag assignments (all variations): ${toStr judged}"; }
       ));

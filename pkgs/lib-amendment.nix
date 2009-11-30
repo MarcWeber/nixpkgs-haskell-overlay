@@ -23,6 +23,7 @@ with lib; rec {
   attrSingleton = name: value: listToAttrs [(nameValuePair name value)];
 
   # f = compare func
+  # note: the last element will be kept
   uniqBy = f : fold (n : l : if any (f n) l then l else l ++ [n]) [];
 
   getA = name: attr: default:

@@ -17,13 +17,19 @@ let
 
   mainConfig = { inherit system stdenvType bootStdenv noSysDirs gccWithCC gccWithProfiling config; };
 
+
+  pkgs = import nixpkgs mainConfig;
+
+  lib = pkgs.lib // import ./pkgs/lib-amendment.nix { inherit (pkgs) lib; };
+
+  getConfig = pkgs.getConfig;
+
+  inherit (lib) attrSingleton;
+
   haskellPackages = rec {
 
-    pkgs = import nixpkgs mainConfig;
+    inherit pkgs lib getConfig;
 
-    lib = pkgs.lib // import ./pkgs/lib-amendment.nix { inherit (pkgs) lib; };
-
-    getConfig = pkgs.getConfig;
 
     libOverlay =
       import pkgs/haskell-lib.nix { inherit (pkgs) fetchurl; inherit lib; };
@@ -92,16 +98,16 @@ let
                 berkeleydb.propagatedBuildInputs = [pkgs.db45];
                 BerkeleyDB.propagatedBuildInputs = [pkgs.db45];
               }
-              // lib.attrSingleton "HDBC-mysql" { propagatedBuildInputs = [ pkgs.mysql pkgs.zlib ]; }
-              // lib.attrSingleton "HDBC-sqlite3" { propagatedBuildInputs = [ pkgs.mysql pkgs.sqlite ]; }
-              // lib.attrSingleton "HDBC-odbc" {
+              // attrSingleton "HDBC-mysql" { propagatedBuildInputs = [ pkgs.mysql pkgs.zlib ]; }
+              // attrSingleton "HDBC-sqlite3" { propagatedBuildInputs = [ pkgs.mysql pkgs.sqlite ]; }
+              // attrSingleton "HDBC-odbc" {
                     propagatedBuildInputs = [ pkgs.unixODBC ];
                     configureFlags = ["--extra-include-dirs=${pkgs.unixODBC}/include" "--extra-lib-dirs=${pkgs.unixODBC}/lib"];
                 }
-              // lib.attrSingleton "HDBC-postgresql" { propagatedBuildInputs = [ pkgs.postgresql ]; }
-              // lib.attrSingleton "haskell-src" { buildInputs = [ happyFixed ]; }
-              // lib.attrSingleton "haskell-src-exts" { buildInputs = [ happyFixed ]; }
-              // lib.attrSingleton "happs-hsp" { buildInputs = [ happyFixed ]; }
+              // attrSingleton "HDBC-postgresql" { propagatedBuildInputs = [ pkgs.postgresql ]; }
+              // attrSingleton "haskell-src" { buildInputs = [ happyFixed ]; }
+              // attrSingleton "haskell-src-exts" { buildInputs = [ happyFixed ]; }
+              // attrSingleton "happs-hsp" { buildInputs = [ happyFixed ]; }
             ;
 
             # == resolveDependenciesBruteforce arguments:
@@ -115,10 +121,25 @@ let
             filtersByName = {
               base = { gte = "4"; };
               #QuickCheck = { gt = "1.2.0.0"; };
-            };
+            }
+            # the hackage haskelldb version dosen't build
+            // (lib.listToAttrs (map (name: { inherit name; value = { gte = "0.11"; }; } )
+                                [ "haskelldb" "haskelldb-hsql-odbc"
+                                  "haskelldb-wx" "haskelldb-hsql-mysql"
+                                  "haskelldb-hsql-sqlite3"
+                                  "haskelldb-hsql-postgresql" "haskelldb-flat"
+                                  "haskelldb-hdbc" "haskelldb-hsql"
+                                  "haskelldb-hdbc-sqlite3" "haskelldb-dynamic"
+                                  "haskelldb-hdbc-odbc"
+                                  "haskelldb-hdbc-postgresql"
+                                  "haskelldb-hsql-oracle"
+                                  "haskelldb-hsql-sqlite" ])
+               )
+            ;
 
             packages = map libOverlay.pkgFromDb (
               (import hackage/hack-nix-db.nix)
+              ++ (import ./pkgs/haskelldb.nix { inherit (pkgs) fetchurl; })
               ++ [ gtk2hsMetaPackage ]
               ++ (getConfig ["hackNix" "additionalPackages"] [])
             );
