@@ -1,0 +1,45 @@
+diff -U 3 a/bloxorz.cabal b/bloxorz.cabal
+--- a/bloxorz.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/bloxorz.cabal	2009-11-27 17:44:16.000000000 +0100
+@@ -15,5 +15,5 @@
+ Executable bloxorz
+   Executable:          bloxorz
+   Main-is:             Main.hs
+-  Build-Depends:       base > 3 && < 4, OpenGL, GLFW
++  Build-Depends:       base > 3 && < 5, OpenGL, GLFW
+   Other-Modules:       Cubezor, Etc, Maps, Quaternion
+Common subdirectories: a/data and b/data
+
+
+diff -r bloxorz-0.1/Etc.hs bloxorz-0.1-mod/Etc.hs
+15c15
+< piPer2 :: Float
+---
+> piPer2 :: GLfloat
+Only in bloxorz-0.1-mod: hack-nix-envs
+diff -r bloxorz-0.1/Main.hs bloxorz-0.1-mod/Main.hs
+127c127
+<                         GLFW.KeyButtonState) -> Float -> State
+---
+>                         GLFW.KeyButtonState) -> GLfloat -> State
+253c253
+< loop :: State -> GLStuff -> Float -> IO ()
+---
+> loop :: State -> GLStuff -> GLfloat -> IO ()
+257c257
+<   let now = double2float nowD
+---
+>   let now = realToFrac $ double2float nowD
+290c290
+<   loop state stuff (double2float now)
+---
+>   loop state stuff (realToFrac now)
+diff -r bloxorz-0.1/Quaternion.hs bloxorz-0.1-mod/Quaternion.hs
+7c7
+< type Quaternion = (Float, Float, Float, Float) -- w x y z
+---
+> type Quaternion = (GLfloat, GLfloat, GLfloat, GLfloat) -- w x y z
+12c12
+< quatFromAngleAxis :: Float -> Float -> Float -> Float -> Quaternion
+---
+> quatFromAngleAxis :: GLfloat -> GLfloat -> GLfloat -> GLfloat -> Quaternion

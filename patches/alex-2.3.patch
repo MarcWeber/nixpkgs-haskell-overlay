@@ -1,0 +1,66 @@
+diff -r -U 3 a/alex.cabal b/alex.cabal
+--- a/alex.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/alex.cabal	2009-11-30 19:08:45.000000000 +0100
+@@ -61,7 +61,7 @@
+   if flag(small_base)
+     build-depends: base >= 2.1, array, containers, directory
+   else
+-    build-depends: base >= 1.0
++    build-depends: base >= 1.0 && < 2.1
+ 
+   build-depends: haskell98 >= 1.0
+ 
+
+
+diff --git a/alex.cabal b/alex.cabal
+index 8e5fba4..60fd095 100644
+--- a/alex.cabal
++++ b/alex.cabal
+@@ -53,13 +53,21 @@ extra-source-files:
+ flag small_base
+   description: Choose the new smaller, split-up base package.
+ 
++flag base4
++
+ executable alex
+   executable: alex
+   hs-source-dirs: src
+   main-is: Main.hs
+ 
+   if flag(small_base)
+-    build-depends: base >= 2.1, array, containers, directory
++    if flag(base4)
++      build-depends: base >= 4
++      cpp-options: -DBASE4
++      ghc-options: -XScopedTypeVariables
++    else
++      build-depends: base >= 2.1 && < 4
++    build-depends: array, containers, directory
+   else
+
+
+diff --git a/src/Main.hs b/src/Main.hs
+index f17d194..3a7206c 100644
+--- a/src/Main.hs
++++ b/src/Main.hs
+@@ -32,6 +32,9 @@ import System.Directory ( removeFile )
+ import System.Environment ( getProgName, getArgs )
+ import System.Exit ( ExitCode(..), exitWith )
+ import System.IO ( stderr, Handle, IOMode(..), openFile, hClose, hPutStr, hPutStrLn )
++#ifdef BASE4
++import Control.Exception (SomeException)
++#endif
+ 
+ -- `main' decodes the command line arguments and calls `alex'.  
+ 
+@@ -313,6 +316,10 @@ bracketOnError before after thing =
+     a <- before 
+     r <- Exception.catch 
+ 	   (unblock (thing a))
++#ifdef BASE4
++	   (\(e :: SomeException) -> do { after a; throw e })
++#else
+ 	   (\e -> do { after a; throw e })
++#endif
+     return r
+  )

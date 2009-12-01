@@ -1,0 +1,13 @@
+Common subdirectories: a/Database and b/Database
+diff -U 3 a/haskelldb-hdbc.cabal b/haskelldb-hdbc.cabal
+--- a/haskelldb-hdbc.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/haskelldb-hdbc.cabal	2009-11-28 04:52:47.000000000 +0100
+@@ -12,7 +12,7 @@
+ Flag split-base
+ 
+ Library
+-  Build-depends: mtl, haskelldb>=0.12, HDBC>=2.0.0 && < 2.2.0, convertible >= 1.0.1
++  Build-depends: mtl, haskelldb>=0.12, HDBC>=2.0.0 && <= 2.2.1, convertible >= 1.0.1
+   if flag(split-base)
+     Build-depends: base >= 3.0, containers, old-time
+   else

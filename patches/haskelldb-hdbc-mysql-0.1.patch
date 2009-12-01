@@ -1,0 +1,18 @@
+Common subdirectories: a/Database and b/Database
+diff -U 3 a/haskelldb-hdbc-mysql.cabal b/haskelldb-hdbc-mysql.cabal
+--- a/haskelldb-hdbc-mysql.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/haskelldb-hdbc-mysql.cabal	2009-11-28 04:53:13.000000000 +0100
+@@ -12,11 +12,11 @@
+ 
+ Library
+   Build-depends: 
+-    base <= 4,
++    base <= 5,
+     mtl, 
+     haskelldb>=0.12,
+     haskelldb-hdbc>=0.12,
+-    HDBC>=2.0.0 && < 2.2.0,
++    HDBC>=2.0.0 && <= 2.2.1,
+     HDBC-mysql>=0.1
+   Exposed-Modules:
+         Database.HaskellDB.HDBC.MySQL

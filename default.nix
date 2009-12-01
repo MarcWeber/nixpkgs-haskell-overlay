@@ -68,25 +68,31 @@ let
           let inherit (args) fixed;
               alexFixed = fixed.alex;
               happyFixed = fixed.happy;
+              c2hsFixed = fixed.c2hs;
               ammendmentsFixed = fixed.ammendments;
               thisHP = fixed.haskellPackages;
               thisGhc = thisHP.ghc;
               thisGhcReal = thisHP.ghcReal;
               haskellDerivation = thisHP.cabal.mkDerivation;
+              # build the executable with dependencies not which are resolved differently from the target dependencies
+              exe = name: builtins.getAttr name ( (haskellOverlayPackagesFun.merge  {
+                  targetPackages = [name];
+              } ).result);
           in args // {
 
             # this contains ghc. see nixpkgs for details.
             haskellPackages = pkgs.haskellPackages;
         
             # defaults. You could overwrite them.
-            alex = (haskellOverlayPackagesFun.merge  { targetPackages = ["alex"]; } ).result.alex;
-            happy = (haskellOverlayPackagesFun.merge { targetPackages = ["happy"]; } ).result.happy;
-
+            alex = exe "alex";
+            happy = exe "happy";
+            c2hs = exe "c2hs";
 
             # add additional build inputs such as C libraries here, used by mkHaskellDerivation below
             ammendments =
               {
                 happy.propagatedBuildInputs = [pkgs.perl];
+                alex.propagatedBuildInputs = [pkgs.perl];
                 zlib.propagatedBuildInputs = [pkgs.zlib];
                 digest.propagatedBuildInputs = [pkgs.zlib];
                 OpenGLRaw.propagatedBuildInputs = [pkgs.mesa];
@@ -97,7 +103,21 @@ let
                 terminfo.propagatedBuildInputs = [pkgs.ncurses];
                 berkeleydb.propagatedBuildInputs = [pkgs.db45];
                 BerkeleyDB.propagatedBuildInputs = [pkgs.db45];
+                hubris = {
+                # note! it does compile. The author recommends adding "--enable-library-for-ghci --enable-shared --ghc-options=-dynamic"
+                # flags to reduce binary size (30MB) which doesn't built yet.
+                    buildInputs = [ c2hsFixed ];
+                    propagatedBuildInputs = [ pkgs.ruby ];
+                    configureFlags = ["--extra-lib-dirs=${pkgs.ruby}/lib --extra-include-dirs=${pkgs.glibc}/include"]
+
+                      ++ # TODO find a better solution. This won't work for other ruby versions!
+                         (if pkgs.stdenv.system == "x86_64-linux" then
+                            ["--extra-include-dirs=${pkgs.ruby}/lib/ruby/1.8/x86_64-linux"]
+                          else throw "TODO"
+                         );
+                };
               }
+              // attrSingleton "language-c" { buildInputs = [ happyFixed alexFixed ]; }
               // attrSingleton "HDBC-mysql" { propagatedBuildInputs = [ pkgs.mysql pkgs.zlib ]; }
               // attrSingleton "HDBC-sqlite3" { propagatedBuildInputs = [ pkgs.mysql pkgs.sqlite ]; }
               // attrSingleton "HDBC-odbc" {
@@ -170,9 +190,11 @@ let
                      (lib.attrByPath [name "buildInputs"] [] ammendmentsFixed);
                 propagatedBuildInputs = dependencies
                   ++ (lib.attrByPath [name "propagatedBuildInputs"] [] ammendmentsFixed);
-                configureFlags = lib.concatStringsSep " " (
+                configureFlags = ( lib.concatStringsSep " " (
                     (lib.mapAttrsFlatten (a: v: "-f${if v then "" else "-"}${a}") flags)
-                    ++ (lib.attrByPath [name "configureFlags"] [] ammendmentsFixed));
+                    ++ (lib.attrByPath [name "configureFlags"] [] ammendmentsFixed))
+                    );
+                  #+ "--enable-library-for-ghci --enable-shared --ghc-options=-dynamic";
               });
         
       });
