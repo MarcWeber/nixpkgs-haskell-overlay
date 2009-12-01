@@ -2878,7 +2878,21 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       [
         {flag = "small_base";}
         {
-          cdeps = [];
+          cdeps = 
+          [[
+             {flag = "separatesyb";}
+             {
+               cdeps = [];
+               deps = 
+               [
+                 {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}  {n = "syb";}
+               ];
+             }
+             {
+               cdeps = [];
+               deps = [{i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}];
+             }
+           ]];
           deps = 
           [
             {gte = "3";  n = "base";}  {n = "filepath";}
@@ -2897,7 +2911,8 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     deps = [];
   };
   sha256 = "1kvl4dyybr7gj66dwms7ksw7a7d46jckbfr5dn3xlsy47cyimska";
-  tflags = ["small-base"  "syb-with-class"  "simple-generics"];
+  tflags = 
+  ["small-base"  "syb-with-class"  "simple-generics"  "separatesyb"];
 }
 {
   name = "HStringTemplateHelpers";  version = "0.0.14";  edeps = [];

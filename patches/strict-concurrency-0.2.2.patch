@@ -1,0 +1,72 @@
+diff -r -U 3 a/Control/Concurrent/MVar/Strict.hs b/Control/Concurrent/MVar/Strict.hs
+--- a/Control/Concurrent/MVar/Strict.hs	1970-01-01 01:00:01.000000000 +0100
++++ b/Control/Concurrent/MVar/Strict.hs	2009-12-01 04:15:43.000000000 +0100
+@@ -46,6 +46,12 @@
+ import Control.Exception as Exception
+ import Control.Parallel.Strategies
+ 
++#ifdef BASE4
++#define SOME_EXCEPTION(e)  (e :: SomeException)
++#else
++#define SOME_EXCEPTION(e) e
++#endif
++
+ -- |Put a value into an 'MVar'.  If the 'MVar' is currently full,
+ -- 'putMVar' will wait until it becomes empty.
+ --
+@@ -121,7 +127,7 @@
+ withMVar m io = block $ do
+     a <- takeMVar m
+     b <- Exception.catch (unblock (io a))
+-            (\e -> do putMVar m a; throw e)
++            (\SOME_EXCEPTION(e) -> do putMVar m a; throw e)
+     putMVar m a
+     return b
+ 
+@@ -135,7 +141,7 @@
+ modifyMVar_ m io = block $ do
+     a  <- takeMVar m
+     a' <- Exception.catch (unblock (io a))
+-            (\e -> do putMVar m a; throw e)
++            (\SOME_EXCEPTION(e) -> do putMVar m a; throw e)
+     putMVar m a'
+ 
+ {-|
+@@ -147,7 +153,7 @@
+ modifyMVar m io = block $ do
+     a      <- takeMVar m
+     (a',b) <- Exception.catch (unblock (io a))
+-                (\e -> do putMVar m a; throw e)
++                (\SOME_EXCEPTION(e) -> do putMVar m a; throw e)
+     putMVar m a'
+     return b
+ 
+diff -r -U 3 a/strict-concurrency.cabal b/strict-concurrency.cabal
+--- a/strict-concurrency.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/strict-concurrency.cabal	2009-12-01 04:19:55.000000000 +0100
+@@ -15,9 +15,19 @@
+ Maintainer:     Don Stewart <dons@galois.com>
+ Copyright:      (c) 2007-8 Don Stewart
+ Homepage:       http://code.haskell.org/~dons/code/strict-concurrency
+-build-depends:  base >= 3 && < 4, parallel
+-ghc-options:    -Wall -fglasgow-exts
+-extensions:     CPP, BangPatterns
+-build-type:     Simple
+-exposed-modules: Control.Concurrent.MVar.Strict
+-                 Control.Concurrent.Chan.Strict
++Build-Type:     Simple
++
++flag base4
++
++Library
++  build-depends:  base >= 3 && < 5, parallel
++  ghc-options:    -Wall -fglasgow-exts
++  extensions:     CPP, BangPatterns
++  build-type:     Simple
++  exposed-modules: Control.Concurrent.MVar.Strict
++                   Control.Concurrent.Chan.Strict
++  if flag(base4)
++    build-depends:  base >= 4
++    cpp-options: -DBASE4
++  else
++    build-depends:  base < 4
