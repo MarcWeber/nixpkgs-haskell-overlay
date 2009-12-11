@@ -1,0 +1,12 @@
+diff -r -U 3 a/hashed-storage.cabal b/hashed-storage.cabal
+--- a/hashed-storage.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/hashed-storage.cabal	2009-11-28 19:17:43.000000000 +0100
+@@ -73,7 +73,7 @@
+                    dataenc,
+                    binary,
+                    zlib,
+-                   mmap >= 0.4 && < 0.5
++                   mmap >= 0.4 && < 0.6
+ 
+     c-sources: Bundled/sha2.c
+ 

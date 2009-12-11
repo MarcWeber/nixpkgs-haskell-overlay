@@ -633,6 +633,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     # tflags: all flags with default value "true"
     # add default flag value at the beginning
     allFlagCombinations = list : tflags : lm.funcBody "allFlagCombinations" ( emptyHeadTail [ {} ] (name : t :
+          assert lessThan (builtins.length list) 6;
           let m = if hasAttr name tflags then id else x: !x;
               tru  = listToAttrs [ (nameValuePair name  (m true)) ];
               fals = listToAttrs [ (nameValuePair name (m false)) ];

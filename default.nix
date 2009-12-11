@@ -1,4 +1,4 @@
-# same args as in all-packages.nix
+#ddio same args as in all-packages.nix
 # should this be moved into pkg/top-level/all-packages.nix ?
 {
   system ? builtins.currentSystem
@@ -50,6 +50,13 @@ let
       };
     };
 
+
+    exeByName = name:
+        builtins.trace "resolving deps of executable dependency ${name}"
+          ( builtins.getAttr name ( (haskellOverlayPackagesFun.merge  {
+              targetPackages = [name];
+            } ).result));
+
     /* the function calling the main worker fucntion.
        You can overwride everything using .merge and .replace
        (See defaultOverridableDelayableArgs for details)
@@ -75,18 +82,15 @@ let
               thisGhcReal = thisHP.ghcReal;
               haskellDerivation = thisHP.cabal.mkDerivation;
               # build the executable with dependencies not which are resolved differently from the target dependencies
-              exe = name: builtins.getAttr name ( (haskellOverlayPackagesFun.merge  {
-                  targetPackages = [name];
-              } ).result);
           in args // {
 
             # this contains ghc. see nixpkgs for details.
             haskellPackages = pkgs.haskellPackages;
         
             # defaults. You could overwrite them.
-            alex = exe "alex";
-            happy = exe "happy";
-            c2hs = exe "c2hs";
+            alex = exeByName "alex";
+            happy = exeByName "happy";
+            c2hs = exeByName "c2hs";
 
             # add additional build inputs such as C libraries here, used by mkHaskellDerivation below
             ammendments =
@@ -117,6 +121,7 @@ let
                          );
                 };
               }
+              // attrSingleton "pcre-light" { propagatedBuildInputs = [ pkgs.pcre ]; }
               // attrSingleton "language-c" { buildInputs = [ happyFixed alexFixed ]; }
               // attrSingleton "HDBC-mysql" { propagatedBuildInputs = [ pkgs.mysql pkgs.zlib ]; }
               // attrSingleton "HDBC-sqlite3" { propagatedBuildInputs = [ pkgs.mysql pkgs.sqlite ]; }
@@ -131,6 +136,8 @@ let
             ;
 
             # == resolveDependenciesBruteforce arguments:
+
+            provided = thisHP.ghcReal.corePackages;
 
             compilerFlavor = {
               compiler = "GHC";
@@ -157,20 +164,27 @@ let
                )
             ;
 
+            packageOverrides = import pkgs/additional-packages.nix {
+              inherit (pkgs) fetchurl sourceFromHead;
+            };
+
             packages = map libOverlay.pkgFromDb (
               (import hackage/hack-nix-db.nix)
               ++ (import ./pkgs/haskelldb.nix { inherit (pkgs) fetchurl; })
               ++ [ gtk2hsMetaPackage ]
+              ++ fixed.packageOverrides
               ++ (getConfig ["hackNix" "additionalPackages"] [])
             );
 
-            globalFlags =  {
-                base4 = true;
-                splitbase = true;
-              }
-              // lib.attrSingleton "split-base" true
+            globalFlags = {}
               // getConfig ["hackNix" "globalFlags"] {};
-            packageFlags = {} // getConfig ["hackNix" "packageFlags"] {};
+            packageFlags = {
+              # nix is not up to the task calculating 8 ** 2 flag combinations :-(. So define default flags here. Probably ++ is not lazy enough yet.  TODO figure out what exactly is happening here. By default only the first variation is used.
+              darcs = { curl = true; http = true; static = false; terminfo = true; threaded = false; color = true; mmap = true; hpc = false;
+               } // attrSingleton "curl-pipelining" false
+                 // attrSingleton "type-witnesses" false
+                 // attrSingleton "deps-only" false;
+            } // getConfig ["hackNix" "packageFlags"] {};
 
             mkHaskellDerivation = { name, fullName, src, dependencies, flags, patches, version, ... }:
               # Use special builder for gtk2hs-meta-package-hack only
@@ -191,8 +205,10 @@ let
                 propagatedBuildInputs = dependencies
                   ++ (lib.attrByPath [name "propagatedBuildInputs"] [] ammendmentsFixed);
                 configureFlags = ( lib.concatStringsSep " " (
-                    (lib.mapAttrsFlatten (a: v: "-f${if v then "" else "-"}${a}") flags)
-                    ++ (lib.attrByPath [name "configureFlags"] [] ammendmentsFixed))
+                         (lib.mapAttrsFlatten (a: v: "-f${if v then "" else "-"}${a}") flags)
+                      ++ (lib.attrByPath [name "configureFlags"] [] ammendmentsFixed)
+                      ++ ["--enable-library-profiling"] # <- think about this again
+                      )
                     );
                   #+ "--enable-library-for-ghci --enable-shared --ghc-options=-dynamic";
               });
@@ -241,6 +257,12 @@ let
     envByTargetPackages = args:
       let pkgs = (haskellOverlayPackagesFun.merge args).result;
       in envFromHaskellLibs (lib.catAttrs pkgs);
+
+
+    ### executables:
+    hackNix = exeByName "hack-nix";
+    nixRepositoryManager = exeByName "nix-repository-manager";
+
   };
 
 in haskellPackages

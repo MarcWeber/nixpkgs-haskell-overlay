@@ -1,0 +1,25 @@
+diff -r -U 3 a/interlude.h b/interlude.h
+--- a/interlude.h	1970-01-01 01:00:01.000000000 +0100
++++ b/interlude.h	2009-12-10 21:46:37.000000000 +0100
+@@ -2,7 +2,7 @@
+ import Prelude ()
+ 
+ /* ugly, but a real function would block subsequent imports */
+-#define BUG(C_,M_) (report_bug((C_),(M_),__FILE__,__LINE__))
++#define BUG(C_,M_) (report_bug (C_) (M_) __FILE__ __LINE__)
+ 
+ #define head (\xs -> case xs of { (x:_) -> x ; _ -> BUG("head","empty list")})
+ #define tail (\xs -> case xs of { (_:x) -> x ; _ -> BUG("tail","empty list")})
+diff -r -U 3 a/Interlude.hs b/Interlude.hs
+--- a/Interlude.hs	1970-01-01 01:00:01.000000000 +0100
++++ b/Interlude.hs	2009-12-10 21:46:44.000000000 +0100
+@@ -6,7 +6,7 @@
+ 
+ import Prelude hiding (head,tail,read,undefined)
+ 
+-report_bug :: String -> String -> String -> Int -> ()
++report_bug :: String -> String -> String -> Int -> a
+ report_bug function message file line = error $
+     "Program error: '"++function++"' failed: "++message
+-    ++". Location: "++file++" line: "++ show line
++    ++". Location: "++file++":"++ show line
