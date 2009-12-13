@@ -1,0 +1,23 @@
+diff -r -U 3 a/list-tries.cabal b/list-tries.cabal
+--- a/list-tries.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/list-tries.cabal	2009-12-13 17:13:52.000000000 +0100
+@@ -47,14 +47,14 @@
+    Extensions: CPP
+ 
+    if flag(containers03)
+-      Build-Depends: base       >= 3 && < 4.1
+-                   , containers >= 0.3 && < 0.4
+-                   , dlist      == 0.4.*
++      Build-Depends: base       >= 3 && < 5
++                   , containers >= 0.3
++                   , dlist      >= 0.4
+                    , binary     >= 0.5 && < 0.6
+    else
+-      Build-Depends: base       >= 3 && < 4.1
++      Build-Depends: base       >= 3 && < 5
+                    , containers >= 0.2 && < 0.3
+-                   , dlist      == 0.4.*
++                   , dlist      >= 0.4
+                    , binary     >= 0.5 && < 0.6
+ 
+    Exposed-Modules: Data.ListTrie.Base.Map

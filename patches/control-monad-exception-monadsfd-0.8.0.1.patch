@@ -1,0 +1,12 @@
+diff -r -U 3 a/control-monad-exception-monadsfd.cabal b/control-monad-exception-monadsfd.cabal
+--- a/control-monad-exception-monadsfd.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/control-monad-exception-monadsfd.cabal	2009-12-09 03:24:27.000000000 +0100
+@@ -70,7 +70,7 @@
+ Library
+   buildable: True 
+   build-depends: base > 4 && < 5
+-               , control-monad-exception == 0.8.0
++               , control-monad-exception >= 0.8.0
+                , transformers >= 0.1.0
+                , monads-fd    >= 0.0.0.1
+ 
