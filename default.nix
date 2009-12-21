@@ -34,6 +34,14 @@ let
     libOverlay =
       import pkgs/haskell-lib.nix { inherit (pkgs) fetchurl; inherit lib; };
 
+    # overriding hasktags. I don't want to commit hash updates to nixpkgs all the time..
+    sourceAndTags = import (nixpkgs+"/pkgs/misc/source-and-tags") {
+      inherit pkgs;
+      inherit (pkgs) stdenv unzip lib ctags;
+      inherit hasktags;
+    };
+
+    hasktags = exeByName "hasktags";
 
     # this contains haskell packages: gtk svgcairo glib cairo gtk2hs soegtk gio gtksourceview2 glade
     # the dependencies to those packgaes are all replaced by gtk2hs-neta-package by hack-nix.
@@ -95,6 +103,7 @@ let
             # add additional build inputs such as C libraries here, used by mkHaskellDerivation below
             ammendments =
               {
+                hasktags.postInstall = " set -x; ln -s $out/bin/{hasktags,hasktags-modified}"; # this alias is used by sourceAndTags only 
                 happy.propagatedBuildInputs = [pkgs.perl];
                 alex.propagatedBuildInputs = [pkgs.perl];
                 zlib.propagatedBuildInputs = [pkgs.zlib];
@@ -121,6 +130,8 @@ let
                          );
                 };
               }
+# as always this doesn't work. Eg I have to add C deps manually thus as pcre
+# So I tell teh solver that the haskell  package pcre-light requires a C dep pkgs.pcrel
               // attrSingleton "pcre-light" { propagatedBuildInputs = [ pkgs.pcre ]; }
               // attrSingleton "language-c" { buildInputs = [ happyFixed alexFixed ]; }
               // attrSingleton "HDBC-mysql" { propagatedBuildInputs = [ pkgs.mysql pkgs.zlib ]; }
@@ -136,6 +147,7 @@ let
             ;
 
             # == resolveDependenciesBruteforce arguments:
+            defaultFlagsOnly = true;
 
             provided = thisHP.ghcReal.corePackages;
 
@@ -196,7 +208,7 @@ let
                   inherit (pkgs) stdenv fetchurl pkgconfig gnome cairo;
                 }
 
-              else haskellDerivation (self: {
+              else haskellDerivation (self: (lib.attrByPath [name] {} ammendmentsFixed) // {
                 pname = name;
                 name = fullName;
                 inherit src patches version;
@@ -229,7 +241,7 @@ let
     }).result;
 
     runHasktags = deriv:
-      let inherit (pkgs.sourceAndTags) sourceWithTagsDerivation sourceWithTagsFromDerivation addHasktagsTaggingInfo;
+      let inherit (sourceAndTags) sourceWithTagsDerivation sourceWithTagsFromDerivation addHasktagsTaggingInfo;
       in sourceWithTagsDerivation (sourceWithTagsFromDerivation (addHasktagsTaggingInfo deriv) );
 
     envFromHaskellLibs = { buildInputs, createHaskellTagsFor ? [], ...}:

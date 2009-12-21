@@ -1,0 +1,17 @@
+Only in b: dist
+Only in b: hack-nix-envs
+diff -r -U 3 a/hsql.cabal b/hsql.cabal
+--- a/hsql.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/hsql.cabal	2009-12-10 19:31:54.000000000 +0100
+@@ -9,7 +9,7 @@
+ exposed-modules:
+ 	Database.HSQL,
+ 	Database.HSQL.Types
+-build-depends:	base==3.*,old-time
++build-depends:	base>=3,old-time
+ extensions:     ForeignFunctionInterface, TypeSynonymInstances, CPP, RankNTypes, DeriveDataTypeable
+ build-type: Simple
+ license-file: LICENSE
+Only in b: Setup
+Only in b: Setup.hi
+Only in b: Setup.o
