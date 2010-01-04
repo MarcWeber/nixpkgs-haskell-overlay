@@ -92,6 +92,10 @@ let
               # build the executable with dependencies not which are resolved differently from the target dependencies
           in args // {
 
+            mergeAttrBy = {
+              packageFlags = lib.mergeAttrs;
+            };
+
             # this contains ghc. see nixpkgs for details.
             haskellPackages = pkgs.haskellPackages;
         
