@@ -272,6 +272,7 @@ let
 
 
     ### executables:
+    hledger = exeByName "hledger";
     hackNix = exeByName "hack-nix";
     nixRepositoryManager = exeByName "nix-repository-manager";
 
