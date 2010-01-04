@@ -1,7 +1,6 @@
-Common subdirectories: a/Debug and b/Debug
-diff -U 3 a/QuickCheck.cabal b/QuickCheck.cabal
+diff -r -U 3 a/QuickCheck.cabal b/QuickCheck.cabal
 --- a/QuickCheck.cabal	1970-01-01 01:00:01.000000000 +0100
-+++ b/QuickCheck.cabal	2009-11-28 01:50:53.000000000 +0100
++++ b/QuickCheck.cabal	2010-01-04 06:36:08.000000000 +0100
 @@ -21,6 +21,7 @@
  cabal-version: >=1.2
  
@@ -17,11 +16,10 @@ diff -U 3 a/QuickCheck.cabal b/QuickCheck.cabal
 -    build-depends:	base >= 3 && < 4, random
 +    build-depends:	base >= 3 && < 5, random
 +    if flag(base4)
-+      base >= 4
++      build-depends: base >= 4
 +      cpp-options: -DBASE4
 +    else
 +      base < 4
    else
      build-depends:	base < 3
    extensions:	CPP
-Common subdirectories: a/Test and b/Test

@@ -208,7 +208,7 @@ let
                   inherit (pkgs) stdenv fetchurl pkgconfig gnome cairo;
                 }
 
-              else haskellDerivation (self: (lib.attrByPath [name] {} ammendmentsFixed) // {
+              else haskellDerivation (self: (removeAttrs (lib.attrByPath [name] {} ammendmentsFixed) ["buildInputs"]) // {
                 pname = name;
                 name = fullName;
                 inherit src patches version;
