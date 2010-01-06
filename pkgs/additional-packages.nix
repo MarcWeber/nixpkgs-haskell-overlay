@@ -433,16 +433,19 @@
   }
   # END
 
-  # REGION HACK_NIX:            { name = "hasktags"; type = "darcs"; url = "http://code.haskell.org/hasktags/"; }
+  # REGION HACK_NIX:                   { name = "hasktags"; type = "darcs"; url = "http://code.haskell.org/hasktags/"; }
   {
     name = "hasktags";  version = "0.68";
     edeps = 
     [{
        cdeps = [];
-       deps = [{n = "haskell98";}  {lte = "4.2";  n = "base";}];
+       deps = 
+       [
+         {n = "haskell98";}  {lt = "5";  n = "base";}  {n = "bytestring";}
+       ];
      }];
     srcFile = sourceFromHead "hasktags-nrmtag1.tar.gz"
-                 (fetchurl { url = "http://mawercer.de/~nix/repos/hasktags-nrmtag1.tar.gz"; sha256 = "1bdf75aaab28b9153e9ed8bb4fae0acd31359ccab50860648d32a89b19b8403d"; });
+                 (fetchurl { url = "http://mawercer.de/~nix/repos/hasktags-nrmtag1.tar.gz"; sha256 = "c5bf6f9a0a2fc6654204dac7b70baf70c7d4891276b7770b731b7f1ed2a9e940"; });
   }
   # END
 
