@@ -97,7 +97,7 @@ let
             };
 
             # this contains ghc. see nixpkgs for details.
-            haskellPackages = pkgs.haskellPackages;
+            haskellPackages = pkgs.haskellPackages_ghc6121;
         
             # defaults. You could overwrite them.
             alex = exeByName "alex";
