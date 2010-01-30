@@ -800,6 +800,8 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
             [ "unix" "2.3.2.0" ]
           ],
 
+        skipProvidedInFavourOfNewer ? true,
+
         # a list of all possible flag combinations is built.
         # The head of the list is using default flag settings.
         # combinations which have no solution (missing deps)
@@ -845,6 +847,17 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
           in if hasAttr name filtersByName then lm.matchVersion x.version (getAttr name filtersByName)
           else true );
 
+      filterIfNewerAvailable = if !skipProvidedInFavourOfNewer
+        then id
+        else
+          let byName = lm.listToAttrsMerge concat (map (p: nameValuePair p.name [{ inherit (p) fullName version name; }] ) packages);
+          in filter (x: 
+              let name = x.name;
+              in if hasAttr name byName
+                  then !any (p: lm.gt (compareVersions p.version x.version)) (getAttr name byName)
+                  else true
+            );
+
       traceFailure = msg: if debugS then trace msg [] else [];
 
       preparedTP = map (p:
@@ -879,7 +892,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       };
       
       # list of { fullName =, version = , name} for all the packages shipping with ghc
-      providedList = filterByName (map (x:
+      providedList = filterIfNewerAvailable ( filterByName (map (x:
               let name = head x;
                   version = head (tail x);
               in {
@@ -889,7 +902,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                 ldeps = { cdeps = []; deps  = []; };
                 provided = true;
                 src = "never used";
-          }) provided);
+          }) provided));
 
       allPackages = let ap = (filterByName packages) ++ providedList ++ [targetPackage];
                     in assert all lm.isPreparablePkg ap; ap;

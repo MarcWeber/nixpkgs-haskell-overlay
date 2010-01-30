@@ -30,6 +30,7 @@ let
 
     inherit pkgs lib getConfig;
 
+    defaultHaskellPackages = pkgs.haskellPackages_ghc6121;
 
     libOverlay =
       import pkgs/haskell-lib.nix { inherit (pkgs) fetchurl; inherit lib; };
@@ -200,6 +201,15 @@ let
                } // attrSingleton "curl-pipelining" false
                  // attrSingleton "type-witnesses" false
                  // attrSingleton "deps-only" false;
+               yi = {
+                  ghcInterpreter = false; # Use the "hint" interpreter for extended commands (M-x) (experimental)
+                  ghcAPI = false; # Enable linking with GHC API for advanced features.
+                  vty = false; 
+                  pango = false; # Provide Pango UI
+                  cocoa = false; # Provide experimental Cocoa UI
+                  gnome = false; # Enable GNOME integration
+                  testing = false; # bake-in the self-checks
+               };
             } // getConfig ["hackNix" "packageFlags"] {};
 
             mkHaskellDerivation = { name, fullName, src, dependencies, flags, patches, version, ... }:
@@ -279,6 +289,9 @@ let
     hledger = exeByName "hledger";
     hackNix = exeByName "hack-nix";
     nixRepositoryManager = exeByName "nix-repository-manager";
+    # doesn't build
+    yi = exeByName "yi";
+    haddock = exeByName "haddock";
 
   };
 
