@@ -322,6 +322,8 @@
   }
   # END
 
+
+  /*
   # REGION HACK_NIX:              { name = "hsql"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="HSQL"; }
   {
     name = "hsql";  version = "1.7";  edeps = [];
@@ -389,6 +391,8 @@
   # END
 
 
+  hackage versions are more up to date
+
   # Setup dosen't compile. I'm not interested in this. Fix it yourself
   ### REGION HACK_NIX:      { name = "hsql-odbc"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="ODBC"; groups="hsql_group"; }
   # END
@@ -432,6 +436,7 @@
                (fetchurl { url = "http://mawercer.de/~nix/repos/hsql-sqlite3-nrmtag1.tar.gz"; sha256 = "2509dc8f9d9b746668e0b82ebc43dd0ecb838163a313374c98879198deb728de"; });
   }
   # END
+  */
 
   # REGION HACK_NIX:                     { name = "hasktags"; type = "darcs"; url = "http://code.haskell.org/hasktags/"; }
   {
