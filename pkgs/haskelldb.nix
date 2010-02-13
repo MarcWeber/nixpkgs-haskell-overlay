@@ -53,12 +53,12 @@ wait
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "mtl";}  {n = "haskelldb";  v = "0.11";}
-      {n = "haskelldb-hsql";  v = "0.11";}  {n = "hsql";}
+      {n = "base";}  {n = "mtl";}  {gte = "0.11";  n = "haskelldb";}
+      {gte = "0.11";  n = "haskelldb-hsql";}  {n = "hsql";}
       {n = "hsql-odbc";}
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-odbc-0.11.tar.gz; sha256="f365dbd292dc8b7c018aab1a71b12e7997fdd87d16890077c0b5955a1fd5c864"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-odbc-0.11.tar.gz; sha256="33d48ad399939c8db92110c05bb68138a52de88cd7cec4faad6bb89f7391cbee"; };
 }{
   name = "haskelldb-wx";  version = "0.11";  edeps = [];
   ldeps = 
@@ -67,10 +67,10 @@ wait
     deps = 
     [
       {n = "haskell98";}  {n = "base";}  {n = "mtl";}
-      {n = "haskelldb";  v = "0.11";}  {n = "wxcore";}
+      {gte = "0.11";  n = "haskelldb";}  {n = "wxcore";}
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-wx-0.11.tar.gz; sha256="ecf872d1692eee2656a1c1fd0436aeb6c7ee7b3d5e2ea928f1bc6f527c976c39"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-wx-0.11.tar.gz; sha256="4476ba03947594f2e86b09f8187a9b6f41f0c63830c9ff35e01d8158544432c5"; };
 }{
   name = "haskelldb-hsql-mysql";  version = "0.11";
   edeps = [{cdeps = [];  deps = [];}];
@@ -79,12 +79,12 @@ wait
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "mtl";}  {n = "haskelldb";  v = "0.11";}
-      {n = "haskelldb-hsql";  v = "0.11";}  {n = "hsql";}
+      {n = "base";}  {n = "mtl";}  {gte = "0.11";  n = "haskelldb";}
+      {gte = "0.11";  n = "haskelldb-hsql";}  {n = "hsql";}
       {n = "hsql-mysql";}
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-mysql-0.11.tar.gz; sha256="e5ca72f8a2555a207530ce287e9dc897b3f3abe3d0ece6b61e41b7726bb0ad21"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-mysql-0.11.tar.gz; sha256="84907cb751231f0409aa134e32e1d627af321e5a3621e24811f3c3e2c39d59bf"; };
 }{
   name = "haskelldb-hsql-sqlite3";  version = "0.11";
   edeps = [{cdeps = [];  deps = [];}];
@@ -93,12 +93,12 @@ wait
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "mtl";}  {n = "haskelldb";  v = "0.11";}
-      {n = "haskelldb-hsql";  v = "0.11";}  {n = "hsql";}
+      {n = "base";}  {n = "mtl";}  {gte = "0.11";  n = "haskelldb";}
+      {gte = "0.11";  n = "haskelldb-hsql";}  {n = "hsql";}
       {n = "hsql-sqlite3";}
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-sqlite3-0.11.tar.gz; sha256="2043a70f6a88ebd9f54ef57f65d63fd5439fed9f7f5ba59d24abf5d069dee1f3"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-sqlite3-0.11.tar.gz; sha256="9dc32d77e1de2a5a25f0fa744c1ef5e52f87190d2d70ec7a34c3a501af2cfba6"; };
 }{
   name = "haskelldb-hsql-postgresql";  version = "0.11";
   edeps = [{cdeps = [];  deps = [];}];
@@ -107,12 +107,12 @@ wait
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "mtl";}  {n = "haskelldb";  v = "0.11";}
-      {n = "haskelldb-hsql";  v = "0.11";}  {n = "hsql";}
+      {n = "base";}  {n = "mtl";}  {gte = "0.11";  n = "haskelldb";}
+      {gte = "0.11";  n = "haskelldb-hsql";}  {n = "hsql";}
       {n = "hsql-postgresql";}
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-postgresql-0.11.tar.gz; sha256="43a36c94b7b62e29f196ad9d5a74fd0f649c7da40488650c9638e8a161ad7398"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-postgresql-0.11.tar.gz; sha256="66d2b06db438d4905bc963326b9ec1c284e0249dd4caf49a070affa03a64f15d"; };
 }{
   name = "haskelldb-flat";  version = "1.0";
   edeps = [{cdeps = [];  deps = [];}];
@@ -139,7 +139,7 @@ wait
       {i1 = {gte = "1";};  i2 = {lt = "2";};  n = "haskelldb";}
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-flat-1.0.tar.gz; sha256="707248cdde93a2d81ce9caa65f6e955144526ab7a185a27fcf9595aca4eb89eb"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-flat-1.0.tar.gz; sha256="f9448a446b92c7e3acf089fbfe2cb9aa78f7d0655a3b02c8e97b29ad96927ccf"; };
   tflags = ["split-base"];
 }{
   name = "haskelldb-hdbc";  version = "1.0";  edeps = [];
@@ -167,7 +167,7 @@ wait
       {i1 = {gte = "1.0.1";};  i2 = {lt = "2";};  n = "convertible";}
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hdbc-1.0.tar.gz; sha256="b52043090704cf37f884c632647d5d791bf82dd260505e84f24321e76b18c2d0"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hdbc-1.0.tar.gz; sha256="dedf5184a06f82e5dff5313f384e649c0f51834e3af1a94d0d85df70f3f5d00c"; };
   tflags = ["split-base"];
 }{
   name = "haskelldb-hsql";  version = "0.11";  edeps = [];
@@ -178,14 +178,18 @@ wait
        {flag = "split_base";}
        {
          cdeps = [];
-         deps = [{gte = "3.0";  n = "base";}  {n = "old-time";}];
+         deps = 
+         [
+           {gte = "3.0";  n = "base";}  {n = "old-time";}
+           {n = "extensible-exceptions";}
+         ];
        }
        {cdeps = [];  deps = [{lt = "3.0";  n = "base";}];}
      ]];
     deps = 
-    [{n = "mtl";}  {n = "haskelldb";  v = "0.11";}  {n = "hsql";}];
+    [{n = "mtl";}  {gte = "0.11";  n = "haskelldb";}  {n = "hsql";}];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-0.11.tar.gz; sha256="60a47888a3b122d6b3b8ef648a83064ea6cee2dd6b7ac91a0a6fccf8e0fb1a08"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-0.11.tar.gz; sha256="3d59b80bcd01ee32a680823d20eca94eb3f856ea324904a2e6f57006a375fb61"; };
   tflags = ["split-base"];
 }{
   name = "haskelldb-hdbc-sqlite3";  version = "1.0";
@@ -203,7 +207,7 @@ wait
       {i1 = {gte = "2.0.0";};  i2 = {lt = "3";};  n = "HDBC-sqlite3";}
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hdbc-sqlite3-1.0.tar.gz; sha256="147a36cc104cf8f835ec325aa60c8a92cf1d508db24fdf8a40aed7ca34e619cc"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hdbc-sqlite3-1.0.tar.gz; sha256="5df8e6e5f5e3df20c2f6e1c73d26a5001ea06c306a251ec814057e3c34e5d182"; };
 }{
   name = "haskelldb-dynamic";  version = "0.12";
   edeps = 
@@ -217,7 +221,7 @@ wait
       {n = "plugins";}
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-dynamic-0.12.tar.gz; sha256="1284878867c93c950625cac33ed8a85439aeb4f294fe8f4f23c28f09c6a051f4"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-dynamic-0.12.tar.gz; sha256="9ff682ea595d519c3b5cbee4c48504b719ec7e68f1db18febe08263229fc641f"; };
 }{
   name = "haskelldb-hdbc-odbc";  version = "1.0";
   edeps = [{cdeps = [];  deps = [];}];
@@ -234,7 +238,7 @@ wait
       {i1 = {gte = "2.0.0";};  i2 = {lt = "3";};  n = "HDBC-odbc";}
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hdbc-odbc-1.0.tar.gz; sha256="a8bf071bc711de691b08aedaefab790e094825487b399e03f93238684d6c8fc7"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hdbc-odbc-1.0.tar.gz; sha256="0a9d1cd67e15c885d0298b43ed41116a0524777867ec4da892d76304b432f613"; };
 }{
   name = "haskelldb-hdbc-postgresql";  version = "1.0";
   edeps = [{cdeps = [];  deps = [];}];
@@ -253,7 +257,7 @@ wait
       }
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hdbc-postgresql-1.0.tar.gz; sha256="d58248259a31c6d62cf82b12e3ea5ae57b7aa81d4b941499c3ebb8156975251f"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hdbc-postgresql-1.0.tar.gz; sha256="156e325783eebf5dab52d3932af6bd27b03cdfeb37aee23f7818039dd79a44a7"; };
 }{
   name = "haskelldb";  version = "1.0";  edeps = [];
   ldeps = 
@@ -280,7 +284,7 @@ wait
       {i1 = {gte = "0.2";};  i2 = {lt = "1";};  n = "HList";}
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-1.0.tar.gz; sha256="443bc65e180917e65886e4bfbd4e76e4b5bb3ed7a29fe763e9796d6ce5066b2a"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-1.0.tar.gz; sha256="edc49ea7da6ade1dc4c6f9150185448f7258b6bbb4b6f6ebcb1d909c4d6fe418"; };
   tflags = ["split-base"];
 }{
   name = "haskelldb-hsql-oracle";  version = "0.11";
@@ -290,12 +294,12 @@ wait
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "mtl";}  {n = "haskelldb";  v = "0.11";}
-      {n = "haskelldb-hsql";  v = "0.11";}  {n = "hsql";}
+      {n = "base";}  {n = "mtl";}  {gte = "0.11";  n = "haskelldb";}
+      {gte = "0.11";  n = "haskelldb-hsql";}  {n = "hsql";}
       {n = "hsql-oracle";}
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-oracle-0.11.tar.gz; sha256="c602ded2762df0847aefd1d863405439ccbdd5427ba91030a158bc2dfde5237c"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-oracle-0.11.tar.gz; sha256="caf0208a431885f8cee72fc8d8c7aa7953759e059917229e81265ce381fcb433"; };
 }{
   name = "haskelldb-hsql-sqlite";  version = "0.11";
   edeps = [{cdeps = [];  deps = [];}];
@@ -304,10 +308,10 @@ wait
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "mtl";}  {n = "haskelldb";  v = "0.11";}
-      {n = "haskelldb-hsql";  v = "0.11";}  {n = "hsql";}
+      {n = "base";}  {n = "mtl";}  {gte = "0.11";  n = "haskelldb";}
+      {gte = "0.11";  n = "haskelldb-hsql";}  {n = "hsql";}
       {n = "hsql-sqlite";}
     ];
   };
-  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-sqlite-0.11.tar.gz; sha256="087ee477b88f965038f819410d9e217fe327bf299616155ac445569c2f16f657"; };
+  srcFile = fetchurl { url = http://mawercer.de/~nix/haskelldb-hsql-sqlite-0.11.tar.gz; sha256="f2983d6edcba3ef50616ec2db118fd956d8db6c751dbef35b58f7aef12d39537"; };
 }]

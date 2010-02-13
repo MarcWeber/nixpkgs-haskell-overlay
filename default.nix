@@ -149,6 +149,10 @@ let
               // attrSingleton "haskell-src" { buildInputs = [ happyFixed ]; }
               // attrSingleton "haskell-src-exts" { buildInputs = [ happyFixed ]; }
               // attrSingleton "happs-hsp" { buildInputs = [ happyFixed ]; }
+              // attrSingleton "hsql-mysql" {
+                  propagatedBuildInputs = [ pkgs.mysql ];
+                  configureFlags = ["--extra-include-dirs=${pkgs.mysql}/include/mysql" "--extra-lib-dirs=${pkgs.mysql}/lib/mysql"];
+                }
             ;
 
             # == resolveDependenciesBruteforce arguments:
