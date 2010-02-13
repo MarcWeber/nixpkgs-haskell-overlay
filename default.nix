@@ -222,22 +222,24 @@ let
                   inherit (pkgs) stdenv fetchurl pkgconfig gnome cairo;
                 }
 
-              else haskellDerivation (self: (removeAttrs (lib.attrByPath [name] {} ammendmentsFixed) ["buildInputs"]) // {
-                pname = name;
-                name = fullName;
-                inherit src patches version;
-                extraBuildInputs = 
-                     (lib.attrByPath [name "buildInputs"] [] ammendmentsFixed);
-                propagatedBuildInputs = dependencies
-                  ++ (lib.attrByPath [name "propagatedBuildInputs"] [] ammendmentsFixed);
-                configureFlags = ( lib.concatStringsSep " " (
-                         (lib.mapAttrsFlatten (a: v: "-f${if v then "" else "-"}${a}") flags)
-                      ++ (lib.attrByPath [name "configureFlags"] [] ammendmentsFixed)
-                      ++ ["--enable-library-profiling"] # <- think about this again
-                      )
-                    );
-                  #+ "--enable-library-for-ghci --enable-shared --ghc-options=-dynamic";
-              });
+              else let
+                  deps = dependencies ++ (lib.attrByPath [name "propagatedBuildInputs"] [] ammendmentsFixed);
+                in
+                  (haskellDerivation (self: (removeAttrs (lib.attrByPath [name] {} ammendmentsFixed) ["buildInputs"]) // {
+                  pname = name;
+                  name = fullName;
+                  inherit src patches version;
+                  extraBuildInputs = 
+                       (lib.attrByPath [name "buildInputs"] [] ammendmentsFixed);
+                  propagatedBuildInputs = deps;               
+                  configureFlags = ( lib.concatStringsSep " " (
+                           (lib.mapAttrsFlatten (a: v: "-f${if v then "" else "-"}${a}") flags)
+                        ++ (lib.attrByPath [name "configureFlags"] [] ammendmentsFixed)
+                        ++ ["--enable-library-profiling"] # <- think about this again
+                        )
+                      );
+                    #+ "--enable-library-for-ghci --enable-shared --ghc-options=-dynamic";
+                }))// { inherit deps; };
         
       });
 
