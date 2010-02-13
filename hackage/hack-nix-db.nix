@@ -45,6 +45,19 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0wwnb7a6dmzgh122qg322mi3vpyk93xw52cql6dx18sqdbxyxdbb";
 }
 {
+  name = "AC-PPM";  version = "1.1.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.9";};  i2 = {lt = "1.0";};  n = "bytestring";}
+    ];
+  };
+  sha256 = "0y2wzwfnlx50rzkdigmjy3dg5f91pmkf4gmnzjhs3r916d296gkq";
+}
+{
   name = "AC-VanillaArray";  version = "1.1.2";  edeps = [];
   ldeps = 
   {
@@ -162,7 +175,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0zpp0s90q2jhpagf6iswbmm6hyi0x2hns8vqd5swwa8d258avrbq";
 }
 {
-  name = "AES";  version = "0.2.5";  edeps = [];
+  name = "AES";  version = "0.2.6";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -177,7 +190,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "random";}  {gte = "0.2";  n = "cereal";}
     ];
   };
-  sha256 = "0l53wx46q868f96k0z133ikrzwikmiz3qzfsgcrp1lc89b09zjyd";
+  sha256 = "0irqg2mgar4j3zyf83p0x1gks34lx7g8f1pncy970skwmn8s8cy1";
 }
 {
   name = "AGI";  version = "1.3";  edeps = [];
@@ -251,6 +264,19 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     [{gte = "4.0.0.0";  n = "base";}  {lt = "6.0.0.0";  n = "base";}];
   };
   sha256 = "0jggzjyms1w4p1ynv8m5yvya64kbxkjdis7wvy3lildmp0w0x0c7";
+}
+{
+  name = "AWin32Console";  version = "1.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "regex-compat";}  {n = "Win32";}
+    ];
+  };
+  sha256 = "0il5bngj4919mmpm0rwmbx74ih3sfbqkaph6w12p49fs466sxkh1";
 }
 {
   name = "Adaptive";  version = "0.22";
@@ -517,25 +543,20 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0i8b6g2jvwg5r5gi1q3fgckh675pc6viqdvncl4ycr4zf72r4jj3";
 }
 {
-  name = "BerkeleyDB";  version = "0.7.2";  edeps = [];
+  name = "BerkeleyDB";  version = "0.8";  edeps = [];
   ldeps = 
   {
-    cdeps = 
-    [[
-       {flag = "cxx";}  {cdeps = [];  deps = [];}
-       {cdeps = [];  deps = [];}
-     ]];
+    cdeps = [];
     deps = 
     [
       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
       {n = "extensible-exceptions";}  {gte = "0.9";  n = "bytestring";}
     ];
   };
-  sha256 = "0xklc19bsb5gi3sxidgcjc1mpks3li44k2h00l6vihb58ismc312";
-  tflags = ["cxx"];
+  sha256 = "16886xwh5v8x4kwif681wrms3njrcj60lqzjlrqxmry6s1apgixc";
 }
 {
-  name = "BerkeleyDBXML";  version = "0.6.2";  edeps = [];
+  name = "BerkeleyDBXML";  version = "0.7";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -543,10 +564,10 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     [
       {i1 = {le = "5";};  i2 = {gte = "4";};  n = "base";}
       {gte = "0.9";  n = "bytestring";}
-      {gte = "0.7.1";  n = "BerkeleyDB";}
+      {gte = "0.8";  n = "BerkeleyDB";}
     ];
   };
-  sha256 = "0zaciv56w85byayx528xlw3w58swifwnwxkid2imgsmfs20l009m";
+  sha256 = "1ddxd5njzncnfdd4ax1xs0qbv33azgsx3vhvla86f55rsvrw05r8";
 }
 {
   name = "Binpack";  version = "0.4";  edeps = [];
@@ -854,6 +875,19 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["small_base"];
 }
 {
+  name = "Cardinality";  version = "0.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "containers";}  {n = "mtl";}
+    ];
+  };
+  sha256 = "01bp045vl08sixvi6h0i21vvmjirnyzlmwxx8yq5njbcxrgbq6dn";
+}
+{
   name = "Chart";  version = "0.12";  edeps = [];
   ldeps = 
   {
@@ -917,7 +951,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["small_base"];
 }
 {
-  name = "CheatSheet";  version = "2.0";
+  name = "CheatSheet";  version = "2.2";
   edeps = 
   [{
      cdeps = [];
@@ -927,7 +961,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
        {n = "containers";}  {n = "directory";}
      ];
    }];
-  sha256 = "0yfga12hdjqgwhgsmm7fqa60x31rj9m9a02c2fljba3lyfw4nmga";
+  sha256 = "0qb92lzf0iph9sdz0g2lfhr27mylmhgch6qs5kr9c847xp26nb1b";
 }
 {
   name = "ChristmasTree";  version = "0.1.2";  edeps = [];
@@ -1072,20 +1106,21 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1cad9j7ivd6mfcff44773v8z3z2ilparxfikbnv0gab6csc9p1nw";
 }
 {
-  name = "CouchDB";  version = "0.8.1.2";  edeps = [];
+  name = "CouchDB";  version = "0.10.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "mtl";}  {n = "containers";}  {n = "network";}
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}  {n = "mtl";}
+      {n = "containers";}  {n = "network";}
       {gte = "4000.0.4";  n = "HTTP";}  {gte = "0.4.3";  n = "json";}
     ];
   };
-  sha256 = "072dxq84ks5iqa77mhmg39dvxsc6s42hdh2jdfs36wxlsl97wz9k";
+  sha256 = "1ny62ab0sjrkh7mpxj0ahqrv7c8dh0n5s1g8xl0mq3yiwlrjdsim";
 }
 {
-  name = "Crypto";  version = "4.2.0";
+  name = "Crypto";  version = "4.2.1";
   edeps = 
   [
     {cdeps = [];  deps = [];}  {cdeps = [];  deps = [];}
@@ -1101,15 +1136,15 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
          cdeps = [];
          deps = 
          [
-           {gte = "3";  n = "base";}  {n = "array";}  {n = "random";}
-           {n = "pretty";}
+           {gte = "3";  n = "base";}  {lt = "5";  n = "base";}  {n = "array";}
+           {n = "random";}  {n = "pretty";}
          ];
        }
        {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
      ]];
-    deps = [{n = "QuickCheck";}  {n = "HUnit";}];
+    deps = [{gte = "2";  n = "QuickCheck";}  {n = "HUnit";}];
   };
-  sha256 = "1rq27wnb4x6g5hlpcjcnaicp625fi9dlhh1c0sr9mmqsha31af47";
+  sha256 = "1jzwc9410cp90yai4ykka7qcza98i4mjyp6bpkwvwki12lv5www5";
   tflags = ["small_base"];
 }
 {
@@ -1644,21 +1679,22 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1w25h3n3cnsl9dvr5s94jzf5qxyx0dl0v8dmqv2rkwwm7s2hdbl9";
 }
 {
-  name = "ForSyDe";  version = "3.0";  edeps = [];
+  name = "ForSyDe";  version = "3.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {n = "type-level";}  {n = "parameterized-data";}
-      {n = "containers";}  {n = "packedstring";}  {n = "base";}
+      {n = "containers";}  {n = "packedstring";}
+      {i1 = {gte = "4";};  i2 = {lt = "6";};  n = "base";}
       {n = "regex-posix";}  {n = "mtl";}  {n = "pretty";}
       {gt = "2.0";  n = "template-haskell";}  {n = "process";}
       {n = "directory";}  {n = "filepath";}  {n = "old-time";}
-      {n = "random";}
+      {n = "random";}  {n = "array";}  {n = "syb";}
     ];
   };
-  sha256 = "0x0fz25wi0apdlqcs7061m9yvkvpap0xz6v6anzm17ha3mah6v95";
+  sha256 = "1fq89x58nwjzq5jlsa6w7h8vf4arx33ldzrqw3c6adxgbljdck7j";
 }
 {
   name = "FunGEn";  version = "0.1";  edeps = [];
@@ -1695,7 +1731,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["splitbase"];
 }
 {
-  name = "GLFW";  version = "0.4.1";  edeps = [];
+  name = "GLFW";  version = "0.4.2";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -1709,15 +1745,12 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
         {
           cdeps = 
           [[
-             {os = "Linux";}  {cdeps = [];  deps = [];}
+             {os = "OSX";}  {cdeps = [];  deps = [];}
              {
                cdeps = 
                [[
-                  {os = "OSX";}  {cdeps = [];  deps = [];}
-                  {
-                    cdeps = [[{os = "Windows";}  {cdeps = [];  deps = [];}]];
-                    deps = [];
-                  }
+                  {os = "Windows";}  {cdeps = [];  deps = [];}
+                  {cdeps = [];  deps = [];}
                 ]];
                deps = [];
              }
@@ -1732,7 +1765,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "2.1";};  i2 = {lt = "3";};  n = "OpenGL";}
     ];
   };
-  sha256 = "1sd1xbs538vpw76jxbb0bsbr2fjldfqp89ns88kbd8maby3x3v43";
+  sha256 = "11bax5g4208rx7y03m80kfqdagdnl08n4f3fk060xb7m2357prcg";
 }
 {
   name = "GLFW-OGL";  version = "0.0";  edeps = [];
@@ -1787,7 +1820,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "13pf3hzv6s7h2vxwsaabg2h4qp96zbap2gajahmh38wlnw6x8r9v";
 }
 {
-  name = "GLFW-b-demo";  version = "0.0.2";
+  name = "GLFW-b-demo";  version = "0.0.3";
   edeps = 
   [{
      cdeps = 
@@ -1802,7 +1835,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
        {i1 = {le = "5";};  i2 = {gte = "4";};  n = "base";}
      ];
    }];
-  sha256 = "164y5c36hccycn3h55am8azqwn49yv04hmyag19wh54n8gjp1wja";
+  sha256 = "1v2hrbwbymd67p18x05y1212shj713hb7drgyhi35qlmb3l11j3a";
 }
 {
   name = "GLURaw";  version = "1.1.0.0";  edeps = [];
@@ -1868,7 +1901,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["split-base"  "usenativewindowslibraries"];
 }
 {
-  name = "GPX";  version = "0.4.5";  edeps = [];
+  name = "GPX";  version = "0.4.7";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -1893,37 +1926,38 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
      ]];
     deps = [];
   };
-  sha256 = "1wxklsfwiv1chpx0bd5fcdvlxja62niddb9x472l71cf3mqzdgr3";
+  sha256 = "1m8kqf8zwf28vg49qzn23g5srqnqq544kl6b3ffdnn9ns80p70yn";
   tflags = ["small_base"];
 }
 {
-  name = "GPipe";  version = "1.1.4";  edeps = [];
+  name = "GPipe";  version = "1.1.7";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {n = "containers";}  {n = "mtl";}  {n = "list-tries";}
-      {gte = "2.2.2.0";  n = "GLUT";}
+      {n = "containers";  v = "0.2.0.1";}  {n = "mtl";}
+      {n = "list-tries";}  {gte = "2.2.2.0";  n = "GLUT";}
       {gte = "2.4.0.1";  n = "OpenGL";}  {n = "Boolean";  v = "0.0.1";}
-      {n = "Vec";  v = "0.9.6";}  {n = "Vec-Boolean";  v = "1.0.1";}
-      {n = "base";  v = "4.1.0.0";}
+      {n = "Vec";  v = "0.9.6";}  {gte = "1.0.2";  n = "Vec-Boolean";}
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
     ];
   };
-  sha256 = "17x3zpi5y94fpiqba97hbagfkbzj33sh6l08d4a6sa9dfdfgflnl";
+  sha256 = "1ylpyhhrd310v3qd242jllvp7lm1bcq9pfv9fpi3i3wn76mhyn8l";
 }
 {
-  name = "GPipe-TextureLoad";  version = "1.0.1";  edeps = [];
+  name = "GPipe-TextureLoad";  version = "1.0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {gte = "1.1.0";  n = "GPipe";}  {n = "base";  v = "4.1.0.0";}
+      {gte = "1.1.5";  n = "GPipe";}
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {gte = "0.2";  n = "stb-image";}  {n = "bitmap";}
     ];
   };
-  sha256 = "0qzgzcxh1pq8104883glbscwfzxbq98kvl6sx250j5fja7y10dpl";
+  sha256 = "1c8hp1pkayl299gi41l7m2d0qgn2kfq7l3xrf3awqqzr9vn0ss80";
 }
 {
   name = "GeBoP";  version = "1.7.1";
@@ -2055,7 +2089,20 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0axd1v46dc5qg80zg8fnk00s151nq3ajvxjpwgwgxs5d466libz7";
 }
 {
-  name = "GlomeVec";  version = "0.1.1";  edeps = [];
+  name = "GlomeTrace";  version = "0.1.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
+      {n = "array";}  {gte = "0.1.2";  n = "GlomeVec";}
+    ];
+  };
+  sha256 = "10bcfm1i5iiald3x2khk3z2b8n5xygiz87sljzvcqyg21py487xi";
+}
+{
+  name = "GlomeVec";  version = "0.1.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -2065,7 +2112,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "array";}
     ];
   };
-  sha256 = "1n2svm7xia077bj99h8jjyvd35pfwv944idvpr1lwp576w4ihv76";
+  sha256 = "0f96snfqgrqknl5f9f03hig4cbss9zlqfl13hzsbl5mzfwcw28v0";
 }
 {
   name = "GoogleChart";  version = "0.2";  edeps = [];
@@ -2688,22 +2735,26 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["split-base"];
 }
 {
-  name = "HJScript";  version = "0.4.6";  edeps = [];
+  name = "HJScript";  version = "0.4.7";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {lte = "4";  n = "base";}  {gte = "0.4.4";  n = "HJavaScript";}
+      {lt = "5";  n = "base";}  {gte = "0.4.4";  n = "HJavaScript";}
       {n = "mtl";}  {gte = "0.4.4";  n = "hsx";}
     ];
   };
-  sha256 = "161nhyf4slyglmvhq04vcj6x0ygsw8ml47a63y1k14grgg6n4m3j";
+  sha256 = "07y68zwgy96mrlqghiqczb2bddlpj3mhgc373n8hgciwvdzk3ayn";
 }
 {
-  name = "HJavaScript";  version = "0.4.4";  edeps = [];
-  ldeps = {cdeps = [];  deps = [{n = "base";}];};
-  sha256 = "0cxqww826wil7wrssh26mdhw2dn6vsvy6xvjryzc9kp9agjhgc98";
+  name = "HJavaScript";  version = "0.4.5";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = [{lt = "5";  n = "base";}  {gte = "1.0";  n = "pretty";}];
+  };
+  sha256 = "1vrznc8x4qcimmfd93wq39k13qvnsrrniinnqzwx8z1a35152bzi";
 }
 {
   name = "HList";  version = "0.2";  edeps = [];
@@ -2960,7 +3011,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "10ndmzwaf9by8wnawl3p1r7wn6hqigfymv7hd99ayf25dsqwnzx2";
 }
 {
-  name = "HSHHelpers";  version = "0.23";  edeps = [];
+  name = "HSHHelpers";  version = "0.24";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -2969,12 +3020,12 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "0.4";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {gte = "1";};  i2 = {lt = "1.27";};  n = "HSH";}
       {n = "unix";}  {n = "HStringTemplateHelpers";}
-      {lte = "1.0.3";  n = "MissingH";}  {n = "regex-pcre";}
+      {gte = "1.0.3";  n = "MissingH";}  {n = "regex-pcre";}
       {n = "directory";}  {n = "bytestring";}  {n = "filepath";}
       {n = "mtl";}  {n = "DebugTraceHelpers";}
     ];
   };
-  sha256 = "02vywqi16j1mykyxkpg3ciaykw5r4nxam4lypgh7b73zcbfp8793";
+  sha256 = "0mz25xak9fkircdxcpzrf3rym9l5ivhifk7dqm2xki3mv6fw214d";
 }
 {
   name = "HSoundFile";  version = "0.2.2";  edeps = [];
@@ -3510,7 +3561,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0dkvvk3qwn72vn4kc0q2iv6raxslrxf0ypr0sn7i0fjds3cjxs6s";
 }
 {
-  name = "Hipmunk";  version = "5.0.0";  edeps = [];
+  name = "Hipmunk";  version = "5.0.1.1";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -3521,15 +3572,18 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
          deps = 
          [
            {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-           {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "array";}
-           {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "containers";}
+           {i1 = {gte = "0.1";};  i2 = {lt = "0.4";};  n = "array";}
+           {i1 = {gte = "0.1";};  i2 = {lt = "0.4";};  n = "containers";}
          ];
        }
-       {cdeps = [];  deps = [{n = "base";  v = "2";}];}
+       {
+         cdeps = [];
+         deps = [{i1 = {gte = "2";};  i2 = {lt = "3";};  n = "base";}];
+       }
      ]];
     deps = [];
   };
-  sha256 = "080jdl3fwcd7aq1y3i75cqr3jrnz7q465vfk32j0drcc3dcp5fjq";
+  sha256 = "10pmsl3dgawkrmvd3sf0yr7wx8n04v1liidm7ypqq44900pr0q1z";
   tflags = ["small_base"];
 }
 {
@@ -3676,17 +3730,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1yifhxk1m3z2i7gaxgwlmk6cv2spbpx8fny4sn59ybca8wd9z7ps";
 }
 {
-  name = "HsHyperEstraier";  version = "0.3.1";  edeps = [];
+  name = "HsHyperEstraier";  version = "0.3.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {gte = "4";  n = "base";}  {n = "bytestring";}  {n = "network";}
-      {n = "utf8-string";}
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "bytestring";}  {n = "network";}  {n = "utf8-string";}
     ];
   };
-  sha256 = "08yac58mkzw18l5spf8il4jdp17y87mvnxdd8g11w55cn0mlvk50";
+  sha256 = "0calsa5979mgn42bv7jxy8g8n2j3yzv5fbcf81l650khaw8rhv4g";
 }
 {
   name = "HsJudy";  version = "0.2";  edeps = [];
@@ -3702,23 +3756,30 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1ypdsjy7gn6b3ynn17fcpirgwq3017jahm3pj5fh4qr6zr1cljkh";
 }
 {
-  name = "HsOpenSSL";  version = "0.6.5";  edeps = [];
+  name = "HsOpenSSL";  version = "0.8";  edeps = [];
   ldeps = 
   {
     cdeps = 
-    [[
-       {os = "Windows";}  {cdeps = [];  deps = [];}
-       {cdeps = [];  deps = [];}
-     ]];
+    [
+      [
+        {compilerFlavor = "GHC";  versionRange = {gte = "6.11";};}
+        {cdeps = [];  deps = [{n = "integer-gmp";}];}
+        {cdeps = [];  deps = [{n = "integer";}];}
+      ]
+      [
+        {os = "Windows";}  {cdeps = [];  deps = [];}
+        {cdeps = [];  deps = [];}
+      ]
+    ];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "bytestring";}  {n = "ghc-prim";}  {n = "integer";}
+      {n = "bytestring";}  {n = "ghc-prim";}
       {gte = "1.1.1";  n = "time";}  {n = "old-locale";}
       {gte = "2.1.0.0";  n = "network";}
     ];
   };
-  sha256 = "1qj0l7vfbwj0yja9r21gf2x92cblljz9dmkxrw4hfbw2smxiw4ns";
+  sha256 = "1nikp0xx0h3l1pp49nna8vq02ciq27748xi56rmpjmrsdvihl5kw";
 }
 {
   name = "HsParrot";  version = "0.0.2";  edeps = [];
@@ -3740,17 +3801,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0czhibr8lw4mjinwszjp4nh1ifi1xgkynwbjs6l3k97dqfd8bw4v";
 }
 {
-  name = "HsSVN";  version = "0.4.1";  edeps = [];
+  name = "HsSVN";  version = "0.4.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {gte = "4";  n = "base";}  {n = "bytestring";}  {n = "mtl";}
-      {n = "stm";}
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "bytestring";}  {n = "mtl";}  {n = "stm";}
     ];
   };
-  sha256 = "12al4vn1x6i7impin0dj77hg3i4mbyma5xjhmm6f4smibq2dcbsd";
+  sha256 = "0xixhs5638pz81067l7vrs3zh52sjcdqf63sr8qy6p9k7401q9bk";
 }
 {
   name = "HsSyck";  version = "0.45";  edeps = [];
@@ -3864,17 +3925,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1gfkmmzrswlgq4jymckmigc8a9g424zq499c4n7c4fm38lvd22xa";
 }
 {
-  name = "IcoGrid";  version = "0.1";  edeps = [];
+  name = "IcoGrid";  version = "0.1.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
-      {n = "array";}  {gte = "0.1";  n = "GlomeVec";}
+      {n = "array";}  {gte = "0.1.2";  n = "GlomeVec";}
     ];
   };
-  sha256 = "1y95l02hk62y7j4ny6n3mvfjbcn6109vyrkhgp2yvab2vh9a0lji";
+  sha256 = "0ryb2q5xfddcx2qg019jajac7xvaw2ci5wi094gbrqhhflj7wc8n";
 }
 {
   name = "IfElse";  version = "0.85";  edeps = [];
@@ -4401,7 +4462,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0dwsx23fibgj36181rfwfj1kl6sgdkf8bk4dd9cwia0rbjrl4qyk";
 }
 {
-  name = "Lucu";  version = "0.4.1";
+  name = "Lucu";  version = "0.4.2";
   edeps = 
   [{
      cdeps = 
@@ -4424,7 +4485,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "time";}  {n = "unix";}  {n = "zlib";}
     ];
   };
-  sha256 = "0z5gm6v8q3y3scng1g0lx77p2fd8wmh1gm7lz831yqr0hbxqlkmz";
+  sha256 = "0cq5vzsl1ci10a8f4ii6f7pq6vl668zqa1didxfkn3rff6nnv2qw";
   tflags = ["build-lucu-implant-file"];
 }
 {
@@ -4800,7 +4861,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0yr1aa0ail2h9qsq2bslcwwq6cxl2lzajmc1laj19r7ks62p32rm";
 }
 {
-  name = "Omega";  version = "0.2.1";  edeps = [];
+  name = "Omega";  version = "0.2.2";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -4814,7 +4875,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "containers";}
     ];
   };
-  sha256 = "1g138vs9yzf9chfzmayvblgg6isjxl7qfg9nwpfc40hiag9srdr9";
+  sha256 = "0ni2qnvh4rj39r81b3bks614rr2fc0mxwzh3rl8kz8gk48j1nkcf";
 }
 {
   name = "OneTuple";  version = "0.2.1";  edeps = [];
@@ -5386,6 +5447,20 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["perl5"];
 }
 {
+  name = "QIO";  version = "1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "containers";}  {n = "haskell98";}  {n = "mtl";}
+      {n = "random";}  {n = "old-time";}
+    ];
+  };
+  sha256 = "00r6g5imrlwnw81h837idgca9b04kg7wg7w8ils61vwf49vp12wd";
+}
+{
   name = "QuickCheck";  version = "2.1.0.3";  edeps = [];
   ldeps = 
   {
@@ -5627,9 +5702,10 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0jn0kmz58cbc2rkifhvp3jl0sshgphy3q6936361lwq3ygb5xfqn";
 }
 {
-  name = "SDL-gfx";  version = "0.5.2";  edeps = [];
-  ldeps = {cdeps = [];  deps = [{n = "base";}  {n = "SDL";}];};
-  sha256 = "10z88yidvp8fi4qj8b2a2vawp2xz18wknildx2y66qwcc5shzdhx";
+  name = "SDL-gfx";  version = "0.5.3";  edeps = [];
+  ldeps = 
+  {cdeps = [];  deps = [{lt = "5";  n = "base";}  {n = "SDL";}];};
+  sha256 = "08j021yji6dzygf1gr7ggzn743pdpy8031rmv4hnvz73jszxymy3";
 }
 {
   name = "SDL-image";  version = "0.5.2";  edeps = [];
@@ -6356,7 +6432,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "02ck7sik5wvh989k9ban1m2dlpfld0d0zs7sqb12m1f6wls7fghc";
 }
 {
-  name = "UMM";  version = "0.1.5";
+  name = "UMM";  version = "0.1.6";
   edeps = 
   [{
      cdeps = [];
@@ -6367,7 +6443,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
        {n = "utf8-string";}
      ];
    }];
-  sha256 = "04sw4hqddr728v40svz0ksdyb0z1d1yrq6r9hqqmm47yq9jfhsz1";
+  sha256 = "1s78qaphzc6gdy3cs2lw53p6r2hrdvcpvjh6lryrib9vny03lbkd";
 }
 {
   name = "URLT";  version = "0.10";  edeps = [];
@@ -6428,25 +6504,29 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1mv23f5z7piqvdj1g1583303wd85qqr7p3mdwyvrm3v16ai6zvf1";
 }
 {
-  name = "Vec-Boolean";  version = "1.0.1";  edeps = [];
+  name = "Vec-Boolean";  version = "1.0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {n = "Boolean";  v = "0.0.1";}  {n = "Vec";  v = "0.9.6";}
-      {n = "base";  v = "4.1.0.0";}
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
     ];
   };
-  sha256 = "09w0jvllxa652zcj9dp2v1bj6id3zv3hbhlpgajajnyy7zhv7j49";
+  sha256 = "1106y878i4nyb5dm3jjfh8clbhd20jq5xwnj21gb0hrm0r4qj0ny";
 }
 {
-  name = "Vec-Transform";  version = "1.0.2";  edeps = [];
+  name = "Vec-Transform";  version = "1.0.3";  edeps = [];
   ldeps = 
   {
-    cdeps = [];  deps = [{n = "Vec";}  {n = "base";  v = "4.1.0.0";}];
+    cdeps = [];
+    deps = 
+    [
+      {n = "Vec";}  {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+    ];
   };
-  sha256 = "124p4xwjql7sl46bnkq4x0wcjz6zmf8swzz3526q9wsa23va0x9y";
+  sha256 = "13aksrff3i1fbmghy4h6492hp5a5nad6jqp6hxxr1wqrpr6blm01";
 }
 {
   name = "WAVE";  version = "0.1.1";  edeps = [];
@@ -6558,7 +6638,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "14a1rqlq925f6rdbi8yx44xszj5pvskcmw1gi1bj8hbilgmlwi7f";
 }
 {
-  name = "WebBits-Html";  version = "1.0.1";  edeps = [];
+  name = "WebBits-Html";  version = "1.0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -6571,7 +6651,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "1.0";};  i2 = {lte = "2.0";};  n = "WebBits";}
     ];
   };
-  sha256 = "134rmm5ccfsjdr0pdwn2mf81l81rgxapa3wjjfjkxrkxq6hav35n";
+  sha256 = "18dd52970cd27kra4l89vvrx2mrdbqd4w4f76xrq3142daxsagal";
 }
 {
   name = "WikimediaParser";  version = "0.1";  edeps = [];
@@ -7060,6 +7140,37 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "16h0zi55hf9g07xisbcmgkx72m9laiqykh2r9nh2siczx3sxi1qk";
 }
 {
+  name = "adaptive-tuple";  version = "0.1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [
+      [
+        {flag = "splitbase";}
+        {
+          cdeps = [];
+          deps = [{i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}];
+        }
+        {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
+      ]
+      [
+        {compilerFlavor = "GHC";  versionRange = {gte = "6.8";};}
+        {cdeps = [];  deps = [];}
+      ]
+    ];
+    deps = 
+    [
+      {n = "haskell98";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "type-level";}
+      {
+        i1 = {gte = "2.0";};  i2 = {lt = "3";};  n = "template-haskell";
+      }
+    ];
+  };
+  sha256 = "1d07svynp2w77nasi5xjn4ny6z2v2g3q37baw9cn2zixry60s72r";
+  tflags = ["splitbase"];
+}
+{
   name = "addLicenseInfo";  version = "0.1";
   edeps = 
   [{
@@ -7088,7 +7199,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1whdrmxw13nr7bb95rhqaz3klgmcwx4ai51bz5yb38nldf4ac377";
 }
 {
-  name = "afv";  version = "0.0.2";
+  name = "afv";  version = "0.1.0";
   edeps = 
   [{
      cdeps = [];
@@ -7103,7 +7214,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
        {gte = "0.0.0.6";  n = "yices";}
      ];
    }];
-  sha256 = "1i36n7rggdrag6hfg9hw1ysjm595ilzfcp8bcc49br8ph9l0zaz3";
+  sha256 = "0gqivja47sa7irm0zq1grw4yai32rjk775xbx1xylzcrq6b259m8";
 }
 {
   name = "agum";  version = "2.2";
@@ -7278,6 +7389,33 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     }
   ];
   sha256 = "0is11wdymarzm5zlilh572j1nw3akxma0czbswvgy391pj1a007s";
+}
+{
+  name = "altfloat";  version = "0.3";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {flag = "splitinteger";}
+       {
+         cdeps = 
+         [[
+            {flag = "integergmp";}
+            {cdeps = [];  deps = [{n = "integer-gmp";}];}
+            {cdeps = [];  deps = [{n = "integer-simple";}];}
+          ]];
+         deps = [];
+       }
+       {cdeps = [];  deps = [{n = "integer";}];}
+     ]];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "ghc-prim";}
+    ];
+  };
+  sha256 = "03cr680pdxybh1ldb1lw5igz9wwypnw02pbnjmv6gi8cdy9cv35m";
+  tflags = ["splitinteger"  "integergmp"];
 }
 {
   name = "amqp";  version = "0.1";  edeps = [];
@@ -7468,7 +7606,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1x8lnbw46gmhfac71f6vfwgpzc827w23kk6wifzj6y8n40zrcd8f";
 }
 {
-  name = "archlinux";  version = "0.2.3";  edeps = [];
+  name = "archlinux";  version = "0.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -7482,7 +7620,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "csv";}
     ];
   };
-  sha256 = "01xg7mzp3lkapsgs8r7n6cvyi6bravp59xz2xzli2yry8xpj342l";
+  sha256 = "1nra221lkqabwnmwrax0lff8c96gbvkqcsrshr93dhrzr064dg5s";
 }
 {
   name = "archnews";  version = "0.2";
@@ -7740,7 +7878,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1jvbf3z9z6m40hprykxcc5xwbmwm6p5hwlyab0dimd8h2ar50xfr";
 }
 {
-  name = "authenticate";  version = "0.4.0";  edeps = [];
+  name = "authenticate";  version = "0.4.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -7749,7 +7887,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {gte = "0.4.3";};  i2 = {lt = "0.5";};  n = "json";}
       {i1 = {gte = "0.4.0";};  i2 = {lt = "0.5";};  n = "http-wget";}
-      {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "tagsoup";}
+      {i1 = {gte = "0.6";};  i2 = {lt = "0.9";};  n = "tagsoup";}
       {i1 = {gte = "0.0.0";};  i2 = {lt = "0.1";};  n = "failure";}
       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "safe-failure";}
       {
@@ -7758,7 +7896,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "syb";}
     ];
   };
-  sha256 = "0dwfxb2dxkg20igvq80f4wc04jq155nmmwfmm17b877vww08d1ix";
+  sha256 = "0wg569s0klazyy8vfhxwi0nrf9cqrzjidcqh6ibjksdvdxifixkw";
 }
 {
   name = "autoproc";  version = "0.1.1";
@@ -7828,7 +7966,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "19y7p53b80lqfrs1b945l4pc73c54zivk8l6lffzznd7gmbc0mv5";
 }
 {
-  name = "bamboo";  version = "2010.1.1";  edeps = [];
+  name = "bamboo";  version = "2010.1.26";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -7844,13 +7982,12 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {gte = "0.3.3";  n = "utf8-string";}  {n = "pandoc";}
       {gte = "2";  n = "parsec";}  {gte = "0.3";  n = "gravatar";}
       {gte = "0.2";  n = "data-default";}
-      {gte = "2009.9.18";  n = "mps";}
-      {gte = "2009.6.25";  n = "hcheat";}
+      {gte = "2009.1.26";  n = "mps";}
       {gte = "2009.10.30";  n = "hack";}
-      {gte = "2009.11.1";  n = "hack-contrib";}
+      {gte = "2010.1.26";  n = "hack-contrib";}
     ];
   };
-  sha256 = "131c4s8f4hwkv6mrdhlaxnb62lbhg6js79r6zhkd0cix6ljwwd0l";
+  sha256 = "0x0s5szamhcdpdj3xyim9m8a0d0q09fzmppi282djxwsdp2m03pn";
 }
 {
   name = "bamboo-launcher";  version = "2009.11.1";
@@ -8188,14 +8325,21 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0n7hxmcjkmnv993mmwnshc1pyjsxyvds1bfd48a5shp80sigkp8p";
 }
 {
-  name = "bff";  version = "0.2";
+  name = "bff";  version = "0.3";
   edeps = 
   [
     {
       cdeps = 
       [[
          {flag = "render";}
-         {cdeps = [];  deps = [{gte = "0.8";  n = "Chart";}];}
+         {
+           cdeps = [];
+           deps = 
+           [
+             {gte = "0.12";  n = "Chart";}  {n = "data-accessor";}
+             {n = "colour";}
+           ];
+         }
          {cdeps = [];  deps = [];}
        ]];
       deps = [];
@@ -8225,8 +8369,9 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
            cdeps = [];
            deps = 
            [
-             {n = "base";}  {n = "directory";}  {n = "xhtml";}  {n = "cgi";}
-             {n = "hint";}  {n = "utf8-string";}
+             {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "base";}
+             {n = "directory";}  {n = "xhtml";}  {n = "cgi";}
+             {gte = "0.3.2";  n = "hint";}  {n = "utf8-string";}
            ];
          }
          {cdeps = [];  deps = [];}
@@ -8239,7 +8384,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
          {flag = "binaries";}
          {
            cdeps = [];
-           deps = [{n = "base";}  {n = "directory";}  {n = "hint";}];
+           deps = 
+           [
+             {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "base";}
+             {n = "directory";}  {gte = "0.3.2";  n = "hint";}
+           ];
          }
          {cdeps = [];  deps = [];}
        ]];
@@ -8251,14 +8400,14 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "containers";}  {n = "mtl";}
-      {n = "template-haskell";}
+      {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "base";}
+      {n = "containers";}  {n = "mtl";}  {n = "template-haskell";}
       {gte = "0.53.5";  n = "category-extras";}
       {gte = "0.1.1";  n = "derive";}  {n = "haskell98";}
       {gte = "0.2.3";  n = "bimap";}  {n = "unix";}
     ];
   };
-  sha256 = "1kqdssbap03cfbz2k9h609q3n9fl7ymfd6j5j157rn03x1bs9f8l";
+  sha256 = "1jymmaac682fzk8nlxs1k5ag4gfmqvkhdxgivbvkp3ybpld9vvp3";
 }
 {
   name = "bibtex";  version = "0.0.1";
@@ -8406,13 +8555,13 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0zczf1yfjnfzdzv33j33vcc71zsf88a5qxsdmswxrpzika3rs6i0";
 }
 {
-  name = "bindings-DSL";  version = "1.0.3";  edeps = [];
+  name = "bindings-DSL";  version = "1.0.5";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = [{i1 = {gte = "0";};  i2 = {lt = "1000";};  n = "base";}];
   };
-  sha256 = "041lqrrx6frr24wmcrfrsmcix4bssc9sym0h53zp28y8jkszpk16";
+  sha256 = "00zcifwfcgv1bl57jqh2s0fz67p9gflc1hlagcnhbmmgbfxdrkmj";
 }
 {
   name = "bindings-common";  version = "1.3.4";  edeps = [];
@@ -9264,21 +9413,40 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "13csz6q8iqz81gydbyfj764ddcj8b0aj2kdpnxi7kcnw5yd06jbq";
 }
 {
-  name = "bytestring-show";  version = "0.3.2";  edeps = [];
+  name = "bytestring-show";  version = "0.3.3";  edeps = [];
   ldeps = 
   {
     cdeps = 
-    [[
-       {compilerFlavor = "GHC";  versionRange = {gte = "6.9";};}
-       {cdeps = [];  deps = [{n = "integer";}];}
-     ]];
+    [
+      [
+        {compilerFlavor = "GHC";  versionRange = {gte = "6.11";};}
+        {
+          cdeps = [];
+          deps = 
+          [{i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "integer-gmp";}];
+        }
+      ]
+      [
+        {and = 
+         [
+           {compilerFlavor = "GHC";  versionRange = {gte = "6.9";};}
+           {compilerFlavor = "GHC";  versionRange = {lt = "6.11";};}
+         ];}
+        {
+          cdeps = [];
+          deps = 
+          [{i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "integer";}];
+        }
+      ]
+    ];
     deps = 
     [
-      {n = "base";}  {n = "binary";}  {gte = "0.9";  n = "bytestring";}
-      {n = "array";}  {n = "containers";}
+      {lt = "5";  n = "base";}  {lt = "0.6";  n = "binary";}
+      {i1 = {gte = "0.9";};  i2 = {lte = "1";};  n = "bytestring";}
+      {lt = "0.4";  n = "array";}  {lt = "0.4";  n = "containers";}
     ];
   };
-  sha256 = "120415d61wqlri9phqmchgqx4srlglg7m4z160y217v7l4mqq4v5";
+  sha256 = "1n202saga8amf7wzppwl1jkxa4gxiy9nfnbnckmpckmwgzhda6zn";
 }
 {
   name = "bytestring-trie";  version = "0.1.4";  edeps = [];
@@ -9669,7 +9837,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "05k77hdx0sbgnn454vb6rc7mmrc3zby7s44x498i4ncrkivz90bz";
 }
 {
-  name = "cabal2arch";  version = "0.6";
+  name = "cabal2arch";  version = "0.7";
   edeps = 
   [{
      cdeps = [];
@@ -9678,11 +9846,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
        {i1 = {gte = "4";};  i2 = {lte = "6";};  n = "base";}
        {n = "pretty";}  {n = "process";}  {n = "directory";}
        {n = "containers";}  {n = "bytestring";}
-       {gt = "1.6";  n = "Cabal";}  {gte = "0.2.1";  n = "pureMD5";}
-       {n = "filepath";}
+       {gt = "1.8";  n = "Cabal";}  {gte = "0.2.1";  n = "pureMD5";}
+       {n = "filepath";}  {gt = "0.1";  n = "archlinux";}
      ];
    }];
-  sha256 = "0r32d569j7kxhcslgdrhaxsz881706gsi4fqziixcfx0bxayn42j";
+  sha256 = "1x20xp4zd6qn5wxiyv16yy59xhvqwi2cqzjckf00qyd0frny9g2b";
 }
 {
   name = "cabal2doap";  version = "0.2";
@@ -10388,18 +10556,21 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["splitbase"];
 }
 {
-  name = "clientsession";  version = "0.0.1";  edeps = [];
+  name = "clientsession";  version = "0.2.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "Crypto";}  {n = "dataenc";}  {n = "bytestring";}
-      {n = "random";}  {n = "utf8-string";}
+      {i1 = {gte = "4.2.0";};  i2 = {lt = "4.3";};  n = "Crypto";}
+      {i1 = {gte = "0.13.0.2";};  i2 = {lt = "0.14";};  n = "dataenc";}
+      {i1 = {gte = "1.0.0.2";};  i2 = {lt = "1.1";};  n = "random";}
+      {i1 = {gte = "0.0.0.2";};  i2 = {lt = "0.1";};  n = "failure";}
+      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
     ];
   };
-  sha256 = "04q7nch5x0x7p3d8v4rn9k1wmaqlgs8wlz114a77bn1r0iivs11y";
+  sha256 = "16gchbj077rdf306g996b7pwbgkvfqwxn9rhlk2hpd3j5sd2hgv0";
 }
 {
   name = "clock";  version = "0.1.2.1";  edeps = [];
@@ -11015,7 +11186,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["splitbase"  "time_gte_113"];
 }
 {
-  name = "convertible-text";  version = "0.2.0.2";
+  name = "convertible-text";  version = "0.2.0.4";
   edeps = 
   [{
      cdeps = 
@@ -11025,9 +11196,9 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
           cdeps = [];
           deps = 
           [
-            {n = "test-framework";}  {n = "test-framework-quickcheck";}
+            {n = "test-framework";}  {n = "test-framework-quickcheck2";}
             {n = "test-framework-hunit";}  {n = "HUnit";}
-            {i1 = {gte = "1";};  i2 = {lt = "2";};  n = "QuickCheck";}
+            {i1 = {gte = "2";};  i2 = {lt = "3";};  n = "QuickCheck";}
           ];
         }
         {cdeps = [];  deps = [];}
@@ -11059,7 +11230,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {
         i1 = {gte = "0.2.0.1";};  i2 = {lt = "0.4";};  n = "containers";
       }
-      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "text";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.8";};  n = "text";}
       {
         i1 = {gte = "0.9.1.4";};  i2 = {lt = "0.10";};  n = "bytestring";
       }
@@ -11068,7 +11239,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "template-haskell";}
     ];
   };
-  sha256 = "0i4hfndpfa18f7srj8ayz65zw2pdkgndymw0qldr9cmslqvnfcvk";
+  sha256 = "0gs7lihhfvwwk8fpg7x3xvx8ygs4w2fs85xy1bkj7fjgfcgpra0b";
   tflags = ["time_gte_113"];
 }
 {
@@ -11085,7 +11256,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1fqgfbd3in8l84250kda67paakz4sr2ywf5qzsy403546w7q9ccz";
 }
 {
-  name = "cpphs";  version = "1.9";
+  name = "cpphs";  version = "1.11";
   edeps = 
   [{
      cdeps = [];  deps = [{lt = "6";  n = "base";}  {n = "haskell98";}];
@@ -11094,7 +11265,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   {
     cdeps = [];  deps = [{lt = "6";  n = "base";}  {n = "haskell98";}];
   };
-  sha256 = "1j5rnxldarfny40ajq7vz34lhxg0drijpbrx916va45wx04sngyr";
+  sha256 = "00fv91aqjhmk12grfpwjjgg7p5x3pkdjgiipp829i6mgn6i4q4i6";
 }
 {
   name = "cpuid";  version = "0.2";  edeps = [];
@@ -11593,7 +11764,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "01h46zmyjbfhf73j71jhf3kwnv8r5f61bjidgaywj9r987afylah";
 }
 {
-  name = "darcs-beta";  version = "2.3.98.1";
+  name = "darcs-beta";  version = "2.3.98.3";
   edeps = 
   [
     {
@@ -11734,7 +11905,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
         {i1 = {le = "1.2";};  i2 = {gte = "1.1";};  n = "filepath";}
         {i1 = {gte = "0.6.1";};  i2 = {lt = "0.7";};  n = "haskeline";}
         {
-          i1 = {gte = "0.4.2";};  i2 = {lt = "0.5";};  n = "hashed-storage";
+          i1 = {gte = "0.4.4";};  i2 = {lt = "0.5";};  n = "hashed-storage";
         }
         {gte = "3";  n = "base";}
         {i1 = {gte = "0.9.0";};  i2 = {lt = "0.10";};  n = "bytestring";}
@@ -11831,7 +12002,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {le = "1.2";};  i2 = {gte = "1.1";};  n = "filepath";}
       {i1 = {gte = "0.6.1";};  i2 = {lt = "0.7";};  n = "haskeline";}
       {
-        i1 = {gte = "0.4.2";};  i2 = {lt = "0.5";};  n = "hashed-storage";
+        i1 = {gte = "0.4.5";};  i2 = {lt = "0.5";};  n = "hashed-storage";
       }
       {gte = "3";  n = "base";}
       {i1 = {gte = "0.9.0";};  i2 = {lt = "0.10";};  n = "bytestring";}
@@ -11845,7 +12016,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "0.5.1.0";};  i2 = {lt = "0.6.0.0";};  n = "zlib";}
     ];
   };
-  sha256 = "1vqc945qh6y6ah97cwzmwmcwsgqmjxad98zkgc3lw5nryxin0z18";
+  sha256 = "1zkjr92rhavzyk4zp7zn7y1hmwwa70w2fd61yyx4nhnf7p59gii3";
   tflags = 
   ["curl"  "http"  "terminfo"  "threaded"  "color"  "mmap"];
 }
@@ -12136,7 +12307,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "175sywb0r5k4rn6xijnqxcbq57k41xl7sfshzsp3zixbn62rfk49";
 }
 {
-  name = "data-accessor-template";  version = "0.2.1.2";  edeps = [];
+  name = "data-accessor-template";  version = "0.2.1.3";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -12164,8 +12335,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "1.0";};  i2 = {lt = "6";};  n = "base";}
     ];
   };
-  sha256 = "0hz1iilac1zb7qg7g3sxp2v0s7g1vsvy1wag92q1qyyn34k0k8qp";
-  tflags = ["template_2_4"];
+  sha256 = "0xgp9kfbkscwvggjd3rdvq7g9a4fr4qls0422zyx7ydv8mrxi33j";
 }
 {
   name = "data-accessor-transformers";  version = "0.2.1";
@@ -12185,9 +12355,9 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0g9bkgsbprgvcflfs5s5vm0z8bq2v693433323fqsvp7nsfh7phh";
 }
 {
-  name = "data-aviary";  version = "0.2.1";  edeps = [];
+  name = "data-aviary";  version = "0.2.3";  edeps = [];
   ldeps = {cdeps = [];  deps = [{lt = "5";  n = "base";}];};
-  sha256 = "12bng7d37mjxcgd83pb1i3vqxcvn38752ypszv5zf9dw0nib0axa";
+  sha256 = "16idxf67wkl6p0wisj6z6cr6bykmvp9wvd5h9kmmvmilfziylwvj";
 }
 {
   name = "data-binary-ieee754";  version = "0.4";  edeps = [];
@@ -12256,7 +12426,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1kyca2ywpqgn5slgjq0wmxb5sc86skk37dl2gcn2fsnq186la1c4";
 }
 {
-  name = "data-object";  version = "0.2.0";
+  name = "data-object";  version = "0.2.0.1";
   edeps = 
   [{
      cdeps = 
@@ -12286,7 +12456,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {gte = "0.9.1.4";};  i2 = {lt = "1";};  n = "bytestring";}
-      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "text";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.8";};  n = "text";}
       {i1 = {gte = "1.1.4";};  i2 = {lt = "1.2";};  n = "time";}
       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "safe-failure";}
       {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "old-locale";}
@@ -12299,10 +12469,10 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "template-haskell";}
     ];
   };
-  sha256 = "06akcnjd515h7ail8hhg5qxvf78mm9b58zncg1pk73swckhix0cw";
+  sha256 = "02sl72glw3p5sw9pvzpqabn4bvr83zw5vag3mjsqyxgg5jnxshxp";
 }
 {
-  name = "data-object-json";  version = "0.0.0";  edeps = [];
+  name = "data-object-json";  version = "0.0.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -12319,16 +12489,16 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "0.2.0";};  i2 = {lt = "0.3";};  n = "data-object";}
       {i1 = {gte = "0.2.0";};  i2 = {lt = "0.3";};  n = "attempt";}
       {
-        i1 = {gte = "0.2.0";};  i2 = {lt = "0.3";};
+        i1 = {gte = "0.2.0.4";};  i2 = {lt = "0.3";};
         n = "convertible-text";
       }
       {n = "syb";}
     ];
   };
-  sha256 = "1xdkpgk5aznhbxhvib7gnnhxwd38xn2dv0y0ah6kwlpq802v2bs8";
+  sha256 = "0kzhcxfaazzwg7i8gjkc46zvn2jlnim1v01xjfcdfl4bsbw3l28l";
 }
 {
-  name = "data-object-yaml";  version = "0.0.0";
+  name = "data-object-yaml";  version = "0.2.0.1";
   edeps = 
   [{
      cdeps = 
@@ -12349,11 +12519,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
    }];
   ldeps = 
   {
-    cdeps = 
-    [[
-       {flag = "nolib";}  {cdeps = [];  deps = [];}
-       {cdeps = [];  deps = [];}
-     ]];
+    cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
@@ -12361,24 +12527,29 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {
         i1 = {gte = "0.9.1.4";};  i2 = {lt = "0.10";};  n = "bytestring";
       }
-      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "text";}
+      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "text";}
       {
         i1 = {gte = "0.2.0";};  i2 = {lt = "0.3";};
         n = "convertible-text";
       }
       {i1 = {gte = "0.2.0";};  i2 = {lt = "0.3";};  n = "attempt";}
+      {i1 = {gte = "0.0.0";};  i2 = {lt = "0.1";};  n = "failure";}
+      {
+        i1 = {gte = "0.1.4.0";};  i2 = {lt = "0.2";};  n = "transformers";
+      }
+      {i1 = {gte = "0.2.0";};  i2 = {lt = "0.3";};  n = "yaml";}
     ];
   };
-  sha256 = "1fhdkvnjwh1hd82dbwwqdngy0vhbzwblyyg20259qz4bwhdhbhsw";
+  sha256 = "1qrfiby9a22q27rlarqam3w631f3d2q2gc82nilkc3505q5gwbjd";
 }
 {
-  name = "data-ordlist";  version = "0.0.1";  edeps = [];
+  name = "data-ordlist";  version = "0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = [{i1 = {gte = "2";};  i2 = {lt = "5";};  n = "base";}];
   };
-  sha256 = "1ja7c1pza9j1180a9bhdncjk2943kxkbnby2hdx3dwrz5slqw8ly";
+  sha256 = "05nq3jf01y2g4s0rcbziy6rfdvja8k5991wnyd6gjafnkp4pgidq";
 }
 {
   name = "data-quotientref";  version = "0.1";  edeps = [];
@@ -12436,6 +12607,34 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0h6z4yibjbnzck2fvh9mnppz9j0lzgx8nzmzm08q5yzmzjydy3rk";
 }
 {
+  name = "database-study";  version = "0.0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {flag = "splitbase";}
+       {
+         cdeps = [];
+         deps = [{i1 = {gte = "2";};  i2 = {lt = "6";};  n = "base";}];
+       }
+       {
+         cdeps = [];
+         deps = 
+         [
+           {i1 = {gte = "1.0";};  i2 = {lt = "2";};  n = "base";}
+           {
+             i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "special-functors";
+           }
+         ];
+       }
+     ]];
+    deps = 
+    [{i1 = {gte = "0.1";};  i2 = {lt = "0.4";};  n = "containers";}];
+  };
+  sha256 = "1aqp7a46p758f1q99cn700mgc1dic896gpsih3vj2fmffqj42gd7";
+  tflags = ["splitbase"];
+}
+{
   name = "dataenc";  version = "0.13.0.2";
   edeps = 
   [{
@@ -12482,19 +12681,20 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "10fj1z4wbr76wfnp9h1jzyd8afzn495r6xvbjiw55bimy0hasalg";
 }
 {
-  name = "datetime";  version = "0.1";  edeps = [];
+  name = "datetime";  version = "0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {gte = "1.2";  n = "QuickCheck";}
+      {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "base";}
+      {i1 = {gte = "2";};  i2 = {lt = "3";};  n = "QuickCheck";}
       {gte = "1.0.0.1";  n = "old-locale";}
       {gte = "1.0.0.1";  n = "old-time";}
       {gte = "1.1.2.2";  n = "time";}
     ];
   };
-  sha256 = "0j2h369ydmlnkvk6m9j7b6fgs6cyc425s8n3yaajr4j5rdqcq6lk";
+  sha256 = "1gdk7gk7zcipmd0rcpix0288bpa6wkmgmqb90ica8wb9xmil0ghl";
 }
 {
   name = "dbf";  version = "0.0.0.2";  edeps = [];
@@ -13217,17 +13417,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0qszlhll0cx0clydypg0r0g00v8ig1aasqp1ga0jnbfr7q7rwfrr";
 }
 {
-  name = "dwarf";  version = "0.1";  edeps = [];
+  name = "dwarf";  version = "0.21";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "bytestring";}  {n = "containers";}
-      {n = "binary";}
+      {i1 = {gte = "2";};  i2 = {lt = "5";};  n = "base";}
+      {n = "bytestring";}  {n = "containers";}  {n = "binary";}
     ];
   };
-  sha256 = "056arbkmi4xk6r45wl1n7cxs4bfzx41n11di6crwzmw141dz62x1";
+  sha256 = "14dfxr3nwlid868gwddnvmf9w7q02b93xc2imn99dysh371vjqg6";
 }
 {
   name = "dyre";  version = "0.8.2";  edeps = [];
@@ -13378,7 +13578,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0g1f5m7bcpnyg2sdvwx8x34ml6dqfrn326s8pbfciaqqf7wddayc";
 }
 {
-  name = "elerea";  version = "1.2.2";  edeps = [];
+  name = "elerea";  version = "1.2.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -13388,7 +13588,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "containers";}  {n = "mersenne-random";}
     ];
   };
-  sha256 = "1pf91pf8bha7kmva1fz4z3rc8mng2cgzspz7gvjmjdhn3j4ahd8g";
+  sha256 = "1jk52xfsapagx1wxv26i2qwln9f8sgsidkifpawccyx3dafpdjkg";
 }
 {
   name = "elerea-examples";  version = "1.2.0";
@@ -13425,13 +13625,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0k9plmahzv8m3dqrxapgjx9i83b7lp460vyky5vgrk81c86gb047";
 }
 {
-  name = "elf";  version = "0.2";  edeps = [];
+  name = "elf";  version = "0.22";  edeps = [];
   ldeps = 
   {
     cdeps = [];
-    deps = [{n = "base";}  {n = "bytestring";}  {n = "binary";}];
+    deps = 
+    [
+      {i1 = {gte = "2";};  i2 = {lt = "5";};  n = "base";}
+      {n = "bytestring";}  {n = "binary";}
+    ];
   };
-  sha256 = "1w49hr09l86pns3ac94wn91g67cn2n9k9ankk9brvrbw0l86lsdn";
+  sha256 = "0lhxq2rbaaa7mhnir9lg6mb26ddf75l3a26sh4yqszdh1vblggnc";
 }
 {
   name = "email-validate";  version = "0.2.5";  edeps = [];
@@ -13620,6 +13824,22 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0f8l6rffq4p0f1bypvhwvr4p27vshcqy8j94j90659mfb9w7yxab";
 }
 {
+  name = "epub";  version = "0.0.3";
+  edeps = [{cdeps = [];  deps = [];}];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {n = "ghc";}  {lt = "5";  n = "base";}  {n = "filepath";}
+      {n = "haskell98";}  {n = "old-time";}  {n = "utf8-string";}
+      {n = "bytestring";}  {n = "zip-archive";}  {n = "xml";}
+      {i1 = {gte = "1.5";};  i2 = {lt = "1.9";};  n = "Cabal";}
+    ];
+  };
+  sha256 = "1l55bbh68biri5ykk75n62fyqfgq891cz1ivnjz3rgvw3svkvsl0";
+}
+{
   name = "equal-files";  version = "0.0.3";
   edeps = 
   [{
@@ -13753,7 +13973,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1515v1khdkr145z5inrm2ardhpzfsbncpl5wmfd9nmilw97da9ld";
 }
 {
-  name = "event-list";  version = "0.0.10";
+  name = "event-list";  version = "0.0.10.1";
   edeps = 
   [{
      cdeps = 
@@ -13769,7 +13989,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
        ]
      ];
      deps = 
-     [{i1 = {gte = "1.1";};  i2 = {lt = "2";};  n = "QuickCheck";}];
+     [{i1 = {gte = "1.1";};  i2 = {lt = "3";};  n = "QuickCheck";}];
    }];
   ldeps = 
   {
@@ -13778,7 +13998,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
        {flag = "splitbase";}
        {
          cdeps = [];
-         deps = [{i1 = {gte = "2";};  i2 = {lt = "5";};  n = "base";}];
+         deps = [{i1 = {gte = "2";};  i2 = {lt = "6";};  n = "base";}];
        }
        {
          cdeps = [];
@@ -13798,9 +14018,10 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
         i1 = {gte = "0.0.1";};  i2 = {lt = "0.2";};  n = "transformers";
       }
       {i1 = {gte = "0.0.3";};  i2 = {lt = "0.1";};  n = "utility-ht";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "3";};  n = "QuickCheck";}
     ];
   };
-  sha256 = "02a39gz7pz0a5a1z6iqrm7zx8xk6j855wgh53qa5lsq60l4s2m72";
+  sha256 = "1rwl52n9wv9k4mjk3y3rwy4ssvlws3fgwm7dfd2l7n588957adqq";
   tflags = ["splitbase"];
 }
 {
@@ -13875,7 +14096,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0w6nh6mac286zvb2q9yhcb9rvi893c1drlyynz5isgh0xv6jxpxg";
 }
 {
-  name = "explicit-iomodes";  version = "0.1.5";  edeps = [];
+  name = "explicit-iomodes";  version = "0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -13886,10 +14107,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
         i1 = {gte = "0.1.1";};  i2 = {lt = "0.2";};
         n = "base-unicode-symbols";
       }
+      {i1 = {le = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
       {i1 = {le = "0.1";};  i2 = {gte = "0.0";};  n = "tagged";}
     ];
   };
-  sha256 = "1863xhzfqmjrib6d0rycb6570ybdhca25ysr7qa6dvv5g4h20pg7";
+  sha256 = "1larn4641vg6wc99m6kmzf6fzgm6m0y7w29qkbxrcap96msa9091";
 }
 {
   name = "explicit-sharing";  version = "0.5.1.2";  edeps = [];
@@ -13977,13 +14199,13 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0bq0q9n4wnacjqs517i12kl56m16n5ff4gk8kamh87gqkd58w06x";
 }
 {
-  name = "failure";  version = "0.0.0.1";  edeps = [];
+  name = "failure";  version = "0.0.0.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = [{i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}];
   };
-  sha256 = "0pvkc6sbaisrrqmv0fnwc7bdylf6ss33bslrcdwf3xs7y4m76mim";
+  sha256 = "1ciz5arirvj4nxyqh78i8nynczydrymvggrn1q8m8ygp1y3l8hl9";
 }
 {
   name = "fair-predicates";  version = "0.1.1";  edeps = [];
@@ -14060,18 +14282,18 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1mr8zjl9llq1223ab92ybv6fmgmqjy3aaicnhgnma3lpz2agvayi";
 }
 {
-  name = "fdo-notify";  version = "0.1";  edeps = [];
+  name = "fdo-notify";  version = "0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "dbus-core";}
-      {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "dbus-client";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "dbus-client";}
+      {i1 = {gte = "0.8";};  i2 = {lt = "0.9";};  n = "dbus-core";}
     ];
   };
-  sha256 = "1843s2l0lvjkx0iccarhf08i898z8bd2sgcwymdnnbfkriiglvbc";
+  sha256 = "1dq7zyckir27i8xvdwkk2bp1giaqza4597xrswm8as5arqg8pm6j";
 }
 {
   name = "fec";  version = "0.1.1";  edeps = [];
@@ -14370,7 +14592,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1big5db7y8yc3wzlj69y1glyvh6sabs5d97x8xqmyv2c8bahnn8s";
 }
 {
-  name = "filestore";  version = "0.3.4";  edeps = [];
+  name = "filestore";  version = "0.3.4.1";  edeps = [];
   ldeps = 
   {
     cdeps = [[{flag = "maxcount";}  {cdeps = [];  deps = [];}]];
@@ -14380,12 +14602,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "bytestring";}  {n = "utf8-string";}  {n = "filepath";}
       {n = "directory";}  {n = "datetime";}
       {i1 = {gte = "2";};  i2 = {lt = "3";};  n = "parsec";}
-      {n = "process";}  {n = "time";}  {n = "datetime";}
-      {n = "regex-posix";}  {n = "xml";}  {n = "split";}  {n = "Diff";}
-      {n = "old-locale";}
+      {n = "process";}  {n = "time";}  {n = "datetime";}  {n = "xml";}
+      {n = "split";}  {n = "Diff";}  {n = "old-locale";}
     ];
   };
-  sha256 = "1fajfw5nwmqlf0snmjxnxbv1fhn8i0w6bg8ivsmys54vkmpgsm2v";
+  sha256 = "0c427hvfxy7ls7dnackk02vy9iihxsyscmvlfkgfg2lkmqzk615d";
   tflags = ["maxcount"];
 }
 {
@@ -14576,7 +14797,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1knr9yh58fwjpkm37hvrqghlchf5qibwf9q52app6zh3ys999rrs";
 }
 {
-  name = "font-opengl-basic4x6";  version = "0.0.1";
+  name = "font-opengl-basic4x6";  version = "0.0.2";
   edeps = 
   [{
      cdeps = 
@@ -14604,7 +14825,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {le = "5";};  i2 = {gte = "4";};  n = "base";}
     ];
   };
-  sha256 = "1lpfyr6x7i3xwnr1qqr5xcjf4a4y9rwdzq6xd7kz3akkdpw9ff44";
+  sha256 = "0psa1w552dgpf55mirc6bn0z4ysk1z08n15qfxwwy2rdrbvqj36x";
 }
 {
   name = "foo";  version = "1.0";
@@ -14769,6 +14990,57 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "14sdvvn1rvri55lwkw35k839acv9z2g7mv8fwd5xizaja8bs19m2";
 }
 {
+  name = "ftdi";  version = "0.1";
+  edeps = 
+  [{
+     cdeps = 
+     [
+       [
+         {flag = "test";}
+         {
+           cdeps = [];
+           deps = 
+           [
+             {i1 = {gte = "2.3";};  i2 = {lt = "2.4";};  n = "derive";}
+             {i1 = {gte = "2.1.0";};  i2 = {lt = "2.2";};  n = "QuickCheck";}
+             {i1 = {gte = "1.0.0";};  i2 = {lt = "1.1";};  n = "random";}
+             {i1 = {gte = "0.0";};  i2 = {lt = "0.1";};  n = "tagged";}
+             {
+               i1 = {gte = "0.2.4";};  i2 = {lt = "0.3";};  n = "test-framework";
+             }
+             {
+               i1 = {gte = "0.2.4";};  i2 = {lt = "0.3";};
+               n = "test-framework-quickcheck2";
+             }
+           ];
+         }
+         {cdeps = [];  deps = [];}
+       ]
+       [{flag = "hpc";}  {cdeps = [];  deps = [];}]
+     ];
+     deps = [];
+   }];
+  ldeps = 
+  {
+    cdeps = [[{flag = "nolib";}  {cdeps = [];  deps = [];}]];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "4.3";};  n = "base";}
+      {
+        i1 = {gte = "0.1.1";};  i2 = {lt = "0.2";};
+        n = "base-unicode-symbols";
+      }
+      {i1 = {gte = "0.9.1";};  i2 = {lt = "0.10";};  n = "bytestring";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "safe";}
+      {
+        i1 = {gte = "0.1.4";};  i2 = {lt = "0.2";};  n = "transformers";
+      }
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "usb";}
+    ];
+  };
+  sha256 = "1hks27cdm5l3hg2i8wb7i2xsnmx9dnmkrrx6hv7w5q8wwckws3bm";
+}
+{
   name = "ftphs";  version = "1.0.5";
   edeps = 
   [{
@@ -14810,7 +15082,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "062zaxvdiswpsb5zjilb9amfvawdwwbbbk3bg7q12nny386jm3fd";
 }
 {
-  name = "full-sessions";  version = "0.6.1.2";  edeps = [];
+  name = "full-sessions";  version = "0.6.2";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -14825,9 +15097,9 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
          deps = [{gte = "3";  n = "base";}  {lt = "4";  n = "base";}];
        }
      ]];
-    deps = [{gt = "6.8";  n = "ghc";}  {n = "network";}];
+    deps = [{gt = "6.10";  n = "ghc";}  {n = "network";}];
   };
-  sha256 = "1z8miimpina2ddjxv90cgi4bd1232if4hv4xkdpm7f0kk5ch5gvk";
+  sha256 = "1gpypvzy7mcwdxmj080dym31g5k4s6xp76i74fg860xa7nad7ncf";
 }
 {
   name = "funcmp";  version = "1.2";  edeps = [];
@@ -15015,18 +15287,18 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1pdx4pnq893kkjmgg0bgh9bfvfqdvzfq5fi02zfyhw3h8h4k05v4";
 }
 {
-  name = "ghc-core";  version = "0.5";
+  name = "ghc-core";  version = "0.5.1";
   edeps = 
   [{
      cdeps = [];
      deps = 
      [
-       {lt = "10";  n = "base";}  {gte = "1.0.1";  n = "process";}
-       {n = "pcre-light";}  {n = "colorize-haskell";}
-       {n = "directory";}  {n = "filepath";}
+       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+       {gte = "1.0.1";  n = "process";}  {n = "pcre-light";}
+       {n = "colorize-haskell";}  {n = "directory";}  {n = "filepath";}
      ];
    }];
-  sha256 = "1vsi0qbqy7pl4v0si37ly2m91b5ilc2rbmn4hmjsv89479aym04q";
+  sha256 = "0dbb5hv3hliqvd9cnv3vi0yzfr3ymrcdx8cqf06agp1wzk84srnx";
 }
 {
   name = "ghc-events";  version = "0.2";
@@ -15243,17 +15515,43 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "06kzakvssmldjgx0s8qm0a3cd9glmwrdnh690sv708jcvg8x45y3";
 }
 {
-  name = "glome-hs";  version = "0.51";
+  name = "glintcollider";  version = "0.0.1";
   edeps = 
   [{
      cdeps = [];
      deps = 
      [
-       {n = "base";}  {n = "haskell98";}  {n = "time";}  {n = "parallel";}
-       {n = "GLUT";}  {n = "OpenGL";}  {n = "random";}  {n = "array";}
+       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}  {n = "ppm";}
+       {n = "split";}
      ];
    }];
-  sha256 = "0jhinf8gr06lsvi4cv0p1v0vmcm0kb8dmjxyvn1zn9z0hbxv2vpi";
+  sha256 = "15sdj4gg80r5ymnybq4b14i3z70l3vw5mpz5zca7lscvs82g4283";
+}
+{
+  name = "glome-hs";  version = "0.60";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
+       {n = "haskell98";}  {n = "time";}  {n = "parallel";}
+       {n = "GLUT";}  {n = "OpenGL";}  {n = "random";}  {n = "array";}
+       {n = "GlomeVec";}  {n = "GlomeTrace";}
+     ];
+   }];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
+      {n = "haskell98";}  {n = "time";}  {n = "parallel";}
+      {n = "GLUT";}  {n = "OpenGL";}  {n = "random";}  {n = "array";}
+      {n = "GlomeVec";}  {n = "GlomeTrace";}
+    ];
+  };
+  sha256 = "1dpznh1b11pgrlb4mxp05rll8svgfvr0z7pmbb4695n9982n5g2n";
 }
 {
   name = "gmap";  version = "0.1";  edeps = [];
@@ -15519,19 +15817,26 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1i6v0wlwiwsl8j70bzchf157y5q3wg86md1wq9l2lnv320rhjsc8";
 }
 {
-  name = "graphics-drawingcombinators";  version = "1.0.2";
+  name = "graphics-drawingcombinators";  version = "1.2.1";
   edeps = [];
   ldeps = 
   {
-    cdeps = [];
+    cdeps = 
+    [[
+       {flag = "ftgl";}  {cdeps = [];  deps = [{n = "FTGL";}];}
+       {cdeps = [];  deps = [{n = "GLUT";}];}
+     ]];
     deps = 
     [
-      {i1 = {gte = "3";};  i2 = {lte = "4.1";};  n = "base";}
-      {n = "mtl";}  {n = "containers";}  {n = "SDL";}  {n = "SDL-ttf";}
-      {n = "SDL-image";}  {n = "OpenGL";}
+      {i1 = {le = "5";};  i2 = {gte = "4";};  n = "base";}
+      {n = "containers";}
+      {i1 = {le = "2.5";};  i2 = {gte = "2.4";};  n = "OpenGL";}
+      {i1 = {le = "0.3";};  i2 = {gte = "0.2";};  n = "stb-image";}
+      {i1 = {le = "0.1";};  i2 = {gte = "0.0";};  n = "bitmap-opengl";}
     ];
   };
-  sha256 = "10swknpx6cnnp42snmblxvqhi9xb18i3ywfqm00bks268qcgfph1";
+  sha256 = "1kfgbz4cx14ffx63iys5yl5xdhvh6smyaw9sfxsgw4xrk309dmi5";
+  tflags = ["ftgl"];
 }
 {
   name = "graphicsFormats";  version = "0.1";  edeps = [];
@@ -15701,6 +16006,40 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     ];
   };
   sha256 = "1qf5m3zksn16mlgavrwbq6yd1mbyafy27qf1ws4nmkxl8ci0k48i";
+}
+{
+  name = "gt-tools";  version = "0.1.1";
+  edeps = 
+  [
+    {
+      cdeps = 
+      [[
+         {flag = "gui";}
+         {
+           cdeps = [];
+           deps = 
+           [
+             {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+             {n = "containers";}  {n = "HTTP";}  {n = "json";}  {n = "url";}
+             {n = "gtk2hs-meta-package-hack";}
+             {n = "gtk2hs-meta-package-hack";}  {n = "utf8-string";}
+           ];
+         }
+         {cdeps = [];  deps = [];}
+       ]];
+      deps = [];
+    }
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+        {n = "containers";}  {n = "HTTP";}  {n = "json";}  {n = "url";}
+        {n = "utf8-string";}
+      ];
+    }
+  ];
+  sha256 = "17dcd0gsh23jn9wbhicmb9wshwss51vmif0zj902jyhc1mdv9qr8";
 }
 {
   name = "gtk2hs-cast-glade";  version = "0.10.1.1";  edeps = [];
@@ -15878,7 +16217,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "045mgg2b7wmkcziil8njb2wsy8pgzqcc46dwdrabxgbw1nzsfkaa";
 }
 {
-  name = "hTensor";  version = "0.1.1";  edeps = [];
+  name = "hTensor";  version = "0.5.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -15892,11 +16231,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
      ]];
     deps = 
     [
-      {n = "haskell98";}  {gte = "0.5";  n = "hmatrix";}
-      {n = "containers";}
+      {n = "haskell98";}  {gte = "0.8.2";  n = "hmatrix";}
+      {n = "containers";}  {n = "random";}
     ];
   };
-  sha256 = "0n0hinqdv452rmvmg8r98k7c1a0f8pn2llq3yyw202r82ddn60pd";
+  sha256 = "0n5ya4kk2kv14mr2k4aw3mhjw0q6ln8ssvm6pzd4wc4xmxddjm17";
   tflags = ["splitbase"];
 }
 {
@@ -15922,7 +16261,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1m0cmjip9g3d7pyl3p2j0pqva5yxhs6d70pr9ir4zxq52cmgbk6p";
 }
 {
-  name = "hack-contrib";  version = "2009.12.20";  edeps = [];
+  name = "hack-contrib";  version = "2010.1.26";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -15933,12 +16272,12 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "old-time";}  {n = "directory";}  {n = "filepath";}
       {n = "containers";}  {n = "bytestring";}
       {gte = "0.2";  n = "data-default";}  {n = "time";}
-      {n = "pureMD5";}  {gte = "2009.11.7";  n = "mps";}
+      {n = "pureMD5";}  {gte = "2010.1.26";  n = "mps";}
       {gte = "2009.10.30";  n = "hack";}  {n = "utf8-string";}
       {n = "ansi-wl-pprint";}
     ];
   };
-  sha256 = "10bhzqgf8kgybkf7xyi3yajshv228caigkbcrl1mdcwwccxfyc49";
+  sha256 = "1rqc54xccbwh64ypj507g1krba82x6zlmsmsn9l9v71ijhnbgg4y";
 }
 {
   name = "hack-contrib-press";  version = "0.1.2";  edeps = [];
@@ -16072,7 +16411,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "10b3cp1gap59ialfl33dwhzw50nwrqg49zvv0v813q7rqk3nkhg4";
 }
 {
-  name = "hack-handler-hyena";  version = "2010.1.17";  edeps = [];
+  name = "hack-handler-hyena";  version = "2010.1.18";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -16085,7 +16424,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "containers";}
     ];
   };
-  sha256 = "0pb5ih11xfn1s81nkyyhvr2ic36c4r9f8ynjfx9izkwnqyi2mwjw";
+  sha256 = "1srxq3ly4037n70kvk3a8id6pcz7cwnn7zpvhnc6cbjh6sjlnzc9";
 }
 {
   name = "hack-handler-kibro";  version = "2009.5.27";  edeps = [];
@@ -16395,7 +16734,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1ws23g897w28jknxhl7szmbchg3xsb4xggjjr8r5zk5aga8schmn";
 }
 {
-  name = "hakyll";  version = "1.0.1";  edeps = [];
+  name = "hakyll";  version = "1.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -16407,10 +16746,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {gte = "0.83";  n = "regex-base";}
       {gte = "0.92";  n = "regex-tdfa";}  {gte = "2";  n = "network";}
       {gte = "1.1";  n = "mtl";}  {gte = "1";  n = "old-locale";}
-      {gte = "1";  n = "time";}  {gte = "2";  n = "parallel";}
+      {gte = "1";  n = "time";}  {gte = "0.5";  n = "binary";}
+      {gte = "2";  n = "QuickCheck";}
     ];
   };
-  sha256 = "017giabfvs2gskm8yr6rxv6qnf343na11x46386pnvdgg6vhsyqq";
+  sha256 = "1fbqn6gcryb7hpp57g60ywd4livb428pfamprd4i63mpqnajglss";
 }
 {
   name = "halfs";  version = "0.2";
@@ -16786,7 +17126,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["base4"];
 }
 {
-  name = "happstack-dlg";  version = "0.1.1";  edeps = [];
+  name = "happstack-dlg";  version = "0.1.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -16794,10 +17134,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     [
       {lt = "5";  n = "base";}  {n = "containers";}  {n = "mtl";}
       {n = "happstack-server";}  {n = "time";}  {n = "random";}
-      {n = "template-haskell";}
+      {n = "template-haskell";}  {n = "formlets";}  {n = "xhtml";}
+      {n = "applicative-extras";}  {n = "bytestring";}
     ];
   };
-  sha256 = "07wpb14ly9g3nkqg5dmf21042myggxl8hphlk1bdjkrywn2pcyq1";
+  sha256 = "1zm8f224r0nwpykvil8s05lcswrw31iigcw9arnf4j362y03n2qp";
 }
 {
   name = "happstack-facebook";  version = "0.16";
@@ -16860,7 +17201,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0jgrwvqlskphp0ixvyvg09d7xfm1brxyjr4dlaq235n6v7f0kvmb";
 }
 {
-  name = "happstack-helpers";  version = "0.49";  edeps = [];
+  name = "happstack-helpers";  version = "0.50";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -16902,7 +17243,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       }
       {gte = "0.0.14";  n = "HStringTemplateHelpers";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "safe";}
-      {n = "MissingH";  v = "1.0.3";}
+      {gte = "1.0.3";  n = "MissingH";}
       {
         i1 = {gte = "0.2.0.0";};  i2 = {lt = "0.3.0.0";};
         n = "containers";
@@ -16932,9 +17273,10 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "PBKDF2";}
       {n = "DebugTraceHelpers";}  {gte = "2.2";  n = "network";}
       {gte = "4000";  n = "HTTP";}
+      {gte = "0.3.6";  n = "utf8-string";}
     ];
   };
-  sha256 = "081pwm6pks7q2w2q93z2hf3yp2k8xzlzgm6zgb8qwq31aqc0m331";
+  sha256 = "0w2m1v404dm197q5ja4vjb6gcv21h7p3xp0fc7wa0426jjqdc61l";
   tflags = ["base4"];
 }
 {
@@ -17262,7 +17604,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["small_base"];
 }
 {
-  name = "hashed-storage";  version = "0.4.5";
+  name = "hashed-storage";  version = "0.4.6";
   edeps = 
   [{
      cdeps = 
@@ -17310,7 +17652,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "mmap";}
     ];
   };
-  sha256 = "1wggwrzdha4265fj73f11gn6svp5w2w14phjc3abpnrmrgbynz5p";
+  sha256 = "1aksk8mmggky76h7z3jxm89ml55yy2x2705bd9qwp41811pgn4a1";
 }
 {
   name = "hasim";  version = "0.1.2";  edeps = [];
@@ -17353,7 +17695,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "128hkd1yycjvbnvwjd2r2mxhjdnmfkghyf0fcslh9fxprqgrhk18";
 }
 {
-  name = "haskeem";  version = "0.7.12";
+  name = "haskeem";  version = "0.7.16";
   edeps = 
   [{
      cdeps = [];
@@ -17366,7 +17708,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
        {n = "directory";}  {n = "haskeline";}
      ];
    }];
-  sha256 = "1ny6air3cdqx4ndpnwqmz4nb3d4xdxm222ssxd0mhhj5ckqrk659";
+  sha256 = "0fmglaiq2axpb9f4yyk53fpppc1ysqglqgjxhy78yl3r8mik836n";
 }
 {
   name = "haskeline";  version = "0.6.2.2";  edeps = [];
@@ -17507,7 +17849,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["split-base"];
 }
 {
-  name = "haskell-src-exts";  version = "1.7.1";  edeps = [];
+  name = "haskell-src-exts";  version = "1.8.1";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -17528,7 +17870,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {gte = "1.3";  n = "cpphs";}
     ];
   };
-  sha256 = "1haz2wmjsaj510pzj35f6pahpnjpck0459skn8md5phqj4q1g32g";
+  sha256 = "0kjzz0j4ml90ck5wrlr86k51yd1cwc7kn2ldysix4m26vq1y13v6";
   tflags = ["base4"];
 }
 {
@@ -17871,7 +18213,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "061dhk7d9d8mnb1rs7077q383sqlby8s31ips8jjadkkhyxi5lvz";
 }
 {
-  name = "haskore";  version = "0.1";
+  name = "haskore";  version = "0.1.0.1";
   edeps = 
   [
     {cdeps = [];  deps = [];}
@@ -17894,7 +18236,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
          cdeps = [];
          deps = 
          [
-           {gte = "3";  n = "base";}
+           {i1 = {gte = "3";};  i2 = {lt = "6";};  n = "base";}
            {i1 = {gte = "0.1";};  i2 = {lt = "1.0";};  n = "array";}
            {i1 = {gte = "0.1";};  i2 = {lt = "1.0";};  n = "containers";}
            {i1 = {gte = "1.0";};  i2 = {lt = "2.0";};  n = "random";}
@@ -17932,7 +18274,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "2.1";};  i2 = {lt = "2.2";};  n = "parsec";}
     ];
   };
-  sha256 = "0z55dwals1fvbz4qxj74zvjk75dss265vbxdmxd0wx2g0c66bqif";
+  sha256 = "19sxj1n6iv0dyhf99j3kaqcb0iq4d698xwqs9xz5zf63n2my49im";
   tflags = ["splitbase"];
 }
 {
@@ -18225,17 +18567,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "04aczl9mh1gb25kggh2jj043az61gzzhxqfg9gb3lcjr5krrnh4p";
 }
 {
-  name = "hcheat";  version = "2009.6.25";  edeps = [];
+  name = "hcheat";  version = "2010.1.16";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {gte = "2009.6.25";  n = "mps";}
+      {gte = "2010.1.26";  n = "mps";}
     ];
   };
-  sha256 = "0sy76645fvfdy925fqkcx41im1xjcjm8fvnax7ma63vvm6ip7njl";
+  sha256 = "1fwgnp15kha9qb7iagd8n5ahjjhg194wbva5i436mb57fn86pya2";
 }
 {
   name = "hdaemonize";  version = "0.2";  edeps = [];
@@ -18307,21 +18649,40 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1v1vq1lzs5h0bh85v4gqkzyg5m5mzi9bpmhph6s3xa89hi9nmp2y";
 }
 {
-  name = "hebrew-time";  version = "0.0.0";  edeps = [];
+  name = "hebrew-time";  version = "0.0.1";
+  edeps = 
+  [{
+     cdeps = 
+     [[
+        {flag = "buildtests";}
+        {
+          cdeps = [];
+          deps = 
+          [
+            {n = "test-framework";}  {n = "test-framework-quickcheck";}
+            {n = "test-framework-hunit";}  {n = "HUnit";}
+            {i1 = {gte = "1";};  i2 = {lt = "2";};  n = "QuickCheck";}
+          ];
+        }
+        {cdeps = [];  deps = [];}
+      ]];
+     deps = [];
+   }];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {gte = "1.1.3";  n = "time";}  {n = "test-framework";}
-      {n = "test-framework-quickcheck";}  {n = "test-framework-hunit";}
-      {n = "HUnit";}
-      {i1 = {gte = "1";};  i2 = {lt = "2";};  n = "QuickCheck";}
-      {n = "bytestring-class";}  {gte = "0.0.2";  n = "data-object";}
+      {i1 = {gte = "1.1.3";};  i2 = {lt = "1.2";};  n = "time";}
+      {i1 = {gte = "0.2.0";};  i2 = {lt = "0.3";};  n = "data-object";}
+      {i1 = {gte = "0.0.0";};  i2 = {lt = "0.1";};  n = "failure";}
+      {
+        i1 = {gte = "0.4.0";};  i2 = {lt = "0.5";};  n = "safe-failure";
+      }
     ];
   };
-  sha256 = "04dh362bzspvknm546ap68pg9rpviwrw1mbv2f75dmizrpisb7cv";
+  sha256 = "0aay5rdcvll26s4ibr5gl49s9f614iykhgkkvsnbnlp694lq7qrq";
 }
 {
   name = "hecc";  version = "0.2";  edeps = [];
@@ -18741,14 +19102,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "06cqhk9jalyps4v9w6wmpy9jdj3piwsp0wl3fvkzwa5iydlyvisz";
 }
 {
-  name = "highlighting-kate";  version = "0.2.5.1";
+  name = "highlighting-kate";  version = "0.2.6";
   edeps = 
   [{
      cdeps = 
-     [[
-        {flag = "executable";}  {cdeps = [];  deps = [];}
-        {cdeps = [];  deps = [];}
-      ]];
+     [
+       [{flag = "pcre_light";}  {cdeps = [];  deps = [];}]
+       [
+         {flag = "executable";}  {cdeps = [];  deps = [];}
+         {cdeps = [];  deps = [];}
+       ]
+     ];
      deps = 
      [
        {n = "base";}  {n = "containers";}  {n = "xhtml";}
@@ -18758,22 +19122,28 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   ldeps = 
   {
     cdeps = 
-    [[
-       {flag = "splitbase";}
-       {
-         cdeps = [];
-         deps = 
-         [
-           {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-           {n = "containers";}
-         ];
-       }
-       {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
-     ]];
-    deps = 
-    [{lt = "3";  n = "parsec";}  {n = "pcre-light";}  {n = "xhtml";}];
+    [
+      [
+        {flag = "splitbase";}
+        {
+          cdeps = [];
+          deps = 
+          [
+            {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+            {n = "containers";}
+          ];
+        }
+        {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
+      ]
+      [
+        {flag = "pcre_light";}
+        {cdeps = [];  deps = [{n = "pcre-light";}];}
+        {cdeps = [];  deps = [{n = "regex-pcre-builtin";}];}
+      ]
+    ];
+    deps = [{lt = "3";  n = "parsec";}  {n = "xhtml";}];
   };
-  sha256 = "07lpk3yily83lmzhg2l5a0jfjhym0hkbdc5q4j9qa3dfgdzip59m";
+  sha256 = "18958mgphzswprmnb905y055blsvpys1x9viilgksyxvp8jyyqwv";
   tflags = ["splitbase"];
 }
 {
@@ -18908,7 +19278,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "137jjwcs3a9n2zybkqqfdy2m1a2ahpdcmficwfmn7ykdz487xcsq";
 }
 {
-  name = "hircules";  version = "0.3.92";
+  name = "hircules";  version = "0.3.93";
   edeps = 
   [{
      cdeps = [];
@@ -18921,7 +19291,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
        {n = "old-time";}
      ];
    }];
-  sha256 = "1mqgfjck8f52j1p460d1v6699gnqbizmcvdzya0g7pzgskrj6z4r";
+  sha256 = "0sab614c4gfwkbdr5fnmmrljsr816q5j54x987icz3ai54nc7b2g";
 }
 {
   name = "histogram-fill";  version = "0.1.0";  edeps = [];
@@ -19054,12 +19424,20 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0hvhr1gqxy6h3fig2kpl9gpdfvxblygrshar729hn579vkac01sb";
 }
 {
-  name = "hlibev";  version = "0.2";  edeps = [];
-  ldeps = {cdeps = [];  deps = [{n = "base";}  {n = "network";}];};
-  sha256 = "1zccxrjxn3aymk4qiqqfpyp2g3i4pgh9xwjcpxdacwi5idi21yrf";
+  name = "hlibev";  version = "0.2.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "base";}
+      {n = "network";}
+    ];
+  };
+  sha256 = "1w64spb6mwhgh0i73ac8p8wrkfd0da9b0fhzgw5jcfd41h38pg8k";
 }
 {
-  name = "hlint";  version = "1.6.15";
+  name = "hlint";  version = "1.6.19";
   edeps = 
   [{
      cdeps = [[{flag = "threaded";}  {cdeps = [];  deps = [];}]];
@@ -19072,15 +19450,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     [
       {i1 = {le = "5";};  i2 = {gte = "4";};  n = "base";}
       {n = "process";}  {n = "filepath";}  {n = "directory";}
-      {n = "mtl";}  {n = "containers";}  {n = "syb";}
-      {gte = "1.15";  n = "hscolour";}  {gte = "1.9";  n = "cpphs";}
+      {n = "mtl";}  {n = "containers";}
+      {i1 = {le = "1.17";};  i2 = {gte = "1.16";};  n = "hscolour";}
+      {i1 = {le = "1.12";};  i2 = {gte = "1.11";};  n = "cpphs";}
       {
-        i1 = {le = "1.7";};  i2 = {gte = "1.6";};  n = "haskell-src-exts";
+        i1 = {i1 = {le = "1.9";};  i2 = {gte = "1.8";};};
+        i2 = {gte = "1.8.1";};  n = "haskell-src-exts";
       }
-      {i1 = {le = "1.5";};  i2 = {gte = "1.4";};  n = "uniplate";}
+      {i1 = {le = "1.6";};  i2 = {gte = "1.5";};  n = "uniplate";}
     ];
   };
-  sha256 = "0z94b558ynhycjb9svlmfwf2qr655yg1gp9s1afmrnvpnx5fwy9i";
+  sha256 = "0zb6jv3iwizy5czg2b3gs4yciyh7lc57ldjvbkm0qlilmcz24wv9";
   tflags = ["threaded"];
 }
 {
@@ -19126,23 +19506,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["split-base"];
 }
 {
-  name = "hmatrix";  version = "0.8.1.1";  edeps = [];
+  name = "hmatrix";  version = "0.8.3.1";  edeps = [];
   ldeps = 
   {
     cdeps = 
     [
-      [
-        {flag = "splitbase";}
-        {
-          cdeps = [];
-          deps = 
-          [
-            {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-            {lt = "0.3.0";  n = "array";}
-          ];
-        }
-        {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
-      ]
       [{flag = "unsafe";}  {cdeps = [];  deps = [];}]
       [
         {compilerFlavor = "GHC";  versionRange = {lt = "6.10.2";};}
@@ -19159,17 +19527,16 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
           deps = [];
         }
       ]
-      [{flag = "accelerate";}  {cdeps = [];  deps = [];}]
+      [{os = "OSX";}  {cdeps = [];  deps = [];}]
     ];
     deps = 
     [
-      {lt = "1.0.1.1";  n = "haskell98";}  {n = "QuickCheck";}
-      {n = "HUnit";}  {n = "storable-complex";}
-      {lt = "1.0.1.2";  n = "process";}
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+      {n = "array";}  {n = "haskell98";}  {n = "QuickCheck";}
+      {n = "HUnit";}  {n = "storable-complex";}  {n = "process";}
     ];
   };
-  sha256 = "00gay62533gy5yqd1rfh595qppzfb87xyv54332i7gx39kh8ihhr";
-  tflags = ["splitbase"];
+  sha256 = "05mgy58w0xpqq2zwj59r5756dbpqnlcdbf03sk801l0lwdfj6m93";
 }
 {
   name = "hmatrix-static";  version = "0.3";  edeps = [];
@@ -19617,7 +19984,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0q1xxs98iv6a83r5dhp9a8f87wf8h22xa5by70iiccw4ldn22ks4";
 }
 {
-  name = "hpage";  version = "0.5.3";
+  name = "hpage";  version = "0.5.5";
   edeps = 
   [{
      cdeps = [];
@@ -19628,26 +19995,26 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
        {gte = "0.3.0";  n = "monad-loops";}
        {lt = "0.4";  n = "monad-loops";}
        {gte = "1.1.3";  n = "haskell-src-exts";}
-       {lt = "1.2";  n = "haskell-src-exts";}
+       {lt = "1.8";  n = "haskell-src-exts";}
        {gte = "0.9.1";  n = "bytestring";}
        {lt = "0.10";  n = "bytestring";}
        {gte = "0.1.0";  n = "MonadCatchIO-mtl";}
        {lt = "0.3";  n = "MonadCatchIO-mtl";}
        {gte = "0.2.0";  n = "containers";}
-       {lt = "0.3";  n = "containers";}
+       {lt = "0.4";  n = "containers";}
        {gte = "1.0.0";  n = "directory";}
        {lt = "1.1";  n = "directory";}  {gte = "0.11.1";  n = "wxcore";}
-       {lt = "0.12";  n = "wxcore";}  {gte = "0.11.1";  n = "wx";}
-       {lt = "0.12";  n = "wx";}  {gte = "1.1.0";  n = "filepath";}
+       {lt = "0.13";  n = "wxcore";}  {gte = "0.11.1";  n = "wx";}
+       {lt = "0.13";  n = "wx";}  {gte = "1.1.0";  n = "filepath";}
        {lt = "1.2";  n = "filepath";}  {gte = "1.6";  n = "Cabal";}
-       {lt = "1.7";  n = "Cabal";}  {gte = "0.3.2";  n = "hint";}
+       {lt = "1.9";  n = "Cabal";}  {gte = "0.3.2";  n = "hint";}
        {lt = "0.4";  n = "hint";}  {gte = "1.1.0";  n = "eprocess";}
        {lt = "2";  n = "eprocess";}
        {gte = "1.1.0";  n = "hint-server";}
        {lt = "2";  n = "hint-server";}
      ];
    }];
-  sha256 = "1m067j3ii26n90z84g6wnp85vzl4hlpyhwgyxmp4v58vck69fi1f";
+  sha256 = "1d72lzjrjjcns2wgn0zazi7wmkx0r443zcjdd1k2ydhyd6h7w25p";
 }
 {
   name = "hpapi";  version = "0.0.1.0";  edeps = [];
@@ -19735,7 +20102,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0vd8nk0lipwlbjkrz83lsnkg4m4vdjz54hvkfadjzpssr7hjpwhy";
 }
 {
-  name = "hprotoc";  version = "1.5.1";
+  name = "hprotoc";  version = "1.6.0";
   edeps = 
   [{
      cdeps = 
@@ -19752,15 +20119,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       ]];
      deps = 
      [
-       {n = "protocol-buffers";  v = "1.5.0";}
-       {n = "protocol-buffers-descriptor";  v = "1.5.0";}
+       {n = "protocol-buffers";  v = "1.6.0";}
+       {n = "protocol-buffers-descriptor";  v = "1.6.0";}
        {n = "binary";}  {n = "utf8-string";}  {lt = "3";  n = "parsec";}
-       {n = "haskell-src-exts";  v = "0.4.8";}  {n = "containers";}
-       {n = "bytestring";}  {n = "array";}  {n = "filepath";}
-       {n = "directory";}  {n = "mtl";}  {n = "QuickCheck";}
+       {gte = "1.7.0";  n = "haskell-src-exts";}  {n = "containers";}
+       {n = "bytestring";}  {n = "array";}
+       {n = "filepath";  v = "1.1.0.2";}
+       {n = "directory";  v = "1.0.0.3";}  {n = "mtl";}
+       {n = "QuickCheck";}
      ];
    }];
-  sha256 = "0sad3arvghkfnf4sywz4sdpknx44ynls80lpwbhllj70i0zb4ip6";
+  sha256 = "1snggxjj4mndf1l2bpgpbjkfgr2nq7wy9lfycs1pb1r91d7y96g9";
   tflags = ["small_base"];
 }
 {
@@ -19787,7 +20156,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0ff05ygg9kmlyzjdj2bz0nk1hfcs3491l26f1vmvxksflkjb843l";
 }
 {
-  name = "hpuz";  version = "1.0.1";  edeps = [];
+  name = "hpuz";  version = "1.0.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -19797,7 +20166,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "array";}  {gte = "3.0.0";  n = "parsec";}
     ];
   };
-  sha256 = "1qbs87xj9yyj4vf13mdy1ljl02223visf0b759n4dhdr8swqfcm2";
+  sha256 = "1hccig759hn60j1rmmiww3imlsi16v8p8ja0wmz29cw66fv8ijys";
 }
 {
   name = "hpylos";  version = "1.0";
@@ -19901,6 +20270,18 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0nbxfy219mz0k27d16r3ir7hk0j450gxba9wrvrz1j17mr3gvqzx";
 }
 {
+  name = "hs-gchart";  version = "0.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}  {n = "mtl";}
+    ];
+  };
+  sha256 = "0sl5zym0lmhbf6rplz7s8w6n2qm54b4n4941b6rkndhlya9ki316";
+}
+{
   name = "hs-gizapp";  version = "0.1.0.1";  edeps = [];
   ldeps = 
   {
@@ -19971,6 +20352,19 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     ];
   };
   sha256 = "1r8bd5q7d5mxmd6012mpp1yx353wzib174xd9v0mvkbb009b4mph";
+}
+{
+  name = "hs-twitterarchiver";  version = "0.1";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}  {n = "mtl";}
+       {n = "network";}  {n = "json";}  {n = "HTTP";}
+     ];
+   }];
+  sha256 = "1qnn463z6aw0h2n2qr08jc9qynrsmydwb41y54vlvb4jcxryfkwg";
 }
 {
   name = "hsConfigure";  version = "0.1";  edeps = [];
@@ -20180,7 +20574,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["small_base"];
 }
 {
-  name = "hscolour";  version = "1.15";
+  name = "hscolour";  version = "1.16";
   edeps = 
   [{
      cdeps = [];
@@ -20191,7 +20585,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     cdeps = [];
     deps = [{n = "haskell98";}  {lt = "10";  n = "base";}];
   };
-  sha256 = "07pgrz5kffd13y33m3x8p44gkrd8sbx8sh9a1qv3j6cpgnbhfbvn";
+  sha256 = "1xapg3600aqpifpqnqn3qhd2nfavpx4j1v7y07a1d7dnwb3shvr0";
 }
 {
   name = "hscurses";  version = "1.3.0.2";  edeps = [];
@@ -20566,12 +20960,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0x4f3y8l8vj1498bnw4fxw9nzf7q2y4vjys72j73h50c7hr83j07";
 }
 {
-  name = "hsql";  version = "1.7.1";  edeps = [];
+  name = "hsql";  version = "1.8.1";  edeps = [];
   ldeps = 
   {
-    cdeps = [];  deps = [{gte = "3";  n = "base";}  {n = "old-time";}];
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {le = "5";};  i2 = {gte = "4";};  n = "base";}
+      {n = "old-time";}
+    ];
   };
-  sha256 = "076mq04mi139j5kficf7742yqsg0c6pmn87pm1r992z0vjvli5lh";
+  sha256 = "1jbx20abb89vpyh7h6m9l6jjs694yacvk6r37wrjg7ls23wkxwxz";
 }
 {
   name = "hsql-mysql";  version = "1.7.1";  edeps = [];
@@ -20587,45 +20986,47 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0kicjrxffiblfr8zwy9ch7bzkk0zxaapiymb4w0q56rzrv7q1l3i";
 }
 {
-  name = "hsql-odbc";  version = "1.7.1";  edeps = [];
+  name = "hsql-odbc";  version = "1.8.1.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {gte = "1.7";  n = "hsql";}  {gte = "1.0.0.1";  n = "old-time";}
+      {gte = "1.8";  n = "hsql";}  {gte = "1.0.0.1";  n = "old-time";}
     ];
   };
-  sha256 = "0qs34bqcf2810bx4yl9jsxpbhnm0jwr24ndazbv9bxmlsr0gvirb";
+  sha256 = "0m58ri73cm3bkxw14k1lpkpb44ikqs1k68giw9vkv5vk95yqzxj5";
 }
 {
-  name = "hsql-postgresql";  version = "1.7.3";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {gte = "4.0.0.0";  n = "base";}  {n = "hsql";}  {n = "old-time";}
-    ];
-  };
-  sha256 = "009y6qwhqm8zsdxb4n69yxmq4ggkn1ghpz8bn4vj2i9y1g016y88";
-}
-{
-  name = "hsql-sqlite3";  version = "1.7.1";  edeps = [];
+  name = "hsql-postgresql";  version = "1.8.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {gte = "1.7";  n = "hsql";}
+      {i1 = {gte = "1.8";};  i2 = {lt = "1.9";};  n = "hsql";}
+      {n = "old-time";}
     ];
   };
-  sha256 = "0ih70rjg56hvmjhjya9m0i5w7ljclcmwlbcf9pj4basviyvags0y";
+  sha256 = "0ypqvj08ihnx4ff4yis8a3xgxn5dglm599x2pzfhahkq1qlbgpbn";
 }
 {
-  name = "hssqlppp";  version = "0.1.0";
+  name = "hsql-sqlite3";  version = "1.8.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {gte = "1.8";  n = "hsql";}
+    ];
+  };
+  sha256 = "0g8vqj6zha8yagr9hcd6flxqmh7izqn3pniarg7s5q5y3c0pm736";
+}
+{
+  name = "hssqlppp";  version = "0.2.0";
   edeps = 
   [{
      cdeps = [];
@@ -20651,7 +21052,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "haskell-src-exts";}
     ];
   };
-  sha256 = "06wvgmscmhc4rnj3bm0jbng6jny47kyl3kiw5hibwrjbrk3l31dy";
+  sha256 = "0zqjhi8lb54skqpxmag84hwvlfn22l5whm5bx2y9y4n3aa5scx75";
 }
 {
   name = "hstats";  version = "0.3";  edeps = [];
@@ -21048,7 +21449,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0k07dbqrlnhg3a4yk25gc665z43hcl57kblr20mzryw0cf9zdsci";
 }
 {
-  name = "hurdle";  version = "0.2.0";
+  name = "hurdle";  version = "0.3.0";
   edeps = 
   [{
      cdeps = [];
@@ -21056,11 +21457,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
      [
        {lt = "5";  n = "base";}
        {i1 = {gte = "0.2.0.0";};  i2 = {lt = "0.4";};  n = "array";}
-       {n = "containers";}  {n = "pretty";}
-       {i1 = {gte = "0.1.0";};  i2 = {lt = "0.2";};  n = "kangaroo";}
+       {n = "containers";}
+       {i1 = {gte = "0.2.0";};  i2 = {lt = "0.3";};  n = "kangaroo";}
      ];
    }];
-  sha256 = "0fz160dzqwfmw1wzp9b6ma8sjbmg195jsys5k9zvymazh475prpr";
+  sha256 = "1sh5yyg7in06sk6zhqv0lllk5h2jz1ar9vcssafjmqk0hkg83x8r";
 }
 {
   name = "husky";  version = "0.4";
@@ -21080,7 +21481,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "136sskjkb4nwsqdmgyly207zv4kv27bxf633p2wl869wcr6kkdbg";
 }
 {
-  name = "hxt";  version = "8.4.1";  edeps = [];
+  name = "hxt";  version = "8.5.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -21096,11 +21497,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "2.1";};  i2 = {lt = "3";};  n = "network";}
       {i1 = {gte = "1.1";};  i2 = {lt = "2";};  n = "deepseq";}
       {i1 = {gte = "0.9";};  i2 = {lt = "1";};  n = "bytestring";}
-      {i1 = {gte = "0.8";};  i2 = {lt = "1";};  n = "tagsoup";}
+      {i1 = {gte = "0.8";};  i2 = {lt = "0.9";};  n = "tagsoup";}
       {i1 = {gte = "1.3";};  i2 = {lt = "2";};  n = "curl";}
     ];
   };
-  sha256 = "07ddlixqqc5cf27c23r98niin2sc4w7lilp6ijq6d7l048vycxf8";
+  sha256 = "1v806mdpima4giyga9c0iav2h9sm84d9bfaav0rpv3ckvzhzdvzk";
 }
 {
   name = "hxt-binary";  version = "0.0.1";  edeps = [];
@@ -21184,7 +21585,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "00h4g3hm15qxawx3m12pzlwq3h2g9r6jbq911w7vd8hrjx1ndd7w";
 }
 {
-  name = "hxt-xslt";  version = "8.4.0";  edeps = [];
+  name = "hxt-xpath";  version = "8.5.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -21196,10 +21597,29 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "1";};  i2 = {lt = "2";};  n = "directory";}
       {i1 = {gte = "1";};  i2 = {lt = "2";};  n = "filepath";}
       {i1 = {gte = "2.1";};  i2 = {lt = "4";};  n = "parsec";}
-      {i1 = {gte = "8.4";};  i2 = {lt = "9";};  n = "hxt";}
+      {i1 = {gte = "8.5";};  i2 = {lt = "9";};  n = "hxt";}
     ];
   };
-  sha256 = "1sszfrzi03cjida7gvz9mhhwa40zhpq3nkc6d7mzcr7614l64z13";
+  sha256 = "1xd3c7x556f3v9cg1b65bjhlmz67jwqn6wwwnxxhzhvlclw007jk";
+}
+{
+  name = "hxt-xslt";  version = "8.5.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4.2";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "1";};  i2 = {lt = "2";};  n = "haskell98";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "1";};  n = "containers";}
+      {i1 = {gte = "1";};  i2 = {lt = "2";};  n = "directory";}
+      {i1 = {gte = "1";};  i2 = {lt = "2";};  n = "filepath";}
+      {i1 = {gte = "2.1";};  i2 = {lt = "4";};  n = "parsec";}
+      {i1 = {gte = "8.5";};  i2 = {lt = "9";};  n = "hxt";}
+      {i1 = {gte = "8.5";};  i2 = {lt = "9";};  n = "hxt-xpath";}
+    ];
+  };
+  sha256 = "0q2vqx3mpcj2haccv76mv38mw1jn7yfh31n4b725p9zch1vknkll";
 }
 {
   name = "hxweb";  version = "0.1";  edeps = [];
@@ -22001,17 +22421,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1vbzbv3kkj1z5x1nlcbysg6bqqf08xc9lnb7v42a7bbfmw90sd5l";
 }
 {
-  name = "kangaroo";  version = "0.1.0";  edeps = [];
+  name = "kangaroo";  version = "0.3.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {lt = "5";  n = "base";}
-      {i1 = {gte = "0.3.0.0";};  i2 = {lt = "0.4";};  n = "array";}
+      {i1 = {gte = "0.2.0.0";};  i2 = {lt = "0.4";};  n = "array";}
     ];
   };
-  sha256 = "0qm4906cqnbjjgg6q9z5w2p34xdwrh0aq9sggqw5hzg4z7616gig";
+  sha256 = "0n8awzp0zkspsqz1rm872466pcbd9gl34nm8pssn5137z76nb11x";
 }
 {
   name = "kbq-gu";  version = "0.2";
@@ -22221,6 +22641,19 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1qq3p4hbknids93x2dxi5z3h8wpyp5xmigyw37d9hhx665j7vhl8";
 }
 {
+  name = "language-asn1";  version = "0.0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}
+      {lte = "3.0.0.0";  n = "parsec";}
+    ];
+  };
+  sha256 = "0wiaaj3699p8vwbfnf66qwx85fx6k3c2ac9z1r9wakamss5b76ck";
+}
+{
   name = "language-c";  version = "0.3.1.1";  edeps = [];
   ldeps = 
   {
@@ -22262,7 +22695,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["splitbase"  "usebytestrings"  "separatesyb"];
 }
 {
-  name = "language-dot";  version = "0.0.3";
+  name = "language-dot";  version = "0.0.4";
   edeps = 
   [{
      cdeps = 
@@ -22293,7 +22726,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {le = "2";};  i2 = {gte = "1";};  n = "pretty";}
     ];
   };
-  sha256 = "0zvnh9hsvbyljmksn3r2crxdcxy1f7hri62lzwn1b9hdjm0gjqs5";
+  sha256 = "1qg3zhq6jyyhcn3jww5nn2infmk18svyv0yc6pgbw1za5xm6w48g";
   tflags = ["executable"];
 }
 {
@@ -22423,14 +22856,14 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1w8z80vqb86zl6ap4nd87kpl91qms8310k1d8r6qrxg2skm6gnxl";
 }
 {
-  name = "ldif";  version = "0.0.3";
+  name = "ldif";  version = "0.0.4";
   edeps = 
   [
     {
       cdeps = [[{not = {flag = "test";};}  {cdeps = [];  deps = [];}]];
       deps = [{n = "base";}  {n = "HUnit";}];
     }
-    {cdeps = [];  deps = [];}
+    {cdeps = [];  deps = [];}  {cdeps = [];  deps = [];}
   ];
   ldeps = 
   {
@@ -22438,11 +22871,12 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     deps = 
     [
       {n = "ghc";}  {lt = "5";  n = "base";}  {n = "filepath";}
-      {n = "haskell98";}  {gte = "2.1.0";  n = "parsec";}
+      {n = "haskell98";}  {n = "containers";}
+      {gte = "2.1.0";  n = "parsec";}
       {i1 = {gte = "1.5";};  i2 = {lt = "1.9";};  n = "Cabal";}
     ];
   };
-  sha256 = "03qqrjfcklbddhl848b4cdraq5qjjjjld8f32rp50milybg413qf";
+  sha256 = "1ny0f2jsvx3jxznmjfb1m5sp0yq7w31p0rawzaccppp8d10n5rbf";
 }
 {
   name = "leapseconds-announced";  version = "2009";  edeps = [];
@@ -22947,7 +23381,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "06c23azczscwk7c9r0k61ppiqcg29gndzv4glvyrr4x3mbnhs09i";
 }
 {
-  name = "llvm";  version = "0.7.0.0";  edeps = [];
+  name = "llvm";  version = "0.7.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = [[{os = "OSX";}  {cdeps = [];  deps = [];}]];
@@ -22958,7 +23392,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "directory";}  {n = "process";}  {n = "type-level";}
     ];
   };
-  sha256 = "1r4x6vc12m5rxnb2xl8yzxh9svisj32z5d85igzkbk31dmsq39xq";
+  sha256 = "027vwv5dl6cab5mqdcakn80f3994sg3j41yyk17wfr3nd1cn52dj";
 }
 {
   name = "loch";  version = "0.2";
@@ -23084,7 +23518,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1avlq28k0jcfbnd0pfww80ixz5lvpp4jkf20dybjl7pfqyhj3s9p";
 }
 {
-  name = "ls-usb";  version = "0.1.0.3";
+  name = "ls-usb";  version = "0.1.0.4";
   edeps = 
   [{
      cdeps = [];
@@ -23098,18 +23532,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
          i1 = {le = "0.2";};  i2 = {gte = "0.1";};
          n = "base-unicode-symbols";
        }
-       {
-         i1 = {gte = "0.9.1.4";};  i2 = {lt = "0.10";};  n = "bytestring";
-       }
+       {i1 = {gte = "0.9.1";};  i2 = {lt = "0.10";};  n = "bytestring";}
        {i1 = {le = "0.2";};  i2 = {gte = "0.1";};  n = "cmdargs";}
        {i1 = {le = "0.4";};  i2 = {gte = "0.3";};  n = "usb";}
-       {i1 = {le = "0.5";};  i2 = {gte = "0.4";};  n = "usb-safe";}
+       {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "usb-safe";}
        {
-         i1 = {le = "0.5";};  i2 = {gte = "0.4";};  n = "usb-id-database";
+         i1 = {gte = "0.4.0.2";};  i2 = {lt = "0.5";};
+         n = "usb-id-database";
        }
      ];
    }];
-  sha256 = "0gfhwfkznbniiabyzqrq9hkyc9x5narikcc75blgrrwgw768vxvz";
+  sha256 = "16rxv62pmi7bm9n34abc10kl72zj8s457g8lv5q0rdvsyhx74yp9";
 }
 {
   name = "lscabal";  version = "0.1";
@@ -23598,7 +24031,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "05yphn77rxg7zqpn27292yvmah2634hqfx2mgfyp5yws5ickrvkg";
 }
 {
-  name = "midi";  version = "0.1.4";
+  name = "midi";  version = "0.1.5";
   edeps = 
   [{
      cdeps = 
@@ -23614,8 +24047,8 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
          cdeps = [];
          deps = 
          [
-           {gte = "2";  n = "base";}
            {i1 = {gte = "1";};  i2 = {lt = "2";};  n = "random";}
+           {i1 = {gte = "2";};  i2 = {lt = "6";};  n = "base";}
          ];
        }
        {
@@ -23636,7 +24069,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {
         i1 = {gte = "0.9.0.1";};  i2 = {lt = "0.10";};  n = "bytestring";
       }
-      {i1 = {gte = "0.4.2";};  i2 = {lt = "0.5";};  n = "binary";}
+      {i1 = {gte = "0.4.2";};  i2 = {lt = "0.6";};  n = "binary";}
       {
         i1 = {gte = "0.0.1";};  i2 = {lt = "0.2";};  n = "transformers";
       }
@@ -23644,10 +24077,10 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
         i1 = {gte = "0.0.1";};  i2 = {lt = "0.1";};
         n = "monoid-transformer";
       }
-      {i1 = {gte = "1";};  i2 = {lt = "2";};  n = "QuickCheck";}
+      {i1 = {gte = "1";};  i2 = {lt = "3";};  n = "QuickCheck";}
     ];
   };
-  sha256 = "12dzplr1666dgdcrc0kv4clyhjhs305bxvcqz6c4a1la3r6mpq34";
+  sha256 = "0rgxm9n2rzc2x7r5w1bdqrcs5nrp2790l94igdcfnl48mlg00741";
   tflags = ["splitbase"];
 }
 {
@@ -24009,7 +24442,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "04y9s2b4hz2f8khr0q62xy0f6l2v896s7x03i3s18i14bwscqlax";
 }
 {
-  name = "monad-stlike-io";  version = "0.1";  edeps = [];
+  name = "monad-stlike-io";  version = "0.2.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -24020,21 +24453,21 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "transformers";}
     ];
   };
-  sha256 = "18ppyyxcbqjxw7gq2id48drsb1idx8l3mdzf2r2h9mqhf6z63waa";
+  sha256 = "1hk3nabrk95lcwz2v1d85c1kdg7ahznxzqah9q543b1mrp77g2ji";
 }
 {
-  name = "monad-stlike-stm";  version = "0.1";  edeps = [];
+  name = "monad-stlike-stm";  version = "0.1.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {n = "monad-stlike-io";}
+      {lt = "0.3";  n = "monad-stlike-io";}
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {n = "stm";}
     ];
   };
-  sha256 = "1dqpqxq0gihf0fm89bkpc5mi5qzkfs9yrbxfmd92dqpxcxz6rngr";
+  sha256 = "007rsq9x0dq8xmiimgqb0v8k15xizx63qmc76b1b8a66nfsd9w56";
 }
 {
   name = "monad-tx";  version = "0.0.1";  edeps = [];
@@ -24146,6 +24579,21 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1g2ccyi3pns0p0h9c4jgp48y3di85ss8jk3wn06i1snz38hxy5yk";
 }
 {
+  name = "mongoDB";  version = "0.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {lt = "5";  n = "base";}  {n = "binary";}  {n = "bytestring";}
+      {n = "containers";}  {n = "convertible";}
+      {n = "data-binary-ieee754";}  {n = "network";}  {n = "random";}
+      {n = "time";}  {n = "utf8-string";}
+    ];
+  };
+  sha256 = "1mfr3imx9n694j6mkrmg7pd4f3wfa3sp1p2rl0ly18ppgfw04qn4";
+}
+{
   name = "monoid-record";  version = "0.1";  edeps = [];
   ldeps = {cdeps = [];  deps = [{n = "base";}];};
   sha256 = "14xs1nvf0ngx4jvinkhzq3ainhs159zx0396z88y21vvc8kw42i5";
@@ -24189,6 +24637,22 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     ];
   };
   sha256 = "0ih9nqg4d8q7cxx13pjg2rhhaml5dq29f935n13fwf9b6n1danix";
+}
+{
+  name = "morfette";  version = "0.3.1";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "3";};  i2 = {lte = "4";};  n = "base";}
+       {n = "containers";}  {n = "array";}  {n = "QuickCheck";}
+       {n = "mtl";}  {n = "directory";}  {n = "filepath";}
+       {n = "haskell98";}  {n = "pretty";}  {n = "utf8-string";}
+       {n = "bytestring";}  {n = "binary";}
+     ];
+   }];
+  sha256 = "0wgdrni1n5y1cl2kx3q0sqs7dn2nw5q5jznxsyvrz3jdxa91rkwh";
 }
 {
   name = "mp3decoder";  version = "0.0.1";
@@ -24235,24 +24699,23 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "11hwhkxnr334ssg5ga7svsz3cx2nk6wrzmb8flhpgpqhrhw62ybk";
 }
 {
-  name = "mps";  version = "2009.11.7";  edeps = [];
+  name = "mps";  version = "2010.1.26";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
+      {n = "base64-string";}
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "containers";}  {n = "array";}  {n = "parallel";}
-      {n = "old-time";}  {n = "time";}
+      {n = "zlib";}  {n = "containers";}  {n = "array";}
+      {n = "parallel";}  {n = "old-time";}  {n = "time";}
       {gte = "0.9";  n = "bytestring";}
       {gte = "0.3.4";  n = "regexpr";}  {gte = "2";  n = "parsec";}
       {gte = "0.3.3";  n = "utf8-string";}  {n = "directory";}
-      {n = "interpolatedstring-qq";}  {n = "base64-string";}
-      {n = "zlib";}  {n = "old-locale";}  {n = "filepath";}
-      {n = "template-haskell";}
+      {n = "old-locale";}  {n = "filepath";}  {n = "template-haskell";}
     ];
   };
-  sha256 = "0jhlzr5b5w255zc9jk7f5130z6b9kn1nc0mamlbhjqvy39ywjri7";
+  sha256 = "0mmnlw5450697zrpndm2lq62z82vasb342n0gmp2agblnd3vhb4j";
 }
 {
   name = "msgpack";  version = "0.2.0";  edeps = [];
@@ -24333,7 +24796,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1y0v06qnpna8sa0aw24i4s29yc49m3a7d8yrl6xiv1jrgycjcafc";
 }
 {
-  name = "multirec";  version = "0.4";  edeps = [];
+  name = "multirec";  version = "0.4.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -24341,11 +24804,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     [
       {i1 = {gte = "3.0";};  i2 = {lt = "5";};  n = "base";}
       {
-        i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "template-haskell";
+        i1 = {gte = "2.2";};  i2 = {lt = "2.5";};  n = "template-haskell";
       }
     ];
   };
-  sha256 = "0pk9wg7r3z2hcn1vl40xiy7p66sk5q0yhv38g7yv700q1vlnlymd";
+  sha256 = "1wbriygy7r3f3q0m92kz2clz098d223ybra8qhdk01w8ry4m7z6r";
 }
 {
   name = "multirec-alt-deriver";  version = "0.1";  edeps = [];
@@ -24396,6 +24859,16 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     deps = [{n = "base";}  {n = "haskell98";}  {n = "stm";}];
   };
   sha256 = "04i6i7gcvf9rkwmh2ak9a61bd5j6rkjjqh0j0x15ii05hvrps1ca";
+}
+{
+  name = "murmur-hash";  version = "0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [{i1 = {gte = "3.0";};  i2 = {lt = "4.3";};  n = "base";}];
+  };
+  sha256 = "13igsm2hmppbm94kl7hwc0jzskvkrsi9p0nd34b15mgln3xrlfdm";
 }
 {
   name = "musicxml";  version = "0.1.2";  edeps = [];
@@ -24516,6 +24989,19 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   name = "nat";  version = "0.2";  edeps = [];
   ldeps = {cdeps = [];  deps = [{n = "base";}];};
   sha256 = "01zvndvsql04f2c3dpyyh02n6hz56cvbcsnwwg0b89dzqjb5xn34";
+}
+{
+  name = "natural-sort";  version = "0.1.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "2";};  i2 = {lt = "5";};  n = "base";}
+      {gte = "3";  n = "parsec";}  {n = "text";}  {n = "bytestring";}
+    ];
+  };
+  sha256 = "0w3y7pn966dflk4m2i7a3p719z2hq94zq7qbrg1rwkag56jz63c3";
 }
 {
   name = "nehe-tuts";  version = "0.1.1";
@@ -24750,7 +25236,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1cmiwyf8hyy981zf37g7a5036n7csakyj46chl354iys547sjw0r";
 }
 {
-  name = "network-fancy";  version = "0.1.4";  edeps = [];
+  name = "network-fancy";  version = "0.1.5";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -24767,7 +25253,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "bytestring";}
     ];
   };
-  sha256 = "0d6vgk55gf5sppr8s71y1lirncjcqmk9an9y4wd7abnbxg1jwfxf";
+  sha256 = "0595kf7jnjf78m04nfcb9d8mllvgxiq25r1dp4hlf60h5pbk6zk1";
 }
 {
   name = "network-minihttp";  version = "0.2";  edeps = [];
@@ -24926,7 +25412,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0acs76pqkvdnqcr0fr5aj4ixhmgi29jcwc8za05p6m4dy403yfh5";
 }
 {
-  name = "non-negative";  version = "0.0.5";
+  name = "non-negative";  version = "0.0.5.1";
   edeps = 
   [{
      cdeps = 
@@ -24948,9 +25434,9 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
        }
      ]];
     deps = 
-    [{i1 = {gte = "1.0";};  i2 = {lt = "2";};  n = "QuickCheck";}];
+    [{i1 = {gte = "1.0";};  i2 = {lt = "3";};  n = "QuickCheck";}];
   };
-  sha256 = "0vrjbnsnpz0j4qc79ma8d32xfh95x1yd8dn110gb34yz9r3qi9qx";
+  sha256 = "0z78srsm6aab6rxqwnn9a3cyx14hwaqyvsicigjvzcs5prynbl0z";
   tflags = ["splitbase"];
 }
 {
@@ -25006,7 +25492,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1aazk1dr64i4majwchhdq8mrq6gq6vgn40gxjh8swfb0x67m6yi9";
 }
 {
-  name = "numeric-prelude";  version = "0.1.3";
+  name = "numeric-prelude";  version = "0.1.3.1";
   edeps = 
   [
     {
@@ -25052,9 +25538,9 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
          cdeps = [];
          deps = 
          [
-           {i1 = {gte = "2";};  i2 = {lt = "5";};  n = "base";}
-           {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "array";}
-           {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "containers";}
+           {i1 = {gte = "2";};  i2 = {lt = "6";};  n = "base";}
+           {i1 = {gte = "0.1";};  i2 = {lt = "0.4";};  n = "array";}
+           {i1 = {gte = "0.1";};  i2 = {lt = "0.4";};  n = "containers";}
            {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "random";}
          ];
        }
@@ -25066,7 +25552,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     deps = 
     [
       {i1 = {gte = "1";};  i2 = {lt = "3";};  n = "parsec";}
-      {i1 = {gte = "1";};  i2 = {lt = "2";};  n = "QuickCheck";}
+      {i1 = {gte = "1";};  i2 = {lt = "3";};  n = "QuickCheck";}
       {
         i1 = {gte = "0.0.1";};  i2 = {lt = "0.1";};  n = "storable-record";
       }
@@ -25076,7 +25562,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "0.0.4";};  i2 = {lt = "0.1";};  n = "utility-ht";}
     ];
   };
-  sha256 = "0zxbn7cv28l64a75bk0xn19sh0qi2gbc4z076j1pfy9hs1f0piag";
+  sha256 = "1qp9xwwc3hn037zj97jy6dj9dy30q4kywqcyj7vymhalvjlfz31y";
   tflags = ["splitbase"];
 }
 {
@@ -25322,6 +25808,19 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     ];
   };
   sha256 = "1p59wlkirz4dwyhsnzzzbvy2cwfizn2zky5sxrsmnrzfkbpx1ig5";
+}
+{
+  name = "operational";  version = "0.1.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {le = "5";};  i2 = {gte = "4";};  n = "base";}
+      {i1 = {le = "1.2";};  i2 = {gte = "1.1";};  n = "mtl";}
+    ];
+  };
+  sha256 = "066bd8y4hsp3sadpky08hl35bkifl07swzr3ncwnhil1fb7jll0p";
 }
 {
   name = "opml";  version = "0.4";  edeps = [];
@@ -25586,13 +26085,13 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["executable"  "wrappers"  "library"];
 }
 {
-  name = "para";  version = "1.0";  edeps = [];
+  name = "para";  version = "1.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = [{i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}];
   };
-  sha256 = "0m4fhyz5rd49zzfd92cdnq25j55mrfxkc1gbkj3m9m3apy8wln36";
+  sha256 = "0l5abmqi548s10f87m124ld4hhphhl1szljyc04a13fah4dsqjbh";
 }
 {
   name = "parallel";  version = "2.2.0.1";  edeps = [];
@@ -25976,7 +26475,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1bb6cn2vk7b57gaxh863ymidb4l7ldiwcnpif790rd4bq44fwfvf";
 }
 {
-  name = "photoname";  version = "2.2";
+  name = "photoname";  version = "2.3.0";
   edeps = 
   [{
      cdeps = [];
@@ -25987,7 +26486,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
        {n = "parsec";}  {n = "time";}  {n = "unix";}
      ];
    }];
-  sha256 = "0v54nqv7pnnnyl85mr96m17p5dn3jsbrlyip3y93ybabzvrbnhkx";
+  sha256 = "1jmbyhzjb556vhs1n33llili9914j3xiif10zpxxqdm8xvn11i5a";
 }
 {
   name = "piet";  version = "0.1";
@@ -26051,7 +26550,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "019mli0g65g7k4rsp2myxc7g6p6wykj85amvb2g2ipw117zpzkfz";
 }
 {
-  name = "plist";  version = "0.0.2";  edeps = [];
+  name = "plist";  version = "0.0.2.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -26059,10 +26558,10 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     [
       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
       {n = "dataenc";}
-      {i1 = {gte = "8.3.0";};  i2 = {lt = "8.4";};  n = "hxt";}
+      {i1 = {gte = "8.3.0";};  i2 = {lt = "9.0";};  n = "hxt";}
     ];
   };
-  sha256 = "0q231d17jd2386gn3nzz155g3pcm7rzbw1vb9w65rd28iljg9f5h";
+  sha256 = "12p18n5djk41nd74dv685sssnb7ff9zrqrcrpq1wdd6xdjqhpph9";
 }
 {
   name = "plugins";  version = "1.4.1";  edeps = [];
@@ -26527,17 +27026,18 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0j3xjlwvix81zxd38540jwb3vp438d72gmfxdhbypyi5f1qgx01x";
 }
 {
-  name = "printf-mauke";  version = "0.3";  edeps = [];
+  name = "printf-mauke";  version = "0.4";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {n = "base";}  {n = "containers";}  {n = "utf8-string";}
-      {n = "data-default";}
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+      {n = "containers";}  {n = "utf8-string";}  {n = "data-default";}
+      {n = "bytestring";}
     ];
   };
-  sha256 = "00w3q5xdj93wp368i7vnm1l7g18srmdxvzax209f56nsj3s7q1kg";
+  sha256 = "016acd0csvg3wac40y2gm6ddfb8zzrafvimx4i31y1b2vsi2f54p";
 }
 {
   name = "printxosd";  version = "0.1";
@@ -26725,54 +27225,47 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "09yfspxcdp4y5chim2qmylfmjp0kdg4qg2w54kg3hir8f7kih3ns";
 }
 {
-  name = "property-list";  version = "0.0.0.7";  edeps = [];
+  name = "progression";  version = "0.2";  edeps = [];
   ldeps = 
   {
-    cdeps = 
-    [
-      [
-        {flag = "new_template_haskell";}
-        {
-          cdeps = [];
-          deps = 
-          [{
-             i1 = {gte = "2.4";};  i2 = {lt = "2.6";};  n = "template-haskell";
-           }];
-        }
-        {cdeps = [];  deps = [{lt = "2.4";  n = "template-haskell";}];}
-      ]
-      [
-        {flag = "new_data_object";}
-        {cdeps = [];  deps = [{gte = "0.0.2";  n = "data-object";}];}
-        {cdeps = [];  deps = [{lt = "0.0.2";  n = "data-object";}];}
-      ]
-      [
-        {flag = "haxml_1_13";}
-        {
-          cdeps = [];
-          deps = 
-          [
-            {i1 = {gte = "1.13";};  i2 = {lt = "1.14";};  n = "HaXml";}
-            {n = "bytestring";  v = "0.9.1.4";}
-            {n = "bytestring-class";  v = "0.0.0";}
-            {n = "data-object";  v = "0.0.2";}
-            {n = "utf8-string";  v = "0.3.5";}
-          ];
-        }
-        {cdeps = [];  deps = [{gte = "1.19";  n = "HaXml";}];}
-      ]
-    ];
+    cdeps = [];
     deps = 
     [
       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {n = "bytestring";}  {n = "bytestring-class";}
-      {n = "containers";}  {n = "dataenc";}  {n = "mtl";}
-      {n = "old-locale";}  {n = "pretty";}  {n = "time";}
-      {n = "th-fold";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "criterion";}
+      {n = "directory";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "txt-sushi";}
+      {n = "containers";}  {n = "process";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "filepath";}
+      {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "haskeline";}
     ];
   };
-  sha256 = "1xcd2rk70bwzg310liadcwphrsr74cnaah7mj8k1ydzhgbzdsbyj";
-  tflags = ["new-data-object"  "new-template-haskell"];
+  sha256 = "17wlxk4pwlq82gc21z8lj4as9xk8dmwx91555ij6114zna7yparp";
+}
+{
+  name = "property-list";  version = "0.0.1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {flag = "haxml_1_13";}
+       {
+         cdeps = [];
+         deps = 
+         [{i1 = {gte = "1.13";};  i2 = {lt = "1.14";};  n = "HaXml";}];
+       }
+       {cdeps = [];  deps = [{gte = "1.19";  n = "HaXml";}];}
+     ]];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "bytestring";}  {n = "bytestring-class";}
+      {n = "category-extras";}  {n = "containers";}  {n = "dataenc";}
+      {n = "mtl";}  {n = "old-locale";}  {n = "pretty";}  {n = "syb";}
+      {n = "template-haskell";}  {n = "time";}  {n = "th-fold";}
+    ];
+  };
+  sha256 = "1wz09qrx2zr7p80y2pp5m9qb0hv938x15hx8mgqlydf295hbv4h3";
 }
 {
   name = "proplang";  version = "0.1";  edeps = [];
@@ -26790,7 +27283,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1vm01qvd0jgcdpqx3p2h6gafhxi5x7bs8r5a6xsk4zz6cc1cbw4m";
 }
 {
-  name = "protocol-buffers";  version = "1.5.0";  edeps = [];
+  name = "protocol-buffers";  version = "1.6.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -26816,11 +27309,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "haskell-src";}  {n = "QuickCheck";}
     ];
   };
-  sha256 = "1jxb1hijkwwfmjs64rgxgd1v6gg17w3gzs3sf5d0z2yxf148km2d";
+  sha256 = "0irqdn0qyjrzg6159l04n0ag8hadp2sl1h08q86yda3aa93hdvgl";
   tflags = ["small_base"];
 }
 {
-  name = "protocol-buffers-descriptor";  version = "1.5.0";
+  name = "protocol-buffers-descriptor";  version = "1.6.0";
   edeps = [];
   ldeps = 
   {
@@ -26838,11 +27331,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
      ]];
     deps = 
     [
-      {n = "protocol-buffers";  v = "1.5.0";}  {n = "containers";}
+      {n = "protocol-buffers";  v = "1.6.0";}  {n = "containers";}
       {n = "bytestring";}
     ];
   };
-  sha256 = "1n89pqf4sbad7mm3pzhid9jpd0w1fqf6aynwxhi18xg8m95gs7xa";
+  sha256 = "0s22r8qika08b5hblzkxjbpchv6skd4wjh2zykc9lpwz90xs22n7";
   tflags = ["small_base"];
 }
 {
@@ -27651,7 +28144,31 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "10vh4i7q9vf6b716hf2i9pv1dy6vlyrh8bybqh91i704a55m40f3";
 }
 {
-  name = "regions";  version = "0.2";  edeps = [];
+  name = "regional-pointers";  version = "0.1.0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "4.3";};  n = "base";}
+      {
+        i1 = {gte = "0.1.1";};  i2 = {lt = "0.2";};
+        n = "base-unicode-symbols";
+      }
+      {i1 = {le = "0.5";};  i2 = {gte = "0.4";};  n = "regions";}
+      {
+        i1 = {gte = "0.1.4";};  i2 = {lt = "0.2";};  n = "transformers";
+      }
+      {
+        i1 = {gte = "0.0.2.0";};  i2 = {lt = "0.1";};
+        n = "MonadCatchIO-transformers";
+      }
+    ];
+  };
+  sha256 = "068ywwawz2lg4qgv6mx4qa4vd1y987rv8w6ycdxa5l02c53j37w7";
+}
+{
+  name = "regions";  version = "0.4";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -27666,15 +28183,15 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
         i1 = {gte = "0.1.4";};  i2 = {lt = "0.2";};  n = "transformers";
       }
       {
-        i1 = {le = "0.0.3";};  i2 = {gte = "0.0.2";};
+        i1 = {gte = "0.0.2.0";};  i2 = {lt = "0.1";};
         n = "MonadCatchIO-transformers";
       }
     ];
   };
-  sha256 = "181my313j74ngvzcavfkxf3hnj08nb4j2vi3nja1jiw465h1kz13";
+  sha256 = "1vvfiqrkxx5dczff3jpafwfmyi1182w1z7cpdn2d47b6q2mrl61z";
 }
 {
-  name = "regions-monadsfd";  version = "0.2";  edeps = [];
+  name = "regions-monadsfd";  version = "0.3.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -27687,14 +28204,14 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {
         i1 = {gte = "0.1.4";};  i2 = {lt = "0.2";};  n = "transformers";
       }
-      {i1 = {le = "0.3";};  i2 = {gte = "0.2";};  n = "regions";}
+      {i1 = {le = "0.5";};  i2 = {gte = "0.4";};  n = "regions";}
       {i1 = {le = "0.1";};  i2 = {gte = "0.0";};  n = "monads-fd";}
     ];
   };
-  sha256 = "013mfi07x91241swlgj3khqsn94jbp1y3ccskcl7gaip3809mw9v";
+  sha256 = "0qysn843ksk18d93zxyggp09yzq9c5dknsdxj9i66idy8nsmbim4";
 }
 {
-  name = "regions-monadstf";  version = "0.2.0.1";  edeps = [];
+  name = "regions-monadstf";  version = "0.3.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -27707,26 +28224,37 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {
         i1 = {gte = "0.1.4";};  i2 = {lt = "0.2";};  n = "transformers";
       }
-      {i1 = {le = "0.3";};  i2 = {gte = "0.2";};  n = "regions";}
+      {i1 = {le = "0.5";};  i2 = {gte = "0.4";};  n = "regions";}
       {i1 = {le = "0.1";};  i2 = {gte = "0.0";};  n = "monads-tf";}
     ];
   };
-  sha256 = "1vyhfmgyikfpzc4wm3mvv33jgacj74xgy0hhs96dksh9kqszkgb4";
+  sha256 = "0vzfh25pl30s8plr8f3qkvq075mjm7vzlwiggdyqrs6z0hpax1am";
 }
 {
-  name = "regular";  version = "0.2.1";  edeps = [];
+  name = "regular";  version = "0.2.3";  edeps = [];
   ldeps = 
   {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4.0";};  i2 = {lt = "5";};  n = "base";}
-      {
-        i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "template-haskell";
-      }
-    ];
+    cdeps = 
+    [[
+       {compilerFlavor = "GHC";  versionRange = {gte = "6.12";};}
+       {
+         cdeps = [];
+         deps = 
+         [{
+            i1 = {gte = "2.4";};  i2 = {lt = "2.5";};  n = "template-haskell";
+          }];
+       }
+       {
+         cdeps = [];
+         deps = 
+         [{
+            i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "template-haskell";
+          }];
+       }
+     ]];
+    deps = [{i1 = {gte = "4.0";};  i2 = {lt = "5";};  n = "base";}];
   };
-  sha256 = "0qmpr07wlsw8sh6c9lvclxkj3cwa3ic7b2fk08klmcw78rff2bbk";
+  sha256 = "0mwg5wzahlcjcc7warhyxhz2d7pd8ab9905x33cdi5s3534rc08y";
 }
 {
   name = "regular-extras";  version = "0.1.2";  edeps = [];
@@ -28091,7 +28619,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "08f41algsy7rhvw39b8265gd4jg4c8jf2k91gadbzin45kssd77d";
 }
 {
-  name = "safer-file-handles";  version = "0.2.0.1";  edeps = [];
+  name = "safer-file-handles";  version = "0.3.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -28102,21 +28630,21 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
         i1 = {gte = "0.1.1";};  i2 = {lt = "0.2";};
         n = "base-unicode-symbols";
       }
-      {i1 = {le = "0.3";};  i2 = {gte = "0.2";};  n = "regions";}
+      {i1 = {le = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
+      {i1 = {le = "0.5";};  i2 = {gte = "0.4";};  n = "regions";}
       {
         i1 = {gte = "0.1.4";};  i2 = {lt = "0.2";};  n = "transformers";
       }
       {
-        i1 = {le = "0.0.3";};  i2 = {gte = "0.0.2";};
+        i1 = {gte = "0.0.2.0";};  i2 = {lt = "0.1";};
         n = "MonadCatchIO-transformers";
       }
       {
-        i1 = {gte = "0.1.5";};  i2 = {lt = "0.2";};
-        n = "explicit-iomodes";
+        i1 = {le = "0.3";};  i2 = {gte = "0.2";};  n = "explicit-iomodes";
       }
     ];
   };
-  sha256 = "038wk2kyagpkd0i02n3wjakwn5n8f5fbw2yc1bi2jm8ciz3v89c6";
+  sha256 = "11a1gzcww4903kjr65ysh967a107gvmbi4rlh5nbzznynj4nag32";
 }
 {
   name = "salvia";  version = "0.1.2";  edeps = [];
@@ -28807,18 +29335,32 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0jvnvz66k762fjv1zf4bw6brax95ysfssivx6qmvq9mjcd5j8xqp";
 }
 {
-  name = "show";  version = "0.3.3";  edeps = [];
+  name = "show";  version = "0.3.4";  edeps = [];
   ldeps = 
   {
-    cdeps = [];
+    cdeps = 
+    [[
+       {flag = "base4ornewer";}
+       {
+         cdeps = [];
+         deps = 
+         [
+           {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}  {n = "syb";}
+         ];
+       }
+       {
+         cdeps = [];
+         deps = [{i1 = {gte = "3";};  i2 = {lt = "4";};  n = "base";}];
+       }
+     ]];
     deps = 
     [
-      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
       {n = "random";}  {lt = "2";  n = "QuickCheck";}
       {gte = "0.4";  n = "smallcheck";}
     ];
   };
-  sha256 = "1fh1dwkbanjb4fa8mfp3m1rgiwfkym6jrz4v1w3d5b93hykk4v95";
+  sha256 = "1kqhxiz1nj25qkl5spdihbh2kmpfdjgz508fbv2sfm61kq3xl2f0";
+  tflags = ["base4ornewer"];
 }
 {
   name = "showdown";  version = "0.5.3";
@@ -30785,7 +31327,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1qcay15g6g2c9h6vfc7pi7rl4d8fsl09vrq33pdqvgg2fp2xclh3";
 }
 {
-  name = "tabular";  version = "0.2.2.0";  edeps = [];
+  name = "tabular";  version = "0.2.2.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -30797,7 +31339,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "1.0";};  i2 = {lt = "2.0";};  n = "html";}
     ];
   };
-  sha256 = "1hpppr6m0jdixjqx2dd3g064s4m94z28ylsbz8m929bmx7x8fx30";
+  sha256 = "0nv38zxllcpafz321cy0dnb2xdhlrk0schdcx5xqzca3zcmbidqx";
 }
 {
   name = "tagchup";  version = "0.4";
@@ -31304,7 +31846,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["base4"];
 }
 {
-  name = "test-framework-quickcheck2";  version = "0.2.4";
+  name = "test-framework-quickcheck2";  version = "0.2.5";
   edeps = [];
   ldeps = 
   {
@@ -31337,12 +31879,21 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
      ]];
     deps = 
     [
-      {gte = "0.2.0";  n = "test-framework";}
-      {gte = "2.1.0.0";  n = "QuickCheck";}
-      {gte = "0.1.1";  n = "extensible-exceptions";}
+      {
+        i1 = {gte = "0.2.0";};  i2 = {lt = "0.3.0";};
+        n = "test-framework";
+      }
+      {
+        i1 = {gte = "2.1.0.3";};  i2 = {lt = "2.2.0.0";};
+        n = "QuickCheck";
+      }
+      {
+        i1 = {gte = "0.1.1";};  i2 = {lt = "0.2.0";};
+        n = "extensible-exceptions";
+      }
     ];
   };
-  sha256 = "0qc9arn7xj862ag8hgmxajvnmgpni9kw5rj5xkba8jgn4a10brsh";
+  sha256 = "0rvx4zl11gxpar8ndm2sy85sm7kflnj4rk0ydg13i1j2d6zjy9nr";
   tflags = ["base4"];
 }
 {
@@ -31410,7 +31961,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "10wlw1frkaa3j8mb8lxgpvxcx87m8wdpca3mli9c5kirdm51vjgw";
 }
 {
-  name = "texmath";  version = "0.1.1";
+  name = "texmath";  version = "0.2";
   edeps = 
   [
     {
@@ -31440,11 +31991,11 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "containers";}
     ];
   };
-  sha256 = "0snrf4yq83rlpc15gki0hj87b1b6jwav77zmkv1wl9zdrawlpkqz";
+  sha256 = "0ypl0hnvwijmh9zzknm7p31a8lg7k08zaffqvyg1y7s864b5czks";
   tflags = ["cgi"  "test"];
 }
 {
-  name = "text";  version = "0.7.0.1";  edeps = [];
+  name = "text";  version = "0.7.1.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -31473,7 +32024,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {i1 = {gte = "0.9";};  i2 = {lt = "1.0";};  n = "bytestring";}
     ];
   };
-  sha256 = "1ily1nkmky3r7vn1nmj1j6zl3g1ra3rrcij4mr8zgy71hzl8s9hs";
+  sha256 = "09glhfqfr95m31lslxwgbfyn34znzqa6dcis6qhfdvfx8gpa1nm6";
 }
 {
   name = "text-icu";  version = "0.1";  edeps = [];
@@ -31578,6 +32129,34 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     ];
   };
   sha256 = "0nm131rxj7v4qaxh5z39hy42hc8n2hnnvplwpdm76615wgblbji2";
+}
+{
+  name = "threadscope";  version = "0.1.1";
+  edeps = 
+  [{
+     cdeps = 
+     [
+       [
+         {compilerFlavor = "GHC";  versionRange = {lt = "6.12";};}
+         {cdeps = [];  deps = [];}  {cdeps = [];  deps = [];}
+       ]
+       [
+         {not = {os = "Windows";};}
+         {cdeps = [];  deps = [{gte = "2.3.0";  n = "unix";}];}
+       ]
+     ];
+     deps = 
+     [
+       {i1 = {gte = "4.0";};  i2 = {lt = "5";};  n = "base";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}
+       {n = "gtk2hs-meta-package-hack";}  {n = "binary";}
+       {n = "array";}  {n = "mtl";}  {n = "filepath";}
+       {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "ghc-events";}
+       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "containers";}
+     ];
+   }];
+  sha256 = "13bfi04cwcxlwr3rk036whd1rackr0riqlx8w9wpjcb7wlj0s97n";
 }
 {
   name = "thrist";  version = "0.1.2";  edeps = [];
@@ -31972,17 +32551,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   tflags = ["applicativeinbase"];
 }
 {
-  name = "translate";  version = "2009.12.17";  edeps = [];
+  name = "translate";  version = "2010.1.24";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}  {n = "curl";}
-      {n = "json";}  {n = "network";}
+      {n = "json";}  {n = "network";}  {n = "utf8-string";}
     ];
   };
-  sha256 = "136lysxfwpixq1ahxj9sp4shm3j5x4b9gf9rmzakzxbf45097kyc";
+  sha256 = "0vcqw0x7c9nb8yigvk35x72rds50kvma02rwkb757y1sk80q0mzf";
 }
 {
   name = "tree-monad";  version = "0.2.1";  edeps = [];
@@ -32132,24 +32711,24 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1wc1z7ps1rcbws2snci64hxddjd3bi3kbi4iwvbfaac0dz52085m";
 }
 {
-  name = "type";  version = "0.1.0";  edeps = [];
+  name = "type";  version = "0.2.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
     [[
-       {compilerFlavor = "GHC";  versionRange = {lt = "6.8";};}
+       {compilerFlavor = "GHC";  versionRange = {lt = "6.12";};}
        {cdeps = [];  deps = [];}
      ]];
     deps = 
     [
-      {i1 = {gte = "4.0";};  i2 = {lt = "4.2";};  n = "base";}
+      {i1 = {gte = "4.2";};  i2 = {lt = "4.3";};  n = "base";}
       {
-        i1 = {le = "2.4";};  i2 = {gte = "2.3";};  n = "template-haskell";
+        i1 = {gte = "2.4";};  i2 = {lt = "2.5";};  n = "template-haskell";
       }
-      {i1 = {le = "0.3";};  i2 = {gte = "0.2";};  n = "containers";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "containers";}
     ];
   };
-  sha256 = "16hv6bk8vlh6kp2dzakzbf60npicyca6c5ka2hfnys6mx2wkg01f";
+  sha256 = "13xkbj1nimgs9cm5mdqx52m1qzjgkzcxxjibqb1g8rmjgy17yj5m";
 }
 {
   name = "type-equality";  version = "0.1.0";  edeps = [];
@@ -32446,7 +33025,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0v2rvr9rj956mqq7x7f3hqvd4dk52ma079jnx4ni7z271mhn4kh1";
 }
 {
-  name = "uniplate";  version = "1.4";  edeps = [];
+  name = "uniplate";  version = "1.5.1";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -32471,7 +33050,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
      ]];
     deps = [];
   };
-  sha256 = "056zv5fh8781r32jcvkfdgsddbydr37llqh4yfxd3si5fr16km2y";
+  sha256 = "0czwkknhi1rq7c5bh5gl8k1dl8lvf820q6n5y0nrj673pfmsmsng";
   tflags = ["ghc_6_10"];
 }
 {
@@ -32584,17 +33163,21 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1y1jqymjbawwdywk770j4rk8sy7p1plvfliwcmqr0h16y31kzlpl";
 }
 {
-  name = "url";  version = "2.1";  edeps = [];
+  name = "url";  version = "2.1.2";  edeps = [];
   ldeps = 
   {
-    cdeps = [];
+    cdeps = 
+    [[
+       {compilerFlavor = "GHC";  versionRange = {gte = "6.8";};}
+       {cdeps = [];  deps = [];}
+     ]];
     deps = 
     [
-      {i1 = {gte = "3";};  i2 = {lte = "4";};  n = "base";}
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {gte = "0.3.4";};  i2 = {lt = "2";};  n = "utf8-string";}
     ];
   };
-  sha256 = "11ik3hqjj9pbdq28y05f29xs34fx4xy88pnrjzl88dpzf50wiskm";
+  sha256 = "14gg8dks3zyclnws0dsdrj116yw9czc6dpp41aaf7bqqchlw9x9c";
 }
 {
   name = "urlcheck";  version = "0.1.1";
@@ -32742,7 +33325,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0qixrislykcdl88p6bva0dkk157m51i9dzg4k044wsfdhr9gkbfg";
 }
 {
-  name = "usb-safe";  version = "0.5";  edeps = [];
+  name = "usb-safe";  version = "0.5.1.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -32755,17 +33338,17 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       }
       {i1 = {le = "0.4";};  i2 = {gte = "0.3";};  n = "usb";}
       {i1 = {le = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
-      {i1 = {le = "0.3";};  i2 = {gte = "0.2";};  n = "regions";}
+      {i1 = {le = "0.5";};  i2 = {gte = "0.4";};  n = "regions";}
       {
         i1 = {gte = "0.1.4";};  i2 = {lt = "0.2";};  n = "transformers";
       }
       {
-        i1 = {le = "0.0.3";};  i2 = {gte = "0.0.2";};
+        i1 = {v = "0.0.2.0";};  i2 = {lt = "0.1";};
         n = "MonadCatchIO-transformers";
       }
     ];
   };
-  sha256 = "0gl64nwksbz7vwgh054drgx6yqc5za14z7swlvcq7sa1al2zkijb";
+  sha256 = "0smw1m5vwyvb0kr9qi26g7zyzhqa4bsa6rnli8idhpskkqb4p5cg";
 }
 {
   name = "utf8-env";  version = "0.1";  edeps = [];
@@ -33373,7 +33956,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "0lz0pdnn6i6warg20vrrrlbz6f61f0xzl3agda9ixdhcknvzw653";
 }
 {
-  name = "web-encodings";  version = "0.2.0.1";
+  name = "web-encodings";  version = "0.2.2";
   edeps = 
   [{
      cdeps = 
@@ -33405,12 +33988,12 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {
         i1 = {gte = "0.9.1.4";};  i2 = {lt = "0.10";};  n = "bytestring";
       }
-      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "text";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.8";};  n = "text";}
       {i1 = {gte = "0.0.0";};  i2 = {lt = "0.1";};  n = "failure";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "safe";}
     ];
   };
-  sha256 = "192h065ix6rgr72iwzhfc0capgx0al2h59k457pvnv3zkqldfbgd";
+  sha256 = "1jr3wcnaa0h5yx2hv1v263xwask73glbkq8wlyhgxdqz05264gcr";
 }
 {
   name = "webidl";  version = "0.1.1";
@@ -33470,6 +34053,26 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     ];
   };
   sha256 = "0fgasnviqmz8ifkb8ikvj721f9j1xzvix5va0jxi81gh6f400ij6";
+}
+{
+  name = "wikipedia4epub";  version = "0.0.3";
+  edeps = [{cdeps = [];  deps = [];}];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {gte = "6.12.1";  n = "ghc";}  {lt = "5";  n = "base";}
+      {n = "filepath";}  {n = "bytestring";}  {n = "haskell98";}
+      {n = "url";}  {n = "directory";}  {n = "epub";}
+      {n = "regex-posix";}  {n = "network";}  {n = "regex-base";}
+      {n = "HDBC-sqlite3";}  {gte = "2.1.1";  n = "HDBC";}
+      {gte = "0.8";  n = "tagsoup";}  {n = "HTTP";}
+      {n = "zip-archive";}  {n = "xml";}
+      {i1 = {gte = "1.5";};  i2 = {lt = "1.9";};  n = "Cabal";}
+    ];
+  };
+  sha256 = "1jq1z0iqfh0n933z2bzjhvzfvaiw90nf8wcaqdqnb09y3nn22ii9";
 }
 {
   name = "windowslive";  version = "0.3";
@@ -33568,7 +34171,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "1dhyzcxxl4wn9fiajk0914syh2s1n30j2bsqggmzjb1b7d5ndnl8";
 }
 {
-  name = "word24";  version = "0.1.0";
+  name = "word24";  version = "0.1.2";
   edeps = 
   [{
      cdeps = 
@@ -33621,7 +34224,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     ];
     deps = [{n = "haskell98";}];
   };
-  sha256 = "0jh3my34z0rdgyr4w90bfb0i7mn4lhka58zd2sgkhwdq89bqdk4r";
+  sha256 = "1p2ll65bdp08kyqf21b233cnz32n41klmrd9pgqgf0s4nf4d4vy7";
   tflags = ["splitbase"];
 }
 {
@@ -33869,6 +34472,20 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   };
   sha256 = "0nbnh84mc4739ql2d0sf2da1m2rvdx0mlv9z5qkrm011lx4f4cgr";
   tflags = ["splitbase"];
+}
+{
+  name = "wxhnotepad";  version = "1.0.0";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {gte = "4";  n = "base";}  {lt = "5";  n = "base";}
+       {gte = "0.11.1";  n = "wxcore";}  {lt = "0.13";  n = "wxcore";}
+       {gte = "0.11.1";  n = "wx";}  {lt = "0.13";  n = "wx";}
+     ];
+   }];
+  sha256 = "00p8fdm0q73w6f7qpifpzwnzrz2v8d9sjzvq6296sc0vkffid4pg";
 }
 {
   name = "xattr";  version = "0.5.2";  edeps = [];
@@ -34462,19 +35079,68 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "064qakx4khzz9ih9isw46c8pm8wpg662fwnis4d64nszy6y9yfck";
 }
 {
-  name = "yaml";  version = "0.0.4";  edeps = [];
+  name = "yajl";  version = "0.1.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "bytestring-class";}  {gte = "0.0.2";  n = "data-object";}
-      {i1 = {gte = "0.9.1.4";};  i2 = {lt = "1";};  n = "bytestring";}
-      {n = "haskell98";}
+      {n = "bytestring";}  {n = "text";}
     ];
   };
-  sha256 = "1qhk6fjvy7mj8pg47inrpzsg044far0zphwjp02bb7vcpcbg4jnx";
+  sha256 = "0l8ym5x2m245b7k853lfwyiijydsr9fnw1gj5xl1gz1pqly7zfqs";
+}
+{
+  name = "yaml";  version = "0.2.0";
+  edeps = 
+  [{
+     cdeps = 
+     [[
+        {flag = "buildtests";}
+        {
+          cdeps = [];
+          deps = 
+          [
+            {n = "test-framework";}  {n = "test-framework-quickcheck";}
+            {n = "test-framework-hunit";}  {n = "HUnit";}
+            {i1 = {gte = "1";};  i2 = {lt = "2";};  n = "QuickCheck";}
+            {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+            {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "transformers";}
+            {
+              i1 = {gte = "0.6.0";};  i2 = {lt = "0.7";};
+              n = "control-monad-failure";
+            }
+            {
+              i1 = {gte = "0.9.1.4";};  i2 = {lt = "0.10";};  n = "bytestring";
+            }
+          ];
+        }
+        {cdeps = [];  deps = [];}
+      ]];
+     deps = [];
+   }];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {flag = "nolib";}  {cdeps = [];  deps = [];}
+       {cdeps = [];  deps = [];}
+     ]];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "transformers";}
+      {
+        i1 = {gte = "0.6.0";};  i2 = {lt = "0.7";};
+        n = "control-monad-failure";
+      }
+      {
+        i1 = {gte = "0.9.1.4";};  i2 = {lt = "0.10";};  n = "bytestring";
+      }
+    ];
+  };
+  sha256 = "0d0mpny068dv0mw7dza46c4b551f1fhrgy4sywnkpgbkldsh4v1j";
 }
 {
   name = "ycextra";  version = "0.1";  edeps = [];
@@ -34683,7 +35349,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
   sha256 = "01jp8xcxq9a1s6fp4yivnvr5a48svjir70yl0dhhwil0l3m9v9c9";
 }
 {
-  name = "yices";  version = "0.0.0.6";  edeps = [];
+  name = "yices";  version = "0.0.0.7";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -34693,7 +35359,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
       {n = "haskell98";}  {n = "process";}  {n = "parsec";}
     ];
   };
-  sha256 = "15xipvcv1kpap6p6flc6qm4i2srrhwv2d59xnyssdwkissxbqdyc";
+  sha256 = "0jflxvj1dw3izk8vi0znhdcq1jgl1z41008z766rjbpkfp2yng11";
 }
 {
   name = "yjftp";  version = "0.3.6.2";
@@ -34782,6 +35448,19 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
     ];
   };
   sha256 = "0mbcxld3jaj5x23pj2c5d3v724qg4vx3fzbjizp6v8w91j1c7ibb";
+}
+{
+  name = "zeromq-haskell";  version = "0.1.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}  {n = "unix";}
+      {n = "containers";}  {n = "bytestring";}
+    ];
+  };
+  sha256 = "0ss8q5mi517vq80ycpcklyaffln3qcqf8k2qmr0kc7m8jf5aq457";
 }
 {
   name = "zeroth";  version = "2009.6.23.3";
