@@ -109,23 +109,23 @@ let
             ammendments =
               {
                 hasktags.postInstall = " set -x; ln -s $out/bin/{hasktags,hasktags-modified}"; # this alias is used by sourceAndTags only 
-                happy.propagatedBuildInputs = [pkgs.perl];
-                alex.propagatedBuildInputs = [pkgs.perl];
-                zlib.propagatedBuildInputs = [pkgs.zlib];
-                digest.propagatedBuildInputs = [pkgs.zlib];
-                OpenGLRaw.propagatedBuildInputs = [pkgs.mesa];
-                GLUT.propagatedBuildInputs = [pkgs.freeglut];
-                readline.propagatedBuildInputs = [pkgs.readline];
-                GLFW.propagatedBuildInputs = [pkgs.glefw] ++ pkgs.glefw.buildInputs /* to get X libs into buildPath */;
-                wxcore.propagatedBuildInputs = [pkgs.wxGTK28];
-                terminfo.propagatedBuildInputs = [pkgs.ncurses];
-                berkeleydb.propagatedBuildInputs = [pkgs.db45];
-                BerkeleyDB.propagatedBuildInputs = [pkgs.db45];
+                happy.propagatedBuildNativeInputs = [pkgs.perl];
+                alex.propagatedBuildNativeInputs = [pkgs.perl];
+                zlib.propagatedBuildNativeInputs = [pkgs.zlib];
+                digest.propagatedBuildNativeInputs = [pkgs.zlib];
+                OpenGLRaw.propagatedBuildNativeInputs = [pkgs.mesa];
+                GLUT.propagatedBuildNativeInputs = [pkgs.freeglut];
+                readline.propagatedBuildNativeInputs = [pkgs.readline];
+                GLFW.propagatedBuildNativeInputs = [pkgs.glefw] ++ pkgs.glefw.buildInputs /* to get X libs into buildPath */;
+                wxcore.propagatedBuildNativeInputs = [pkgs.wxGTK28];
+                terminfo.propagatedBuildNativeInputs = [pkgs.ncurses];
+                berkeleydb.propagatedBuildNativeInputs = [pkgs.db45];
+                BerkeleyDB.propagatedBuildNativeInputs = [pkgs.db45];
                 hubris = {
                 # note! it does compile. The author recommends adding "--enable-library-for-ghci --enable-shared --ghc-options=-dynamic"
                 # flags to reduce binary size (30MB) which doesn't built yet.
                     buildInputs = [ c2hsFixed ];
-                    propagatedBuildInputs = [ pkgs.ruby ];
+                    propagatedBuildNativeInputs = [ pkgs.ruby ];
                     configureFlags = ["--extra-lib-dirs=${pkgs.ruby}/lib --extra-include-dirs=${pkgs.glibc}/include"]
 
                       ++ # TODO find a better solution. This won't work for other ruby versions!
@@ -137,20 +137,20 @@ let
               }
 # as always this doesn't work. Eg I have to add C deps manually thus as pcre
 # So I tell teh solver that the haskell  package pcre-light requires a C dep pkgs.pcrel
-              // attrSingleton "pcre-light" { propagatedBuildInputs = [ pkgs.pcre ]; }
+              // attrSingleton "pcre-light" { propagatedBuildNativeInputs = [ pkgs.pcre ]; }
               // attrSingleton "language-c" { buildInputs = [ happyFixed alexFixed ]; }
-              // attrSingleton "HDBC-mysql" { propagatedBuildInputs = [ pkgs.mysql pkgs.zlib ]; }
-              // attrSingleton "HDBC-sqlite3" { propagatedBuildInputs = [ pkgs.mysql pkgs.sqlite ]; }
+              // attrSingleton "HDBC-mysql" { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.zlib pkgs.zlibStatic ]; }
+              // attrSingleton "HDBC-sqlite3" { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.sqlite ]; }
               // attrSingleton "HDBC-odbc" {
-                    propagatedBuildInputs = [ pkgs.unixODBC ];
+                    propagatedBuildNativeInputs = [ pkgs.unixODBC ];
                     configureFlags = ["--extra-include-dirs=${pkgs.unixODBC}/include" "--extra-lib-dirs=${pkgs.unixODBC}/lib"];
                 }
-              // attrSingleton "HDBC-postgresql" { propagatedBuildInputs = [ pkgs.postgresql ]; }
+              // attrSingleton "HDBC-postgresql" { propagatedBuildNativeInputs = [ pkgs.postgresql ]; }
               // attrSingleton "haskell-src" { buildInputs = [ happyFixed ]; }
               // attrSingleton "haskell-src-exts" { buildInputs = [ happyFixed ]; }
               // attrSingleton "happs-hsp" { buildInputs = [ happyFixed ]; }
               // attrSingleton "hsql-mysql" {
-                  propagatedBuildInputs = [ pkgs.mysql ];
+                  propagatedBuildNativeInputs = [ pkgs.mysql ];
                   configureFlags = ["--extra-include-dirs=${pkgs.mysql}/include/mysql" "--extra-lib-dirs=${pkgs.mysql}/lib/mysql"];
                 }
             ;
@@ -227,7 +227,7 @@ let
                 }
 
               else let
-                  deps = dependencies ++ (lib.attrByPath [name "propagatedBuildInputs"] [] ammendmentsFixed);
+                  deps = dependencies ++ (lib.attrByPath [name "propagatedBuildNativeInputs"] [] ammendmentsFixed);
                 in
                   (haskellDerivation (self: (removeAttrs (lib.attrByPath [name] {} ammendmentsFixed) ["buildInputs"]) // {
                   pname = name;
@@ -235,7 +235,7 @@ let
                   inherit src patches version;
                   extraBuildInputs = 
                        (lib.attrByPath [name "buildInputs"] [] ammendmentsFixed);
-                  propagatedBuildInputs = deps;               
+                  propagatedBuildNativeInputs = deps;               
                   configureFlags = ( lib.concatStringsSep " " (
                            (lib.mapAttrsFlatten (a: v: "-f${if v then "" else "-"}${a}") flags)
                         ++ (lib.attrByPath [name "configureFlags"] [] ammendmentsFixed)
@@ -298,6 +298,7 @@ let
     # doesn't build
     yi = exeByName "yi";
     haddock = exeByName "haddock";
+    darcs = exeByName "darcs";
 
   };
 
