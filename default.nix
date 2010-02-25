@@ -267,7 +267,7 @@ let
     envFromHaskellLibs = { buildInputs, createHaskellTagsFor ? [], ...}:
       let tagDerivations = map (runHasktags) createHaskellTagsFor;
       in pkgs.runCommand "haskell-env" {
-        buildInputs = buildInputs ++ tagDerivations;
+        buildNativeInputs = buildInputs ++ tagDerivations;
       } ''
         ensureDir $out/source-me
         
