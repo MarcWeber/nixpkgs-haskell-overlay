@@ -430,6 +430,14 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                     mapCDeps pkg.ldeps
                 else lm.emptyDeps);
         src = if pkg ? srcFile then pkg.srcFile
+
+              # used by hack-nix --to-nix
+              else if pkg ? url && pkg ? sha256 then
+                fetchurl {
+                  inherit (pkg) sha256 url;
+                }
+
+              # used by hackage
               else fetchurl {
                 url = "http://hackage.haskell.org/packages/archive/${pkg.name}/${pkg.version}/${pkg.name}-${pkg.version}.tar.gz";
                 inherit (pkg) sha256;
