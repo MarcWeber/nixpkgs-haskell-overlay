@@ -299,6 +299,8 @@ let
     yi = exeByName "yi";
     haddock = exeByName "haddock";
     darcs = exeByName "darcs";
+    terrahs = exeByName "terrahs";
+    cabalInstall = exeByName "cabal-install";
 
   };
 
