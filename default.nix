@@ -320,6 +320,17 @@ let
     terrahs = exeByName "terrahs";
     cabalInstall = exeByName "cabal-install";
 
+    happstackContrib = exeByName "happstack-contrib";
+    happstackData = exeByName "happstack-data";
+    happstackDlg = exeByName "happstack-dlg";
+    happstackFacebook = exeByName "happstack-facebook";
+    happstackFastcgi = exeByName "happstack-fastcgi";
+    happstackHelpers = exeByName "happstack-helpers";
+    happstackIxset = exeByName "happstack-ixset";
+    happstackServer = exeByName "happstack-server";
+    happstackState = exeByName "happstack-state";
+    happstackUtil = exeByName "happstack-util";
+
   };
 
 in haskellPackages

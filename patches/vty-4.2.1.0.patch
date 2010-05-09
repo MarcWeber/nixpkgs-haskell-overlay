@@ -1,0 +1,18 @@
+Only in b: default-env
+Only in b: dist
+Only in b: hack-nix-envs
+Only in b: Setup
+Only in b: Setup.hi
+Only in b: Setup.o
+diff -r -U 3 a/vty.cabal b/vty.cabal
+--- a/vty.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/vty.cabal	2010-01-05 02:01:45.000000000 +0100
+@@ -30,7 +30,7 @@
+ Build-Depends:       terminfo >= 0.3 && < 0.4
+ Build-Depends:       utf8-string >= 0.3 && < 0.4
+ Build-Depends:       mtl >= 1.1.0.0 && < 1.2
+-Build-Depends:       ghc-prim, parallel < 2
++Build-Depends:       ghc-prim, parallel < 3
+ Build-Depends:       array
+ Build-Depends:       parsec >= 2 && < 4
+ Build-Depends:       vector-space >= 0.5 && < 0.6

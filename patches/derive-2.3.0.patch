@@ -1,0 +1,14 @@
+diff -r -U 3 a/derive.cabal b/derive.cabal
+--- a/derive.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/derive.cabal	2010-02-18 02:54:03.000000000 +0100
+@@ -35,8 +35,8 @@
+ 
+ Library
+     Build-Depends:
+-        haskell-src-exts == 1.6.*, filepath, mtl,
+-        base == 4.*, syb, template-haskell, uniplate == 1.4.*, containers,
++        haskell-src-exts >= 1.6, filepath, mtl,
++        base == 4.*, syb, template-haskell, uniplate >= 1.4, containers,
+         pretty
+ 
+     Exposed-Modules:

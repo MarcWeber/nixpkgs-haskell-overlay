@@ -1,0 +1,19 @@
+diff -r -U 3 a/hsql-mysql.cabal b/hsql-mysql.cabal
+--- a/hsql-mysql.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/hsql-mysql.cabal	2010-02-13 18:33:47.000000000 +0100
+@@ -8,12 +8,11 @@
+ ghc-options: -O2 
+ build-depends: base==3.*, hsql, Cabal, old-time 
+ extensions: ForeignFunctionInterface, CPP 
+-include-dirs: Database/HSQL, /usr/include/mysql 
++include-dirs: Database/HSQL
+ build-type: Simple 
+ extra-source-files: Database/HSQL/HsMySQL.h 
+ extra-libraries: mysqlclient 
+-extra-lib-dirs: /usr/lib/mysql 
+ exposed-modules: Database.HSQL.MySQL 
+ maintainer: Chris Done <chrisdone@gmail.com>
+ license-file: LICENSE
+-cabal-version: >= 1.6
+\ No newline at end of file
++cabal-version: >= 1.6

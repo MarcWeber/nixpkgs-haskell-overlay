@@ -1,0 +1,12 @@
+diff -r -U 3 a/alex.cabal b/alex.cabal
+--- a/alex.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/alex.cabal	2009-11-30 19:08:45.000000000 +0100
+@@ -61,7 +61,7 @@
+   if flag(small_base)
+     build-depends: base >= 2.1, array, containers, directory
+   else
+-    build-depends: base >= 1.0
++    build-depends: base >= 1.0 && base < 2.1
+ 
+   build-depends: haskell98 >= 1.0
+ 

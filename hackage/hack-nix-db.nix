@@ -20116,9 +20116,12 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
         {
           cdeps = [];
           deps = 
-          [{gte = "2.1";  n = "base";}  {n = "array";}  {n = "containers";}];
+          [{gte = "3";  n = "base";}  {n = "array";}  {n = "containers";}];
         }
-        {cdeps = [];  deps = [{gte = "1.0";  n = "base";}];}
+        {
+          cdeps = [];
+          deps = [{i1 = {gte = "1.0";};  i2 = {lt = "3";};  n = "base";}];
+        }
       ]];
      deps = 
      [{gte = "1.0";  n = "haskell98";}  {gte = "1.0";  n = "mtl";}];
