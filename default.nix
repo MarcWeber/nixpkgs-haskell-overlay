@@ -189,13 +189,15 @@ let
               inherit (pkgs) fetchurl sourceFromHead;
             };
 
-            packages = map libOverlay.pkgFromDb (
-              (import hackage/hack-nix-db.nix)
-              ++ (import ./pkgs/haskelldb.nix { inherit (pkgs) fetchurl; })
-              ++ [ gtk2hsMetaPackage ]
-              ++ fixed.packageOverrides
-              ++ (getConfig ["hackNix" "additionalPackages"] [])
-            );
+            packages =
+              let noBase = pkgs.lib.filter (x: x.name != "base"); # always use base provided by ghc
+              in map libOverlay.pkgFromDb ( noBase (
+                (import hackage/hack-nix-db.nix)
+                ++ (import ./pkgs/haskelldb.nix { inherit (pkgs) fetchurl; })
+                ++ [ gtk2hsMetaPackage ]
+                ++ fixed.packageOverrides
+                ++ (getConfig ["hackNix" "additionalPackages"] [])
+              ));
 
             globalFlags = {}
               // getConfig ["hackNix" "globalFlags"] {};
