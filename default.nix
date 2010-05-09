@@ -264,7 +264,14 @@ let
       let inherit (sourceAndTags) sourceWithTagsDerivation sourceWithTagsFromDerivation addHasktagsTaggingInfo;
       in sourceWithTagsDerivation (sourceWithTagsFromDerivation (addHasktagsTaggingInfo deriv) );
 
-    envFromHaskellLibs = { buildInputs, createHaskellTagsFor ? [], ...}:
+    # This function is used by the expressions created by hack-nix --build-env
+    #
+    # creates a shell script you can use in either bash or zsh which will set PATH
+    # so that ghc finds dependencies.
+    # optionally it will create tagged sources and a sources-of-deps-auto directory
+    # on the fly symlinking those source directories so that you can browse
+    # them conviniently.
+    envFromHaskellLibs = { buildInputs, createHaskellTagsFor ? [], extraCmd ? null, ...}:
       let tagDerivations = map (runHasktags) createHaskellTagsFor;
       in pkgs.runCommand "haskell-env" {
         buildNativeInputs = buildInputs ++ tagDerivations;
@@ -282,6 +289,15 @@ let
             [ -n "$TAG_FILES" ] && echo "export TAG_FILES='$TAG_FILES'"
           )
           export TAGGED_SOURCES="${lib.concatStringsSep " " tagDerivations}"
+          if [ -n "\$TAGGED_SOURCES" ]; then
+            d="sources-of-deps-auto"
+            # clean everything, create dir
+            rm \$d/*; mkdir -p \$d
+            # symlink store paths
+            echo "\$TAGGED_SOURCES" | sed 's/ /\\n/g' | while read line; do
+              if [ -d "\$line" ]; then ln -s \$(echo \$line/src/*) \$d/\$(echo \$(basename \$line) | sed 's/[^-]*-\\(.*\\)-source-with-tags/\\1/'); fi
+            done
+          fi
         EOF
       '';
 
