@@ -207,6 +207,13 @@ let
                } // attrSingleton "curl-pipelining" false
                  // attrSingleton "type-witnesses" false
                  // attrSingleton "deps-only" false;
+               pandoc = {
+                executable = true; # must be true
+                library = true;    # must be true
+                highlighting = false;
+                wrappers = false;
+                citeproc = false;
+               };
                yi = {
                   ghcInterpreter = false; # Use the "hint" interpreter for extended commands (M-x) (experimental)
                   ghcAPI = false; # Enable linking with GHC API for advanced features.
@@ -330,6 +337,8 @@ let
     happstackServer = exeByName "happstack-server";
     happstackState = exeByName "happstack-state";
     happstackUtil = exeByName "happstack-util";
+
+    gitit = exeByName "gitit";
 
   };
 
