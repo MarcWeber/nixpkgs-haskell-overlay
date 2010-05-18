@@ -1,0 +1,12 @@
+diff -r -U 3 a/datetime.cabal b/datetime.cabal
+--- a/datetime.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/datetime.cabal	2010-05-10 15:50:54.000000000 +0200
+@@ -16,7 +16,7 @@
+ build-type:          Simple
+ 
+ library
+-  build-depends:     base >= 2 && < 4,
++  build-depends:     base >= 2 && < 5,
+                      QuickCheck >= 2 && < 3,
+                      old-locale >= 1.0.0.1,
+                      old-time >= 1.0.0.1,

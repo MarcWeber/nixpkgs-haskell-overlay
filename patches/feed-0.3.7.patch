@@ -1,0 +1,10 @@
+diff -r -U 3 a/feed.cabal b/feed.cabal
+--- a/feed.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/feed.cabal	2010-05-10 15:52:06.000000000 +0200
+@@ -39,5 +39,5 @@
+                      Text.Feed.Translate
+                      Text.Feed.Util
+     Ghc-Options:     -Wall
+-    Build-Depends:   base >= 2 && < 4, haskell98, xml >= 1.2.6, utf8-string
++    Build-Depends:   base >= 2 && < 5, haskell98, xml >= 1.2.6, utf8-string
+ 
