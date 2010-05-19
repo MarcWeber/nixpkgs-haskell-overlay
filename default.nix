@@ -190,7 +190,10 @@ let
             };
 
             packages =
-              let noBase = pkgs.lib.filter (x: x.name != "base"); # always use base provided by ghc
+              # always use base provided by ghc.
+              # same for all other libraries which ship with ghc.
+              let providedNames = map builtins.head fixed.provided;
+                  noBase = pkgs.lib.filter (x: ! lib.elem x.name providedNames );
               in map libOverlay.pkgFromDb ( noBase (
                 (import hackage/hack-nix-db.nix)
                 ++ (import ./pkgs/haskelldb.nix { inherit (pkgs) fetchurl; })
