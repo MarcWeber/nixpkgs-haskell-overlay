@@ -1,0 +1,12 @@
+diff -r -U 3 a/happstack-server.cabal b/happstack-server.cabal
+--- a/happstack-server.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/happstack-server.cabal	2010-05-19 18:00:47.000000000 +0200
+@@ -91,6 +91,8 @@
+      cpp-options:      -DUNIX
+   if flag(base4)
+     Build-Depends:     base >= 4 && < 5, syb
++  else
++    Build-Depends:     base < 4
+ 
+   if flag(tests)
+     Build-Depends:     HUnit

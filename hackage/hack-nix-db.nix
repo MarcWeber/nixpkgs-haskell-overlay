@@ -20042,6 +20042,7 @@ mmap 0.4 has a different API from the more recent 0.52 one - I should patch hash
             {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}  {n = "syb";}
           ];
         }
+        {cdeps = [];  deps = [{lt = "4";  n = "base";}];}
       ]
       [{flag = "tests";}  {cdeps = [];  deps = [{n = "HUnit";}];}]
     ];
