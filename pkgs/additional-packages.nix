@@ -31,8 +31,8 @@
         ];
       }
     ];
-    srcFile= sourceFromHead "nix-repository-manager-abbb297f330fcae3fc5a768ac70a411f1f6770d9.tar.gz"
-                 (fetchurl { url = "http://mawercer.de/~nix/repos/nix-repository-manager-abbb297f330fcae3fc5a768ac70a411f1f6770d9.tar.gz"; sha256 = "0784be28e53fa6b0a174c365928e053ec8c75b12993def7511fbf4597b4369f8"; });
+    srcFile = sourceFromHead "nix-repository-manager-ee050b47b6ad31ea6a99fb44806ebc4577fc7068.tar.gz"
+                 (fetchurl { url = "http://mawercer.de/~nix/repos/nix-repository-manager-ee050b47b6ad31ea6a99fb44806ebc4577fc7068.tar.gz"; sha256 = "76d5f6fe322bcebf2fc4fcdaed12dfea6f6797a41143e3a1ae145170d89855b2"; });
   }
   # END
 
@@ -54,7 +54,7 @@
        ];
      }];
     srcFile = sourceFromHead "hack-nix-f0914c37d3d7f1640e875b644bdf8bc17cd78298.tar.gz"
-                 (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-f0914c37d3d7f1640e875b644bdf8bc17cd78298.tar.gz"; sha256 = "b023c1423efa7cc90aa8012bf99645fcc4050d5756d51478407531c06902041a"; });
+                 (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-f0914c37d3d7f1640e875b644bdf8bc17cd78298.tar.gz"; sha256 = "1ff030ea4a0cd9309f39f6d0a93d8690411e35ebd619fab7f982f44c97fe7910"; });
   }
   # END
 
