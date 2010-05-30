@@ -1,7 +1,7 @@
 { fetchurl, sourceFromHead } :
 [
 
-  # REGION HACK_NIX:                      { name = "nix-repository-manager"; type = "git"; url = "git://github.com/MarcWeber/nix-repository-manager.git"; }
+  # REGION HACK_NIX:                         { name = "nix-repository-manager"; type = "git"; url = "git://github.com/MarcWeber/nix-repository-manager.git"; }
   {
     name = "nix-repository-manager";  version = "0.0.1";
     edeps = 
@@ -36,7 +36,7 @@
   }
   # END
 
-  # REGION HACK_NIX:                      { name = "hack-nix"; type = "git"; url = "git://github.com/MarcWeber/hack-nix.git"; }
+  # REGION HACK_NIX:                         { name = "hack-nix"; type = "git"; url = "git://github.com/MarcWeber/hack-nix.git"; }
   {
     name = "hack-nix";  version = "0.1.1";
     edeps = 
@@ -53,16 +53,15 @@
          {gte = "1.0";  n = "filepath";}  {n = "mtl";}  {n = "interlude";}
        ];
      }];
-    sha256 = "0h1am1hvscg6pl5snvn1bjmh132wx6xlazv433q085dj8vy2swyh";
     srcFile = sourceFromHead "hack-nix-f0914c37d3d7f1640e875b644bdf8bc17cd78298.tar.gz"
-                 (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-f0914c37d3d7f1640e875b644bdf8bc17cd78298.tar.gz"; sha256 = "7ac98ef08c93a03841226202b61d995153959ed337e7eb0d0f9f4baa98082e5b"; });
+                 (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-f0914c37d3d7f1640e875b644bdf8bc17cd78298.tar.gz"; sha256 = "b023c1423efa7cc90aa8012bf99645fcc4050d5756d51478407531c06902041a"; });
   }
   # END
 
-  # REGION HACK_NIX:                      { name = "darcs-export-git"; type = "darcs"; url = "http://joyful.com/repos/darcs-export-git"; }
+  # REGION HACK_NIX:                         { name = "darcs-export-git"; type = "darcs"; url = "http://joyful.com/repos/darcs-export-git"; }
   # END
 
-  # REGION HACK_NIX:                      { name = "darcs"; type = "darcs"; url = "http://darcs.net/unstable"; }
+  # REGION HACK_NIX:                         { name = "darcs"; type = "darcs"; url = "http://darcs.net/unstable"; }
   {
     name = "darcs";  version = "2.3.1";
     edeps = 
@@ -324,7 +323,7 @@
 
 
   /*
-  # REGION HACK_NIX:                      { name = "hsql"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="HSQL"; }
+  # REGION HACK_NIX:                         { name = "hsql"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="HSQL"; }
   {
     name = "hsql";  version = "1.7";  edeps = [];
     ldeps = 
@@ -359,7 +358,7 @@
   }
   # END
 
-  # REGION HACK_NIX:                      { name = "hsql-mysql"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="MySQL"; groups="hsql_group"; }
+  # REGION HACK_NIX:                         { name = "hsql-mysql"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="MySQL"; groups="hsql_group"; }
   {
     name = "hsql-mysql";  version = "1.7";  edeps = [];
     ldeps = 
@@ -381,7 +380,7 @@
   }
   # END
 
-  # REGION HACK_NIX:                      { name = "hsql-msi"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="MSI"; groups="hsql_group"; }
+  # REGION HACK_NIX:                         { name = "hsql-msi"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="MSI"; groups="hsql_group"; }
   {
     name = "hsql-msi";  version = "1.1";  edeps = [];
     ldeps = {cdeps = [];  deps = [{n = "base";}  {n = "hsql";}];};
@@ -402,7 +401,7 @@
   # END
 
   # Setup dosen't compile. I'm not interested in this. Fix it yourself
-  # REGION HACK_NIX:                      { name = "hsql-postgresql"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="PostgreSQL"; groups="hsql_group"; }
+  # REGION HACK_NIX:                         { name = "hsql-postgresql"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="PostgreSQL"; groups="hsql_group"; }
   {
     name = "hsql-postgresql";  version = "1.7.1";  edeps = [];
     ldeps = 
@@ -419,7 +418,7 @@
   }
   # END
 
-  # REGION HACK_NIX:                      { name = "hsql-sqlite"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="SQLite"; groups="hsql_group"; }
+  # REGION HACK_NIX:                         { name = "hsql-sqlite"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="SQLite"; groups="hsql_group"; }
   {
     name = "hsql-sqlite";  version = "1.7";  edeps = [];
     ldeps = {cdeps = [];  deps = [{n = "base";}  {n = "hsql";}];};
@@ -428,7 +427,7 @@
   }
   # END
 
-  # REGION HACK_NIX:                      { name = "hsql-sqlite3"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="SQLite3"; groups="hsql_group"; }
+  # REGION HACK_NIX:                         { name = "hsql-sqlite3"; type = "darcs"; url = "http://code.haskell.org/HSQL/"; subdir="SQLite3"; groups="hsql_group"; }
   {
     name = "hsql-sqlite3";  version = "1.1";  edeps = [];
     ldeps = {cdeps = [];  deps = [{n = "base";}  {n = "hsql";}];};
@@ -438,7 +437,7 @@
   # END
   */
 
-  # REGION HACK_NIX:                             { name = "hasktags"; type = "darcs"; url = "http://code.haskell.org/hasktags/"; }
+  # REGION HACK_NIX:                                { name = "hasktags"; type = "darcs"; url = "http://code.haskell.org/hasktags/"; }
   {
     name = "hasktags";  version = "0.68";
     edeps = 
