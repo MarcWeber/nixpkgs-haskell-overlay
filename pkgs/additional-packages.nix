@@ -53,8 +53,8 @@
          {gte = "1.0";  n = "filepath";}  {n = "mtl";}  {n = "interlude";}
        ];
      }];
-    srcFile = sourceFromHead "hack-nix-f0914c37d3d7f1640e875b644bdf8bc17cd78298.tar.gz"
-                 (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-f0914c37d3d7f1640e875b644bdf8bc17cd78298.tar.gz"; sha256 = "1ff030ea4a0cd9309f39f6d0a93d8690411e35ebd619fab7f982f44c97fe7910"; });
+    srcFile = sourceFromHead "hack-nix-db9ee038e2f483b197ebf11ef8cce13a892d0f3c.tar.gz"
+                 (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-db9ee038e2f483b197ebf11ef8cce13a892d0f3c.tar.gz"; sha256 = "f01345497e776800d4f0b63127adafdd73f10017e6c2d71c99cbab4495d9fee6"; });
   }
   # END
 
