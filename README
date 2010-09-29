@@ -27,8 +27,15 @@ a) optional: update hack-nix-db.nix file
   $EDITOR .hack-nix
 
   # prepare a cup of tea
-  Run hack-nix without any arguments.
-  All sources will be fetched to calculate hashes so get ready to take a cup of tea!
+  # Run hack-nix without any arguments. I recommend symlinking nix-cache so that
+  # we can share it. Also hack-nix sometimes looses its contents
+  ln -s hackage/nix-cache ~/.hack-nix/nix-cache
+  # remove hackage index so that it'll be refetched:
+  grep -i '/000/d' ~/.hack-nix/nix-cache
+  hack-nix
+
+  All (new) sources will be fetched to calculate hashes so get ready to take a
+  cup of tea!
 
 b) compile example package:
   nix-build -A haskellOverlayPackagesExample.HAppS-Server
