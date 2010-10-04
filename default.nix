@@ -349,7 +349,7 @@ let
     ghcjs = exeByName "ghcjs";
 
     ghcjs_libs = pkgs.recurseIntoAttrs (import pkgs/ghc-js-libs.nix {
-      inherit (pkgs) stdenv;
+      inherit (pkgs) stdenv perl;
       inherit ghcjs;
     });
 

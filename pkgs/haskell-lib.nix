@@ -390,7 +390,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                 else lm.matchVersion compilerFlavor.version expr.versionRange
             else if isFunction expr then
               throw "can't reduce a function!"
-            else throw "missing implementation? unexpected! ${builtins.toXML expr}"
+            else throw "Missing implementation? unexpected! ${builtins.toXML expr}"
          else throw "expected attrs");
 
     #### preparing package from pkg db list {{{1
