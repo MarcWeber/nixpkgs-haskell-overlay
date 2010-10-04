@@ -453,4 +453,22 @@
   }
   # END
 
+  # REGION HACK_NIX: { name="ghcjs"; type="git"; url="git@github.com:MarcWeber/nixpkgs-haskell-overlay.git"; }
+  {
+    name = "ghcjs";  version = "0.1.0";
+    edeps = 
+    [{
+       cdeps = [];
+       deps = 
+       [
+         {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}  {n = "ghc";}
+         {n = "ghc-paths";}  {n = "monads-tf";}  {n = "containers";}
+         {n = "filepath";}
+       ];
+     }];
+    srcFile = sourceFromHead "ghcjs-25b862d4a58bf5afaaa41fe2ce366c5764ece881.tar.gz"
+                 (throw "source not not published yet: ghcjs");
+  }
+  # END
+
 ]

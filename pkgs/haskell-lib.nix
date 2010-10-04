@@ -361,6 +361,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       in if isBool expr then expr
          else if isAttrs expr then
            if expr ? os then expr.os == os
+           else if expr ? bool then expr.bool
            else if expr ? flag then
              let f = expr.flag;
              in if hasAttr f flags

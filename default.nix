@@ -13,6 +13,8 @@
 , nixpkgs ? ../nixpkgs
 }:
 
+# TODO use callPackage style ?
+
 let
 
   mainConfig = { inherit system stdenvType bootStdenv noSysDirs gccWithCC gccWithProfiling config; };
@@ -139,6 +141,7 @@ let
 # So I tell teh solver that the haskell  package pcre-light requires a C dep pkgs.pcrel
               // attrSingleton "pcre-light" { propagatedBuildNativeInputs = [ pkgs.pcre ]; }
               // attrSingleton "language-c" { buildInputs = [ happyFixed alexFixed ]; }
+              // attrSingleton "Agda" { buildInputs = [ happyFixed alexFixed ]; }
               // attrSingleton "HDBC-mysql" { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.zlib pkgs.zlibStatic ]; }
               // attrSingleton "HDBC-sqlite3" { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.sqlite ]; }
               // attrSingleton "HDBC-odbc" {
@@ -193,11 +196,11 @@ let
               # always use base provided by ghc.
               # same for all other libraries which ship with ghc.
               let providedNames = map builtins.head fixed.provided;
-                  noBase = pkgs.lib.filter (x: ! lib.elem x.name providedNames );
+                  # utf8-string exception for agda
+                  noBase = pkgs.lib.filter (x: ! lib.elem x.name providedNames ||x.name == "utf8-string" );
               in map libOverlay.pkgFromDb ( noBase (
-                (import hackage/hack-nix-db.nix)
+                   (import hackage/hack-nix-db.nix)
                 ++ (import ./pkgs/haskelldb.nix { inherit (pkgs) fetchurl; })
-                ++ [ gtk2hsMetaPackage ]
                 ++ fixed.packageOverrides
                 ++ (getConfig ["hackNix" "additionalPackages"] [])
               ));
@@ -255,7 +258,7 @@ let
                         )
                       );
                     #+ "--enable-library-for-ghci --enable-shared --ghc-options=-dynamic";
-                }))// { inherit deps; };
+                }))// { inherit deps; ghc = thisGhc; };
         
       });
 
@@ -340,8 +343,15 @@ let
     happstackServer = exeByName "happstack-server";
     happstackState = exeByName "happstack-state";
     happstackUtil = exeByName "happstack-util";
+    agdaExecutable = exeByName "Agda-executable";
 
     gitit = exeByName "gitit";
+    ghcjs = exeByName "ghcjs";
+
+    ghcjs_libs = pkgs.recurseIntoAttrs (import pkgs/ghc-js-libs.nix {
+      inherit (pkgs) stdenv;
+      inherit ghcjs;
+    });
 
   };
 
