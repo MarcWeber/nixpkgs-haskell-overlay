@@ -1,4 +1,4 @@
-#ddio same args as in all-packages.nix
+# same args as in all-packages.nix
 # should this be moved into pkg/top-level/all-packages.nix ?
 {
   system ? builtins.currentSystem
@@ -98,6 +98,8 @@ let
             mergeAttrBy = {
               packageFlags = lib.mergeAttrs;
             };
+
+            inherit (pkgs.stdenv) system;
 
             # this contains ghc. see nixpkgs for details.
             haskellPackages = pkgs.haskellPackages_ghc6121;
@@ -202,6 +204,7 @@ let
                    (import hackage/hack-nix-db.nix)
                 ++ (import ./pkgs/haskelldb.nix { inherit (pkgs) fetchurl; })
                 ++ fixed.packageOverrides
+                ++ [ gtk2hsMetaPackage ]
                 ++ (getConfig ["hackNix" "additionalPackages"] [])
               ));
 
@@ -217,7 +220,7 @@ let
                 executable = true; # must be true
                 library = true;    # must be true
                 highlighting = false;
-                wrappers = false;
+                wrappers = true;
                 citeproc = false;
                };
                yi = {
@@ -229,6 +232,7 @@ let
                   gnome = false; # Enable GNOME integration
                   testing = false; # bake-in the self-checks
                };
+               yesod = { ghc7 = false; };
             } // getConfig ["hackNix" "packageFlags"] {};
 
             mkHaskellDerivation = { name, fullName, src, dependencies, flags, patches, version, ... }:

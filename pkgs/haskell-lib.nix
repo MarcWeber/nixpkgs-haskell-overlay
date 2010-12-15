@@ -356,7 +356,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
        r(igid)f(lags) = { flag  = true; flag2 = true; .. } # list represented as attr for uniqness
      }
     */
-    reduceCond = { flags, os ? "Linux", compilerFlavor, ... }@opts : expr : lm.funcBody "reduceCond" (
+    reduceCond = { flags, system, os ? "Linux", compilerFlavor, ... }@opts : expr : lm.funcBody "reduceCond" (
       let simp = lm.reduceCond opts;
       in if isBool expr then expr
          else if isAttrs expr then
@@ -388,6 +388,9 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
             else if expr ? compilerFlavor then
                 if compilerFlavor.compiler != expr.compilerFlavor then false
                 else lm.matchVersion compilerFlavor.version expr.versionRange
+            else if expr ? arch then
+                     (expr.arch == "x86_64" && system == "x86_64-linux")
+                  || (expr.arch == "I386" && system == "i686-linux")
             else if isFunction expr then
               throw "can't reduce a function!"
             else throw "Missing implementation? unexpected! ${builtins.toXML expr}"
@@ -743,6 +746,10 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     #       library to use!
     resolveDependenciesBruteforce = {
 
+      /* the system. Used for checking arch flag of cabal
+      */
+      system,
+
       /* example:
        globalFlags = {
         splitBase = true;
@@ -972,7 +979,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                  flagsByName            = getA name packageFlags {};
                  flagsByNameAndVersion  = getA fullName packageFlags {};
                  flags = globalFlags // flagsByName // flagsByNameAndVersion;
-                 opts = { inherit os compilerFlavor flags defaultFlagsOnly; };
+                 opts = { inherit os compilerFlavor flags defaultFlagsOnly system; };
                  # opts = { inherit os  compilerFlavor; flags = (builtins.trace " fullname: ${fullName}\n flagsByName ${name} ${toStr flagsByName }\n flagsByNameAndVersion ${fullName} ${toStr flagsByNameAndVersion} \n package Flags: ${toStr packageFlags} " flags); };
                  variations = lm.pkgVariations opts preparedPkg;
 
