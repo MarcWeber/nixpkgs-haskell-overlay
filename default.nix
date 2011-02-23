@@ -8,6 +8,8 @@
 , gccWithCC ? true
 , gccWithProfiling ? true
 , config ? null
+, crossSystem ? null
+, platform ? null
 
 # additional:
 , nixpkgs ? ../nixpkgs
