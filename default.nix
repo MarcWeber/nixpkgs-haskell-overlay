@@ -140,27 +140,25 @@ let
                           else throw "TODO"
                          );
                 };
-              }
-# as always this doesn't work. Eg I have to add C deps manually thus as pcre
-# So I tell teh solver that the haskell  package pcre-light requires a C dep pkgs.pcrel
-              // attrSingleton "pcre-light" { propagatedBuildNativeInputs = [ pkgs.pcre ]; }
-              // attrSingleton "language-c" { buildInputs = [ happyFixed alexFixed ]; }
-              // attrSingleton "Agda" { buildInputs = [ happyFixed alexFixed ]; }
-              // attrSingleton "HDBC-mysql" { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.zlib pkgs.zlibStatic ]; }
-              // attrSingleton "HDBC-sqlite3" { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.sqlite ]; }
-              // attrSingleton "HDBC-odbc" {
+                "pcre-light" = { propagatedBuildNativeInputs = [ pkgs.pcre ]; };
+                "language-c" = { buildInputs = [ happyFixed alexFixed ]; };
+                "Agda" = { buildInputs = [ happyFixed alexFixed ]; };
+                "HDBC-mysql" = { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.zlib pkgs.zlibStatic ]; };
+                "HDBC-sqlite3" = { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.sqlite ]; };
+                "HDBC-odbc" = {
                     propagatedBuildNativeInputs = [ pkgs.unixODBC ];
                     configureFlags = ["--extra-include-dirs=${pkgs.unixODBC}/include" "--extra-lib-dirs=${pkgs.unixODBC}/lib"];
-                }
-              // attrSingleton "HDBC-postgresql" { propagatedBuildNativeInputs = [ pkgs.postgresql ]; }
-              // attrSingleton "haskell-src" { buildInputs = [ happyFixed ]; }
-              // attrSingleton "haskell-src-exts" { buildInputs = [ happyFixed ]; }
-              // attrSingleton "happs-hsp" { buildInputs = [ happyFixed ]; }
-              // attrSingleton "hsql-mysql" {
+                };
+                "HDBC-postgresql" = { propagatedBuildNativeInputs = [ pkgs.postgresql ]; };
+                "haskell-src" = { buildInputs = [ happyFixed ]; };
+                "haskell-src-exts" = { buildInputs = [ happyFixed ]; };
+                "happs-hsp" = { buildInputs = [ happyFixed ]; };
+                "hsql-mysql" = {
                   propagatedBuildNativeInputs = [ pkgs.mysql ];
                   configureFlags = ["--extra-include-dirs=${pkgs.mysql}/include/mysql" "--extra-lib-dirs=${pkgs.mysql}/lib/mysql"];
-                }
-            ;
+                };
+                bzlib = { propagatedBuildNativeInputs = [ pkgs.bzip2 ]; };
+              };
 
             # == resolveDependenciesBruteforce arguments:
             defaultFlagsOnly = true;
@@ -334,6 +332,8 @@ let
     nixRepositoryManager = exeByName "nix-repository-manager";
     # doesn't build
     yi = exeByName "yi";
+    yiVty = exeByName "yi-vty";
+    yiGtk = exeByName "yi-gtk";
     haddock = exeByName "haddock";
     darcs = exeByName "darcs";
     terrahs = exeByName "terrahs";
