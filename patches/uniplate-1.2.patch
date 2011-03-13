@@ -1,0 +1,12 @@
+diff -r -U 3 a/uniplate.cabal b/uniplate.cabal
+--- a/uniplate.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/uniplate.cabal	2010-06-07 13:52:00.000000000 +0200
+@@ -22,7 +22,7 @@
+ 
+ Library
+     if flag(splitBase)
+-        build-depends: base >= 3, mtl, containers
++        build-depends: base >= 3, mtl, containers, syb
+     else
+         build-depends: base < 3, mtl
+ 

@@ -418,6 +418,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
           mapList = map ifElseToAttrs;
       in {
         inherit (pkg) version name;
+        gtk2hsHack = lib.maybeAttr "gtk2hsHack" false pkg; 
         fullName = lm.mkNixId { inherit (pkg) name version; }; 
         # TODO: take Buildable into account
         edeps = lm.addErrorContext2 "edeps in pkgFromDb " (if hasAttr "edeps" pkg then
@@ -644,13 +645,13 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     # combinations such as  [ {flagA = true; ..} {flagA = false; ..} { ... } ];
     # tflags: all flags with default value "true"
     # add default flag value at the beginning
-    allFlagCombinations = list : tflags : lm.funcBody "allFlagCombinations" ( emptyHeadTail [ {} ] (name : t :
-          assert lessThan (builtins.length list) 6;
-          let m = if hasAttr name tflags then id else x: !x;
-              tru  = listToAttrs [ (nameValuePair name  (m true)) ];
-              fals = listToAttrs [ (nameValuePair name (m false)) ];
-              ts = lm.allFlagCombinations t tflags;
-          in  map (mergeAttrs tru) ts ++ map (mergeAttrs fals) ts ) list );
+    allFlagCombinations = fullName: list : tflags : lm.funcBody "allFlagCombinations" ( emptyHeadTail [ {} ] (name : t :
+        let m = if hasAttr name tflags then id else x: !x;
+            tru  = listToAttrs [ (nameValuePair name  (m true)) ];
+            fals = listToAttrs [ (nameValuePair name (m false)) ];
+            ts = lm.allFlagCombinations fullName t tflags;
+        in  map (mergeAttrs tru) ts ++ map (mergeAttrs fals) ts
+      ) list );
 
     /*
 
@@ -691,7 +692,8 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
 
     pkgVariations = (opts: pkg: lm.funcBody "pkgVariations" (
       assert isAttrs pkg;
-      let r = lm.rigidFlagsAndDeps opts (lm.addErrorContext2 "pkg in pkgVariations" pkg);
+      let fullName = "${pkg.name}-${pkg.version}";
+          r = lm.rigidFlagsAndDeps opts (lm.addErrorContext2 "pkg in pkgVariations" pkg);
           toSolution = r: flags: let R = r.r; in
                           pkg // R // {
                             inherit flags;
@@ -701,7 +703,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
           list = if r ? rf then
                   map (flags: let r = lm.rigidFlagsAndDeps (opts // { inherit flags; }) (lm.addErrorContext2 "pkg2 in pkgVariations" pkg);
                               in toSolution r flags )
-                      (map (mergeAttrs opts.flags) (lm.allFlagCombinations (attrNames r.rf) pkg.tflags)) # all flags combinations
+                      (map (mergeAttrs opts.flags) (lm.allFlagCombinations fullName (attrNames r.rf) pkg.tflags)) # all flags combinations
                  else [(toSolution r opts.flags)];
           # TODO filter no-solutions (due to missing deps) 
           judged = map lm.missingDepsOrPkg list;
@@ -719,7 +721,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                       && (p1.ldeps_str == p2.ldeps_str);
               in { ok = uniqBy compareDeps (reverseList solutions); }
           else
-            { failure = "\nno solutions found for pkg ${pkg.name}-${pkg.version}. Missing deps depending on flag assignments (all variations): ${toStr judged}"; }
+            { failure = "\nno solutions found for pkg ${fullName}}. Missing deps depending on flag assignments (all variations): ${toStr judged}"; }
       ));
 
     # failIfEmpty = l : msg : map : if l == [] then { l : [ msg ]; } else { r : map l };
@@ -1049,7 +1051,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                               map ({lstate, resolvedEdeps}:
                                     lstate // {
                                       resolved = lstate.resolved // attrSingleton name {
-                                        inherit (var) version flags fullName name src;
+                                        inherit (var) version flags fullName name src gtk2hsHack;
                                         inherit resolvedEdeps;
                                         provided = preparedPkg ? provided;
                                         names = attrNames var.ldeps;
@@ -1066,7 +1068,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
               re = resolved.resolvedEdeps;
           in if resolved.provided then null # provided means the package is shipped with the ghc compiler
              else mkHaskellDerivation {
-                inherit (resolved) flags fullName name src version;
+                inherit (resolved) flags fullName name src version gtk2hsHack;
                 dependencies = filter (x : x != null)
                   (
                     # dependencies of libraries

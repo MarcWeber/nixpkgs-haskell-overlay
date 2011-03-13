@@ -1,0 +1,47 @@
+Only in b: default-env
+Only in b: dist
+Only in b: hack-nix-envs
+Only in b/man/man1: markdown2pdf.1
+Only in b/man/man1: pandoc.1
+Only in b: Setup
+Only in b: Setup.hi
+Only in b: Setup.o
+Only in b: sources-of-deps-auto
+diff -r -U 3 a/src/Text/Pandoc/Shared.hs b/src/Text/Pandoc/Shared.hs
+--- a/src/Text/Pandoc/Shared.hs	1970-01-01 01:00:01.000000000 +0100
++++ b/src/Text/Pandoc/Shared.hs	2010-05-12 23:52:42.000000000 +0200
+@@ -113,7 +113,7 @@
+ 
+ import Text.Pandoc.Definition
+ import Text.ParserCombinators.Parsec
+-import Text.PrettyPrint.HughesPJ ( Doc, fsep, ($$), (<>), empty, isEmpty, text, nest )
++import Text.PrettyPrint.HughesPJ ( Doc, fsep, ($$), (<>), isEmpty, text, nest )
+ import qualified Text.PrettyPrint.HughesPJ as PP
+ import Text.Pandoc.CharacterReferences ( characterReference )
+ import Data.Char ( toLower, toUpper, ord, isLower, isUpper, isAlpha, isAscii,
+@@ -280,13 +280,13 @@
+              -- to avoid spurious blank space the note and immediately
+              -- following punctuation.
+              rest1Out <- if null rest1
+-                            then return empty
++                            then return PP.empty
+                             else listWriter rest1
+              rest2Wrapped <- if null rest2
+-                                then return empty
++                                then return PP.empty
+                                 else wrappedTeX includePercent listWriter (tail rest2)
+              noteText <- listWriter [note]
+-             return $ (firstpartWrapped <> if includePercent then PP.char '%' else empty) $$ 
++             return $ (firstpartWrapped <> if includePercent then PP.char '%' else PP.empty) $$ 
+                       (noteText <> rest1Out) $$
+                       rest2Wrapped
+ 
+@@ -307,7 +307,7 @@
+ 
+ -- | Converts a list of wrapped blocks to a Doc, with appropriate spaces around blocks.
+ wrappedBlocksToDoc :: [BlockWrapper] -> Doc
+-wrappedBlocksToDoc = foldr addBlock empty
++wrappedBlocksToDoc = foldr addBlock PP.empty
+      where addBlock (Pad d) accum | isEmpty accum = d
+            addBlock (Pad d) accum = d $$ text "" $$ accum
+            addBlock (Reg d) accum = d $$ accum

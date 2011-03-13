@@ -1,0 +1,12 @@
+diff -r -U 3 a/network-bytestring.cabal b/network-bytestring.cabal
+--- a/network-bytestring.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/network-bytestring.cabal	2010-12-15 02:12:08.000000000 +0100
+@@ -28,7 +28,7 @@
+   build-depends:
+     base       < 4.4,
+     bytestring < 1.0,
+-    network    >= 2.2.1.1 && < 2.3
++    network    >= 2.2.1.1 && <= 2.3
+ 
+   if !os(windows)
+     build-depends:

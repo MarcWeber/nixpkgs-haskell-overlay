@@ -50,8 +50,11 @@ let
 
     # this contains haskell packages: gtk svgcairo glib cairo gtk2hs soegtk gio gtksourceview2 glade
     # the dependencies to those packgaes are all replaced by gtk2hs-neta-package by hack-nix.
-    gtk2hsMetaPackage = {
-      name = "gtk2hs-meta-package-hack";  version = "0.10.0";
+    gtk2hsMetaPackage = name : {
+      inherit name;
+      # dumy data: is replaced by haskellPackages.gtk2hs later
+      gtk2hsHack = true;
+      version = "0.10.0";
       ldeps = 
       {
         cdeps = [];
@@ -63,6 +66,7 @@ let
       };
     };
 
+    oldGtk2hsPackages = map gtk2hsMetaPackage [ "svgcairo" "glib" "cairo" "gtk2hs" "soegtk" "gio" "gtksourceview2" "glade" "gtk" ];
 
     exeByName = name:
         builtins.trace "resolving deps of executable dependency ${name}"
@@ -204,7 +208,7 @@ let
                    (import hackage/hack-nix-db.nix)
                 ++ (import ./pkgs/haskelldb.nix { inherit (pkgs) fetchurl; })
                 ++ fixed.packageOverrides
-                ++ [ gtk2hsMetaPackage ]
+                ++ oldGtk2hsPackages
                 ++ (getConfig ["hackNix" "additionalPackages"] [])
               ));
 
@@ -212,10 +216,19 @@ let
               // getConfig ["hackNix" "globalFlags"] {};
             packageFlags = {
               # nix is not up to the task calculating 8 ** 2 flag combinations :-(. So define default flags here. Probably ++ is not lazy enough yet.  TODO figure out what exactly is happening here. By default only the first variation is used.
-              darcs = { curl = true; http = true; static = false; terminfo = true; threaded = false; color = true; mmap = true; hpc = false;
-               } // attrSingleton "curl-pipelining" false
-                 // attrSingleton "type-witnesses" false
-                 // attrSingleton "deps-only" false;
+              darcs = {
+                curl = true;
+                http = true;
+                static = false;
+                terminfo = true;
+                threaded = false;
+                color = true;
+                mmap = true;
+                hpc = false;
+                "curl-pipelining" = false;
+                "type-witnesses" = false;
+                "deps-only" = false;
+              };
                pandoc = {
                 executable = true; # must be true
                 library = true;    # must be true
@@ -235,15 +248,19 @@ let
                yesod = { ghc7 = false; };
             } // getConfig ["hackNix" "packageFlags"] {};
 
-            mkHaskellDerivation = { name, fullName, src, dependencies, flags, patches, version, ... }:
+            mkHaskellDerivation = a@{ name, fullName, src, dependencies, flags, patches, version, ... }:
               # Use special builder for gtk2hs-meta-package-hack only
 
-              if name == "gtk2hs-meta-package-hack" then
-                import "${nixpkgs}/pkgs/development/libraries/haskell/gtk2hs/default.nix" {
-                  ghc = thisGhc;
-                  mtl = builtins.head (lib.filter (x: x.pname == "mtl") dependencies);
-                  inherit (pkgs) stdenv fetchurl pkgconfig gnome cairo;
-                }
+              if a.gtk2hsHack then
+                let mtl = builtins.head (lib.filter (x: x.pname == "mtl") dependencies);
+                in
+                  (
+                  import "${nixpkgs}/pkgs/development/libraries/haskell/gtk2hs/default.nix" {
+                    ghc = thisGhc;
+                    inherit mtl;
+                    inherit (pkgs) stdenv fetchurl pkgconfig gnome cairo;
+                  }
+                  ) // { deps = [mtl]; }
 
               else let
                   deps = dependencies ++ (lib.attrByPath [name "propagatedBuildNativeInputs"] [] ammendmentsFixed);
