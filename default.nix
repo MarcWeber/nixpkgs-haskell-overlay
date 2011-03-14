@@ -46,32 +46,84 @@ let
       inherit hasktags;
     };
 
-    hasktags = exeByName "hasktags";
+    hasktags = exeByName { name = "hasktags"; };
 
     # this contains haskell packages: gtk svgcairo glib cairo gtk2hs soegtk gio gtksourceview2 glade
     # the dependencies to those packgaes are all replaced by gtk2hs-neta-package by hack-nix.
-    gtk2hsMetaPackage = name : {
-      inherit name;
+    gtk2hsMetaPackage = name :
+    let version = "0.10.0";
+        # this blocks newer glib / cairo packages by forcing dependencies on glib
+        glibDep = if name == "glib" then [] else [{n = "glib"; v = version; }];
+    in {
+      inherit name version;
       # dumy data: is replaced by haskellPackages.gtk2hs later
       gtk2hsHack = true;
-      version = "0.10.0";
       ldeps = 
       {
         cdeps = [];
-        deps = [ {n = "mtl";} ];
+        deps = [ {n = "mtl";} ] ++ glibDep;
       };
       srcFile = pkgs.fetchurl {
         url = http://nixos.org/tarballs/gtk2hs-0.10.0-20090419.tar.gz;
         sha256 = "18a7cfph83yvv91ks37nrgqrn21fvww8bhb8nd8xy1mgb8lnfds1";
       };
+
+    };
+
+    # move into extra file:
+    gtk2hsMetaPackageDerivation = {ghc, deps}:
+      let inherit (pkgs) stdenv gnome cairo pkgconfig fetchurl; in
+       stdenv.mkDerivation rec {
+        pname = "gtk2hs";
+        version = "0.10.0";
+        fname = "${pname}-${version}";
+        name = "haskell-${pname}-ghc${ghc.ghc.version}-${version}";
+        
+        src = fetchurl {
+          url = http://nixos.org/tarballs/gtk2hs-0.10.0-20090419.tar.gz;
+          sha256 = "18a7cfph83yvv91ks37nrgqrn21fvww8bhb8nd8xy1mgb8lnfds1";
+        };
+        
+        propagatedBuildInputs = deps;
+
+        buildInputs = [
+          pkgconfig cairo gnome.glib gnome.gtk gnome.libglade
+          gnome.GConf gnome.gtksourceview gnome.librsvg
+          ghc
+        ];
+
+        preConfigure =
+          ''
+            sed -i gio/gio.package.conf.in -e 's|@GIO_LIBDIR_CQ@|"${gnome.glib}/lib", "${gnome.glib}/lib64", @GIO_LIBDIR_CQ@|'
+            sed -i gtk/gtk.package.conf.in -e 's|@GTK_LIBDIR_CQ@|"${gnome.glib}/lib", "${gnome.glib}/lib64", @GTK_LIBDIR_CQ@|'
+          '';
+
+        configureFlags = ["--without-pkgreg"];
+
+        postInstall =
+          ''
+            local confDir=$out/lib/ghc-pkgs/ghc-${ghc.ghc.version}
+            local installedPkgConf=$confDir/${fname}.installedconf
+            ensureDir $out/bin # necessary to get it added to PATH
+            ensureDir $confDir
+            echo $installedPkgConf
+            echo '[]' > $installedPkgConf
+            for pkgConf in $out/lib/gtk2hs/*.conf; do
+              cp $pkgConf $confDir/
+              GHC_PACKAGE_PATH=$installedPkgConf ghc-pkg --global register $pkgConf --force
+            done
+          ''; # */
+
+        passthru = { inherit (gnome) gtksourceview; };
     };
 
     oldGtk2hsPackages = map gtk2hsMetaPackage [ "svgcairo" "glib" "cairo" "gtk2hs" "soegtk" "gio" "gtksourceview2" "glade" "gtk" ];
 
-    exeByName = name:
+    exeByName = { name, haskellPackages ? defaultHaskellPackages }:
         builtins.trace "resolving deps of executable dependency ${name}"
           ( builtins.getAttr name ( (haskellOverlayPackagesFun.merge  {
               targetPackages = [name];
+              inherit haskellPackages;
             } ).result));
 
     /* the function calling the main worker fucntion.
@@ -111,9 +163,9 @@ let
             haskellPackages = pkgs.haskellPackages_ghc6121;
         
             # defaults. You could overwrite them.
-            alex = exeByName "alex";
-            happy = exeByName "happy";
-            c2hs = exeByName "c2hs";
+            alex = exeByName { name = "alex"; haskellPackages = thisHP; };
+            happy = exeByName { name = "happy"; haskellPackages = thisHP; };
+            c2hs = exeByName { name = "c2hs"; haskellPackages = thisHP; };
 
             # add additional build inputs such as C libraries here, used by mkHaskellDerivation below
             ammendments =
@@ -146,6 +198,7 @@ let
                 };
                 "pcre-light" = { propagatedBuildNativeInputs = [ pkgs.pcre ]; };
                 "language-c" = { buildInputs = [ happyFixed alexFixed ]; };
+                "gtk2hs-buildtools" = { buildInputs = [alexFixed happyFixed]; };
                 "Agda" = { buildInputs = [ happyFixed alexFixed ]; };
                 "HDBC-mysql" = { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.zlib pkgs.zlibStatic ]; };
                 "HDBC-sqlite3" = { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.sqlite ]; };
@@ -215,6 +268,7 @@ let
             globalFlags = {}
               // getConfig ["hackNix" "globalFlags"] {};
             packageFlags = {
+              pango = { new_exception = true; };
               # nix is not up to the task calculating 8 ** 2 flag combinations :-(. So define default flags here. Probably ++ is not lazy enough yet.  TODO figure out what exactly is happening here. By default only the first variation is used.
               darcs = {
                 curl = true;
@@ -252,15 +306,11 @@ let
               # Use special builder for gtk2hs-meta-package-hack only
 
               if a.gtk2hsHack then
-                let mtl = builtins.head (lib.filter (x: x.pname == "mtl") dependencies);
+                let 
+                  deps = lib.filter (x: x.pname == "mtl") dependencies;
                 in
-                  (
-                  import "${nixpkgs}/pkgs/development/libraries/haskell/gtk2hs/default.nix" {
-                    ghc = thisGhc;
-                    inherit mtl;
-                    inherit (pkgs) stdenv fetchurl pkgconfig gnome cairo;
-                  }
-                  ) // { deps = [mtl]; }
+                  (gtk2hsMetaPackageDerivation { inherit deps; inherit (thisHP) ghc; })
+                  // { inherit deps; }
 
               else let
                   deps = dependencies ++ (lib.attrByPath [name "propagatedBuildNativeInputs"] [] ammendmentsFixed);
@@ -344,32 +394,35 @@ let
 
 
     ### executables:
-    hledger = exeByName "hledger";
-    hackNix = exeByName "hack-nix";
-    nixRepositoryManager = exeByName "nix-repository-manager";
+    hledger = exeByName { name = "hledger"; };
+    hackNix = exeByName { name = "hack-nix"; };
+    nixRepositoryManager = exeByName { name = "nix-repository-manager"; };
     # doesn't build
-    yi = exeByName "yi";
-    yiVty = exeByName "yi-vty";
-    yiGtk = exeByName "yi-gtk";
-    haddock = exeByName "haddock";
-    darcs = exeByName "darcs";
-    terrahs = exeByName "terrahs";
-    cabalInstall = exeByName "cabal-install";
+    yi = exeByName { name = "yi"; };
+    yiVty = exeByName { name = "yi-vty"; };
+    yiGtk = exeByName { name = "yi-gtk"; };
+    haddock = exeByName { name = "haddock"; };
+    darcs = exeByName { name = "darcs"; };
+    terrahs = exeByName { name = "terrahs"; };
+    cabalInstall = exeByName { name = "cabal-install"; };
 
-    happstackContrib = exeByName "happstack-contrib";
-    happstackData = exeByName "happstack-data";
-    happstackDlg = exeByName "happstack-dlg";
-    happstackFacebook = exeByName "happstack-facebook";
-    happstackFastcgi = exeByName "happstack-fastcgi";
-    happstackHelpers = exeByName "happstack-helpers";
-    happstackIxset = exeByName "happstack-ixset";
-    happstackServer = exeByName "happstack-server";
-    happstackState = exeByName "happstack-state";
-    happstackUtil = exeByName "happstack-util";
-    agdaExecutable = exeByName "Agda-executable";
+    happstackContrib = exeByName { name = "happstack-contrib"; };
+    happstackData = exeByName { name = "happstack-data"; };
+    happstackDlg = exeByName { name = "happstack-dlg"; };
+    happstackFacebook = exeByName { name = "happstack-facebook"; };
+    happstackFastcgi = exeByName { name = "happstack-fastcgi"; };
+    happstackHelpers = exeByName { name = "happstack-helpers"; };
+    happstackIxset = exeByName { name = "happstack-ixset"; };
+    happstackServer = exeByName { name = "happstack-server"; };
+    happstackState = exeByName { name = "happstack-state"; };
+    happstackUtil = exeByName { name = "happstack-util"; };
+    agdaExecutable = exeByName { name = "Agda-executable"; };
 
-    gitit = exeByName "gitit";
-    ghcjs = exeByName "ghcjs";
+    gitit = exeByName { name = "gitit"; };
+    ghcjs = exeByName { name = "ghcjs"; };
+
+    oldGtk2hs = exeByName { haskellPackages = pkgs.haskellPackages_ghc6104; name = "gtk2hs"; };
+    gtk2hsBuildtools = exeByName { haskellPackages = pkgs.haskellPackages_ghc6104; name = "gtk2hs-buildtools"; };
 
     ghcjs_libs = pkgs.recurseIntoAttrs (import pkgs/ghc-js-libs.nix {
       inherit (pkgs) stdenv perl;
