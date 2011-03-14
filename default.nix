@@ -144,6 +144,7 @@ let
           let inherit (args) fixed;
               alexFixed = fixed.alex;
               happyFixed = fixed.happy;
+              gtk2hsBuildToolsFixed = fixed.gtk2hsBuildTools;
               c2hsFixed = fixed.c2hs;
               ammendmentsFixed = fixed.ammendments;
               thisHP = fixed.haskellPackages;
@@ -166,6 +167,7 @@ let
             alex = exeByName { name = "alex"; haskellPackages = thisHP; };
             happy = exeByName { name = "happy"; haskellPackages = thisHP; };
             c2hs = exeByName { name = "c2hs"; haskellPackages = thisHP; };
+            gtk2hsBuildTools = exeByName { name = "gtk2hs-buildtools"; haskellPackages = thisHP; };
 
             # add additional build inputs such as C libraries here, used by mkHaskellDerivation below
             ammendments =
@@ -196,10 +198,20 @@ let
                           else throw "TODO"
                          );
                 };
+                glib = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.glib ]; };
+                cairo = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.cairo pkgs.glibc]; };
                 "pcre-light" = { propagatedBuildNativeInputs = [ pkgs.pcre ]; };
                 "language-c" = { buildInputs = [ happyFixed alexFixed ]; };
                 "gtk2hs-buildtools" = { buildInputs = [alexFixed happyFixed]; };
                 "Agda" = { buildInputs = [ happyFixed alexFixed ]; };
+                "hopenssl" = {
+                  propagatedBuildNativeInputs = [ pkgs.openssl ]; 
+                  configureFlags = ["--extra-include-dirs=${pkgs.openssl}/include" "--extra-lib-dirs=${pkgs.openssl}/lib"];
+                };
+                "regex-pcre" = {
+                  propagatedBuildNativeInputs = [ pkgs.pcre ]; 
+                  configureFlags = ["--extra-include-dirs=${pkgs.pcre}/include" "--extra-lib-dirs=${pkgs.pcre}/lib"];
+                };
                 "HDBC-mysql" = { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.zlib pkgs.zlibStatic ]; };
                 "HDBC-sqlite3" = { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.sqlite ]; };
                 "HDBC-odbc" = {
@@ -269,6 +281,7 @@ let
               // getConfig ["hackNix" "globalFlags"] {};
             packageFlags = {
               pango = { new_exception = true; };
+              json = { "generic" = true; "split-base" = true; };
               # nix is not up to the task calculating 8 ** 2 flag combinations :-(. So define default flags here. Probably ++ is not lazy enough yet.  TODO figure out what exactly is happening here. By default only the first variation is used.
               darcs = {
                 curl = true;
