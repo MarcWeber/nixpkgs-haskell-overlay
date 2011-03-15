@@ -198,10 +198,12 @@ let
                           else throw "TODO"
                          );
                 };
-                glib = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.glib ]; };
+                glib = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.glib pkgs.glibc ]; };
+                pango = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.pango pkgs.glibc]; };
                 cairo = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.cairo pkgs.glibc]; };
                 "pcre-light" = { propagatedBuildNativeInputs = [ pkgs.pcre ]; };
                 "language-c" = { buildInputs = [ happyFixed alexFixed ]; };
+                yi = { buildInputs = [ happyFixed alexFixed ]; };
                 "gtk2hs-buildtools" = { buildInputs = [alexFixed happyFixed]; };
                 "Agda" = { buildInputs = [ happyFixed alexFixed ]; };
                 "hopenssl" = {
@@ -306,7 +308,7 @@ let
                yi = {
                   ghcInterpreter = false; # Use the "hint" interpreter for extended commands (M-x) (experimental)
                   ghcAPI = false; # Enable linking with GHC API for advanced features.
-                  vty = false; 
+                  vty = true; 
                   pango = false; # Provide Pango UI
                   cocoa = false; # Provide experimental Cocoa UI
                   gnome = false; # Enable GNOME integration

@@ -1,19 +1,58 @@
 haskell-nix-overlay
 ===================
 
-status: experimental
+status: most packages can be installed easily. If something doesn't work drop
+me a message, please
 
 GOAL
 ====
   make all hackage packages availible to the nix repository manager (-> http://nixos.org).
-  Why have a separate package ? Writing the hackage index into a file which is readable by nix
-  results in a > 500kb file. Generating this file takes some time because all
-  source files are downloaded once in order to calculate hashes required by fetchurl.
 
-  Tracking many revisions of this file in nixpkgs can
-  have an impact on users tracking nixpkgs using git. So it would have been
-  enough to track everything but the hackage contents. However generating this
-  file takes quite some time that's why I do include it.
+REQUIREMENTS:
+=============
+nixpkgs: nix2/marc-next branch which adds arbitrary strings as names patch. It allows
+{
+  "foo-2.1" = { .. };
+}
+
+which is used often.
+It also adds overlay features so that you can hook haskell packages into main
+nixpkgs easily.
+
+HIGH LEVEL DESIGN OVERVIEW
+==========================
+What's happening at all?
+
+  1) 00-index.tar -> (hack-nix) -> hackage/hack-nix-db.nix (representation of
+    optionally patched .cabal files)
+    patches are taken from patches/*
+
+  2) run a nix command (eg nix-build -A hackNix) or hack-nix --build-env in
+    project directory containing a .cabal file.
+    The package pool (which mostly is made up of hackage/hack-nix-db.nix)
+    is used to find a dependency graph satisfying all dependency constraints
+    (paying attention to os, flags, library vs executable dependencies ...)
+
+    Because the solver uses brute force 1) only adds latest version and a
+    set of manually selected packages to the pool.
+
+    hack-nix --build-env
+
+    Of course the information found in .cabal files is not enough. Eg
+    regex-pcre requires the pcre C library. Those additional dependencies
+    and flag settings are merged in default.nix.
+
+    If you use hack-nix --build-env you use a .hack-nix-cabal-config setting
+      - the ghc version to be used
+      - cabal flags
+      - adding custom packages to the pool of packages which are used when
+        dependencies are resolved
+
+hack-nix also provides some flags which are used by nix-repository-manager to add regions
+of code to .nix file which contain cabal representations & source snapshots of dacrs,git,...
+versions of packages.
+
+Also see "Alternative designs"
 
 HOWTO
 =====
@@ -23,22 +62,23 @@ a) optional: update hack-nix-db.nix file
   # create the configuration file
   hack-nix --write-config
 
-  # make target-file point to $THIS_REPO/hackage/hack-nix-db.nix
+  # make target-file point to $THIS_REPO/hackage/hack-nix-db.nix:
   $EDITOR .hack-nix
 
-  # prepare a cup of tea
   # Run hack-nix without any arguments. I recommend symlinking nix-cache so that
-  # we can share it. Also hack-nix sometimes looses its contents
+  # we can share it. Also hack-nix sometimes looses its contents so make a copy
+  # once in a while!
   ln -s hackage/nix-cache ~/.hack-nix/nix-cache
   # remove hackage index so that it'll be refetched:
   grep -i '/000/d' ~/.hack-nix/nix-cache
   hack-nix
 
-  All (new) sources will be fetched to calculate hashes so get ready to take a
-  cup of tea!
+  All (new) sources will be fetched to calculate hashes .. Depending no how
+  many packages have to be fetched this will take a while.
+  The result is hackage/hack-nix-db.nix (which is also shipping with this repo)
 
 b) compile example package:
-  nix-build -A haskellOverlayPackagesExample.HAppS-Server
+  nix-build -A darcs -f THIS_REPO/default.nix
 
 
 HOWTO build a .cabal project
@@ -54,12 +94,13 @@ HOWTO build a .cabal project
   # throw away the ways you don't want to test and assign appropriate names
   $EDITOR .hack-nix-cabal-config
 
-  # build an environment based on those flags:
-  hack-nix --build-env $NAME
+  # build an environment based on those flags using one of:
+  hack-nix --build-env
+  hack-nix --build-env-name $NAME
 
   # source the bash file exporting PATH and GHC_PACKAGE_PATH
   # in order to run the well known cabal commands:
-  source hack-nix-env/$NAME/source-me/haskel-env
+  source hack-nix-env/$NAME/source-me/haskel-env # ./ will contain shorter symlinks to this complicated path
   ghc --make Setup.hs
   ./Setup configure
   ./Setup build
@@ -79,6 +120,55 @@ HOWTO build a .cabal project
 
   The $CABAL_PROJECT_NAME.nix file is created by running
     hack-nix --to-nix
+
+
+Alternative designs
+===================
+- cabal? Why not use it?
+  1) Because you can't nixos-rebuild make use hackage packages then.
+  2) Because cabal didn't support gtk in the past and still doesn't support the
+      older gtk2hs meta package
+  3) because you can't patch .cabal files on the fly. It should not be
+     necessary - but it often is. It doesn't pay off to contact maintainers
+     asking them to drop a "< X.Y" constraint on a package just because you
+     want to install it *now*.
+  4) cabal does'nt generate tags
+  5) Does cabal create a special directory containing sources of all dependencies
+     which you can browse?
+  6) atomic updates, per package "environments" and rollbacks are not supported
+     by cabal. Thus if an update fails you've got a problem or you can start
+     playing back your backups (nogo).
+  7) parallel compilation of packages. While cabal runs Setup.hs within the
+     same process if possible which is much faster than compiling Setup.hs
+     and starting it nix-env will naturally provide -j X features building
+     packages in parallel even distributed across systems.
+
+- what about making cabal create .nix files?
+  Why a solver in Nix? Why not cabal create-nix-files-for-package XY ?
+  Because I don't want to create specific .nix files for each package.
+  There are too many combinations. Its much better to define the pool and make
+  Nix magically find dependencies.
+  Its also a lot faster because create-nix-files-for-package XY has to start
+  calculating sha256 hashes for sources etc. AFAIK it doesn't allow patching
+  cabals either (which could be fixed)
+
+- doing dependency analysis manually?
+  See haskell-packages.nix in nixpkgs. I don't have that much time to spend on
+  each update again and again. Do things once and be done.
+  I have to automate what can be automated.
+
+FUTURE
+======
+SAT solvers should be used.
+
+BUGS
+====
+The code is complicated and close to unmaintainable?
+Maybe yes. But it works. I support it. Its not your problem :)
+The solution would be adding a type system to Nix, use a sat solver, ...
+If you have time to do it :)
+
+Maybe hackage/hack-nix-db.nix should be put into a different repo because the file changes more often than the code .. This was done for nixpkgs-ruby-overlay and nixpkgs-python-overlay ..
 
 TODO
 ====
