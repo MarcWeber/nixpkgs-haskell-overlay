@@ -418,6 +418,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
           mapList = map ifElseToAttrs;
       in {
         inherit (pkg) version name;
+        tflags = getA "tflags" pkg [];
         gtk2hsHack = lib.maybeAttr "gtk2hsHack" false pkg; 
         fullName = lm.mkNixId { inherit (pkg) name version; }; 
         # TODO: take Buildable into account
@@ -489,7 +490,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
         fullName = lm.mkNixId pkg;
         edeps = mapDepNode pkg.edeps;
         ldeps = mapDepNode pkg.ldeps; 
-        tflags = listToAttrs (map (name: { inherit name; value = true; }) (getA "tflags" pkg []));
+        tflags = ( listToAttrs (map (name: { inherit name; value = true; }) (getA "tflags" pkg [])));
       });
 
     #### dependency node logic {{{1

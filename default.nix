@@ -23,6 +23,7 @@ let
 
 
   pkgs = import nixpkgs mainConfig;
+  gnome = pkgs.gnome;
 
   lib = pkgs.lib // import ./pkgs/lib-amendment.nix { inherit (pkgs) lib; };
 
@@ -30,11 +31,17 @@ let
 
   inherit (lib) attrSingleton;
 
+  g_libs = {
+    librsvg = gnome.librsvg;
+    inherit (pkgs.gtkLibs) glib gtk;
+    inherit (pkgs) cairo pango;
+  };
+
   haskellPackages = rec {
 
     inherit pkgs lib getConfig;
 
-    defaultHaskellPackages = pkgs.haskellPackages_ghc6121;
+    defaultHaskellPackages = pkgs.haskellPackages_ghc6123;
 
     libOverlay =
       import pkgs/haskell-lib.nix { inherit (pkgs) fetchurl; inherit lib; };
@@ -77,7 +84,7 @@ let
         pname = "gtk2hs";
         version = "0.10.0";
         fname = "${pname}-${version}";
-        name = "haskell-${pname}-ghc${ghc.ghc.version}-${version}";
+        name = "${pname}-ghc${ghc.ghc.version}-${version}";
         
         src = fetchurl {
           url = http://nixos.org/tarballs/gtk2hs-0.10.0-20090419.tar.gz;
@@ -119,9 +126,11 @@ let
 
     oldGtk2hsPackages = map gtk2hsMetaPackage [ "svgcairo" "glib" "cairo" "gtk2hs" "soegtk" "gio" "gtksourceview2" "glade" "gtk" ];
 
+    # name can be { n = .. ; [v,gt,lt,..] = .. }; see targetPackages
     exeByName = { name, haskellPackages ? defaultHaskellPackages }:
-        builtins.trace "resolving deps of executable dependency ${name}"
-          ( builtins.getAttr name ( (haskellOverlayPackagesFun.merge  {
+        let n = if builtins.isAttrs name then name.n else name; in
+        builtins.trace "resolving deps of executable dependency ${n}"
+          ( builtins.getAttr n ( (haskellOverlayPackagesFun.merge  {
               targetPackages = [name];
               inherit haskellPackages;
             } ).result));
@@ -149,7 +158,7 @@ let
               ammendmentsFixed = fixed.ammendments;
               thisHP = fixed.haskellPackages;
               thisGhc = thisHP.ghc;
-              thisGhcReal = thisHP.ghcReal;
+              thisGhcReal = thisHP.ghcPlain;
               haskellDerivation = thisHP.cabal.mkDerivation;
               # build the executable with dependencies not which are resolved differently from the target dependencies
           in args // {
@@ -167,7 +176,8 @@ let
             alex = exeByName { name = "alex"; haskellPackages = thisHP; };
             happy = exeByName { name = "happy"; haskellPackages = thisHP; };
             c2hs = exeByName { name = "c2hs"; haskellPackages = thisHP; };
-            gtk2hsBuildTools = exeByName { name = "gtk2hs-buildtools"; haskellPackages = thisHP; };
+            # most current version does not build gtk !
+            gtk2hsBuildTools = exeByName { name = { n = "gtk2hs-buildtools"; v="0.11.2"; }; haskellPackages = thisHP; };
 
             # add additional build inputs such as C libraries here, used by mkHaskellDerivation below
             ammendments =
@@ -198,7 +208,17 @@ let
                           else throw "TODO"
                          );
                 };
-                glib = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.glib pkgs.glibc ]; };
+                hmatrix = { buildInputs = [pkgs.gsl pkgs.liblapack]; };
+                glib = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.glibc g_libs.glib ]; };
+                svgcairo = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.glibc g_libs.glib g_libs.librsvg]; };
+                gtk = {
+                  buildInputs = [
+                    pkgs.pkgconfig gtk2hsBuildToolsFixed g_libs.gtk pkgs.glibc
+                  ];
+                  propagatedBuildNativeInputs = [
+                    g_libs.cairo g_libs.glib g_libs.pango 
+                  ];
+                };
                 pango = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.pango pkgs.glibc]; };
                 cairo = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.cairo pkgs.glibc]; };
                 "pcre-light" = { propagatedBuildNativeInputs = [ pkgs.pcre ]; };
@@ -234,7 +254,7 @@ let
             # == resolveDependenciesBruteforce arguments:
             defaultFlagsOnly = true;
 
-            provided = thisHP.ghcReal.corePackages;
+            provided = thisHP.ghcPlain.corePackages;
 
             compilerFlavor = {
               compiler = "GHC";
@@ -309,7 +329,7 @@ let
                   ghcInterpreter = false; # Use the "hint" interpreter for extended commands (M-x) (experimental)
                   ghcAPI = false; # Enable linking with GHC API for advanced features.
                   vty = true; 
-                  pango = false; # Provide Pango UI
+                  pango = true; # Provide Pango UI
                   cocoa = false; # Provide experimental Cocoa UI
                   gnome = false; # Enable GNOME integration
                   testing = false; # bake-in the self-checks
