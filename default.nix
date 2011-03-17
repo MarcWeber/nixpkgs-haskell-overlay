@@ -220,7 +220,10 @@ let
                   ];
                 };
                 pango = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.pango pkgs.glibc]; };
-                cairo = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.cairo pkgs.glibc]; };
+                cairo = {
+                  buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.cairo pkgs.glibc];
+                  configureFlags = ["--extra-lib-dirs=${pkgs.zlib}/lib"];
+                };
                 "pcre-light" = { propagatedBuildNativeInputs = [ pkgs.pcre ]; };
                 "language-c" = { buildInputs = [ happyFixed alexFixed ]; };
                 yi = { buildInputs = [ happyFixed alexFixed ]; };
@@ -434,8 +437,6 @@ let
     nixRepositoryManager = exeByName { name = "nix-repository-manager"; };
     # doesn't build
     yi = exeByName { name = "yi"; };
-    yiVty = exeByName { name = "yi-vty"; };
-    yiGtk = exeByName { name = "yi-gtk"; };
     haddock = exeByName { name = "haddock"; };
     darcs = exeByName { name = "darcs"; };
     terrahs = exeByName { name = "terrahs"; };
@@ -458,6 +459,12 @@ let
 
     oldGtk2hs = exeByName { haskellPackages = pkgs.haskellPackages_ghc6104; name = "gtk2hs"; };
     gtk2hsBuildtools = exeByName { haskellPackages = pkgs.haskellPackages_ghc6104; name = "gtk2hs-buildtools"; };
+    gtk11 = exeByName { name = { n = "glib"; v = "0.11.2"; }; };
+    gtk12 = exeByName { name = { n = "gtk"; gte = "0.12"; }; };
+    derive = exeByName { name = "derive"; };
+    hakyll = exeByName { name = "hakyll"; };
+    alex = exeByName { name = "alex"; };
+    happy = exeByName { name = "happy"; };
 
     ghcjs_libs = pkgs.recurseIntoAttrs (import pkgs/ghc-js-libs.nix {
       inherit (pkgs) stdenv perl;
