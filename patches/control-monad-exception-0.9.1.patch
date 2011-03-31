@@ -1,0 +1,12 @@
+diff -r -U 3 a/Control/Monad/Exception.hs b/Control/Monad/Exception.hs
+--- a/Control/Monad/Exception.hs	1970-01-01 01:00:01.000000000 +0100
++++ b/Control/Monad/Exception.hs	2011-03-17 06:48:49.000000000 +0100
+@@ -2,7 +2,7 @@
+ {-|
+ A Monad Transformer for explicitly typed checked exceptions, described in detail by:
+ 
+-  * Jose Iborra, \"Explicitly Typed Exceptions for Haskell",
++  * Jose Iborra, \"Explicitly Typed Exceptions for Haskell\",
+     PADL'10, January 2010, <http://safe-tools.dsic.upv.es/mediawiki/index.php/Jose_Iborra/Papers/Exceptions>
+ 
+ The exceptions thrown by a computation are inferred by the typechecker
