@@ -68,7 +68,9 @@ let
       ldeps = 
       {
         cdeps = [];
-        deps = [ {n = "mtl";} ] ++ glibDep;
+        deps = [ {n = "mtl";}
+                 {lt = "6.11";  n = "ghc";}
+        ] ++ glibDep;
       };
       srcFile = pkgs.fetchurl {
         url = http://nixos.org/tarballs/gtk2hs-0.10.0-20090419.tar.gz;
@@ -252,6 +254,11 @@ let
                   configureFlags = ["--extra-include-dirs=${pkgs.mysql}/include/mysql" "--extra-lib-dirs=${pkgs.mysql}/lib/mysql"];
                 };
                 bzlib = { propagatedBuildNativeInputs = [ pkgs.bzip2 ]; };
+                X11 = {
+                  propagatedBuildNativeInputs = [ pkgs.xorg.libX11 ]; 
+                  # configureFlags = ["--extra-include-dirs=${pkgs.pcre}/include" "--extra-lib-dirs=${pkgs.pcre}/lib"];
+                };
+
               };
 
             # == resolveDependenciesBruteforce arguments:
