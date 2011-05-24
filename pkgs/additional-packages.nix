@@ -471,4 +471,25 @@
   }
   # END
 
+  # REGION HACK_NIX: { name="atto-lisp"; type="git"; url="git://github.com/nominolo/atto-lisp.git"; }
+  {
+    name = "atto-lisp";  version = "0.2";  edeps = [];
+    ldeps = 
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {gte = "0.8.5.1";};  i2 = {lt = "0.9";};  n = "attoparsec";}
+        {i1 = {gte = "4.2";};  i2 = {lt = "5";};  n = "base";}
+        {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "blaze-builder";}
+        {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "blaze-textual";}
+        {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
+        {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "deepseq";}
+        {i1 = {gte = "0.10";};  i2 = {lt = "0.12";};  n = "text";}
+      ];
+    };
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/atto-lisp-git-0562e.tar.bz2"; sha256 = "b0e4e81dd5e43fcd19f593bd1ec4b71de8e6a6a22461ef3ece6858dbba5bd36e"; });
+  }
+  # END
+
 ]

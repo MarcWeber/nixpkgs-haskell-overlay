@@ -477,7 +477,9 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       preparePkg = availablePackages : pkg : lm.funcBody "preparePkg" (
       let # input : i-dep-node(v-ranges)
           mapDepNode = strictifyArgs 1 "mapDepNode" ( {deps, cdeps} : {
-            deps = lm.mergeDepsIList (map (lm.versionRangeToAttr availablePackages) deps);
+            deps = lm.mergeDepsIList (map (lm.versionRangeToAttr availablePackages)
+                                          (filter (x: x.n != pkg.name) deps) # eg scion's executable dependencies depend on scion library itself. Thus drop dependencies on the same packages
+                                     );
             cdeps = map mapDepCond cdeps;
           });
           # input : i-dep-cond(v-ranges)
@@ -958,7 +960,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       };
 
       # returns
-      # - [ state ]: dep has aready been resolved
+      # - [ state ]: dep has already been resolved
       # - []: dep can't be met
       #      (either another version has been selected or it dosen't exist)
       # - [ state ... ]: ways to resolve package
@@ -967,6 +969,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       resolveDep = state@{resolved, resolvingDepsOf, ...}: dep@{name, version, fullName, ...}: lm.addErrorContext2 "resolveDep" (
         if elem name resolvingDepsOf then throw "circular dependencies: ${showVal resolvingDepsOf} ${name}"
         else
+
 
         if hasAttr name resolved then
           let r = getAttr name resolved;
