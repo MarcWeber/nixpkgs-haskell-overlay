@@ -258,6 +258,11 @@ let
                   propagatedBuildNativeInputs = [ pkgs.xorg.libX11 ]; 
                   # configureFlags = ["--extra-include-dirs=${pkgs.pcre}/include" "--extra-lib-dirs=${pkgs.pcre}/lib"];
                 };
+                xmonad = { noHaddock = true; };
+                "X11-xft" = {
+                  propagatedBuildNativeInputs = [ pkgs.pkgconfig pkgs.xorg.libXft pkgs.freetype pkgs.fontconfig ];
+                  configureFlags=["--extra-include-dirs=${pkgs.freetype}/include/freetype2"];
+                };
 
               };
 
@@ -472,6 +477,9 @@ let
     hakyll = exeByName { name = "hakyll"; };
     alex = exeByName { name = "alex"; };
     happy = exeByName { name = "happy"; };
+    xmonad = exeByName { name = "xmonad"; };
+    xmonadExtras = exeByName { name = "xmonad-extras"; };
+    leksah = exeByName { haskellPackages = pkgs.haskellPackages_ghc6104; name = "leksah"; };
 
     ghcjs_libs = pkgs.recurseIntoAttrs (import pkgs/ghc-js-libs.nix {
       inherit (pkgs) stdenv perl;
