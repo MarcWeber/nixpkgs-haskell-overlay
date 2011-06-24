@@ -51,10 +51,10 @@
          {n = "pretty";}
          {i1 = {gte = "2";};  i2 = {lt = "5";};  n = "base";}
          {gte = "1.0";  n = "filepath";}  {n = "mtl";}  {n = "interlude";}
+         {n = "unix";}
        ];
      }];
-    srcFile = sourceFromHead "hack-nix-db9ee038e2f483b197ebf11ef8cce13a892d0f3c.tar.gz"
-                 (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-db9ee038e2f483b197ebf11ef8cce13a892d0f3c.tar.gz"; sha256 = "f01345497e776800d4f0b63127adafdd73f10017e6c2d71c99cbab4495d9fee6"; });
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-git-8cba8.tar.bz2"; sha256 = "ee7e070d9a233c4d2469a39d03dd51a5e7383c70b08affc2f99c545a6a6d9277"; });
   }
   # END
 
