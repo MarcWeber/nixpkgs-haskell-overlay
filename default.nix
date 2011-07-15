@@ -259,6 +259,8 @@ let
                   # configureFlags = ["--extra-include-dirs=${pkgs.pcre}/include" "--extra-lib-dirs=${pkgs.pcre}/lib"];
                 };
                 xmonad = { noHaddock = true; };
+                "git-annex" = { propagatedBuildNativeInputs = [ pkgs.libuuid pkgs.which pkgs.rsync pkgs.perl]; };
+                QuickCheck = { noHaddock = true; };
                 "X11-xft" = {
                   propagatedBuildNativeInputs = [ pkgs.pkgconfig pkgs.xorg.libXft pkgs.freetype pkgs.fontconfig ];
                   configureFlags=["--extra-include-dirs=${pkgs.freetype}/include/freetype2"];
@@ -317,6 +319,8 @@ let
             globalFlags = {}
               // getConfig ["hackNix" "globalFlags"] {};
             packageFlags = {
+              # without this gtk doesn't build:
+
               pango = { new_exception = true; };
               json = { "generic" = true; "split-base" = true; };
               # nix is not up to the task calculating 8 ** 2 flag combinations :-(. So define default flags here. Probably ++ is not lazy enough yet.  TODO figure out what exactly is happening here. By default only the first variation is used.
@@ -364,7 +368,7 @@ let
 
               else let
                   deps = dependencies ++ (lib.attrByPath [name "propagatedBuildNativeInputs"] [] ammendmentsFixed);
-                in
+                in (
                   (haskellDerivation (self: (removeAttrs (lib.attrByPath [name] {} ammendmentsFixed) ["buildInputs"]) // {
                   pname = name;
                   name = fullName;
@@ -379,7 +383,7 @@ let
                         )
                       );
                     #+ "--enable-library-for-ghci --enable-shared --ghc-options=-dynamic";
-                }))// { inherit deps; ghc = thisGhc; };
+                }))// { inherit deps; ghc = thisGhc; });
         
       });
 
@@ -449,6 +453,8 @@ let
     nixRepositoryManager = exeByName { name = "nix-repository-manager"; };
     # doesn't build
     yi = exeByName { name = "yi"; };
+    # yiVty = exeByName { name = "yi-vty"; };
+    # yiGtk = exeByName { name = "yi-gtk"; };
     haddock = exeByName { name = "haddock"; };
     darcs = exeByName { name = "darcs"; };
     terrahs = exeByName { name = "terrahs"; };
@@ -479,6 +485,7 @@ let
     happy = exeByName { name = "happy"; };
     xmonad = exeByName { name = "xmonad"; };
     xmonadExtras = exeByName { name = "xmonad-extras"; };
+    gitAnnex = exeByName { haskellPackages = pkgs.haskellPackages_ghc6104; name = "git-annex"; };
     leksah = exeByName { haskellPackages = pkgs.haskellPackages_ghc6104; name = "leksah"; };
 
     ghcjs_libs = pkgs.recurseIntoAttrs (import pkgs/ghc-js-libs.nix {
@@ -487,5 +494,4 @@ let
     });
 
   };
-
 in haskellPackages
