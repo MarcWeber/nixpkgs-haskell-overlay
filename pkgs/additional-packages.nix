@@ -13,7 +13,8 @@
           {n = "mtl";}  {n = "directory";}  {gte = "4";  n = "base";}
           {n = "old-time";}  {n = "filepath";}  {n = "process";}
           {n = "old-locale";}  {n = "Glob";}  {n = "bytestring";}
-          {n = "HUnit";}  {gte = "3";  n = "parsec";}
+          {n = "HUnit";}  {gte = "3";  n = "parsec";}  {n = "tar";}
+          {n = "bzlib";}
         ];
       }
       {
@@ -27,12 +28,12 @@
           {n = "mtl";}  {n = "directory";}  {gte = "4";  n = "base";}
           {n = "old-time";}  {n = "filepath";}  {n = "process";}
           {n = "old-locale";}  {n = "Glob";}  {n = "bytestring";}
-          {gte = "3";  n = "parsec";}
+          {n = "containers";}  {n = "unix";}  {gte = "3";  n = "parsec";}
+          {n = "tar";}  {n = "bzlib";}
         ];
       }
     ];
-    srcFile = sourceFromHead "nix-repository-manager-ee050b47b6ad31ea6a99fb44806ebc4577fc7068.tar.gz"
-                 (fetchurl { url = "http://mawercer.de/~nix/repos/nix-repository-manager-ee050b47b6ad31ea6a99fb44806ebc4577fc7068.tar.gz"; sha256 = "76d5f6fe322bcebf2fc4fcdaed12dfea6f6797a41143e3a1ae145170d89855b2"; });
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/nix-repository-manager-git-9f177.tar.bz2"; sha256 = "b5ae69eb7de99763de7b3965c02322dc79315d1f3e50ecd1711cc71454998652"; });
   }
   # END
 
