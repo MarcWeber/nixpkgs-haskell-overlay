@@ -229,6 +229,7 @@ let
                   ];
                 };
                 haddock = { buildInputs = [ alex235Fixed happyFixed ]; };
+                leksah = { noHaddock = true; }; # ghc-7, error "can't find transitive deps of haddock"
                 pango = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.pango pkgs.glibc]; };
                 scion = { noHaddock = true; };
                 cairo = {
@@ -314,16 +315,13 @@ let
             packages =
               # always use base provided by ghc.
               # same for all other libraries which ship with ghc.
-              let providedNames = map builtins.head fixed.provided;
-                  # utf8-string exception for agda
-                  noBase = pkgs.lib.filter (x: ! lib.elem x.name providedNames ||x.name == "utf8-string" );
-              in map libOverlay.pkgFromDb ( noBase (
+              map libOverlay.pkgFromDb (
                    (import hackage/hack-nix-db.nix)
                 ++ (import ./pkgs/haskelldb.nix { inherit (pkgs) fetchurl; })
                 ++ fixed.packageOverrides
                 ++ oldGtk2hsPackages
                 ++ (getConfig ["hackNix" "additionalPackages"] [])
-              ));
+              );
 
             globalFlags = {}
               // getConfig ["hackNix" "globalFlags"] {};
@@ -495,7 +493,13 @@ let
     xmonad = exeByName { name = "xmonad"; };
     xmonadExtras = exeByName { name = "xmonad-extras"; };
     gitAnnex = exeByName { name = "git-annex"; };
-    leksah = exeByName { haskellPackages = pkgs.haskellPackages_ghc6104; name = "leksah"; };
+
+    leksah_6 = exeByName { haskellPackages = pkgs.haskellPackages_ghc6123; name = "leksah"; };
+    leksahServer_6 = exeByName { haskellPackages = pkgs.haskellPackages_ghc6123; name = "leksah-server"; };
+
+    leksah_7 = exeByName { haskellPackages = pkgs.haskellPackages; name = "leksah"; };
+    leksahServer_7 = exeByName { haskellPackages = pkgs.haskellPackages; name = "leksah-server"; };
+
     leksah2 = exeByName { name = "leksah"; };
 
     scion = exeByName { haskellPackages = pkgs.haskellPackages; name = "scion"; };

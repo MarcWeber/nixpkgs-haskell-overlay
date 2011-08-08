@@ -804,8 +804,36 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
           ]
         */
 
-      , skipProvidedInFavourOfNewer ? true
+      , /* if package pool has newer version that the one shipping with ghc
+           don't add the core package to the pool unless its contained in keepCore
+           Thus this results in the hackage version being used because its newer
+        */
+        skipProvidedInFavourOfNewer ? true
 
+      , 
+        # force core packages by dropping these from package pool
+
+        # not using packages shipping with ghc is causing trouble only
+        # keeping cabal because some packages require newer cabal when
+        # compiling with older ghc
+        keepCore ? (map head provided)
+
+        /*
+
+          # don't think these can be build externally
+          "base" "integer-gmp" "ghc" "ghc-binary" "rts" "ghc-prim" "template-haskell"
+
+          # not sure about these:
+          "time" "old-time" "old-locale" 
+
+          # dropping unix will cause rts linker failures.
+          "unix"
+
+          # causes differing interface files found in buildtools ..
+          "haskell98"
+
+        ]
+        */
       ,
         # a list of all possible flag combinations is built.
         # The head of the list is using default flag settings.
@@ -839,7 +867,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
         # This may give you a hint on how to optimise finding a solution
         # by adding constraints or find out why no solution can be found
         # TODO enhance this
-        debugS ? null != builtins.getEnv "DEBUG_HACK_NIX"
+        debugS ? "" != builtins.getEnv "DEBUG_HACK_NIX"
 
         # allow but ignore passing additional arguments
       , ... 
@@ -848,6 +876,8 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
     assert isList targetPackages;
 
     let
+
+      packagesStripped = filter (x: ! elem x.name keepCore) packages;
 
       filterByName = filter (x:
           let name = x.name;
@@ -860,7 +890,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
           let byName = lm.listToAttrsMerge concat (map (p: nameValuePair p.name [{ inherit (p) fullName version name; }] ) packages);
           in filter (x: 
               let name = x.name;
-              in if hasAttr name byName
+              in if hasAttr name byName && !elem name keepCore
                   then !any (p: lm.gt (compareVersions p.version x.version)) (getAttr name byName)
                   else true
             );
@@ -911,8 +941,13 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                 src = "never used";
           }) provided));
 
-      allPackages = let ap = (filterByName packages) ++ providedList ++ [targetPackage];
-                    in assert all lm.isPreparablePkg ap; ap;
+      allPackages = 
+        let ap = (filterByName packagesStripped) ++ providedList ++ [targetPackage];
+            result =  assert all lm.isPreparablePkg ap; ap;
+        in
+          if builtins.getEnv "DEBUG_HACK_NIX_POOL" != ""
+          then builtins.trace "${builtins.toXML (map (x: "${x.name}-${x.version}") result)}" result
+          else result;
 
       # now replace version constraint ranges (eg >3 && <5)  by version sets (eg one of 3.5 4 4.6).
       prepared = (
