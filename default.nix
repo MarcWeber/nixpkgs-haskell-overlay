@@ -129,12 +129,12 @@ let
     oldGtk2hsPackages = map gtk2hsMetaPackage [ "svgcairo" "glib" "cairo" "gtk2hs" "soegtk" "gio" "gtksourceview2" "glade" "gtk" ];
 
     # name can be { n = .. ; [v,gt,lt,..] = .. }; see targetPackages
-    exeByName = { name, haskellPackages ? defaultHaskellPackages }:
+    exeByName = { name, haskellPackages ? defaultHaskellPackages, filtersByName ? {} }:
         let n = if builtins.isAttrs name then name.n else name; in
         builtins.trace "resolving deps of executable dependency ${n}"
           ( builtins.getAttr n ( (haskellOverlayPackagesFun.merge  {
               targetPackages = [name];
-              inherit haskellPackages;
+              inherit haskellPackages filtersByName;
             } ).result));
 
     /* the function calling the main worker fucntion.
@@ -153,7 +153,9 @@ let
       )
       (args:
           let inherit (args) fixed;
+              alex235Fixed = fixed.alex235;
               alexFixed = fixed.alex;
+
               happyFixed = fixed.happy;
               gtk2hsBuildToolsFixed = fixed.gtk2hsBuildTools;
               c2hsFixed = fixed.c2hs;
@@ -176,6 +178,7 @@ let
         
             # defaults. You could overwrite them.
             alex = exeByName { name = "alex"; haskellPackages = thisHP; };
+            alex235 = exeByName { name = "alex"; haskellPackages = thisHP; filtersByName = { alex = { gte = "2.3.5"; }; }; };
             happy = exeByName { name = "happy"; haskellPackages = thisHP; };
             c2hs = exeByName { name = "c2hs"; haskellPackages = thisHP; };
             # most current version does not build gtk !
@@ -213,6 +216,10 @@ let
                 hmatrix = { buildInputs = [pkgs.gsl pkgs.liblapack]; };
                 glib = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.glibc g_libs.glib ]; };
                 svgcairo = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.glibc g_libs.glib g_libs.librsvg]; };
+                "gtksourceview2" = { 
+                  buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig  pkgs.gnome.gtksourceview ];
+                  propagatedBuildNativeInputs = [ pkgs.glibc g_libs.glib g_libs.gtk ];
+                };
                 gtk = {
                   buildInputs = [
                     pkgs.pkgconfig gtk2hsBuildToolsFixed g_libs.gtk pkgs.glibc
@@ -221,7 +228,9 @@ let
                     g_libs.cairo g_libs.glib g_libs.pango 
                   ];
                 };
+                haddock = { buildInputs = [ alex235Fixed happyFixed ]; };
                 pango = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.pango pkgs.glibc]; };
+                scion = { noHaddock = true; };
                 cairo = {
                   buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.cairo pkgs.glibc];
                   configureFlags = ["--extra-lib-dirs=${pkgs.zlib}/lib"];
@@ -485,8 +494,11 @@ let
     happy = exeByName { name = "happy"; };
     xmonad = exeByName { name = "xmonad"; };
     xmonadExtras = exeByName { name = "xmonad-extras"; };
-    gitAnnex = exeByName { haskellPackages = pkgs.haskellPackages_ghc6104; name = "git-annex"; };
+    gitAnnex = exeByName { name = "git-annex"; };
     leksah = exeByName { haskellPackages = pkgs.haskellPackages_ghc6104; name = "leksah"; };
+    leksah2 = exeByName { name = "leksah"; };
+
+    scion = exeByName { haskellPackages = pkgs.haskellPackages; name = "scion"; };
 
     ghcjs_libs = pkgs.recurseIntoAttrs (import pkgs/ghc-js-libs.nix {
       inherit (pkgs) stdenv perl;

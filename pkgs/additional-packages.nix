@@ -62,6 +62,84 @@
   # REGION HACK_NIX:                         { name = "darcs-export-git"; type = "darcs"; url = "http://joyful.com/repos/darcs-export-git"; }
   # END
 
+  # REGION HACK_NIX:   { name = "scion"; type = "git"; url = "git@github.com:MarcWeber/scion.git"; branch = "resurrect-vim"; }
+  {
+    name = "scion";  version = "0.3";
+    edeps = 
+    [
+      {
+        cdeps = [];
+        deps = 
+        [
+          {n = "scion";}
+          {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "atto-lisp";}
+          {
+            i1 = {gte = "0.8.5.1";};  i2 = {lt = "0.9";};  n = "attoparsec";
+          }
+          {i1 = {gte = "4.2";};  i2 = {lt = "4.4";};  n = "base";}
+          {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
+          {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "multiset";}
+          {i1 = {gte = "0.11";};  i2 = {lt = "0.12";};  n = "text";}
+          {n = "json";}  {n = "derive";}  {n = "network";}
+        ];
+      }
+      {
+        cdeps = [];
+        deps = 
+        [
+          {n = "scion";}
+          {i1 = {gte = "4.2";};  i2 = {lt = "4.4";};  n = "base";}
+        ];
+      }
+    ];
+    ldeps = 
+    {
+      cdeps = 
+      [
+        [
+          {or = 
+           [
+             {compilerFlavor = "GHC";  versionRange = {gte = "6.11.20081113";};}
+             {
+               compilerFlavor = "GHC";
+               versionRange = {i1 = {gte = "6.10.2";};  i2 = {lt = "6.11";};};
+             }
+           ];}
+          {cdeps = [];  deps = [];}
+        ]
+        [
+          {
+            compilerFlavor = "GHC";
+            versionRange = {i1 = {lt = "6.11";};  i2 = {gte = "6.10";};};
+          }
+          {cdeps = [];  deps = [];}
+        ]
+      ];
+      deps = 
+      [
+        {i1 = {gte = "4.2";};  i2 = {lt = "4.4";};  n = "base";}
+        {i1 = {gte = "1.8";};  i2 = {lt = "1.12";};  n = "Cabal";}
+        {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "containers";}
+        {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "directory";}
+        {i1 = {gte = "1.1";};  i2 = {lt = "1.3";};  n = "filepath";}
+        {i1 = {gte = "6.12";};  i2 = {lt = "7.2";};  n = "ghc";}
+        {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "ghc-paths";}
+        {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "multiset";}
+        {i1 = {gte = "1.1";};  i2 = {lt = "1.3";};  n = "time";}
+        {i1 = {gte = "0.11";};  i2 = {lt = "0.12";};  n = "text";}
+        {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "process";}
+        {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "unix-compat";}
+        {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
+        {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "binary";}
+        {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "old-locale";}
+        {i1 = {gte = "2.3";};  i2 = {lt = "2.4";};  n = "network";}
+        {i1 = {lt = "1.2";};  i2 = {gte = "1.1";};  n = "temporary";}
+      ];
+    };
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/scion-git-826da.tar.bz2"; sha256 = "4b00cf1203f4dece73b27bd2e7c0426b3ed0e3a7510cc8837db50cffc7a08067"; });
+  }
+  # END
+
   # REGION HACK_NIX:                         { name = "darcs"; type = "darcs"; url = "http://darcs.net/unstable"; }
   {
     name = "darcs";  version = "2.3.1";

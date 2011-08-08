@@ -753,15 +753,17 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
 
       /* the system. Used for checking arch flag of cabal
       */
-      system,
+      system
 
+      ,
       /* example:
        globalFlags = {
         splitBase = true;
        }
       */
-      globalFlags ? {},
+      globalFlags ? {}
 
+      ,
       /* example:
       { # both constraints will be applied to Cabal-1.4.4 
         Cabal-1.4.4 = {
@@ -773,8 +775,9 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
         };
       }
       */
-      packageFlags ? {},
+      packageFlags ? {}
 
+      , 
       /* the packages to create derivations for
          for example: [ { n = "Cabal"; v = "1.4.0.0"; }
                         { n = "byestring"; }
@@ -782,81 +785,64 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                         "network-bytestring" # shortcut for { n = ..; }
                       ];
       */
-      targetPackages,
+      targetPackages
 
+      , 
       /* the list of available packages.
          This list is read from a file created by hack-nix and prepared by 
          You can also add custom packages manually here
       */
-      packages,
+      packages
 
       /*  list of packages (ghc core packages) which are provided */
-      provided
-        # example list (ghc-6.10.4)
+      , provided
+        /* example list (ghc-6.10.4)
         ? [
             [ "Cabal" "1.6.0.3" ]
             [ "array" "0.2.0.0" ]
-            [ "base" "3.0.3.1" ]
-            [ "base" "4.1.0.0" ]
-            [ "bytestring" "0.9.1.4" ]
-            [ "containers" "0.2.0.1" ]
-            [ "directory" "1.0.0.3" ]
-            [ "extensible-exceptions" "0.1.1.0" ]
-            [ "filepath" "1.1.0.2" ]
-            [ "ghc" "6.10.4" ]
-            [ "ghc-prim" "0.1.0.0" ]
-            [ "haddock" "2.4.2" ]
-            [ "haskell98" "1.0.1.0" ]
-            [ "hpc" "0.5.0.3" ]
-            [ "integer" "0.1.0.1" ]
-            [ "old-locale" "1.0.0.1" ]
-            [ "old-time" "1.0.0.2" ]
-            [ "packedstring" "0.1.0.1" ]
-            [ "pretty" "1.0.1.0" ]
-            [ "process" "1.0.1.1" ]
-            [ "random" "1.0.0.1" ]
-            [ "rts" "1.0" ]
-            [ "syb" "0.1.0.1" ]
-            [ "template-haskell" "2.3.0.1" ]
-            [ "unix" "2.3.2.0" ]
-          ],
+            # [ .. ]
+          ]
+        */
 
-        skipProvidedInFavourOfNewer ? true,
+      , skipProvidedInFavourOfNewer ? true
 
+      ,
         # a list of all possible flag combinations is built.
         # The head of the list is using default flag settings.
         # combinations which have no solution (missing deps)
         # are discarded. If you set defaultFlagsOnly to true
         # only the head of the list having most default settitngs will be used.
-        defaultFlagsOnly ? true,
+        defaultFlagsOnly ? true
 
         # filter is used to remove packages from provided and packages list.
         # Example: only keep base >= 4
         # { base = { gte = "4"; }; }
-        filtersByName ? {},
+      , filtersByName ? {}
 
-        os ? "Linux",
+      , os ? "Linux"
 
-        compilerFlavor ? { compiler = "GHC"; version = "ghc-6.10"; },
+      , compilerFlavor ? { compiler = "GHC"; version = "ghc-6.10"; }
 
 
+      ,
         # function creating the final derivation
         # this function should merge in package specific things like
         # C dependencies etc. Dependencies should be fed into propagatedBuildInputs
         mkHaskellDerivation ?
           { name, fullName, src, dependencies, flags, patches, version, ... }:
-          throw "you didn't pass mkDerivation !",
+          throw "you didn't pass mkDerivation !"
 
 
+      ,
         # set to true to get *many* trace messages about failures
         # resolving package dependencies
         # This may give you a hint on how to optimise finding a solution
         # by adding constraints or find out why no solution can be found
         # TODO enhance this
-        debugS ? false,         
+        debugS ? null != builtins.getEnv "DEBUG_HACK_NIX"
 
         # allow but ignore passing additional arguments
-        ... 
+      , ... 
     }:
 
     assert isList targetPackages;

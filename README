@@ -161,6 +161,11 @@ FUTURE
 ======
 SAT solvers should be used.
 
+DEBUGGING
+=========
+Resolving can be debugged by setting debugS to true which is default
+for hack-nix --build-env. For exeByName export HACK_NIX_DEBUG=1.
+
 BUGS
 ====
 The code is complicated and close to unmaintainable?
@@ -170,8 +175,14 @@ If you have time to do it :)
 
 Maybe hackage/hack-nix-db.nix should be put into a different repo because the file changes more often than the code .. This was done for nixpkgs-ruby-overlay and nixpkgs-python-overlay ..
 
+
+
 TODO
 ====
+*
+  honor: condTestSuites is ignored right now. Probably it can be merged with
+  executable deps except the buildable and enable flags!
+
 * tidy up code. Optimise for speed !
 * think about how packages defined in here can be reused in nixpgks
 * maybe create nix channel (rename overlay to channel)
