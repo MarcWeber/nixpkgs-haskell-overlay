@@ -30753,10 +30753,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
           cdeps = [];
           deps = 
           [
-            {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "directory";}
+            {gte = "1";  n = "directory";}
             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "process";}
             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "old-time";}
-            {i1 = {gte = "0.1";};  i2 = {lt = "0.4";};  n = "containers";}
+            {gte = "0.1";  n = "containers";}
             {i1 = {gte = "0.1";};  i2 = {lt = "0.4";};  n = "array";}
             {i1 = {gte = "1";};  i2 = {lt = "1.1";};  n = "pretty";}
           ];
@@ -30778,7 +30778,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = 
     [
       {i1 = {gte = "1";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "1";};  i2 = {lt = "1.2";};  n = "filepath";}
+      {gte = "1";  n = "filepath";}
     ];
   };
   sha256 = "0as7v8b0ph78b3i10j57m3j6j2q049b27p4n09xfsc89k41b2d4g";
@@ -32384,7 +32384,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {n = "bytestring";}  {n = "mtl";}  {n = "haskell98";}
-      {n = "array";}
+      {n = "array";}  {lt = "1.10.2.0";  n = "Cabal";}
     ];
   };
   sha256 = "0n3vq3gn4m0qm943wfck53fiwl2g69n68l8ck0vr9c4jvfy0jwkd";

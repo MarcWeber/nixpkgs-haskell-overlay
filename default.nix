@@ -370,7 +370,7 @@ let
                 let 
                   deps = lib.filter (x: x.pname == "mtl") dependencies;
                 in
-                  (gtk2hsMetaPackageDerivation { inherit deps; inherit (thisHP) ghc; })
+                  (gtk2hsMetaPackageDerivation { inherit deps; inherit (thisHP.ghc) ghc; })
                   // { inherit deps; }
 
               else let
@@ -498,7 +498,11 @@ let
     leksahServer_6 = exeByName { haskellPackages = pkgs.haskellPackages_ghc6123; name = "leksah-server"; };
 
     leksah_7 = exeByName { haskellPackages = pkgs.haskellPackages; name = "leksah"; };
-    leksahServer_7 = exeByName { haskellPackages = pkgs.haskellPackages; name = "leksah-server"; };
+    leksahServer_7 = exeByName {
+      haskellPackages = pkgs.haskellPackages; name = "leksah-server";
+      # I don't like this. There should be a better way
+      # filtersByName = { gtk = { gt = "0.11.2"; }; };
+    };
 
     leksah2 = exeByName { name = "leksah"; };
 

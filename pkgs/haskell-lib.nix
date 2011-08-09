@@ -873,11 +873,19 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       , ... 
     }:
 
-    assert isList targetPackages;
+    # assert isList targetPackages;
 
     let
 
-      packagesStripped = filter (x: ! elem x.name keepCore) packages;
+      packagesStripped = 
+      filterByName
+          (
+          filter (x: 
+                  ! elem x.name keepCore  # if in keep core stript from pool
+                  && (! any (y: head y == x.name && 0 == builtins.compareVersions ( head (tail y) )  x.version ) provided)
+                                                       # ^ let's hope "1.0" is never compared to "1.0.0.0"
+                ) packages
+          );
 
       filterByName = filter (x:
           let name = x.name;
@@ -887,7 +895,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       filterIfNewerAvailable = if !skipProvidedInFavourOfNewer
         then id
         else
-          let byName = lm.listToAttrsMerge concat (map (p: nameValuePair p.name [{ inherit (p) fullName version name; }] ) packages);
+          let byName = lm.listToAttrsMerge concat (map (p: nameValuePair p.name [{ inherit (p) fullName version name; }] ) packagesStripped);
           in filter (x: 
               let name = x.name;
               in if hasAttr name byName && !elem name keepCore
