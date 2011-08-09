@@ -179,6 +179,11 @@ Maybe hackage/hack-nix-db.nix should be put into a different repo because the fi
 
 TODO
 ====
+
+* rewrite so that preparing the package (sorting by name/version) is done once
+  only. This would speed up everything *a lot* because resolving deps for
+  happy, alex, would be much faster.
+
 *
   honor: condTestSuites is ignored right now. Probably it can be merged with
   executable deps except the buildable and enable flags!
