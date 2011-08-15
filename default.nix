@@ -456,7 +456,7 @@ let
 
     ### executables:
     hledger = exeByName { name = "hledger"; };
-    hackNix = exeByName { name = "hack-nix"; };
+    hackNix = exeByName { haskellPackages = pkgs.haskellPackages_ghc703; name = "hack-nix"; };
     nixRepositoryManager = exeByName { name = "nix-repository-manager"; };
     # doesn't build
     yi = exeByName { name = "yi"; };
