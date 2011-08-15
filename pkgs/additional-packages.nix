@@ -48,14 +48,14 @@
          {n = "haskell98";}  {n = "base";}  {n = "directory";}
          {n = "containers";}  {n = "network";}  {n = "zlib";}
          {n = "tar";}  {n = "bytestring";}  {n = "filepath";}
-         {gte = "1.5.1";  n = "Cabal";}  {n = "process";}  {n = "mtl";}
+         {gte = "1.8.0.6";  n = "Cabal";}  {n = "process";}  {n = "mtl";}
          {n = "pretty";}
          {i1 = {gte = "2";};  i2 = {lt = "5";};  n = "base";}
          {gte = "1.0";  n = "filepath";}  {n = "mtl";}  {n = "interlude";}
          {n = "unix";}
        ];
      }];
-    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-git-8cba8.tar.bz2"; sha256 = "ee7e070d9a233c4d2469a39d03dd51a5e7383c70b08affc2f99c545a6a6d9277"; });
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-git-3a88f.tar.bz2"; sha256 = "313304e2cd4572bb0981510a81f9feb0d5ef2ed87953f03913327ff3601fca6b"; });
   }
   # END
 
