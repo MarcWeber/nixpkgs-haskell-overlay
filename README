@@ -4,6 +4,8 @@ haskell-nix-overlay
 status: most packages can be installed easily. If something doesn't work drop
 me a message, please
 
+See TODO: eventually design will change
+
 GOAL
 ====
   make all hackage packages availible to the nix repository manager (-> http://nixos.org).
@@ -179,6 +181,7 @@ Maybe hackage/hack-nix-db.nix should be put into a different repo because the fi
 
 TODO
 ====
+* See TODO of hack-nix haskell executable. Eventually design will change
 
 * rewrite so that preparing the package (sorting by name/version) is done once
   only. This would speed up everything *a lot* because resolving deps for
