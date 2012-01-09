@@ -41,7 +41,7 @@ let
 
     inherit pkgs lib getConfig;
 
-    defaultHaskellPackages = pkgs.haskellPackages_ghc6123;
+    defaultHaskellPackages = pkgs.haskellPackages_ghc721;
 
     libOverlay =
       import pkgs/haskell-lib.nix { inherit (pkgs) fetchurl; inherit lib; };
@@ -360,7 +360,8 @@ let
                   gnome = false; # Enable GNOME integration
                   testing = false; # bake-in the self-checks
                };
-               yesod = { ghc7 = false; };
+               yesod = { ghc7 = true; };
+               "yesod-auth" = { ghc7 = true; };
             } // getConfig ["hackNix" "packageFlags"] {};
 
             mkHaskellDerivation = a@{ name, fullName, src, dependencies, flags, patches, version, ... }:
@@ -386,11 +387,16 @@ let
                   configureFlags = ( lib.concatStringsSep " " (
                            (lib.mapAttrsFlatten (a: v: "-f${if v then "" else "-"}${a}") flags)
                         ++ (lib.attrByPath [name "configureFlags"] [] ammendmentsFixed)
-                        ++ ["--enable-library-profiling"] # <- think about this again
+                        # enable library profiling by config.nix:  cabal.libraryProfiling = true;
+                        # ++ ["--enable-library-profiling"] # <- think about this again
                         )
                       );
                     #+ "--enable-library-for-ghci --enable-shared --ghc-options=-dynamic";
-                }))// { inherit deps; ghc = thisGhc; });
+                }
+                # temporary hack: there are 2 .cabal files
+                // (lib.optionalAttrs (fullName == "cabal-install-ghc72-0.10.4") { patchPhase = "rm .*.cabal"; })
+
+                ))// { inherit deps; ghc = thisGhc; });
         
       });
 
@@ -442,7 +448,9 @@ let
             rm \$d/*; mkdir -p \$d
             # symlink store paths
             echo "\$TAGGED_SOURCES" | sed 's/ /\\n/g' | while read line; do
-              if [ -d "\$line" ]; then ln -s \$(echo \$line/src/*) \$d/\$(echo \$(basename \$line) | sed 's/[^-]*-\\(.*\\)-source-with-tags/\\1/'); fi
+              if [ -d "\$line" ]; then
+                ln -fs \$(echo \$line/src/*) \$d/\$(echo \$(basename \$line) | sed 's/[^-]*-\\(.*\\)-source-with-tags/\\1/') || { echo "ln failed. Probably a tag file is listed twice. This should be fine (FIXME)"; };
+              fi
             done
           fi
         EOF
@@ -505,6 +513,9 @@ let
     };
 
     leksah2 = exeByName { name = "leksah"; };
+
+    cabal_install = exeByName { name = "cabal-install"; };
+    cabal_install_ghc72 = exeByName { name = "cabal-install-ghc72"; };
 
     scion = exeByName { haskellPackages = pkgs.haskellPackages; name = "scion"; };
 

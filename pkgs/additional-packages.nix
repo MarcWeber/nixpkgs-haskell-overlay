@@ -518,17 +518,17 @@
 
   # REGION HACK_NIX:                                { name = "hasktags"; type = "darcs"; url = "http://code.haskell.org/hasktags/"; }
   {
-    name = "hasktags";  version = "0.68";
+    name = "hasktags";  version = "0.68.1";
     edeps = 
     [{
        cdeps = [];
        deps = 
        [
-         {n = "haskell98";}  {lt = "5";  n = "base";}  {n = "bytestring";}
+         {n = "base";}  {n = "bytestring";}  {n = "directory";}
+         {n = "filepath";}
        ];
      }];
-    srcFile = sourceFromHead "hasktags-nrmtag1.tar.gz"
-                 (fetchurl { url = "http://mawercer.de/~nix/repos/hasktags-nrmtag1.tar.gz"; sha256 = "c5bf6f9a0a2fc6654204dac7b70baf70c7d4891276b7770b731b7f1ed2a9e940"; });
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hasktags-darcs-F_17-29-40.tar.bz2"; sha256 = "b4f97d104e291cb15adaf107b44113866d71d93830ea8f2df5c0cf49e43091f2"; });
   }
   # END
 
