@@ -41,7 +41,7 @@ let
 
     inherit pkgs lib getConfig;
 
-    defaultHaskellPackages = pkgs.haskellPackages_ghc721;
+    defaultHaskellPackages = pkgs.haskellPackages_ghc704_profiling; # 72x doesn't compile yesod, see mailinglist.
 
     libOverlay =
       import pkgs/haskell-lib.nix { inherit (pkgs) fetchurl; inherit lib; };
@@ -376,6 +376,11 @@ let
 
               else let
                   deps = dependencies ++ (lib.attrByPath [name "propagatedBuildNativeInputs"] [] ammendmentsFixed);
+                  deps_of_haskell_packages = d: [d] ++ (if d ? propagatedHaskellDeps then d.propagatedHaskellDeps else []);
+                  # for tag generation we need all "propagated build inputs" at nix level. propagatedBuild*Inputs keeps track
+                  # of those at builder level only. Why tagging dependencies of
+                  # dependencies? Eg Yesod reexports modules from yesod-core. Thus its enough to depend on Yesod
+                  propagatedHaskellDeps = lib.uniqListExt { inputList = lib.concatMap (deps_of_haskell_packages) deps; };
                 in (
                   (haskellDerivation (self: (removeAttrs (lib.attrByPath [name] {} ammendmentsFixed) ["buildInputs"]) // {
                   pname = name;
@@ -396,7 +401,7 @@ let
                 # temporary hack: there are 2 .cabal files
                 // (lib.optionalAttrs (fullName == "cabal-install-ghc72-0.10.4") { patchPhase = "rm .*.cabal"; })
 
-                ))// { inherit deps; ghc = thisGhc; });
+                ))// { inherit deps propagatedHaskellDeps; ghc = thisGhc; });
         
       });
 
