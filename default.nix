@@ -41,7 +41,7 @@ let
 
     inherit pkgs lib getConfig;
 
-    defaultHaskellPackages = pkgs.haskellPackages_ghc704_profiling; # 72x doesn't compile yesod, see mailinglist.
+    defaultHaskellPackages = pkgs.haskellPackages_ghc721; # 72x doesn't compile yesod, see mailinglist.
 
     libOverlay =
       import pkgs/haskell-lib.nix { inherit (pkgs) fetchurl; inherit lib; };
@@ -228,6 +228,7 @@ let
                     g_libs.cairo g_libs.glib g_libs.pango 
                   ];
                 };
+                "language-javascript" = { buildInputs = [ alexFixed happyFixed ]; };
                 haddock = { buildInputs = [ alex235Fixed happyFixed ]; };
                 leksah = { noHaddock = true; }; # ghc-7, error "can't find transitive deps of haddock"
                 pango = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.pango pkgs.glibc]; };
@@ -472,11 +473,12 @@ let
     hackNix = exeByName { haskellPackages = pkgs.haskellPackages_ghc703; name = "hack-nix"; };
     nixRepositoryManager = exeByName { name = "nix-repository-manager"; };
     # doesn't build
-    yi = exeByName { name = "yi"; };
+    yi = exeByName { name = "yi"; haskellPackages = pkgs.haskellPackages_ghc704; };
     # yiVty = exeByName { name = "yi-vty"; };
     # yiGtk = exeByName { name = "yi-gtk"; };
     haddock = exeByName { name = "haddock"; };
     darcs = exeByName { name = "darcs"; };
+    mboxTools = exeByName { name = "mbox-tools"; };
     terrahs = exeByName { name = "terrahs"; };
     cabalInstall = exeByName { name = "cabal-install"; };
 
