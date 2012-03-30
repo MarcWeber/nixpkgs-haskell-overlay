@@ -41,7 +41,7 @@ let
 
     inherit pkgs lib getConfig;
 
-    defaultHaskellPackages = pkgs.haskellPackages_ghc721; # 72x doesn't compile yesod, see mailinglist.
+    defaultHaskellPackages = pkgs.haskellPackages_ghc722;
 
     libOverlay =
       import pkgs/haskell-lib.nix { inherit (pkgs) fetchurl; inherit lib; };
@@ -352,6 +352,21 @@ let
                 wrappers = true;
                 citeproc = false;
                };
+
+
+              QuickCheck = {
+                curl = true;
+                http = true;
+                static = false;
+                terminfo = true;
+                threaded = false;
+                color = true;
+                mmap = true;
+                hpc = false;
+                "curl-pipelining" = false;
+                "type-witnesses" = false;
+                "deps-only" = false;
+              };
                yi = {
                   ghcInterpreter = false; # Use the "hint" interpreter for extended commands (M-x) (experimental)
                   ghcAPI = false; # Enable linking with GHC API for advanced features.

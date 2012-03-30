@@ -1,7 +1,7 @@
 diff -r -U 3 a/alex.cabal b/alex.cabal
 --- a/alex.cabal	1970-01-01 01:00:01.000000000 +0100
-+++ b/alex.cabal	2011-03-14 00:08:54.000000000 +0100
-@@ -68,7 +68,7 @@
++++ b/alex.cabal	2012-02-26 05:13:46.193965082 +0100
+@@ -68,12 +68,12 @@
    if flag(small_base)
      build-depends: base >= 2.1, array, containers, directory
    else
@@ -10,8 +10,9 @@ diff -r -U 3 a/alex.cabal b/alex.cabal
  
    build-depends: base < 5
  
-Only in b: alex.cabal.orig
-Only in b/dist: alex-2.3.5.tar.gz
-Only in b: Setup
-Only in b: Setup.hi
-Only in b: Setup.o
+   extensions: CPP
+-  ghc-options: -Wall
++  ghc-options: -Wall -XBangPatterns
+   other-modules:
+         AbsSyn
+         CharSet
