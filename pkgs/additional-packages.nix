@@ -55,7 +55,7 @@
          {n = "unix";}
        ];
      }];
-    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-git-3a88f.tar.bz2"; sha256 = "313304e2cd4572bb0981510a81f9feb0d5ef2ed87953f03913327ff3601fca6b"; });
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-git-011a2.tar.bz2"; sha256 = "5c0b657044f278269e3af3af35fa30b173449f065d75417d747e490c5c52ec46"; });
   }
   # END
 
