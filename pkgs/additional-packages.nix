@@ -33,7 +33,8 @@
         ];
       }
     ];
-    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/nix-repository-manager-git-9f177.tar.bz2"; sha256 = "b5ae69eb7de99763de7b3965c02322dc79315d1f3e50ecd1711cc71454998652"; });
+    srcFile = (fetchurl { url = "file:///tmp/nr.tar.gz"; sha256 = "06355c00df7add4ad7e984a403aa0fbdefca8f10688a41e4c4b099e9d89effd3"; });
+
   }
   # END
 
@@ -45,9 +46,9 @@
        cdeps = [];
        deps = 
        [
-         {n = "haskell98";}  {n = "base";}  {n = "directory";}
-         {n = "containers";}  {n = "network";}  {n = "zlib";}
-         {n = "tar";}  {n = "bytestring";}  {n = "filepath";}
+         {n = "base";}  {n = "directory";}  {n = "containers";}
+         {n = "network";}  {n = "zlib";}  {n = "tar";}
+         {n = "bytestring";}  {n = "filepath";}
          {gte = "1.8.0.6";  n = "Cabal";}  {n = "process";}  {n = "mtl";}
          {n = "pretty";}
          {i1 = {gte = "2";};  i2 = {lt = "5";};  n = "base";}
@@ -55,7 +56,7 @@
          {n = "unix";}
        ];
      }];
-    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-git-011a2.tar.bz2"; sha256 = "5c0b657044f278269e3af3af35fa30b173449f065d75417d747e490c5c52ec46"; });
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-git-cfd95.tar.bz2"; sha256 = "7b2ffd7c1042710eb4a9df92d9ba8d2bdd25166d7b3fc9fdd3618958df180c71"; });
   }
   # END
 
