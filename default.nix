@@ -215,6 +215,7 @@ let
                 };
                 hmatrix = { buildInputs = [pkgs.gsl pkgs.liblapack]; };
                 glib = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.glibc g_libs.glib ]; };
+                curl = { buildInputs = [pkgs.curl]; };
                 svgcairo = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.glibc g_libs.glib g_libs.librsvg]; };
                 "gtksourceview2" = { 
                   buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig  pkgs.gnome.gtksourceview ];
@@ -446,7 +447,7 @@ let
     # on the fly symlinking those source directories so that you can browse
     # them conviniently.
     envFromHaskellLibs = { buildInputs, createHaskellTagsFor ? [], extraCmd ? null, ...}:
-      let tagDerivations = map (runHasktags) createHaskellTagsFor;
+      let tagDerivations = map runHasktags (lib.filter (x: x ? src) createHaskellTagsFor);
       in pkgs.runCommand "haskell-env" {
         buildNativeInputs = buildInputs ++ tagDerivations;
       } ''
@@ -522,7 +523,7 @@ let
     happy = exeByName { name = "happy"; };
     xmonad = exeByName { name = "xmonad"; };
     xmonadExtras = exeByName { name = "xmonad-extras"; };
-    gitAnnex = exeByName { name = "git-annex"; };
+    gitAnnex = exeByName { haskellPackages =pkgs.haskellPackages_ghc741; name = "git-annex"; };
 
     leksah_6 = exeByName { haskellPackages = pkgs.haskellPackages_ghc6123; name = "leksah"; };
     leksahServer_6 = exeByName { haskellPackages = pkgs.haskellPackages_ghc6123; name = "leksah-server"; };
