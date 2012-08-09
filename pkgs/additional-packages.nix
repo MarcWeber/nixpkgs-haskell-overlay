@@ -7,17 +7,6 @@
     edeps = 
     [
       {
-        cdeps = [[{not = {flag = "tests";};}  {cdeps = [];  deps = [];}]];
-        deps = 
-        [
-          {n = "mtl";}  {n = "directory";}  {gte = "4";  n = "base";}
-          {n = "old-time";}  {n = "filepath";}  {n = "process";}
-          {n = "old-locale";}  {n = "Glob";}  {n = "bytestring";}
-          {n = "HUnit";}  {gte = "3";  n = "parsec";}  {n = "tar";}
-          {n = "bzlib";}
-        ];
-      }
-      {
         cdeps = 
         [[
            {flag = "use_interlude";}
@@ -32,9 +21,19 @@
           {n = "tar";}  {n = "bzlib";}
         ];
       }
+      {
+        cdeps = [[{not = {flag = "tests";};}  {cdeps = [];  deps = [];}]];
+        deps = 
+        [
+          {n = "mtl";}  {n = "directory";}  {gte = "4";  n = "base";}
+          {n = "old-time";}  {n = "filepath";}  {n = "process";}
+          {n = "old-locale";}  {n = "Glob";}  {n = "bytestring";}
+          {n = "HUnit";}  {gte = "3";  n = "parsec";}  {n = "tar";}
+          {n = "bzlib";}
+        ];
+      }
     ];
-    srcFile = (fetchurl { url = "file:///tmp/nr.tar.gz"; sha256 = "06355c00df7add4ad7e984a403aa0fbdefca8f10688a41e4c4b099e9d89effd3"; });
-
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/nix-repository-manager-git-0c74f.tar.bz2"; sha256 = "b042bf8e0a0b2569b90c9304b273f508903ab7850fbe58ee52827b0b90dcec8f"; });
   }
   # END
 
