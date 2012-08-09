@@ -541,6 +541,7 @@ let
     cabal_install_ghc72 = exeByName { name = "cabal-install-ghc72"; };
 
     scion = exeByName { haskellPackages = pkgs.haskellPackages; name = "scion"; };
+    lambdabot = exeByName { haskellPackages = pkgs.haskellPackages_ghc6121; name = "lambdabot"; };
 
     ghcjs_libs = pkgs.recurseIntoAttrs (import pkgs/ghc-js-libs.nix {
       inherit (pkgs) stdenv perl;
