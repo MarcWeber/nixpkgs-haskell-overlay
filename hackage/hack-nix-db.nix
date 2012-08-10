@@ -29,6 +29,12 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "Vec-Transform";  version = "1.1";  edeps = [];
+  ldeps = {cdeps = [];  deps = [];};
+  sha256 = "0jwi9kgij8xd0419nkksgffwcn94fz6ijdq8s29b771409a1pkfc";
+  tsdeps = [];
+}
+{
   name = "composition";  version = "1.0.1.0";  edeps = [];
   ldeps = {cdeps = [];  deps = [];};
   sha256 = "1gx27vz2djiiwygcjaygjmiwjnls084b5v9km3jpimlz312qh5hc";
@@ -503,7 +509,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "scotty";  version = "0.4.4";  edeps = [];
+  name = "scotty";  version = "0.4.5";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -514,17 +520,18 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "0.3";  n = "blaze-builder";}
       {gte = "0.9.1";  n = "bytestring";}
       {gte = "0.4";  n = "case-insensitive";}
-      {i1 = {gte = "0.4.0.1";};  i2 = {lt = "0.5";};  n = "conduit";}
+      {i1 = {gte = "0.4.0.1";};  i2 = {lt = "0.6";};  n = "conduit";}
       {gte = "0.3";  n = "data-default";}
-      {i1 = {gte = "0.6.8";};  i2 = {lt = "0.7";};  n = "http-types";}
+      {i1 = {gte = "0.6.8";};  i2 = {lt = "0.8";};  n = "http-types";}
       {gte = "2.0.1";  n = "mtl";}
       {i1 = {gte = "0.3.2";};  i2 = {lt = "0.4";};  n = "resourcet";}
       {gte = "0.11.1";  n = "text";}  {gte = "1.0.0";  n = "wai";}
       {gte = "1.0.0";  n = "warp";}
       {gte = "0.95.1";  n = "regex-compat";}
+      {gte = "1.2";  n = "wai-extra";}
     ];
   };
-  sha256 = "11ixv3s85aqilqq2zmykd9zl9pjjdbz4ljr0bq9k6jyyk7a540i8";
+  sha256 = "0mbs8h9dy12hgmn5xxapkgq67bp5yii8r1scairbz384hjlbypn9";
   tsdeps = [];
 }
 {
@@ -561,6 +568,32 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "snap-extras";  version = "0.2.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {gte = "0.6";  n = "aeson";}
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "blaze-html";}  {n = "bytestring";}  {n = "containers";}
+      {gte = "2.0";  n = "data-lens";}
+      {gte = "0.3";  n = "digestive-functors";}
+      {gte = "0.3";  n = "digestive-functors-snap";}
+      {
+        i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "directory-tree";
+      }
+      {n = "filepath";}  {gte = "0.7";  n = "heist";}  {n = "safe";}
+      {gte = "0.7";  n = "snap";}  {gte = "0.7";  n = "snap-core";}
+      {n = "text";}  {n = "transformers";}
+      {gte = "0.1.6";  n = "xmlhtml";}
+      {gte = "0.2";  n = "configurator";}
+    ];
+  };
+  sha256 = "14fw5jg97g8p7ymgpjlbcl2rmg6rzvcavmh82v4p4qxjva4vkp7d";
+  tsdeps = [];
+}
+{
   name = "haskeline-class";  version = "0.6.2";  edeps = [];
   ldeps = 
   {
@@ -576,7 +609,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "factual-api";  version = "0.4.0";  edeps = [];
+  name = "factual-api";  version = "0.5.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -592,7 +625,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "0.9.1";  n = "vector";}
     ];
   };
-  sha256 = "0czndj0263q4mx68c65infr5xapbajcy063b1yjk6p4f8acxa3pq";
+  sha256 = "1ywszl6vv2y4c93v07cap3kkc4dxq2lirilvzwf6hk6b3b9y3vcl";
   tsdeps = [];
 }
 {
@@ -670,7 +703,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "postgresql-simple";  version = "0.2.0.1";  edeps = [];
+  name = "postgresql-simple";  version = "0.2.3.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -679,12 +712,12 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "0.8.5.3";  n = "attoparsec";}  {lt = "5";  n = "base";}
       {n = "blaze-builder";}  {n = "blaze-textual";}
       {gte = "0.9";  n = "bytestring";}  {n = "containers";}
-      {gte = "0.6.2";  n = "postgresql-libpq";}  {n = "old-locale";}
+      {gte = "0.6.2";  n = "postgresql-libpq";}
       {n = "template-haskell";}  {gte = "0.11.1";  n = "text";}
       {n = "time";}  {n = "transformers";}  {n = "vector";}
     ];
   };
-  sha256 = "0bh51ndsxlwqynw5d39v0h7a2sncix62iby487p6mr9bvgp2bbb8";
+  sha256 = "0lbvd7mq7xqz1cala4vvw5zj96sbqi0qqnmfj5h0844ci2f25i97";
   tsdeps = 
   [{
      cdeps = [];
@@ -819,6 +852,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "current-locale";  version = "0.1.0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {gte = "1.0";  n = "old-locale";}
+      {gte = "1.0.1.1";  n = "process";}
+      {i1 = {gt = "3";};  i2 = {lt = "5";};  n = "base";}
+    ];
+  };
+  sha256 = "185fgzh8nvf2gl5hzg3xmab4xlp2wm2nw485g5nikzx99y3zr1b6";
+  tsdeps = [];
+}
+{
   name = "groom";  version = "0.1.1";  edeps = [];
   ldeps = 
   {
@@ -847,21 +895,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "GPipe-Collada";  version = "0.1.3";  edeps = [];
+  name = "GPipe-Collada";  version = "0.1.4";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {gte = "1.3.2";  n = "GPipe";}
+      {gte = "1.4";  n = "GPipe";}
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {gte = "1.23";};  i2 = {lt = "1.24";};  n = "HaXml";}
       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
-      {n = "Vec";  v = "0.9.9";}  {n = "Vec-Transform";  v = "1.0.6";}
-      {gte = "0.3";  n = "array";}  {n = "mtl";}
+      {n = "Vec";  v = "1.0.1";}  {gte = "0.3";  n = "array";}
+      {n = "mtl";}
     ];
   };
-  sha256 = "17mn1qjmla066ws28z459dlajkb3h63ri53hi235d947m6sfn8br";
+  sha256 = "0aqvyv50gx0qx7icp70pw73gr3p6y05dkn347nqx82jc9dyxjghw";
   tsdeps = [];
 }
 {
@@ -1901,6 +1949,73 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "jmacro-rpc";  version = "0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {gte = "4";  n = "base";}  {lt = "7";  n = "base";}
+      {gt = "0.5";  n = "jmacro";}  {gt = "0.11";  n = "text";}
+      {gte = "0.4";  n = "containers";}
+      {gte = "0.9.1";  n = "bytestring";}
+      {gte = "0.8";  n = "vector";}  {gt = "0.10";  n = "attoparsec";}
+      {gte = "0.6";  n = "aeson";}  {gt = "2";  n = "mtl";}
+      {gt = "0.1.4";  n = "unordered-containers";}
+    ];
+  };
+  sha256 = "0rml9qcy9vv3cqm1nhs34m8c2x6xdnkdjl313dnifsfc77ny0par";
+  tsdeps = [];
+}
+{
+  name = "jmacro-rpc-happstack";  version = "0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {gte = "4";  n = "base";}  {lt = "7";  n = "base";}
+      {gt = "0.9";  n = "bytestring";}  {gt = "0.5";  n = "jmacro";}
+      {gt = "6";  n = "happstack-server";}
+      {gte = "0.1";  n = "jmacro-rpc";}  {gte = "2";  n = "mtl";}
+      {gte = "0.4";  n = "containers";}
+    ];
+  };
+  sha256 = "07qi4zlcqcsrajz1f977rmd500n97d4yrjx023rln79jc1rjwp5n";
+  tsdeps = [];
+}
+{
+  name = "jmacro-rpc-snap";  version = "0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {gte = "4";  n = "base";}  {lt = "7";  n = "base";}
+      {gt = "0.9";  n = "bytestring";}  {gt = "0.5";  n = "jmacro";}
+      {gte = "0.1";  n = "jmacro-rpc";}  {gte = "2";  n = "mtl";}
+      {gte = "0.4";  n = "containers";}
+      {gte = "0.8";  n = "snap-core";}  {gte = "0.5";  n = "aeson";}
+    ];
+  };
+  sha256 = "0wd7w4m77pnk03wqmsvzhl71w8jmxy6bp3mqxpdnwgnvxqw4a62m";
+  tsdeps = [];
+}
+{
+  name = "boolsimplifier";  version = "0.1.7";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {gte = "4";  n = "base";}  {lt = "7";  n = "base";}
+      {gte = "0.4";  n = "containers";}
+    ];
+  };
+  sha256 = "1s8dy6kf8288zv14hrajsqcx7cqxngb2vrxm3raidk4z5vrk57rh";
+  tsdeps = [];
+}
+{
   name = "ghc-mtl";  version = "1.0.1.1";  edeps = [];
   ldeps = 
   {
@@ -2246,6 +2361,24 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "vacuum-graphviz";  version = "2.0.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gt = "3";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gt = "1";};  i2 = {lt = "2";};  n = "filepath";}
+      {n = "vacuum";  v = "2.0.0.0";}
+      {
+        i1 = {lt = "2999.14";};  i2 = {gte = "2999.13";};  n = "graphviz";
+      }
+    ];
+  };
+  sha256 = "1vb6lvm1bw63h67nzs748kzg47annpzm9n3y78iisa7wm5p6sfdq";
+  tsdeps = [];
+}
+{
   name = "flock";  version = "0.3.1.1";  edeps = [];
   ldeps = 
   {
@@ -2384,6 +2517,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "0l460mmbla7354dldil0d7qzba7dp4jhhsna0s27gdd9aad4flsd";
+  tsdeps = [];
+}
+{
+  name = "z3";  version = "0.1.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gt = "3";};  i2 = {lt = "5";};  n = "base";}
+      {n = "containers";}  {n = "mtl";}
+    ];
+  };
+  sha256 = "1jqczd3gcwgz9izz2ldjjkhs6y2w8pr5ckzykk10pfjn6jsdwc6k";
   tsdeps = [];
 }
 {
@@ -2613,7 +2760,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "HsParrot";  version = "0.0.2.20110925";  edeps = [];
+  name = "HsParrot";  version = "0.0.2.20120717";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -2621,10 +2768,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {gt = "4";};  i2 = {lt = "5";};  n = "base";}
       {gte = "0.9.0.1";  n = "bytestring";}  {n = "pretty";}
-      {n = "HsSyck";}  {n = "pugs-DrIFT";}
+      {n = "HsSyck";}  {gte = "2.2.3.20120717";  n = "pugs-DrIFT";}
     ];
   };
-  sha256 = "0j53wqr462g2fn9w8gd17aa1qmlha2qdkfkr7bgqz230ibhilrvj";
+  sha256 = "19f95cyxcyhsk2x13l7csahgnn8rs029s3hdlxp5z0d3a9vb41gd";
   tsdeps = [];
 }
 {
@@ -2857,7 +3004,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "happstack-authenticate";  version = "0.9.2";  edeps = [];
+  name = "happstack-authenticate";  version = "0.9.4";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -2869,13 +3016,13 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "authenticate";}
       {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "blaze-html";}
       {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
-      {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "containers";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "containers";}
       {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "ixset";}
       {
         i1 = {gte = "6.0";};  i2 = {lt = "7.1";};  n = "happstack-server";
       }
       {i1 = {lt = "1.5";};  i2 = {gte = "1.4";};  n = "http-conduit";}
-      {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "http-types";}
+      {i1 = {gte = "0.6";};  i2 = {lt = "0.8";};  n = "http-types";}
       {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "fb";}
       {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "safecopy";}
       {gte = "2.0";  n = "mtl";}
@@ -2902,7 +3049,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
     ];
   };
-  sha256 = "0bjz04qa3lmghnn1rzgxbd8p0qnx04ajbhxb7ipzh2njcpn6zw48";
+  sha256 = "0w02r17r3rnkhgiyh7dpmq7zlyvvb9i47w8xjcllgckqknv5bcj2";
   tsdeps = [];
 }
 {
@@ -3413,6 +3560,22 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "storablevector-carray";  version = "0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "storablevector";}
+      {i1 = {gte = "0.1.5";};  i2 = {lt = "0.2";};  n = "carray";}
+      {i1 = {gte = "0.0.1";};  i2 = {lt = "0.1";};  n = "utility-ht";}
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+    ];
+  };
+  sha256 = "1cqgfddaldxj2yig39fr2smm23nfz52dvh5grf4zr222djm7043i";
+  tsdeps = [];
+}
+{
   name = "data-accessor-monads-tf";  version = "0.2.1.4";
   edeps = [];
   ldeps = 
@@ -3590,6 +3753,22 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "bindings-bfd";  version = "1.2.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "array";}
+      {i1 = {gte = "4.3";};  i2 = {lt = "4.4";};  n = "base";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
+      {i1 = {gte = "2.4";};  i2 = {lt = "2.5";};  n = "unix";}
+    ];
+  };
+  sha256 = "0c05zr3k0az2hfyfync8z2sgdxx6gskqdb1n548fjc986cx298q4";
+  tsdeps = [];
+}
+{
   name = "conductive-song";  version = "0.1";  edeps = [];
   ldeps = 
   {
@@ -3629,22 +3808,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "0sdndyscf090wqz8hc9yr8wa1faiya1mmzabkqm00ibsyspa3g4y";
-  tsdeps = [];
-}
-{
-  name = "bindings-bfd";  version = "1.0.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "0.3";};  i2 = {lt = "1";};  n = "array";}
-      {i1 = {gte = "4.1.0.0";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.2.0.1";};  i2 = {lt = "1";};  n = "containers";}
-      {i1 = {gte = "2.3.2.0";};  i2 = {lt = "3";};  n = "unix";}
-    ];
-  };
-  sha256 = "01fi2g2dwryivdck0gdyyvb49x0y7chvg8q5ji619hc5720bc1dd";
   tsdeps = [];
 }
 {
@@ -3807,7 +3970,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "aws";  version = "0.6.0";  edeps = [];
+  name = "aws";  version = "0.6.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -3848,7 +4011,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "1.0.1";};  i2 = {lt = "1.1";};  n = "xml-conduit";}
     ];
   };
-  sha256 = "1iqn28jx1k1l2awqjvaj1i99d3jkbvqy7pm5yws88xj09kg7694x";
+  sha256 = "0xlz1p1pvgp08yvq8fjd8jy9hyvlainrqhfx4w8mlyfygx659mp7";
   tsdeps = [];
 }
 {
@@ -3954,7 +4117,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "GPipe";  version = "1.3.2";  edeps = [];
+  name = "GPipe";  version = "1.4.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -3962,14 +4125,14 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
       {i1 = {gte = "0.4.1";};  i2 = {lt = "0.5";};  n = "list-tries";}
-      {gte = "2.1.2.1";  n = "GLUT";}
-      {gte = "2.2.3.0";  n = "OpenGL";}  {n = "Boolean";  v = "0.0.1";}
-      {n = "Vec";  v = "0.9.9";}  {n = "Vec-Boolean";  v = "1.0.5";}
+      {n = "GLUT";  v = "2.3.0.0";}  {n = "OpenGL";  v = "2.5.0.0";}
+      {n = "Boolean";  v = "0.0.1";}  {n = "Vec";  v = "1.0.1";}
+      {n = "Vec-Boolean";  v = "1.0.6";}
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {n = "transformers";}
     ];
   };
-  sha256 = "02qlx942zlb6wmwv775pi0v2cabk19gqjsf7v0p0qc3dlpwxmlaq";
+  sha256 = "0w1xgn7pmz9pgpimsmy3fx66dax37qkd5a5q0yk1fh396dxsybx3";
   tsdeps = [];
 }
 {
@@ -4483,23 +4646,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "terminfo";  version = "0.3.2.3";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "1.0";};  i2 = {lt = "5";};  n = "base";}
-      {
-        i1 = {gte = "0.1.1.0";};  i2 = {lt = "0.2";};
-        n = "extensible-exceptions";
-      }
-    ];
-  };
-  sha256 = "06y2vx7d4hl55p3p1c7yj2lx8yaw14c5h2qclj8m5xg2wkifnf5f";
-  tsdeps = [];
-}
-{
   name = "XMMS";  version = "0.1.1";  edeps = [];
   ldeps = 
   {
@@ -4914,20 +5060,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "natural-sort";  version = "0.1.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "2";};  i2 = {lt = "5";};  n = "base";}
-      {gte = "3";  n = "parsec";}  {n = "text";}  {n = "bytestring";}
-    ];
-  };
-  sha256 = "0w3y7pn966dflk4m2i7a3p719z2hq94zq7qbrg1rwkag56jz63c3";
-  tsdeps = [];
-}
-{
   name = "logict";  version = "0.5.0.1";  edeps = [];
   ldeps = 
   {
@@ -5033,7 +5165,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "biofasta";  version = "0.0.1";  edeps = [];
+  name = "biofasta";  version = "0.0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -5043,11 +5175,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "biocore";}  {n = "bytestring";}
     ];
   };
-  sha256 = "1z94ikb30zzypg9c3hybi5mxhzgr6zlfhcx1ih1qdj8idmcxx574";
+  sha256 = "1wax5iijgbgssl62czibx47ndyf0w7y0q0a39x7rzdsvh1lcpn23";
   tsdeps = [];
 }
 {
-  name = "biophd";  version = "0.0.3";  edeps = [];
+  name = "biophd";  version = "0.0.5";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -5058,7 +5190,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "text";}  {n = "binary";}
     ];
   };
-  sha256 = "18n8g77izxw7hy22m78s2c2a080x9l3vf2xjnb02siv64gs78h8v";
+  sha256 = "15bsrhwhgmdhl6l6xad1di4p1hslnlydawhqkf3z8y3pih1sasy7";
   tsdeps = [];
 }
 {
@@ -5315,6 +5447,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "transformers-free";  version = "1.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "2";};  i2 = {lt = "6";};  n = "base";}
+      {gte = "0.2";  n = "transformers";}
+    ];
+  };
+  sha256 = "167bd1x31pz28r98if9hb9xikas7hpvkhwamw89xzysy9xivffgh";
+  tsdeps = [];
+}
+{
   name = "polytypeable-utils";  version = "0.1.0.0";  edeps = [];
   ldeps = 
   {
@@ -5439,18 +5585,18 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "benchpress";  version = "0.2.2.4";  edeps = [];
+  name = "benchpress";  version = "0.2.2.6";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {i1 = {gte = "2.0";};  i2 = {lt = "4.4";};  n = "base";}
-      {i1 = {gte = "1";};  i2 = {lt = "2.1";};  n = "mtl";}
-      {i1 = {gte = "1";};  i2 = {lt = "1.2";};  n = "time";}
+      {i1 = {gte = "2.0";};  i2 = {lt = "4.6";};  n = "base";}
+      {i1 = {gte = "1";};  i2 = {lt = "2.2";};  n = "mtl";}
+      {i1 = {gte = "1";};  i2 = {lt = "1.5";};  n = "time";}
     ];
   };
-  sha256 = "0cabjx0gkbk5blqkm9pmnz8kmi3573367365gny4r3m431iwxgnf";
+  sha256 = "19ygaf2g4yqkfbc6bw6fmf9jsymbj1iallzvl0zw3vjx860rchfg";
   tsdeps = [];
 }
 {
@@ -6818,7 +6964,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "List";  version = "0.4.2";  edeps = [];
+  name = "List";  version = "0.4.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -6828,7 +6974,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "0.2";  n = "transformers";}
     ];
   };
-  sha256 = "18ff6rny3h84wpci840az3zyz8wc0d93ym1s6p4vc7722c8q1m0h";
+  sha256 = "0xz07svd3igix95skyi0jmadnsxjhyjibyghzx5wdbjsl77sbkcv";
   tsdeps = [];
 }
 {
@@ -7461,6 +7607,22 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "wai-routes";  version = "0.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+      {gte = "1.3";  n = "wai";}  {n = "path-pieces";}  {n = "text";}
+      {gte = "0.7";  n = "http-types";}  {n = "template-haskell";}
+      {gte = "1.1";  n = "yesod-routes";}  {n = "mtl";}
+    ];
+  };
+  sha256 = "0q7bvvv0k9wdcwxl3ykr5qbmci1y0f5gdmfxik5vr275qd2asfz0";
+  tsdeps = [];
+}
+{
   name = "memoize";  version = "0.3";  edeps = [];
   ldeps = 
   {
@@ -7656,51 +7818,28 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "GotoT-transformers";  version = "1.0";  edeps = [];
+  name = "database-migrate";  version = "0.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "transformers";}
-    ];
-  };
-  sha256 = "0nc5gxq3n2gz5dmykramgpinxv3dbhkw7c2cm6zjfz4m954mya7n";
-  tsdeps = [];
-}
-{
-  name = "multiplate";  version = "0.0.1.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "transformers";}
-    ];
-  };
-  sha256 = "00rxgkvgx1rfvk15gjyyg00vqyg4j24d8d19q6rj07j2mgfvdxw6";
-  tsdeps = [];
-}
-{
-  name = "type-level-natural-number-induction";  version = "1.0";
-  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "transformers";}
+      {i1 = {gte = "0.11";};  i2 = {lt = "0.12";};  n = "text";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "2.0";};  n = "directory";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "2.0";};  n = "filepath";}
+      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "2.0";};  n = "time";}
       {
-        i1 = {gte = "1.0";};  i2 = {lt = "1.2";};
-        n = "type-level-natural-number";
+        i1 = {gte = "0.1";};  i2 = {lt = "1.0";};  n = "postgresql-simple";
       }
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
+      {i1 = {gte = "3.0.2";};  i2 = {lt = "4.0";};  n = "either";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
     ];
   };
-  sha256 = "0rlpkvmpxiykxncdfq62kc6rfrnrmgad46yb9kjbqsm3xqa2wkw0";
-  tsdeps = [];
+  sha256 = "0n33sby3s96pwr10p76yx2vih8smk6ihz0frjlidkkhjj35qxw3p";
+  tflags = ["small_base"];  tsdeps = [];
 }
 {
   name = "multiplate-simplified";  version = "0.0.0.2";  edeps = [];
@@ -7745,6 +7884,53 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1b5zayy461zd565z13ikpai7fb0x9yb9mk3y9g9nagai2q4insjm";
+  tsdeps = [];
+}
+{
+  name = "GotoT-transformers";  version = "1.0.0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
+    ];
+  };
+  sha256 = "1w1w1p2cpndiilr002whm58bzqjh9cp9lw3jl7khdxh20c1dfzhy";
+  tsdeps = [];
+}
+{
+  name = "multiplate";  version = "0.0.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
+    ];
+  };
+  sha256 = "02pqfkdcv4fn0pmxphg19b3fiazn4hpphfj8xgp77vpy2lczndsw";
+  tsdeps = [];
+}
+{
+  name = "type-level-natural-number-induction";  version = "1.0.0.1";
+  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
+      {
+        i1 = {gte = "1.0";};  i2 = {lt = "1.2";};
+        n = "type-level-natural-number";
+      }
+    ];
+  };
+  sha256 = "1mwnsz5rbqnwskzf4cyv05zxha86afqh68b5ppwvizrvwf4jav2r";
   tsdeps = [];
 }
 {
@@ -8617,6 +8803,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "her-lexer";  version = "0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "2";};  i2 = {lt = "3";};  n = "mtl";}
+      {gte = "0";  n = "split";}
+    ];
+  };
+  sha256 = "0ykm529fbglpg8hdx3sb67wpfkih84hyhrfa3sqy69ksrddmfxl4";
+  tsdeps = [];
+}
+{
   name = "rss";  version = "3000.2.0.1";  edeps = [];
   ldeps = 
   {
@@ -8698,30 +8899,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "0dmj9ah7az5lckamvm46pff0595p6v4pvzdv0lqq97gjs5i59y9d";
-  tsdeps = [];
-}
-{
-  name = "liblastfm";  version = "0.0.3.3";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {
-        i1 = {gte = "2.5";};  i2 = {lt = "2.8";};  n = "template-haskell";
-      }
-      {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
-      {i1 = {lt = "3";};  i2 = {gte = "2";};  n = "mtl";}
-      {n = "curl";  v = "1.3.7";}
-      {i1 = {lt = "2.2";};  i2 = {gte = "2.1";};  n = "pureMD5";}
-      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "urlencoded";}
-      {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "aeson";}
-      {n = "xml";  v = "1.3.12";}
-      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "utf8-string";}
-    ];
-  };
-  sha256 = "1qdcmqd7sbknavr6cchqjry76kfxajdhl6zf840d61wdqwbybwnl";
   tsdeps = [];
 }
 {
@@ -9060,7 +9237,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "HGamer3D-API";  version = "0.1.5";  edeps = [];
+  name = "HGamer3D-API";  version = "0.1.6";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -9069,10 +9246,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
       {n = "HGamer3D-Data";  v = "0.1.5";}
       {n = "HGamer3D-Ogre-Binding";  v = "0.1.5";}
-      {n = "HGamer3D-OIS-Binding";  v = "0.1.5";}  {n = "haskell98";}
+      {n = "HGamer3D-SFML-Binding";  v = "0.1.6";}  {n = "haskell98";}
     ];
   };
-  sha256 = "1h3qrx6yc37kx4pq9lw44lh3wgyvv95mc2zipndb1av4520dlssr";
+  sha256 = "14wji303z3frjr4rc675pcispbpbpm1ilj6g3cb1fxm5wmi30q5l";
   tsdeps = [];
 }
 {
@@ -9116,6 +9293,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1d173ps7yxzh6si5qf6gdifdj45px3v9ag4x2ilr192ihyfdsk9k";
+  tsdeps = [];
+}
+{
+  name = "HGamer3D-SFML-Binding";  version = "0.1.6";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+      {n = "HGamer3D-Data";  v = "0.1.5";}  {n = "haskell98";}
+    ];
+  };
+  sha256 = "0kb31cc4aicrprdjazlprg2l58n77dgwznrdzzz37hdwnvanffvm";
   tsdeps = [];
 }
 {
@@ -9420,7 +9611,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "binary-generic";  version = "0.2";  edeps = [];
+  name = "binary-generic";  version = "0.2.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -9431,7 +9622,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "bytestring";}  {n = "syb";}  {n = "text";}
     ];
   };
-  sha256 = "0gnjd5c813rk4qd2ka8a0r8cp4b91b0pxpx4az74hr3rk15rakkd";
+  sha256 = "0c6gfa1wvrcw4frrqzrfnc5ydqlbs56jq7hnxgzg89mr510mfsgz";
   tsdeps = [];
 }
 {
@@ -9491,20 +9682,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "sundown";  version = "0.4.1.2";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {n = "bytestring";}
-    ];
-  };
-  sha256 = "0s9fb2gyf69k12rdn2znz63c3n4mrczi9p2cqkz1fb6m9d8ifn72";
-  tsdeps = [];
-}
-{
   name = "upskirt";  version = "0.0.4";  edeps = [];
   ldeps = 
   {
@@ -9519,18 +9696,18 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "socks";  version = "0.4.1";  edeps = [];
+  name = "socks";  version = "0.4.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {n = "bytestring";}  {gte = "0.3";  n = "cereal";}
+      {n = "bytestring";}  {gte = "0.3.1";  n = "cereal";}
       {gte = "2.3";  n = "network";}
     ];
   };
-  sha256 = "0kapic4rf1cwbqy5f229b69kr1mg9blpr5p5jna8sx5ds2b8jdjn";
+  sha256 = "1nbhx2jjij5kjqa0l68s401ach4yziq6w8mvcv589fcscw212w8r";
   tsdeps = [];
 }
 {
@@ -9743,7 +9920,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "hexpat";  version = "0.20.1";  edeps = [];
+  name = "hexpat";  version = "0.20.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -9764,7 +9941,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.4.2";};  i2 = {lt = "0.5";};  n = "List";}
     ];
   };
-  sha256 = "1znls67lb7dx0cq6dza0k98mrji9klcjxrw84b202wsbbj9qfvxh";
+  sha256 = "1v96xiys1664cdspbd9mps9m1ia4xwykzsg4z62pklqnf21wna7j";
   tsdeps = [];
 }
 {
@@ -9786,6 +9963,35 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "10cqgrrqg518lhr9mk6gq48fgc0sjzwiakm2amhqgfflva3q0nqn";
+  tsdeps = [];
+}
+{
+  name = "pcap-conduit";  version = "0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+      {n = "bytestring";}  {n = "transformers";}  {n = "pcap";}
+      {n = "conduit";}
+    ];
+  };
+  sha256 = "07a6cwaq668a948njjybj9clbswmhz88xrwjkb42jg9gm1nh46kz";
+  tsdeps = [];
+}
+{
+  name = "sundown";  version = "0.5";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+      {n = "bytestring";}  {n = "utf8-string";}  {n = "text";}
+    ];
+  };
+  sha256 = "048145xjbgdf80x8i4jj5sd6nxnqhd4m819d6jdpb34vwmfa4y1c";
   tsdeps = [];
 }
 {
@@ -10136,21 +10342,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "plist";  version = "0.0.2.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {n = "dataenc";}
-      {i1 = {gte = "8.3.0";};  i2 = {lt = "9.0";};  n = "hxt";}
-    ];
-  };
-  sha256 = "12p18n5djk41nd74dv685sssnb7ff9zrqrcrpq1wdd6xdjqhpph9";
-  tsdeps = [];
-}
-{
   name = "polynomial";  version = "0.6.5";  edeps = [];
   ldeps = 
   {
@@ -10166,7 +10357,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "histogram-fill";  version = "0.6.2.0";  edeps = [];
+  name = "histogram-fill";  version = "0.7.2.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -10177,7 +10368,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "0.7";  n = "vector";}
     ];
   };
-  sha256 = "11395qbx32cvg4sb7p64km5zswajqhb419a64bnd8q3yacx2fwmi";
+  sha256 = "01lkq1mdpqn74lvy8qy5zmijiryjvbi05z8l0xf4xmlykiy57ik1";
   tsdeps = 
   [{
      cdeps = [];
@@ -10309,17 +10500,17 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "GenericPretty";  version = "1.1.9";  edeps = [];
+  name = "GenericPretty";  version = "1.2.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {n = "ghc-prim";}  {gte = "7.2";  n = "ghc";}
+      {n = "ghc-prim";}  {n = "pretty";}  {gte = "7.4";  n = "ghc";}
     ];
   };
-  sha256 = "1c5jy5lwrisdgs1cldbf6rnwjmpk8k7hhhx5ii1pqghqqj5iq5h2";
+  sha256 = "1mj0b5xy0la8559d6xwgb16b5pa5v4qbnxdmxfgw8cmbnb2b5zza";
   tsdeps = [];
 }
 {
@@ -10647,7 +10838,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "language-puppet";  version = "0.1.5";  edeps = [];
+  name = "language-puppet";  version = "0.1.6";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -10661,7 +10852,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "base16-bytestring";}
     ];
   };
-  sha256 = "15kl0fvpbr0cs345zq6py54gvr9fv2qirwp57q1di8mrl96p1dpx";
+  sha256 = "1zdfmcck73x35xr6myhxx26167l7bljvxqgdd3lfvk4bcdfjv97i";
   tsdeps = 
   [
     {
@@ -10850,6 +11041,54 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "liblastfm";  version = "0.0.3.4";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+      {n = "template-haskell";}
+      {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
+      {i1 = {lt = "3";};  i2 = {gte = "2";};  n = "mtl";}
+      {n = "curl";  v = "1.3.7";}
+      {i1 = {lt = "2.2";};  i2 = {gte = "2.1";};  n = "pureMD5";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "urlencoded";}
+      {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "aeson";}
+      {n = "xml";  v = "1.3.12";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "utf8-string";}
+    ];
+  };
+  sha256 = "1d8fypl9s64jpsr8hygyfqq6jzv1bvd22zq4f93xsffpvv7nqnyk";
+  tsdeps = 
+  [
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+        {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "aeson";}
+        {i1 = {lt = "1.2.5";};  i2 = {gte = "1.2.4";};  n = "HUnit";}
+        {n = "liblastfm";}
+      ];
+    }
+    {
+      cdeps = 
+      [[
+         {not = {flag = "test_authentication";};}  {cdeps = [];  deps = [];}
+       ]];
+      deps = 
+      [
+        {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+        {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
+        {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "aeson";}
+        {i1 = {lt = "1.2.5";};  i2 = {gte = "1.2.4";};  n = "HUnit";}
+        {n = "liblastfm";}
+      ];
+    }
+  ];
+}
+{
   name = "NonEmptyList";  version = "0.0.9";  edeps = [];
   ldeps = 
   {
@@ -11005,21 +11244,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "wai-routes";  version = "0.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}  {n = "wai";}
-      {n = "path-pieces";}  {n = "text";}  {n = "http-types";}
-      {n = "template-haskell";}
-    ];
-  };
-  sha256 = "0sdfhynl98zxlkv7kdn1x8zr4rm6db4knj864bfldwrf86fqw88b";
-  tsdeps = [];
-}
-{
   name = "GaussQuadIntegration";  version = "0.1";  edeps = [];
   ldeps = 
   {
@@ -11050,7 +11274,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "gps";  version = "1.0.3";  edeps = [];
+  name = "gps";  version = "1.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -11058,15 +11282,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {gte = "3";};  i2 = {lt = "6";};  n = "base";}
       {gte = "1.0";  n = "pretty";}  {gte = "1.0";  n = "prettyclass";}
-      {gte = "1.1";  n = "time";}
-      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "GPX";}
-      {i1 = {gte = "9.1";};  i2 = {lt = "9.3";};  n = "hxt";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "xsd";}
+      {gte = "1.4";  n = "time";}  {gte = "0.1";  n = "gpx-conduit";}
       {gte = "0.7";  n = "vector";}  {gte = "0.9";  n = "statistics";}
-      {i1 = {gte = "2.0";};  i2 = {lt = "2.1";};  n = "data-lens";}
     ];
   };
-  sha256 = "0c2cf7jsc9n3i7yiqb727g0fmdyn9qnxhzhz6dhgsbx1pjx4n8ir";
+  sha256 = "14plvzspi7c1fsz91kn945vlpalbdx67b8wkfb05cpa3id7g6jp6";
   tsdeps = 
   [{
      cdeps = [];
@@ -11869,7 +12089,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "instant-generics";  version = "0.3.4";  edeps = [];
+  name = "instant-generics";  version = "0.3.5";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -11882,7 +12102,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {lt = "0.5";  n = "containers";}  {lt = "0.4";  n = "syb";}
     ];
   };
-  sha256 = "0j3sfbw3j0izwmhvwcl8nxxvlrpfla5rngxx2yvl6w5i87wyhswi";
+  sha256 = "15j41krvabf541vm4vpn2jvlg3nbi6pywcig9zbjjpckzwp5vj9x";
   tsdeps = [];
 }
 {
@@ -12137,7 +12357,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "xml-types";  version = "0.3.2";  edeps = [];
+  name = "xml-types";  version = "0.3.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -12147,7 +12367,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "text";}
     ];
   };
-  sha256 = "1aihs1n6hxq6frvxdqjqxsfwi2w2c2qx4bjypimjpjxf6d6n1396";
+  sha256 = "0jvchgzmqsnc0dax73nh7wa7x6n07qnl4wr1d58v21rlbqcklgcn";
   tsdeps = [];
 }
 {
@@ -12161,7 +12381,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "newtype-th";  version = "0.3.2";  edeps = [];
+  name = "newtype-th";  version = "0.3.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -12179,7 +12399,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
     ];
   };
-  sha256 = "0s9dg0bvrxsjlfbhvc6ka921q04spi5ajv1hd46hssxzk8i425rm";
+  sha256 = "1slgphymjxzbxxgsilfijkhiwapfy2gkhkby2dxqj107v4s0788k";
   tsdeps = [];
 }
 {
@@ -12890,25 +13110,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "graph-rewriting";  version = "0.7.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "4.6";};  n = "base";}
-      {
-        i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
-        n = "base-unicode-symbols";
-      }
-      {i1 = {gte = "1.1";};  i2 = {lt = "2.1";};  n = "mtl";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "containers";}
-    ];
-  };
-  sha256 = "0a8pww663c1i05amm22f04c95xbqi0s69n54bxdhn6fyy26naq4i";
-  tsdeps = [];
-}
-{
   name = "applicative-quoters";  version = "0.1.0.5";  edeps = [];
   ldeps = 
   {
@@ -13066,6 +13267,16 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "FixedPoint-simple";  version = "0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = [{i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}];
+  };
+  sha256 = "1rfnrgzdrc5bqdal5d1xjvlghlm7q9gq5dha4vcfwfpyixxcxiqx";
+  tsdeps = [];
+}
+{
   name = "Limit";  version = "1.0";  edeps = [];
   ldeps = 
   {
@@ -13172,6 +13383,16 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = [{i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}];
   };
   sha256 = "04qnk1s4bdj3wbbxdwzzvpnhkcgma8c4qfkg454ybg7f8kyv6h7x";
+  tsdeps = [];
+}
+{
+  name = "chan-split";  version = "0.4.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = [{i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}];
+  };
+  sha256 = "0l4245wnr5l4ny449sc4v4n78qn7l2j1y0pgcqypn42crlp1c6ib";
   tsdeps = [];
 }
 {
@@ -13323,6 +13544,16 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = [{i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}];
   };
   sha256 = "1yiv24n0mfjzbpm9p6djllhwck3brjz9adzyp6k4fpk430304k7s";
+  tsdeps = [];
+}
+{
+  name = "ivar-simple";  version = "0.3";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = [{i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}];
+  };
+  sha256 = "13if0mqgnc6lsx1acw6395milygqq18sm5vazfkxdhmppsqb91ch";
   tsdeps = [];
 }
 {
@@ -13536,7 +13767,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "plot";  version = "0.1.4";  edeps = [];
+  name = "plot";  version = "0.1.4.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -13550,7 +13781,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "0.10";  n = "hmatrix";}
     ];
   };
-  sha256 = "1w7bvv5v2idiifbd2gk8ww2hjfxnqy9lrhsbkfcq1qs38krhpjnx";
+  sha256 = "006vaffal0plsfxm4f4s75p2y28xa6gzjz85sfm3hwii4w8n5993";
   tsdeps = [];
 }
 {
@@ -13661,7 +13892,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "static-resources";  version = "0.1.2";  edeps = [];
+  name = "static-resources";  version = "0.1.5.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -13671,9 +13902,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "0.1";  n = "syb";}  {gte = "1.0";  n = "MissingH";}
       {gte = "2.0";  n = "mtl";}  {gte = "1.0";  n = "time";}
       {gte = "1.0";  n = "directory";}  {n = "hslogger";  v = "1.1.4";}
+      {n = "process";}  {n = "filepath";}  {n = "old-time";}
     ];
   };
-  sha256 = "0avr4j48jib2bm80gfr9wb36wvgm4a3lkv0yvm2kvv5rc6nxsffv";
+  sha256 = "118ahwd57blz9cyc239g8siy19a36w4lqq1imhvqh1yq6gb8nssj";
   tsdeps = 
   [{
      cdeps = [];
@@ -13686,7 +13918,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {gte = "0.4.1";  n = "test-framework";}
        {n = "test-framework-quickcheck2";}
        {n = "test-framework-hunit";}  {n = "HUnit";}
-       {n = "static-resources";}
+       {n = "static-resources";}  {n = "old-time";}
      ];
    }];
 }
@@ -14026,18 +14258,18 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "hmatrix-tests";  version = "0.2";  edeps = [];
+  name = "hmatrix-tests";  version = "0.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {gte = "0.14";  n = "hmatrix";}  {gte = "2";  n = "QuickCheck";}
-      {n = "HUnit";}  {n = "random";}
+      {gte = "0.14.1";  n = "hmatrix";}
+      {gte = "2";  n = "QuickCheck";}  {n = "HUnit";}  {n = "random";}
     ];
   };
-  sha256 = "1kkyn1irj7djya05li8bqsn41nvbm209q02h0dkly7s7n8lzlnk0";
+  sha256 = "15zwpb8fb5hzsq7hspkvm8rgp00sxcfzgn5mw9b9cwli0q4ygjms";
   tsdeps = 
   [{cdeps = [];  deps = [{n = "base";}  {n = "hmatrix-tests";}];}];
 }
@@ -14070,7 +14302,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "yesod-static";  version = "1.0.0.3";  edeps = [];
+  name = "yesod-static";  version = "1.1.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -14079,7 +14311,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {gte = "0.2";  n = "containers";}
       {gte = "1.0";  n = "old-time";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-core";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-core";}
       {
         i1 = {gte = "0.1.0.1";};  i2 = {lt = "0.2";};
         n = "base64-bytestring";
@@ -14091,30 +14323,33 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
       }
       {
-        i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai-app-static";
+        i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai-app-static";
       }
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai";}
       {i1 = {gte = "0.9";};  i2 = {lt = "1.0";};  n = "text";}
       {
         i1 = {gte = "0.0.4.1";};  i2 = {lt = "0.5";};  n = "file-embed";
       }
-      {i1 = {gte = "0.6.5";};  i2 = {lt = "0.7";};  n = "http-types";}
+      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "http-types";}
       {gte = "0.2";  n = "unix-compat";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "conduit";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
       {
-        i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "crypto-conduit";
+        i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "crypto-conduit";
       }
       {gte = "0.6.1";  n = "cryptohash";}
+      {
+        i1 = {gte = "0.4.6";};  i2 = {lt = "0.5";};  n = "system-filepath";
+      }
     ];
   };
-  sha256 = "1nl7cf8yw5akldlrkamnkbypwnj7g1pjkx7nkmlc38jbx58izf5d";
+  sha256 = "07aynfgr5hbm98yimlbw9scph387rkxh4mdij4is1mcv2rdhvhxm";
   tsdeps = 
   [{
      cdeps = [];
      deps = 
      [
        {n = "base";}
-       {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "hspec";}
+       {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "hspec";}
        {n = "HUnit";}  {gte = "0.2";  n = "containers";}
        {gte = "1.0";  n = "old-time";}  {n = "yesod-core";}
        {
@@ -14132,9 +14367,9 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {
          i1 = {gte = "0.0.4.1";};  i2 = {lt = "0.5";};  n = "file-embed";
        }
-       {i1 = {gte = "0.6.5";};  i2 = {lt = "0.7";};  n = "http-types";}
-       {gte = "0.2";  n = "unix-compat";}  {n = "conduit";}
-       {n = "crypto-conduit";}  {gte = "0.6.1";  n = "cryptohash";}
+       {n = "http-types";}  {gte = "0.2";  n = "unix-compat";}
+       {n = "conduit";}  {n = "crypto-conduit";}
+       {gte = "0.6.1";  n = "cryptohash";}  {n = "system-filepath";}
      ];
    }];
 }
@@ -14403,6 +14638,40 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "markdown";  version = "0.1.0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {gte = "0.4";  n = "blaze-html";}
+      {gte = "0.10";  n = "attoparsec";}
+      {
+        i1 = {gte = "0.5";};  i2 = {lt = "0.6";};
+        n = "attoparsec-conduit";
+      }
+      {gte = "0.2.2";  n = "transformers";}
+      {i1 = {gte = "0.5.2.1";};  i2 = {lt = "0.6";};  n = "conduit";}
+      {n = "text";}  {gte = "0.3";  n = "data-default";}
+      {n = "xss-sanitize";}
+    ];
+  };
+  sha256 = "0wbdlh6f5q3i5x3ic0qwsm0k60qw544ji363pml860prjrk0xdh3";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {n = "markdown";}
+       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+       {n = "HUnit";}  {gte = "1.2";  n = "hspec";}  {n = "blaze-html";}
+       {n = "text";}  {n = "system-fileio";}  {n = "system-filepath";}
+       {n = "transformers";}  {n = "conduit";}
+     ];
+   }];
+}
+{
   name = "hsndfile-storablevector";  version = "0.5.2";  edeps = [];
   ldeps = 
   {
@@ -14664,6 +14933,23 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {gte = "2.0";  n = "mtl";}  {gte = "1.0";  n = "directory";}
      ];
    }];
+}
+{
+  name = "netlink";  version = "0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {gte = "0.9";  n = "bytestring";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "cereal";}
+      {gte = "0.3";  n = "containers";}
+      {gte = "0.3";  n = "monad-loops";}  {gte = "2.4";  n = "unix";}
+    ];
+  };
+  sha256 = "0w2iyxmmk53k8gg0i8g3339dkdlpjgj39ar0kmsrzhxa6nakclwn";
+  tsdeps = [];
 }
 {
   name = "scalable-server";  version = "0.2.2";  edeps = [];
@@ -15237,6 +15523,36 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "language-ecmascript";  version = "0.9";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {gte = "1.1.0.1";  n = "mtl";}  {lt = "3.2.0";  n = "parsec";}
+      {gte = "0.1";  n = "pretty";}  {gte = "0.1";  n = "containers";}
+      {gte = "0.1";  n = "syb";}
+      {i1 = {gte = "1.6";};  i2 = {lt = "1.7";};  n = "uniplate";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "data-default";}
+    ];
+  };
+  sha256 = "1k56nnrwgxbg2b8mwkrlcgyyk6r894kccjpwz0amay214n6sy3ws";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+       {gte = "1.1.0.1";  n = "mtl";}  {lt = "3.2.0";  n = "parsec";}
+       {gte = "0.1";  n = "pretty";}  {gte = "0.1";  n = "containers";}
+       {gte = "0.1";  n = "syb";}  {n = "directory";}  {n = "filepath";}
+       {n = "HUnit";}
+       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "data-default";}
+     ];
+   }];
+}
+{
   name = "web-routes-boomerang";  version = "0.27.0";  edeps = [];
   ldeps = 
   {
@@ -15342,7 +15658,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "monad-supply";  version = "0.2";  edeps = [];
+  name = "monad-supply";  version = "0.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -15352,7 +15668,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "2";  n = "mtl";}
     ];
   };
-  sha256 = "1dni3ks2qbm7x8svpdx0cnrwvr02lh19757g6gpnvyysrwm71c4v";
+  sha256 = "1bh81nbs3nabh31wk1wk3x03kzgbyryzsb0w7lv0y3rxwi5ibcb0";
   tsdeps = [];
 }
 {
@@ -15392,18 +15708,19 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "singletons";  version = "0.8";  edeps = [];
+  name = "singletons";  version = "0.8.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {gte = "2.1.1";  n = "mtl";}  {n = "template-haskell";}
+      {gte = "2.1.1";  n = "mtl";}
+      {gte = "2.8";  n = "template-haskell";}
       {gte = "0.5";  n = "containers";}  {gte = "0.3";  n = "syb";}
     ];
   };
-  sha256 = "04ghpmb4hirc48xk74am7r55y2hsb9ylyilc5g0apx8n8x9ayisa";
+  sha256 = "1qa5333ids3sw1m5iw4pskhjj13wp5irrx67k0m0sis9v6ah39nd";
   tsdeps = [];
 }
 {
@@ -15477,7 +15794,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "AspectAG";  version = "0.3.4.1";  edeps = [];
+  name = "AspectAG";  version = "0.3.6.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -15490,7 +15807,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "1.1.0.2";  n = "mtl";}
     ];
   };
-  sha256 = "12iaf27crynwnnd7qm1zvvaj6zw6i6c05mb4dsq55dnhph2l356g";
+  sha256 = "01pglvf38v5ii2w03kdlgngxbb3ih0j5bsilv5qwc9vrh2iwirhf";
   tsdeps = [];
 }
 {
@@ -15513,7 +15830,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "murder";  version = "1.0";  edeps = [];
+  name = "murder";  version = "1.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -15521,15 +15838,14 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {gte = "2.4.0.1";  n = "template-haskell";}
-      {gte = "0.4.1";  n = "TTTAS";}
-      {gte = "0.3.4.1";  n = "AspectAG";}
+      {gte = "0.4.1";  n = "TTTAS";}  {gte = "0.3.6";  n = "AspectAG";}
       {gte = "0.9.12";  n = "uulib";}
-      {gte = "2.7.1";  n = "uu-parsinglib";}
+      {gte = "2.7.3.4";  n = "uu-parsinglib";}
       {gte = "3.1.0";  n = "ListLike";}
       {gte = "0.3";  n = "containers";}  {gte = "0.2";  n = "HList";}
     ];
   };
-  sha256 = "1iaz1vk23z4vprcwxdijj9s2riqxdnkjccfy1xjncr61zx90dc4a";
+  sha256 = "1vb90sf0pys67c8xw7zkyggrvw4jjixifz6dy2wl253367ii3rhs";
   tsdeps = [];
 }
 {
@@ -15636,6 +15952,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1r59g5ypqjsldflsddg7pzpa6j8jps5nwm4h9cwiw7qk734rjik8";
+  tsdeps = [];
+}
+{
+  name = "errors";  version = "1.2.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {gte = "3.0.1";  n = "either";}  {n = "safe";}
+      {n = "transformers";}
+    ];
+  };
+  sha256 = "1lciyjdcgsjli3g19s5l7g7gx3kc4jvwkja0f2ialgrry06kqs9d";
   tsdeps = [];
 }
 {
@@ -15878,21 +16209,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "srcloc";  version = "0.1.2";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "symbol";}
-      {i1 = {gte = "0.1";};  i2 = {lt = "0.4";};  n = "syb";}
-    ];
-  };
-  sha256 = "08awipz6al7jk7d974am5v9fkp87i5dy6d457mx1rv7lczlyhws9";
-  tsdeps = [];
-}
-{
   name = "AC-VanillaArray";  version = "1.1.2";  edeps = [];
   ldeps = 
   {
@@ -15921,6 +16237,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "0d37abgqb5p9kddnd0mxs1jn17i62riwwggfs37szyiqqmx7wkzf";
+  tsdeps = [];
+}
+{
+  name = "srcloc";  version = "0.2.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.1";};  i2 = {lt = "0.4";};  n = "syb";}
+    ];
+  };
+  sha256 = "03b0ra5g7mqcjjfnhm84mv4ph454j08pb9dwxrv9zfwk1kiqb2ss";
   tsdeps = [];
 }
 {
@@ -16062,28 +16392,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "06w7gi8dm3rwb8wd47wmvz69z349968nr4ji14siv82slxf7r616";
-  tsdeps = [];
-}
-{
-  name = "order-statistics";  version = "0.1.0.2";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {
-        i1 = {gte = "0.10.1";};  i2 = {lt = "0.11";};  n = "statistics";
-      }
-      {
-        i1 = {gte = "0.1.1";};  i2 = {lt = "0.2";};  n = "math-functions";
-      }
-      {i1 = {gte = "0.9.1";};  i2 = {lt = "0.10";};  n = "vector";}
-      {i1 = {gte = "0.8";};  i2 = {lt = "0.9";};  n = "vector-space";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.6";};  n = "containers";}
-    ];
-  };
-  sha256 = "18prxhvhajbfxixwivql8372rarp18pjf3gbsi2a62my0nhl5121";
   tsdeps = [];
 }
 {
@@ -16423,7 +16731,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "spatial-math";  version = "0.1.4";  edeps = [];
+  name = "spatial-math";  version = "0.1.5";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -16433,7 +16741,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.14";};  i2 = {lt = "0.15";};  n = "hmatrix";}
     ];
   };
-  sha256 = "1fl9qm47ww4qwrrw5682cj03xjp0963hnly6142s99bdsrwyg58l";
+  sha256 = "0mnypbcv4bf7ipxpdkrbfysrzq3ijgzg8zs504ys34sr983v0py9";
   tsdeps = [];
 }
 {
@@ -16722,7 +17030,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "comonad";  version = "3.0";  edeps = [];
+  name = "comonad";  version = "3.0.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -16736,11 +17044,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
     ];
   };
-  sha256 = "1nb62p8ywvvnsvdydp17h4zialaywxiac03h8p9h86vym68mdmc0";
+  sha256 = "03xslpfil96v1qgk2g29vi46mb7l0fafy446ng1p4xgq9ddb2yaz";
   tsdeps = [];
 }
 {
-  name = "pointed";  version = "3.0";  edeps = [];
+  name = "pointed";  version = "3.0.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -16759,10 +17067,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         i1 = {gte = "0.8.3.1";};  i2 = {lt = "0.9";};  n = "semigroups";
       }
       {i1 = {gte = "3.0";};  i2 = {lt = "3.1";};  n = "semigroupoids";}
-      {i1 = {gte = "2.1.2.1";};  i2 = {lt = "2.4";};  n = "stm";}
+      {i1 = {gte = "2.1.2.1";};  i2 = {lt = "2.5";};  n = "stm";}
     ];
   };
-  sha256 = "0cp8asx0mvx8n91daych7cqf0pnrzrp1dkamqq0mpgz6vsfpmfcj";
+  sha256 = "08np631vmvf0a91d84dx96kfdd67c86wjz691xyrah17cp1mb4nx";
   tsdeps = [];
 }
 {
@@ -16850,48 +17158,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "osm-download";  version = "0.3.4";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "conduit";}
-      {gte = "0.0.0.1";  n = "pool-conduit";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.5";};  n = "http-conduit";}
-      {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "http-types";}
-      {i1 = {gte = "0.8";};  i2 = {lt = "1.0";};  n = "bytestring";}
-      {i1 = {gte = "1.0.1";};  i2 = {lt = "1.1";};  n = "gps";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "containers";}
-      {
-        i1 = {gte = "0.8";};  i2 = {lt = "0.10";};
-        n = "persistent-sqlite";
-      }
-      {
-        i1 = {gte = "0.8";};  i2 = {lt = "0.10";};
-        n = "persistent-template";
-      }
-      {i1 = {gte = "0.8";};  i2 = {lt = "0.10";};  n = "persistent";}
-      {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
-      {
-        i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "transformers-base";
-      }
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.5";};  n = "time";}
-      {i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "stm";}
-      {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "monadIO";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.4";};  n = "stm-chans";}
-      {i1 = {gte = "0.11";};  i2 = {lt = "0.12";};  n = "text";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "monad-control";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "data-default";}
-      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "directory";}
-    ];
-  };
-  sha256 = "08id912ibbyl9viv980rizydj4h860xkqrf4njmw7xg9mrm6r3b2";
-  tsdeps = [];
-}
-{
   name = "lrucache";  version = "1.1.1";  edeps = [];
   ldeps = 
   {
@@ -16903,22 +17169,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "05y0b2dbbp017hkbr0pz943956dm31g5xhma4bqnh49yd4lyn5l9";
-  tsdeps = [];
-}
-{
-  name = "mainland-pretty";  version = "0.1.3.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "containers";}
-      {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "srcloc";}
-      {i1 = {gte = "0.1";};  i2 = {lt = "0.4";};  n = "symbol";}
-    ];
-  };
-  sha256 = "1grfsn066z11737dxdk1bdhyvz9vjxxn6krfgx9bc8jin6n9h6aq";
   tsdeps = [];
 }
 {
@@ -16935,6 +17185,22 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1kz4kzbv6bara31pv4vc75r6wvjln6md8gjlsxx8hf50ab8vb68j";
+  tsdeps = [];
+}
+{
+  name = "mainland-pretty";  version = "0.2.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "containers";}
+      {i1 = {lt = "0.3";};  i2 = {gte = "0.2";};  n = "srcloc";}
+      {i1 = {gt = "0.11";};  i2 = {lt = "0.12";};  n = "text";}
+    ];
+  };
+  sha256 = "0kvn67g2ic46ybgyxpgpzjapwiww9848m9dv8y3xkkl7jd8anpb2";
   tsdeps = [];
 }
 {
@@ -17215,36 +17481,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "persistent-postgresql";  version = "0.9.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {
-        i1 = {gte = "0.2.1";};  i2 = {lt = "0.4";};  n = "transformers";
-      }
-      {
-        i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "postgresql-simple";
-      }
-      {
-        i1 = {gte = "0.6.1";};  i2 = {lt = "0.9";};
-        n = "postgresql-libpq";
-      }
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "persistent";}
-      {gte = "0.2";  n = "containers";}
-      {gte = "0.9";  n = "bytestring";}
-      {i1 = {gte = "0.7";};  i2 = {lt = "0.12";};  n = "text";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "monad-control";}
-      {gte = "1.1";  n = "time";}  {gte = "0.5";  n = "aeson";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "conduit";}
-    ];
-  };
-  sha256 = "0kzw4lq4i6lj149aws4ca4z43jmwvcbjr5gf5lk0pwcmzp6chr32";
-  tsdeps = [];
-}
-{
   name = "neither";  version = "0.3.1.1";  edeps = [];
   ldeps = 
   {
@@ -17262,7 +17498,37 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "persistent-mysql";  version = "0.9.0.3";  edeps = [];
+  name = "persistent-postgresql";  version = "1.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {
+        i1 = {gte = "0.2.1";};  i2 = {lt = "0.4";};  n = "transformers";
+      }
+      {
+        i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "postgresql-simple";
+      }
+      {
+        i1 = {gte = "0.6.1";};  i2 = {lt = "0.9";};
+        n = "postgresql-libpq";
+      }
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "persistent";}
+      {gte = "0.2";  n = "containers";}
+      {gte = "0.9";  n = "bytestring";}
+      {i1 = {gte = "0.7";};  i2 = {lt = "0.12";};  n = "text";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "monad-control";}
+      {gte = "1.1";  n = "time";}  {gte = "0.5";  n = "aeson";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
+    ];
+  };
+  sha256 = "149vv6wd0a85gphwrqcyd66ivdzyy7yc37c99ngq7377fdnszzhn";
+  tsdeps = [];
+}
+{
+  name = "persistent-mysql";  version = "1.0.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -17276,16 +17542,16 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         i1 = {gte = "0.2.2.3";};  i2 = {lt = "0.3";};  n = "mysql-simple";
       }
       {i1 = {gte = "0.1.1.3";};  i2 = {lt = "0.2";};  n = "mysql";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "persistent";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "persistent";}
       {gte = "0.2";  n = "containers";}
       {gte = "0.9";  n = "bytestring";}
       {i1 = {gte = "0.11.0.6";};  i2 = {lt = "0.12";};  n = "text";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "monad-control";}
-      {gte = "1.1";  n = "time";}  {gte = "0.5";  n = "aeson";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "conduit";}
+      {gte = "0.5";  n = "aeson";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
     ];
   };
-  sha256 = "05dpkigay57j3g23awb0yzrq000ma82hl4swrlzm55qqzkmcv91p";
+  sha256 = "0r1k833fv6brnda9jwb3yhkx50ki7pmackari06bpsapwvn2q6j9";
   tsdeps = [];
 }
 {
@@ -17441,7 +17707,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "unfoldable";  version = "0.6.0.2";  edeps = [];
+  name = "unfoldable";  version = "0.6.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -17453,7 +17719,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "2.4";};  i2 = {lt = "2.6";};  n = "QuickCheck";}
     ];
   };
-  sha256 = "0qbysmayvwb775lbb5aizg9flixr6qg7sm9lsqgyajjxpiy0ldc0";
+  sha256 = "1p3vaiscc3s8nqrm8hgdkgm9kfg8hqwzcx7h63m438chfnm28yw4";
   tsdeps = [];
 }
 {
@@ -17531,45 +17797,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "lens-family-core";  version = "0.0.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "containers";}
-      {
-        i1 = {gte = "0.2.0";};  i2 = {lt = "0.4";};  n = "transformers";
-      }
-    ];
-  };
-  sha256 = "1abwdqhbxzjsr9yzdqcp4avfk59dyp85f9nvgp5yfd5cbcadksac";
-  tsdeps = [];
-}
-{
-  name = "lens-family";  version = "0.0.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "containers";}
-      {
-        i1 = {gte = "0.2.0";};  i2 = {lt = "0.4";};  n = "transformers";
-      }
-      {i1 = {gte = "2.0.1";};  i2 = {lt = "2.2";};  n = "mtl";}
-      {
-        i1 = {gte = "0.0.0";};  i2 = {lt = "0.1";};
-        n = "lens-family-core";
-      }
-    ];
-  };
-  sha256 = "09xfv9q3j10ycg8yin2x9njqz4xybqmbzqfjyw7fgvd36ih6ib9h";
-  tsdeps = [];
-}
-{
   name = "edenmodules";  version = "1.1.0.1";  edeps = [];
   ldeps = 
   {
@@ -17641,6 +17868,44 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1wmfn45l4s3aki7s9yz8sj96bfg265wjmvvpfc3dx9n3xq5kg4v0";
+  tsdeps = [];
+}
+{
+  name = "lens-family-core";  version = "0.1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.6";};  n = "containers";}
+      {
+        i1 = {gte = "0.2.0";};  i2 = {lt = "0.4";};  n = "transformers";
+      }
+    ];
+  };
+  sha256 = "02j689kr5w580dgvwrcgxinprzp63n4gcqprzcwq3v6cpxkyxwhd";
+  tsdeps = [];
+}
+{
+  name = "lens-family";  version = "0.1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.6";};  n = "containers";}
+      {
+        i1 = {gte = "0.2.0";};  i2 = {lt = "0.4";};  n = "transformers";
+      }
+      {i1 = {gte = "2.1";};  i2 = {lt = "2.2";};  n = "mtl";}
+      {
+        i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "lens-family-core";
+      }
+    ];
+  };
+  sha256 = "1rwm1x5y0na8ngn0gdbcgsl5jhic9psg22wid7yq468v0yr534zm";
   tsdeps = [];
 }
 {
@@ -17917,6 +18182,22 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "reform";  version = "0.1.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "containers";}
+      {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
+      {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
+    ];
+  };
+  sha256 = "02baspissx7j1hp2j3ads2rcq06w2i72hbpm7myd67ha87l895qv";
+  tsdeps = [];
+}
+{
   name = "ircbot";  version = "0.5.1";  edeps = [];
   ldeps = 
   {
@@ -18086,6 +18367,69 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "dvda";  version = "0.3";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {
+        i1 = {gte = "0.4.4";};  i2 = {lt = "0.5";};  n = "file-location";
+      }
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "hashable";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
+      {
+        i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
+        n = "unordered-containers";
+      }
+      {
+        i1 = {gte = "1.0.1.6";};  i2 = {lt = "1.1";};  n = "hashtables";
+      }
+      {
+        i1 = {gte = "2999.12";};  i2 = {lt = "2999.13";};  n = "graphviz";
+      }
+      {i1 = {gte = "5.4";};  i2 = {lt = "5.5";};  n = "fgl";}
+      {i1 = {gte = "2.0";};  i2 = {lt = "2.1";};  n = "mtl";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "directory";}
+      {i1 = {lt = "2.5";};  i2 = {gte = "2.4";};  n = "QuickCheck";}
+      {n = "test-framework-quickcheck2";}  {n = "test-framework";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "process";}
+    ];
+  };
+  sha256 = "0hmpaq4gqyrn7mndmb8bzvall8zdv2jw9lxwls40lfhpgy4f493r";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {n = "base";}  {n = "dvda";}
+       {
+         i1 = {gte = "0.4.4";};  i2 = {lt = "0.5";};  n = "file-location";
+       }
+       {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "hashable";}
+       {
+         i1 = {gte = "1.0.1.6";};  i2 = {lt = "1.1";};  n = "hashtables";
+       }
+       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
+       {
+         i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
+         n = "unordered-containers";
+       }
+       {
+         i1 = {gte = "2999.12";};  i2 = {lt = "2999.13";};  n = "graphviz";
+       }
+       {i1 = {gte = "5.4";};  i2 = {lt = "5.5";};  n = "fgl";}
+       {i1 = {gte = "2.0";};  i2 = {lt = "2.1";};  n = "mtl";}
+       {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "directory";}
+       {i1 = {lt = "2.5";};  i2 = {gte = "2.4";};  n = "QuickCheck";}
+       {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "process";}
+       {n = "ad";}  {n = "test-framework-quickcheck2";}
+       {n = "test-framework";}
+     ];
+   }];
+}
+{
   name = "xml-enumerator";  version = "0.4.4.1";  edeps = [];
   ldeps = 
   {
@@ -18146,7 +18490,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "yesod-routes";  version = "1.0.1.2";  edeps = [];
+  name = "yesod-routes";  version = "1.1.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -18159,7 +18503,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "path-pieces";}
     ];
   };
-  sha256 = "15ar99ywxrsd6pgqwmql7vg801n53l3jw0s2iynddq9jjl4yqpf7";
+  sha256 = "0r0a3s1dngqp2vcq0cdsbqf1lsyhygj2x4a93csr2iyn244zgxnx";
   tsdeps = 
   [{
      cdeps = [];
@@ -18169,7 +18513,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {n = "yesod-routes";}
        {i1 = {gte = "0.5";};  i2 = {lt = "0.12";};  n = "text";}
        {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "HUnit";}
-       {i1 = {gte = "0.6";};  i2 = {lt = "1.2";};  n = "hspec";}
+       {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "hspec";}
        {n = "containers";}  {n = "template-haskell";}
        {n = "path-pieces";}
      ];
@@ -18294,7 +18638,48 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "xml-conduit";  version = "1.0.2";  edeps = [];
+  name = "osm-download";  version = "0.4";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
+      {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "pool-conduit";}
+      {i1 = {gte = "1.2";};  i2 = {lt = "1.6";};  n = "http-conduit";}
+      {i1 = {gte = "0.6";};  i2 = {lt = "0.8";};  n = "http-types";}
+      {i1 = {gte = "0.8";};  i2 = {lt = "1.0";};  n = "bytestring";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "gps";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.6";};  n = "containers";}
+      {
+        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "persistent-sqlite";
+      }
+      {
+        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};
+        n = "persistent-template";
+      }
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "persistent";}
+      {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
+      {
+        i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "transformers-base";
+      }
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
+      {i1 = {gte = "1.2";};  i2 = {lt = "1.5";};  n = "time";}
+      {i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "stm";}
+      {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "monadIO";}
+      {i1 = {gte = "1.2";};  i2 = {lt = "1.4";};  n = "stm-chans";}
+      {i1 = {gte = "0.11";};  i2 = {lt = "0.12";};  n = "text";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "monad-control";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.6";};  n = "data-default";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "directory";}
+    ];
+  };
+  sha256 = "056ggv31nycgz59gkmibzmx0k5x8klb5bwlnbhdih8d71larbsb3";
+  tsdeps = [];
+}
+{
+  name = "xml-conduit";  version = "1.0.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -18314,7 +18699,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
       {i1 = {gte = "0.7";};  i2 = {lt = "0.12";};  n = "text";}
       {gte = "0.2";  n = "containers";}
-      {i1 = {gte = "0.3.1";};  i2 = {lt = "0.4";};  n = "xml-types";}
+      {i1 = {gte = "0.3.3";};  i2 = {lt = "0.4";};  n = "xml-types";}
       {gte = "0.10";  n = "attoparsec";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "blaze-builder";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
@@ -18328,7 +18713,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
     ];
   };
-  sha256 = "1a6g707vbx2kj4fz9dri23yk3bxdywnfk72q2ldv97fivld6rk0i";
+  sha256 = "1pci21zwdclv018fk5hjfmif2wg6zfm9b4g1w3srgm6wdh5013r7";
   tsdeps = 
   [{
      cdeps = [];
@@ -18336,9 +18721,9 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
      [
        {n = "base";}  {n = "containers";}  {n = "text";}
        {n = "transformers";}  {n = "bytestring";}  {n = "xml-conduit";}
-       {n = "hspec";}  {n = "HUnit";}
-       {gte = "0.3.1";  n = "xml-types";}  {n = "conduit";}
-       {n = "blaze-markup";}
+       {i1 = {lt = "1.4";};  i2 = {gte = "1.3";};  n = "hspec";}
+       {n = "HUnit";}  {gte = "0.3.1";  n = "xml-types";}
+       {n = "conduit";}  {n = "blaze-markup";}
      ];
    }];
 }
@@ -18530,7 +18915,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "mime-mail-ses";  version = "0.2.0.2";  edeps = [];
+  name = "mime-mail-ses";  version = "0.2.0.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -18549,15 +18934,15 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "mime-mail";}
       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "resourcet";}
       {gte = "0.2";  n = "transformers";}
-      {i1 = {gte = "0.6.8";};  i2 = {lt = "0.7";};  n = "http-types";}
+      {i1 = {gte = "0.6.8";};  i2 = {lt = "0.8";};  n = "http-types";}
       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "monad-control";}
     ];
   };
-  sha256 = "0r8x5dcg2gsbc8pjyy50b7q9mb8w0c2p1smvjkgkg1jpwvr6rlaq";
+  sha256 = "096h1q6dp266jrvx6wlj1kainzri2zqpdzapmzfdm8ii7wvfqm0j";
   tsdeps = [];
 }
 {
-  name = "couchdb-conduit";  version = "0.8.3";  edeps = [];
+  name = "couchdb-conduit";  version = "0.10.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -18567,26 +18952,26 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "aeson";}
       {i1 = {gte = "0.8";};  i2 = {lt = "0.11";};  n = "attoparsec";}
       {
-        i1 = {gte = "0.4";};  i2 = {lt = "0.5";};
+        i1 = {gte = "0.5";};  i2 = {lt = "0.6";};
         n = "attoparsec-conduit";
       }
       {
         i1 = {gte = "0.2.1";};  i2 = {lt = "0.4";};  n = "blaze-builder";
       }
       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "conduit";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
       {gte = "0.2";  n = "containers";}  {n = "data-default";}
-      {i1 = {gte = "1.4";};  i2 = {lt = "1.5";};  n = "http-conduit";}
-      {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "http-types";}
+      {i1 = {gte = "1.5";};  i2 = {lt = "1.6";};  n = "http-conduit";}
+      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "http-types";}
       {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "lifted-base";}
       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "monad-control";}
       {n = "resourcet";}  {n = "string-conversions";}  {n = "syb";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
       {i1 = {gte = "0.11";};  i2 = {lt = "0.12";};  n = "text";}
-      {gte = "0.1";  n = "unordered-containers";}
+      {gte = "0.1";  n = "unordered-containers";}  {n = "vector";}
     ];
   };
-  sha256 = "0jyrgmi42grlp40q0hkvj8cb7q4ym6hgikg3gpvwdvmpynisa1sb";
+  sha256 = "1vx9k57hwlx41gik9jri75sh7n15pwbkz4dyigs161648idl5hzq";
   tsdeps = 
   [{
      cdeps = [];
@@ -18599,17 +18984,17 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "aeson";}
        {i1 = {gte = "0.8";};  i2 = {lt = "0.11";};  n = "attoparsec";}
        {
-         i1 = {gte = "0.4";};  i2 = {lt = "0.5";};
+         i1 = {gte = "0.5";};  i2 = {lt = "0.6";};
          n = "attoparsec-conduit";
        }
        {
          i1 = {gte = "0.2.1";};  i2 = {lt = "0.4";};  n = "blaze-builder";
        }
        {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
-       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "conduit";}
+       {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
        {gte = "0.2";  n = "containers";}  {n = "data-default";}
-       {i1 = {gte = "1.4";};  i2 = {lt = "1.5";};  n = "http-conduit";}
-       {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "http-types";}
+       {i1 = {gte = "1.5";};  i2 = {lt = "1.6";};  n = "http-conduit";}
+       {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "http-types";}
        {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "lifted-base";}
        {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "monad-control";}
        {n = "string-conversions";}  {n = "syb";}
@@ -18763,7 +19148,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "either";  version = "3.0";  edeps = [];
+  name = "either";  version = "3.0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -18777,7 +19162,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
     ];
   };
-  sha256 = "03asg5y8vhzpdn92nkwrn69dzz3sn9zw692ij2g0g9m93w3kykz6";
+  sha256 = "1s3rpxxqc9052hrmiznwqwxhl4826qzbgpivpv5acxfhm0w06lhg";
   tsdeps = [];
 }
 {
@@ -18810,7 +19195,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "wai-middleware-catch";  version = "0.3.2";  edeps = [];
+  name = "wai-middleware-catch";  version = "0.3.4";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -18821,11 +19206,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {
         i1 = {gte = "0.1.0.1";};  i2 = {lt = "0.2";};  n = "lifted-base";
       }
-      {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "http-types";}
-      {gte = "1.1";  n = "wai";}
+      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "http-types";}
+      {gte = "1.3";  n = "wai";}
     ];
   };
-  sha256 = "1ib6f0bcx1rq0jvqkiq5vzwd5mxgfgihfs064srrarmq17ybgil8";
+  sha256 = "1p6cvmcwc4j2yv6wvn6k35w1g3k2cz2mkikqv1fsgwj2drbgd100";
   tsdeps = [];
 }
 {
@@ -19021,7 +19406,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "hedis-tags";  version = "0.2.0";  edeps = [];
+  name = "hedis-tags";  version = "0.2.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -19032,7 +19417,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "hedis";}
     ];
   };
-  sha256 = "1vsk6420q5rnffpf62h76ybg64avdm59y4jmbzyqbfm36jgs6c0w";
+  sha256 = "05ziadzw7900v9pq3bp93cbv7pf4z24243w8w9gkshlm9kcw40kr";
   tsdeps = 
   [{
      cdeps = [];
@@ -19040,44 +19425,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
      [
        {gte = "4";  n = "base";}
        {i1 = {gte = "1.2";};  i2 = {lt = "2";};  n = "HUnit";}
-       {gte = "2.4";  n = "QuickCheck";}
        {gte = "0.4.1";  n = "test-framework";}
-       {n = "test-framework-quickcheck2";}
        {n = "test-framework-hunit";}  {n = "hedis-tags";}
        {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
        {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "hedis";}
        {n = "lifted-base";}  {n = "transformers";}
-     ];
-   }];
-}
-{
-  name = "wai-middleware-route";  version = "0.7.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
-      {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "http-types";}
-      {n = "text";}  {gte = "1.2";  n = "wai";}  {n = "yesod-routes";}
-    ];
-  };
-  sha256 = "05a80fpi88fd7nbwi67zn44488hglj9c1mjzkrx2lz38kk4s5x4c";
-  tsdeps = 
-  [{
-     cdeps = [];
-     deps = 
-     [
-       {gte = "4";  n = "base";}
-       {i1 = {gte = "1.2";};  i2 = {lt = "2";};  n = "HUnit";}
-       {gte = "2.4";  n = "QuickCheck";}
-       {gte = "0.4.1";  n = "test-framework";}
-       {n = "test-framework-quickcheck2";}
-       {n = "test-framework-hunit";}
-       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
-       {n = "http-types";}  {n = "text";}  {n = "wai";}
-       {n = "wai-test";}  {n = "wai-middleware-route";}
      ];
    }];
 }
@@ -19134,6 +19486,36 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   };
   sha256 = "0mqh454w1f3k75kcshdn848ynva938q6xm3a5yzcyf7nflzw75pg";
   tsdeps = [];
+}
+{
+  name = "wai-middleware-route";  version = "0.7.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
+      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "http-types";}
+      {n = "text";}  {gte = "1.3";  n = "wai";}  {n = "yesod-routes";}
+    ];
+  };
+  sha256 = "0yxr5i5knm91q7qmgi5y5i5djgrgrwd6gjqcvx9x0qq5v78vizzg";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {gte = "4";  n = "base";}
+       {i1 = {gte = "1.2";};  i2 = {lt = "2";};  n = "HUnit";}
+       {gte = "0.4.1";  n = "test-framework";}
+       {n = "test-framework-hunit";}
+       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
+       {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "http-types";}
+       {n = "text";}  {gte = "1.3";  n = "wai";}
+       {gte = "1.3";  n = "wai-test";}  {n = "wai-middleware-route";}
+     ];
+   }];
 }
 {
   name = "yajl-enumerator";  version = "0.4";  edeps = [];
@@ -19219,7 +19601,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "hedis-pile";  version = "0.6.0";  edeps = [];
+  name = "hedis-pile";  version = "0.6.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -19233,7 +19615,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
     ];
   };
-  sha256 = "14scqj08vky98dq7afh7fxapn511155ckzz830c1gvbs8nbvzgff";
+  sha256 = "0hd4mb4c83bds838g9rxhqa4djgi1mw98dw54d695lvkj13y3v3x";
   tsdeps = 
   [{
      cdeps = [];
@@ -19241,9 +19623,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
      [
        {gte = "4";  n = "base";}
        {i1 = {gte = "1.2";};  i2 = {lt = "2";};  n = "HUnit";}
-       {gte = "2.4";  n = "QuickCheck";}
        {gte = "0.4.1";  n = "test-framework";}
-       {n = "test-framework-quickcheck2";}
        {n = "test-framework-hunit";}  {n = "hedis-pile";}
        {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
        {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "hedis";}
@@ -19252,39 +19632,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
      ];
    }];
-}
-{
-  name = "persistent-mongoDB";  version = "0.9.0.3";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "persistent";}
-      {i1 = {gte = "0.8";};  i2 = {lt = "1";};  n = "text";}
-      {
-        i1 = {gte = "0.2.1";};  i2 = {lt = "0.4";};  n = "transformers";
-      }
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "containers";}
-      {gte = "0.9";  n = "bytestring";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "conduit";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "resourcet";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "mongoDB";}
-      {i1 = {gte = "0.1.6";};  i2 = {lt = "0.1.8";};  n = "bson";}
-      {i1 = {gte = "2.2.1.7";};  i2 = {lt = "3";};  n = "network";}
-      {
-        i1 = {gte = "0.3.1";};  i2 = {lt = "0.4";};
-        n = "compact-string-fix";
-      }
-      {gte = "0.3.0.0";  n = "cereal";}
-      {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "path-pieces";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "monad-control";}
-      {gte = "0.5";  n = "aeson";}
-    ];
-  };
-  sha256 = "054j0z5c48j7s93pk69vjr5s2r4n5s21skwhqndany5yghc0qjdm";
-  tsdeps = [];
 }
 {
   name = "vector-instances";  version = "3.0";  edeps = [];
@@ -19406,7 +19753,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "svm-simple";  version = "0.2.7";  edeps = [];
+  name = "svm-simple";  version = "0.2.7.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -19422,15 +19769,13 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.7.0.1";};  i2 = {lt = "1.1";};  n = "vector";}
       {i1 = {gte = "1.1.0.0";};  i2 = {lt = "1.4";};  n = "directory";}
       {
-        i1 = {gte = "0.4.2.0";};  i2 = {lt = "0.5";};  n = "containers";
+        i1 = {gte = "0.4.2.0";};  i2 = {lt = "0.6";};  n = "containers";
       }
       {i1 = {gte = "1.1";};  i2 = {lt = "1.6";};  n = "deepseq";}
-      {
-        i1 = {gte = "0.1.0.3";};  i2 = {lt = "0.1.1";};  n = "monad-par";
-      }
+      {i1 = {gte = "0.1.0.3";};  i2 = {lt = "0.4";};  n = "monad-par";}
     ];
   };
-  sha256 = "00jw77vqxdjybdjdhzpl51rx1a978aiwlv16ygfdzkfi8i5hi77q";
+  sha256 = "07s9mly01ar6c3p4fdl7wsi5j4bziagjjlbssr7x6s3ab5r8k9vd";
   tsdeps = [];
 }
 {
@@ -19452,7 +19797,8 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "snaplet-postgresql-simple";  version = "0.1";  edeps = [];
+  name = "snaplet-postgresql-simple";  version = "0.1.1";
+  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -19470,7 +19816,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
       {i1 = {gte = "2";};  i2 = {lt = "3";};  n = "mtl";}
       {
-        i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "postgresql-simple";
+        i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "postgresql-simple";
       }
       {
         i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
@@ -19485,11 +19831,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
     ];
   };
-  sha256 = "1n74n51s8lc52baa146xh8pzwwdx1h65434xkkdgzhbqdkx3jgq9";
+  sha256 = "1qpvrg9xmbg3q1y0qzqn62gda1447hngmv4i5xb8qmfj20ri0qfa";
   tsdeps = [];
 }
 {
-  name = "snaplet-hdbc";  version = "0.8";  edeps = [];
+  name = "snaplet-hdbc";  version = "0.9.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -19498,36 +19844,36 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {gte = "0.9.1";};  i2 = {lt = "0.10";};  n = "bytestring";}
       {
-        i1 = {gte = "0.7.2";};  i2 = {lt = "0.8";};  n = "clientsession";
+        i1 = {gte = "0.7.3.6";};  i2 = {lt = "0.8";};  n = "clientsession";
       }
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "containers";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.6";};  n = "containers";}
       {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "convertible";}
-      {i1 = {gte = "2.0.1";};  i2 = {lt = "2.1";};  n = "data-lens";}
+      {i1 = {gte = "2.0.1";};  i2 = {lt = "2.11";};  n = "data-lens";}
       {
         i1 = {gte = "2.1";};  i2 = {lt = "2.2";};
         n = "data-lens-template";
       }
       {i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "HDBC";}
       {
-        i1 = {gte = "0.2.1";};  i2 = {lt = "0.3";};
+        i1 = {gte = "0.2.1";};  i2 = {lt = "0.4";};
         n = "MonadCatchIO-transformers";
       }
-      {i1 = {gt = "2.0";};  i2 = {lt = "2.1";};  n = "mtl";}
+      {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
       {
         i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
         n = "resource-pool-catchio";
       }
-      {i1 = {gte = "0.8";};  i2 = {lt = "0.9";};  n = "snap";}
+      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "snap";}
       {i1 = {gte = "0.11";};  i2 = {lt = "0.12";};  n = "text";}
       {i1 = {gte = "1.1";};  i2 = {lt = "1.5";};  n = "time";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "transformers";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
       {
         i1 = {gte = "0.1.4";};  i2 = {lt = "0.3";};
         n = "unordered-containers";
       }
     ];
   };
-  sha256 = "1a7kx5kfv1m99kzybry3q7vi5wr34f7c6vrck4v356r39n5qcc3c";
+  sha256 = "17r7ailc2cnfny1ki7b027b5xipg2nvgr2yxvfh0sfzq8xkqa8ym";
   tsdeps = [];
 }
 {
@@ -19630,6 +19976,31 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {gte = "0.0.0.9";  n = "digest";}
      ];
    }];
+}
+{
+  name = "paypal-api";  version = "0.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {
+        i1 = {gte = "0.9.1.4";};  i2 = {lt = "0.10";};  n = "bytestring";
+      }
+      {gte = "0.2";  n = "containers";}
+      {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "conduit";}
+      {gte = "0.1";  n = "failure";}
+      {i1 = {lt = "1.6";};  i2 = {gte = "1.5";};  n = "http-conduit";}
+      {
+        i1 = {gte = "0.6.0";};  i2 = {lt = "0.8.0";};  n = "http-types";
+      }
+      {n = "mtl";}  {n = "old-locale";}  {n = "text";}  {n = "time";}
+      {i1 = {lt = "1.4";};  i2 = {gte = "1.3";};  n = "wai";}
+    ];
+  };
+  sha256 = "0im96yxvbb78sb0b83yypcwsa27gnjbjxbfki5rdnpgbf2yr8k9h";
+  tsdeps = [];
 }
 {
   name = "cookie";  version = "0.4.0";  edeps = [];
@@ -19907,6 +20278,37 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "persistent-mongoDB";  version = "1.0.0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "persistent";}
+      {i1 = {gte = "0.8";};  i2 = {lt = "1";};  n = "text";}
+      {
+        i1 = {gte = "0.2.1";};  i2 = {lt = "0.4";};  n = "transformers";
+      }
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "containers";}
+      {gte = "0.9";  n = "bytestring";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "resourcet";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "mongoDB";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "bson";}
+      {i1 = {gte = "2.2.1.7";};  i2 = {lt = "3";};  n = "network";}
+      {gte = "0.3.0.0";  n = "cereal";}
+      {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "path-pieces";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "monad-control";}
+      {gte = "0.5";  n = "aeson";}  {n = "attoparsec";}
+      {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "pool-conduit";}
+      {n = "time";}
+    ];
+  };
+  sha256 = "1s06r8m91qzavzq10nyr2vd4zim075jb8dlc3rsjlnp5agypzyr3";
+  tsdeps = [];
+}
+{
   name = "xml-hamlet";  version = "0.4.0";  edeps = [];
   ldeps = 
   {
@@ -19938,7 +20340,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "isevaluated";  version = "0.3.0.1";  edeps = [];
+  name = "isevaluated";  version = "0.3.0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -19948,80 +20350,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "vacuum";}
     ];
   };
-  sha256 = "0frxyncd5zzma2grp4395i07xz6lxrvdn1svn2jkh4cnhls8lxvd";
-  tsdeps = [];
-}
-{
-  name = "yesod-sitemap";  version = "1.0.0.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-core";}
-      {gte = "1.1.4";  n = "time";}
-      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "xml-conduit";}
-      {n = "text";}
-    ];
-  };
-  sha256 = "0nk0815g0gl2cvpnabg4pbqijlf9hcfrbgxyrvlim8pfyni7n365";
-  tsdeps = [];
-}
-{
-  name = "yesod-persistent";  version = "1.0.0.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-core";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "persistent";}
-      {
-        i1 = {gte = "0.9";};  i2 = {lt = "0.10";};
-        n = "persistent-template";
-      }
-      {
-        i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
-      }
-    ];
-  };
-  sha256 = "1v4ip4g9x2a5byl0a9a1raad3aba7hs618vx7fnc5n2ajjji84mx";
-  tsdeps = [];
-}
-{
-  name = "yesod-json";  version = "1.0.1.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-core";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-routes";}
-      {gte = "0.5";  n = "aeson";}
-      {i1 = {gte = "0.8";};  i2 = {lt = "1.0";};  n = "text";}
-      {
-        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare-js";
-      }
-      {gte = "0.9";  n = "vector";}  {gte = "0.2";  n = "containers";}
-      {n = "blaze-builder";}
-      {
-        i1 = {gte = "0.4";};  i2 = {lt = "0.5";};
-        n = "attoparsec-conduit";
-      }
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "conduit";}
-      {
-        i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
-      }
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai-extra";}
-      {gte = "0.9";  n = "bytestring";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "safe";}
-    ];
-  };
-  sha256 = "0baxyy4mddgpfzm4scfizz8pi6y7a135kjwfhss51m6xx36s84zl";
+  sha256 = "10f09br33xy5ldl924kfnnlc5ilwq44hd17s2qdf9jm75q4sa7d5";
   tsdeps = [];
 }
 {
@@ -20166,35 +20495,159 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "dvda";  version = "0.1.1";  edeps = [];
+  name = "yesod-sitemap";  version = "1.1.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "hashable";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "vector";}
-      {i1 = {gte = "3.1";};  i2 = {lt = "3.2";};  n = "repa";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
-      {
-        i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
-        n = "unordered-containers";
-      }
-      {
-        i1 = {gte = "2999.12";};  i2 = {lt = "2999.13";};  n = "graphviz";
-      }
-      {i1 = {gte = "5.4";};  i2 = {lt = "5.5";};  n = "fgl";}
-      {i1 = {gte = "2.0";};  i2 = {lt = "2.1";};  n = "mtl";}
-      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "directory";}
-      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "process";}
-      {i1 = {gte = "0.11";};  i2 = {lt = "0.12";};  n = "text";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "transformers";}
-      {i1 = {gte = "1.5";};  i2 = {lt = "1.6";};  n = "plugins";}
-      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "deepseq";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-core";}
+      {gte = "1.1.4";  n = "time";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "xml-conduit";}
+      {n = "text";}  {n = "containers";}
     ];
   };
-  sha256 = "1016j8askksdx8f17nhc51b3qm9y5vl7w30dyl3zdsh22g1nrzmh";
+  sha256 = "037r0rdyr0gq71sk3jykjbn29xfsdwf94c04q9x8n9p3wqmys0g5";
+  tsdeps = [];
+}
+{
+  name = "yesod-newsfeed";  version = "1.1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-core";}
+      {gte = "1.1.4";  n = "time";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "hamlet";}
+      {gte = "0.9.1.4";  n = "bytestring";}
+      {i1 = {gte = "0.9";};  i2 = {lt = "0.12";};  n = "text";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "xml-conduit";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
+      {
+        i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
+      }
+      {n = "containers";}
+    ];
+  };
+  sha256 = "1smvvgqrpv7y9hwc958fxliap26j6chfa1byn3msaj0gkcx01sbv";
+  tsdeps = [];
+}
+{
+  name = "yesod-persistent";  version = "1.1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-core";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "persistent";}
+      {
+        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};
+        n = "persistent-template";
+      }
+      {
+        i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
+      }
+    ];
+  };
+  sha256 = "0c8cvc2gy9ixa0h79ycnyi86indny2i86g5xcg30a2rvc4mjbaaj";
+  tsdeps = [];
+}
+{
+  name = "yesod-form";  version = "1.1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-core";}
+      {
+        i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-persistent";
+      }
+      {gte = "1.1.4";  n = "time";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "hamlet";}
+      {
+        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare-css";
+      }
+      {
+        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare-js";
+      }
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "persistent";}
+      {n = "template-haskell";}
+      {
+        i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
+      }
+      {n = "data-default";}
+      {
+        i1 = {gte = "0.3.0.1";};  i2 = {lt = "0.4";};  n = "xss-sanitize";
+      }
+      {
+        i1 = {gte = "0.2.1.4";};  i2 = {lt = "0.4";};  n = "blaze-builder";
+      }
+      {i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "network";}
+      {
+        i1 = {gte = "0.2.6";};  i2 = {lt = "0.3";};  n = "email-validate";
+      }
+      {gte = "0.9.1.4";  n = "bytestring";}
+      {i1 = {gte = "0.9";};  i2 = {lt = "1.0";};  n = "text";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai";}
+      {gte = "0.2";  n = "containers";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
+      {
+        i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
+      }
+      {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "attoparsec";}
+      {i1 = {gte = "0.8";};  i2 = {lt = "0.11";};  n = "crypto-api";}
+    ];
+  };
+  sha256 = "1xig1va8qya78g6rlymz2w2ncyp8fj76sinyhjpr1ikw8my5hgw0";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {n = "base";}  {n = "yesod-form";}  {n = "time";}  {n = "hspec";}
+       {n = "HUnit";}  {n = "text";}
+     ];
+   }];
+}
+{
+  name = "yesod-json";  version = "1.1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-core";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-routes";}
+      {gte = "0.5";  n = "aeson";}
+      {i1 = {gte = "0.8";};  i2 = {lt = "1.0";};  n = "text";}
+      {
+        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare-js";
+      }
+      {gte = "0.9";  n = "vector";}  {gte = "0.2";  n = "containers";}
+      {n = "blaze-builder";}
+      {
+        i1 = {gte = "0.5";};  i2 = {lt = "0.6";};
+        n = "attoparsec-conduit";
+      }
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
+      {
+        i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
+      }
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai-extra";}
+      {gte = "0.9";  n = "bytestring";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "safe";}
+    ];
+  };
+  sha256 = "13dbajs51nyrvch13xz05h6jrnhc097s0iykw5z43x05a6xwj20n";
   tsdeps = [];
 }
 {
@@ -20317,6 +20770,55 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "yesod-auth";  version = "1.1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "authenticate";}
+      {gte = "0.9.1.4";  n = "bytestring";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-core";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai";}
+      {n = "template-haskell";}
+      {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "pureMD5";}
+      {i1 = {gte = "1.0.0.2";};  i2 = {lt = "1.1";};  n = "random";}
+      {i1 = {gte = "0.7";};  i2 = {lt = "0.12";};  n = "text";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "mime-mail";}
+      {
+        i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-persistent";
+      }
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "hamlet";}
+      {
+        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare-css";
+      }
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-json";}
+      {n = "containers";}  {n = "unordered-containers";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-form";}
+      {
+        i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
+      }
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "persistent";}
+      {
+        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};
+        n = "persistent-template";
+      }
+      {i1 = {gte = "1.4.1.3";};  i2 = {lt = "1.6";};  n = "SHA";}
+      {i1 = {gte = "1.5";};  i2 = {lt = "1.6";};  n = "http-conduit";}
+      {gte = "0.5";  n = "aeson";}
+      {i1 = {gte = "2.2";};  i2 = {lt = "3";};  n = "pwstore-fast";}
+      {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "lifted-base";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
+      {
+        i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
+      }
+    ];
+  };
+  sha256 = "1bvvd1fl2id7zw51g5mrm047zm2jy5hr5l1xxas6zin2dv0ix5p1";
+  tsdeps = [];
+}
+{
   name = "wai-test";  version = "1.3.0";  edeps = [];
   ldeps = 
   {
@@ -20365,7 +20867,44 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "authenticate-oauth";  version = "1.4.0.0";  edeps = [];
+  name = "time-recurrence";  version = "0.9.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "1.4";};  i2 = {lt = "1.5";};  n = "time";}
+      {
+        i1 = {gte = "0.4";};  i2 = {lt = "0.4.5";};  n = "data-ordlist";
+      }
+      {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
+    ];
+  };
+  sha256 = "1zgqi3qsnbyn563r92vzsflwyqadmij1a46xc7slxq7rgysv7nw3";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+       {i1 = {gte = "1.4";};  i2 = {lt = "1.5";};  n = "time";}
+       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "data-ordlist";}
+       {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
+       {
+         i1 = {gte = "0.4";};  i2 = {lt = "0.7";};  n = "test-framework";
+       }
+       {
+         i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
+         n = "test-framework-hunit";
+       }
+       {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "HUnit";}
+       {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "old-locale";}
+     ];
+   }];
+}
+{
+  name = "authenticate-oauth";  version = "1.4.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -20380,14 +20919,13 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         n = "crypto-pubkey-types";
       }
       {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "RSA";}
-      {n = "time";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "data-default";}
+      {n = "time";}  {n = "data-default";}
       {
         i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "base64-bytestring";
       }
       {i1 = {gte = "1.4";};  i2 = {lt = "1.6";};  n = "SHA";}
       {n = "random";}
-      {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "http-types";}
+      {i1 = {gte = "0.6";};  i2 = {lt = "0.8";};  n = "http-types";}
       {n = "blaze-builder";}
       {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "conduit";}
       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "resourcet";}
@@ -20398,49 +20936,8 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "monad-control";}
     ];
   };
-  sha256 = "1bf2gi8k573qyxrvkl9b7gf7an40166jc7j0kl2rqq6hq2awvdzf";
+  sha256 = "046k6yd9m1crsbirsyixpzhvs4ahzfda9zx0m2xdx5dlqqawgybv";
   tsdeps = [];
-}
-{
-  name = "time-recurrence";  version = "0.6.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "1.4.0.1";};  i2 = {lt = "1.5";};  n = "time";}
-      {
-        i1 = {gte = "0.4";};  i2 = {lt = "0.4.5";};  n = "data-ordlist";
-      }
-      {i1 = {gte = "2.0.1.0";};  i2 = {lt = "2.1";};  n = "mtl";}
-    ];
-  };
-  sha256 = "1hyl08m9gjimavsg77lgm5q8ysdfb6y18xli5abz16j83nm0v028";
-  tsdeps = 
-  [{
-     cdeps = [];
-     deps = 
-     [
-       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-       {i1 = {gte = "1.4.0.1";};  i2 = {lt = "1.5";};  n = "time";}
-       {
-         i1 = {gte = "0.4";};  i2 = {lt = "0.4.5";};  n = "data-ordlist";
-       }
-       {i1 = {gte = "2.0.1.0";};  i2 = {lt = "2.1";};  n = "mtl";}
-       {
-         i1 = {gte = "0.4.0";};  i2 = {lt = "0.5";};  n = "test-framework";
-       }
-       {
-         i1 = {gte = "0.2.6";};  i2 = {lt = "0.3";};
-         n = "test-framework-hunit";
-       }
-       {i1 = {gte = "1.2.2.3";};  i2 = {lt = "1.3";};  n = "HUnit";}
-       {
-         i1 = {gte = "1.0.0.2";};  i2 = {lt = "1.1";};  n = "old-locale";
-       }
-     ];
-   }];
 }
 {
   name = "hsql-postgresql";  version = "1.8.2";  edeps = [];
@@ -20523,7 +21020,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "web-routes-th";  version = "0.21.1";  edeps = [];
+  name = "web-routes-th";  version = "0.22.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -20531,11 +21028,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "parsec";}
-      {n = "template-haskell";}  {n = "text";}
+      {n = "template-haskell";}  {n = "text";}  {n = "split";}
       {gte = "0.26";  n = "web-routes";}
     ];
   };
-  sha256 = "01jvqhgqiibfdh54kgvw2rakni9mma16pnp4fhdb78ixgv46lcm0";
+  sha256 = "0hnzf044rhrv4lxrha5xr9ivdh2lwd924293jz8v5hlbzhp2b5s1";
   tsdeps = [];
 }
 {
@@ -20593,7 +21090,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "boomerang";  version = "1.3.2";  edeps = [];
+  name = "boomerang";  version = "1.3.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -20605,7 +21102,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
     ];
   };
-  sha256 = "1q8xvrm9gcvpn8lby0wpm0bi7jg31xvzygxpxhp6d07gjy599y5x";
+  sha256 = "1i44j3qyjkq69h65wfsrps5zp097i3nh9fwcb2f1spr8nznb5mff";
   tsdeps = [];
 }
 {
@@ -20672,7 +21169,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "data-lens-fd";  version = "2.0.2";  edeps = [];
+  name = "data-lens-fd";  version = "2.0.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -20683,12 +21180,12 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
       {i1 = {gte = "2.0";};  i2 = {lt = "2.11";};  n = "data-lens";}
       {
-        i1 = {gte = "2.0";};  i2 = {lt = "2.2";};
+        i1 = {gte = "2.0";};  i2 = {lt = "3.1";};
         n = "comonad-transformers";
       }
     ];
   };
-  sha256 = "123hrhh01nsa4ib7m4d444h3sbd1i06kqf6x66qrj9kjlhkc66lq";
+  sha256 = "0rrj6wjprw5s3264wgfvrzfqdcq4a63hg4vhrhaaknchc2k3x5zj";
   tflags = ["derivedatatypeable"];  tsdeps = [];
 }
 {
@@ -21142,7 +21639,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "integration";  version = "0.1";  edeps = [];
+  name = "integration";  version = "0.1.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -21152,7 +21649,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "3.2";};  i2 = {lt = "3.3";};  n = "parallel";}
     ];
   };
-  sha256 = "10jj021glvmjm46qdc5chd2b62bi2hy86mlvaf3biyygay0rv6lj";
+  sha256 = "1pf432z4jc173411ap1p77amc4211rbaf2js7dqah1i4d166vx6r";
   tsdeps = [];
 }
 {
@@ -21205,7 +21702,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "eurofxref";  version = "0.1.2";  edeps = [];
+  name = "eurofxref";  version = "0.2.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -21213,19 +21710,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "containers";}
-      {i1 = {gte = "0.4.7";};  i2 = {lt = "0.5";};  n = "enumerator";}
-      {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "failure";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.6";};  n = "containers";}
+      {gte = "0.1";  n = "failure";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "monad-control";}
+      {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "conduit";}
+      {i1 = {lt = "1.6";};  i2 = {gte = "1.5";};  n = "http-conduit";}
       {
-        i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "http-enumerator";
+        i1 = {gte = "0.6.0";};  i2 = {lt = "0.8.0";};  n = "http-types";
       }
-      {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "http-types";}
-      {i1 = {gte = "0.19.6";};  i2 = {lt = "0.20";};  n = "hexpat";}
-      {lt = "2.1";  n = "mtl";}
-      {i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "time";}
+      {i1 = {gte = "0.20.0";};  i2 = {lt = "0.21";};  n = "hexpat";}
+      {i1 = {gte = "2.0.0.0";};  i2 = {lt = "2.2.0.0";};  n = "mtl";}
+      {i1 = {gte = "1.2.0.0";};  i2 = {lt = "1.5.0.0";};  n = "time";}
     ];
   };
-  sha256 = "0b9l4yvzrx27ny8dnrhwkss26dm451rd45q4v3hcrldid2vndxj5";
+  sha256 = "1pjbxmzyb985h19gczsyxwsvkhz42fz7bp17v9g7q1iilyvrfg5c";
   tsdeps = [];
 }
 {
@@ -21296,6 +21794,26 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
+  name = "order-statistics";  version = "0.1.0.4";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {lt = "0.11";};  i2 = {gte = "0.10";};  n = "statistics";}
+      {
+        i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "math-functions";
+      }
+      {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "vector";}
+      {i1 = {lt = "0.9";};  i2 = {gte = "0.8";};  n = "vector-space";}
+      {i1 = {gte = "0.4.2";};  i2 = {lt = "0.6";};  n = "containers";}
+    ];
+  };
+  sha256 = "00svpgsi9narh6lhh9w6yds0mwj9rpi1y7qwfhp4rks7sigpbd8r";
+  tsdeps = [];
+}
+{
   name = "codepad";  version = "0.1";  edeps = [];
   ldeps = 
   {
@@ -21355,22 +21873,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "0pm1v9wqlzi6cg92lajbwbnhsdm509371i8mvyvvj6qa5m58cdib";
-  tsdeps = [];
-}
-{
-  name = "reform";  version = "0.1.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "containers";}
-      {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
-      {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
-    ];
-  };
-  sha256 = "183dsfkhq4vbyy16jqblcq8n21ywgzbzlfq27qqik2gvf6gqqpik";
   tsdeps = [];
 }
 {
@@ -21537,123 +22039,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "yesod-platform";  version = "1.0.5";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "HUnit";  v = "1.2.4.3";}  {n = "QuickCheck";  v = "2.5";}
-      {n = "SHA";  v = "1.5.0.1";}  {n = "aeson";  v = "0.6.0.2";}
-      {n = "ansi-terminal";  v = "0.5.5";}
-      {n = "asn1-data";  v = "0.6.1.3";}
-      {n = "attoparsec";  v = "0.10.2.0";}
-      {n = "attoparsec-conduit";  v = "0.4.0.1";}
-      {n = "attoparsec-enumerator";  v = "0.3";}
-      {n = "authenticate";  v = "1.2.1.1";}
-      {n = "base-unicode-symbols";  v = "0.2.2.3";}
-      {n = "base64-bytestring";  v = "0.1.2.0";}
-      {n = "binary";  v = "0.5.1.0";}
-      {n = "blaze-builder";  v = "0.3.1.0";}
-      {n = "blaze-builder-conduit";  v = "0.4.0.2";}
-      {n = "blaze-html";  v = "0.5.0.0";}
-      {n = "blaze-markup";  v = "0.5.1.0";}
-      {n = "byteorder";  v = "1.0.3";}
-      {n = "case-insensitive";  v = "0.4.0.1";}
-      {n = "cereal";  v = "0.3.5.2";}
-      {n = "certificate";  v = "1.2.3";}
-      {n = "clientsession";  v = "0.7.5";}
-      {n = "conduit";  v = "0.4.2";}  {n = "cookie";  v = "0.4.0";}
-      {n = "cprng-aes";  v = "0.2.3";}  {n = "cpu";  v = "0.1.1";}
-      {n = "crypto-api";  v = "0.10.2";}
-      {n = "crypto-conduit";  v = "0.3.2";}
-      {n = "crypto-pubkey-types";  v = "0.1.1";}
-      {n = "cryptocipher";  v = "0.3.5";}
-      {n = "cryptohash";  v = "0.7.5";}
-      {n = "css-text";  v = "0.1.1";}
-      {n = "data-default";  v = "0.4.0";}  {n = "dlist";  v = "0.5";}
-      {n = "email-validate";  v = "0.2.8";}
-      {n = "entropy";  v = "0.2.1";}
-      {n = "enumerator";  v = "0.4.19";}
-      {n = "failure";  v = "0.2.0.1";}
-      {n = "fast-logger";  v = "0.0.2";}
-      {n = "file-embed";  v = "0.0.4.4";}
-      {n = "filesystem-conduit";  v = "0.4.0";}
-      {n = "hamlet";  v = "1.0.1.4";}
-      {n = "hashable";  v = "1.1.2.3";}  {n = "hjsmin";  v = "0.1.2";}
-      {n = "hspec";  v = "1.2.0.1";}
-      {n = "html-conduit";  v = "0.0.1";}
-      {n = "http-conduit";  v = "1.4.1.10";}
-      {n = "http-date";  v = "0.0.2";}
-      {n = "http-types";  v = "0.6.11";}  {n = "hxt";  v = "9.2.2";}
-      {n = "hxt-charproperties";  v = "9.1.1";}
-      {n = "hxt-regex-xmlschema";  v = "9.0.4";}
-      {n = "hxt-unicode";  v = "9.0.2";}
-      {n = "language-javascript";  v = "0.5.4";}
-      {n = "largeword";  v = "1.0.1";}
-      {n = "lifted-base";  v = "0.1.1";}
-      {n = "mime-mail";  v = "0.4.1.1";}
-      {n = "monad-control";  v = "0.3.1.3";}
-      {n = "network-conduit";  v = "0.4.0.1";}
-      {n = "path-pieces";  v = "0.1.1";}  {n = "pem";  v = "0.1.1";}
-      {n = "persistent";  v = "0.9.0.4";}
-      {n = "persistent-template";  v = "0.9.0.2";}
-      {n = "pool-conduit";  v = "0.1.0.2";}
-      {n = "primitive";  v = "0.4.1";}
-      {n = "pureMD5";  v = "2.1.0.3";}
-      {n = "pwstore-fast";  v = "2.2";}  {n = "ranges";  v = "0.2.4";}
-      {n = "regex-compat";  v = "0.95.1";}
-      {n = "resource-pool";  v = "0.2.1.0";}
-      {n = "resourcet";  v = "0.3.3.1";}  {n = "safe";  v = "0.3.3";}
-      {n = "semigroups";  v = "0.8.3.2";}
-      {n = "shakespeare";  v = "1.0.0.2";}
-      {n = "shakespeare-css";  v = "1.0.1.2";}
-      {n = "shakespeare-i18n";  v = "1.0.0.2";}
-      {n = "shakespeare-js";  v = "1.0.0.3";}
-      {n = "shakespeare-text";  v = "1.0.0.2";}
-      {n = "silently";  v = "1.2.0.2";}
-      {n = "simple-sendfile";  v = "0.2.4";}
-      {n = "skein";  v = "0.1.0.7";}  {n = "socks";  v = "0.4.1";}
-      {n = "stm";  v = "2.3";}  {n = "stringsearch";  v = "0.3.6.3";}
-      {n = "system-fileio";  v = "0.3.8";}
-      {n = "system-filepath";  v = "0.4.6";}
-      {n = "tagged";  v = "0.4.2.1";}  {n = "tagsoup";  v = "0.12.6";}
-      {n = "tagstream-conduit";  v = "0.3.2";}
-      {n = "tls";  v = "0.9.5";}  {n = "tls-extra";  v = "0.4.6";}
-      {n = "transformers-base";  v = "0.4.1";}
-      {n = "unix-compat";  v = "0.3.0.1";}
-      {n = "unordered-containers";  v = "0.2.1.0";}
-      {n = "utf8-light";  v = "0.4.0.1";}
-      {n = "utf8-string";  v = "0.3.7";}
-      {n = "vault";  v = "0.2.0.0";}  {n = "vector";  v = "0.9.1";}
-      {n = "void";  v = "0.5.6";}  {n = "wai";  v = "1.2.0.3";}
-      {n = "wai-app-static";  v = "1.2.0.4";}
-      {n = "wai-extra";  v = "1.2.0.5";}
-      {n = "wai-logger";  v = "0.1.4";}
-      {n = "wai-test";  v = "1.2.0.2";}  {n = "warp";  v = "1.2.2";}
-      {n = "xml-conduit";  v = "0.7.0.3";}
-      {n = "xml-types";  v = "0.3.2";}
-      {n = "xml2html";  v = "0.1.2.3";}
-      {n = "xss-sanitize";  v = "0.3.2";}
-      {n = "yaml";  v = "0.7.0.3";}  {n = "yesod";  v = "1.0.1.6";}
-      {n = "yesod-auth";  v = "1.0.2.1";}
-      {n = "yesod-core";  v = "1.0.1.2";}
-      {n = "yesod-default";  v = "1.0.1.1";}
-      {n = "yesod-form";  v = "1.0.0.4";}
-      {n = "yesod-json";  v = "1.0.0.1";}
-      {n = "yesod-persistent";  v = "1.0.0.1";}
-      {n = "yesod-routes";  v = "1.0.1.2";}
-      {n = "yesod-static";  v = "1.0.0.3";}
-      {n = "yesod-test";  v = "0.2.1";}  {n = "zlib";  v = "0.5.3.3";}
-      {n = "zlib-bindings";  v = "0.1.0.1";}
-      {n = "zlib-conduit";  v = "0.4.0.2";}
-    ];
-  };
-  sha256 = "121zg7fkvzgnww7r3wm9j45b2hw0ln644j28rmw8nflyll1cdx3n";
-  tsdeps = [];
-}
-{
   name = "concurrent-sa";  version = "1.0.1";  edeps = [];
   ldeps = 
   {
@@ -21730,31 +22115,130 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "Vec-Transform";  version = "1.0.6";  edeps = [];
+  name = "yesod-platform";  version = "1.1.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "Vec";  v = "0.9.9";}
+      {n = "SHA";  v = "1.5.1";}  {n = "aeson";  v = "0.6.0.2";}
+      {n = "ansi-terminal";  v = "0.5.5";}
+      {n = "asn1-data";  v = "0.6.1.3";}
+      {n = "attoparsec";  v = "0.10.2.0";}
+      {n = "attoparsec-conduit";  v = "0.5.0";}
+      {n = "attoparsec-enumerator";  v = "0.3";}
+      {n = "authenticate";  v = "1.3.0.1";}
+      {n = "base-unicode-symbols";  v = "0.2.2.4";}
+      {n = "base64-bytestring";  v = "0.1.2.0";}
+      {n = "blaze-builder";  v = "0.3.1.0";}
+      {n = "blaze-builder-conduit";  v = "0.5.0";}
+      {n = "blaze-html";  v = "0.5.0.0";}
+      {n = "blaze-markup";  v = "0.5.1.0";}
+      {n = "byteorder";  v = "1.0.3";}
+      {n = "case-insensitive";  v = "0.4.0.1";}
+      {n = "cereal";  v = "0.3.5.2";}
+      {n = "certificate";  v = "1.2.4";}
+      {n = "clientsession";  v = "0.8.0";}
+      {n = "conduit";  v = "0.5.2.3";}  {n = "cookie";  v = "0.4.0";}
+      {n = "cprng-aes";  v = "0.2.3";}  {n = "cpu";  v = "0.1.1";}
+      {n = "crypto-api";  v = "0.10.2";}
+      {n = "crypto-conduit";  v = "0.4.0";}
+      {n = "crypto-pubkey-types";  v = "0.1.1";}
+      {n = "cryptocipher";  v = "0.3.5";}
+      {n = "cryptohash";  v = "0.7.5";}
+      {n = "css-text";  v = "0.1.1";}
+      {n = "data-default";  v = "0.5.0";}  {n = "dlist";  v = "0.5";}
+      {n = "email-validate";  v = "0.2.8";}
+      {n = "entropy";  v = "0.2.1";}
+      {n = "enumerator";  v = "0.4.19";}
+      {n = "failure";  v = "0.2.0.1";}
+      {n = "fast-logger";  v = "0.2.1";}
+      {n = "file-embed";  v = "0.0.4.4";}
+      {n = "filesystem-conduit";  v = "0.5.0";}
+      {n = "hamlet";  v = "1.1.0";}  {n = "hashable";  v = "1.1.2.3";}
+      {n = "hjsmin";  v = "0.1.2";}  {n = "hspec";  v = "1.3.0";}
+      {n = "hspec-expectations";  v = "0.3.0.1";}
+      {n = "html-conduit";  v = "0.1.0";}
+      {n = "http-conduit";  v = "1.5.0.3";}
+      {n = "http-date";  v = "0.0.2";}
+      {n = "http-types";  v = "0.7.1";}
+      {n = "language-javascript";  v = "0.5.4";}
+      {n = "largeword";  v = "1.0.2";}
+      {n = "lifted-base";  v = "0.1.1.1";}
+      {n = "mime-mail";  v = "0.4.1.1";}
+      {n = "mime-types";  v = "0.1.0.0";}
+      {n = "monad-control";  v = "0.3.1.4";}
+      {n = "monad-logger";  v = "0.2.0";}
+      {n = "network-conduit";  v = "0.5.0";}
+      {n = "path-pieces";  v = "0.1.1";}  {n = "pem";  v = "0.1.1";}
+      {n = "persistent";  v = "1.0.0";}
+      {n = "persistent-template";  v = "1.0.0";}
+      {n = "pool-conduit";  v = "0.1.0.2";}
+      {n = "primitive";  v = "0.4.1";}
+      {n = "pureMD5";  v = "2.1.0.3";}
+      {n = "pwstore-fast";  v = "2.2";}  {n = "ranges";  v = "0.2.4";}
+      {n = "resource-pool";  v = "0.2.1.0";}
+      {n = "resourcet";  v = "0.3.3.1";}  {n = "safe";  v = "0.3.3";}
+      {n = "semigroups";  v = "0.8.3.2";}
+      {n = "shakespeare";  v = "1.0.1";}
+      {n = "shakespeare-css";  v = "1.0.1.3";}
+      {n = "shakespeare-i18n";  v = "1.0.0.2";}
+      {n = "shakespeare-js";  v = "1.0.0.4";}
+      {n = "shakespeare-text";  v = "1.0.0.3";}
+      {n = "silently";  v = "1.2.0.2";}
+      {n = "simple-sendfile";  v = "0.2.5";}
+      {n = "skein";  v = "0.1.0.7";}  {n = "socks";  v = "0.4.2";}
+      {n = "stringsearch";  v = "0.3.6.3";}
+      {n = "system-fileio";  v = "0.3.9";}
+      {n = "system-filepath";  v = "0.4.6";}
+      {n = "tagged";  v = "0.4.2.1";}  {n = "tagsoup";  v = "0.12.6";}
+      {n = "tagstream-conduit";  v = "0.4.0";}
+      {n = "tar";  v = "0.4.0.0";}  {n = "tls";  v = "0.9.8";}
+      {n = "tls-extra";  v = "0.4.6";}
+      {n = "transformers-base";  v = "0.4.1";}
+      {n = "unix-compat";  v = "0.3.0.1";}
+      {n = "unordered-containers";  v = "0.2.1.0";}
+      {n = "utf8-light";  v = "0.4.0.1";}
+      {n = "utf8-string";  v = "0.3.7";}
+      {n = "vault";  v = "0.2.0.0";}  {n = "vector";  v = "0.9.1";}
+      {n = "void";  v = "0.5.7";}  {n = "wai";  v = "1.3.0";}
+      {n = "wai-app-static";  v = "1.3.0";}
+      {n = "wai-extra";  v = "1.3.0";}
+      {n = "wai-logger";  v = "0.2.0";}
+      {n = "wai-test";  v = "1.3.0";}  {n = "warp";  v = "1.3.0.1";}
+      {n = "xml-conduit";  v = "1.0.3";}
+      {n = "xml-types";  v = "0.3.3";}
+      {n = "xss-sanitize";  v = "0.3.2";}
+      {n = "yaml";  v = "0.8.0.1";}  {n = "yesod";  v = "1.1.0";}
+      {n = "yesod-auth";  v = "1.1.0";}
+      {n = "yesod-core";  v = "1.1.0";}
+      {n = "yesod-default";  v = "1.1.0";}
+      {n = "yesod-form";  v = "1.1.0";}
+      {n = "yesod-json";  v = "1.1.0";}
+      {n = "yesod-persistent";  v = "1.1.0";}
+      {n = "yesod-routes";  v = "1.1.0";}
+      {n = "yesod-static";  v = "1.1.0";}
+      {n = "yesod-test";  v = "0.3.0";}
+      {n = "zlib-bindings";  v = "0.1.0.1";}
+      {n = "zlib-conduit";  v = "0.5.0";}
     ];
   };
-  sha256 = "1canx54rs3yvdm1y1c2vnc1r34945yf45wpr0k1pqyxfgzh2zz52";
+  sha256 = "0j5bjxfi2d8igc3w6l8isn50cfi4y47zr5ahl4whkd5cx4v0j2jh";
   tsdeps = [];
 }
 {
-  name = "Vec-Boolean";  version = "1.0.5";  edeps = [];
+  name = "Vec-Boolean";  version = "1.0.6";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "Vec";  v = "0.9.9";}  {n = "Boolean";  v = "0.0.1";}
+      {n = "Vec";  v = "1.0.1";}  {n = "Boolean";  v = "0.0.1";}
     ];
   };
-  sha256 = "08402lnp81d1zfx6pwl4qynkjbbhiq8p9ny1ayk7l80ynqd6r1b0";
+  sha256 = "0zxxpychddmlrv7r190gn4dl282ak4qfk2d92l24qxi9fds1rshk";
   tsdeps = [];
 }
 {
@@ -22127,7 +22611,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "wai-middleware-cache-redis";  version = "0.4.0";
+  name = "wai-middleware-cache-redis";  version = "0.4.1";
   edeps = [];
   ldeps = 
   {
@@ -22135,38 +22619,40 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "binary";}  {gte = "0.4";  n = "blaze-builder-conduit";}
+      {n = "binary";}  {gte = "0.5";  n = "blaze-builder-conduit";}
       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
       {gte = "0.2";  n = "case-insensitive";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "conduit";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
       {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "hedis";}
       {gte = "0.6";  n = "hedis-pile";}
-      {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "http-types";}
+      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "http-types";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
       {gte = "1.2";  n = "wai";}
       {gte = "0.3";  n = "wai-middleware-cache";}
     ];
   };
-  sha256 = "026g5dxm95xyxs21nq0aymb06i2s7hmnn8jph33qg8h6d3ks4mrd";
+  sha256 = "0z0xln451z6cy8licisiwirr8vig15avx2408gf6hdp14kcqp47x";
   tsdeps = [];
 }
 {
-  name = "wai-middleware-cache";  version = "0.3.3";  edeps = [];
+  name = "wai-middleware-cache";  version = "0.3.5";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "binary";}  {gte = "0.4";  n = "blaze-builder-conduit";}
+      {n = "binary";}  {gte = "0.5";  n = "blaze-builder-conduit";}
       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "conduit";}
-      {n = "crypto-conduit";}
-      {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "http-types";}
-      {n = "pureMD5";}  {gte = "1.2";  n = "wai";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
+      {
+        i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "crypto-conduit";
+      }
+      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "http-types";}
+      {n = "pureMD5";}  {gte = "1.3";  n = "wai";}
     ];
   };
-  sha256 = "1yni36pp6wgqm1gxrdibjf1zilvc1nd67k8803bn9cv5p7xcl9hj";
+  sha256 = "1vq9wpxpvj25bf6sw955xbp37577sfndmkk4dryfz1l7gbdjpy55";
   tsdeps = 
   [{
      cdeps = [];
@@ -22174,13 +22660,12 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
      [
        {gte = "4";  n = "base";}
        {i1 = {gte = "1.2";};  i2 = {lt = "2";};  n = "HUnit";}
-       {gte = "2.4";  n = "QuickCheck";}
        {gte = "0.4.1";  n = "test-framework";}
-       {n = "test-framework-quickcheck2";}
        {n = "test-framework-hunit";}  {n = "wai-middleware-cache";}
-       {n = "wai";}
+       {gte = "1.3";  n = "wai";}
        {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
-       {n = "wai-test";}  {n = "http-types";}
+       {gte = "1.3";  n = "wai-test";}
+       {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "http-types";}
      ];
    }];
 }
@@ -22649,23 +23134,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "paypal-api";  version = "0.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "bytestring";}  {n = "containers";}  {n = "enumerator";}
-      {n = "failure";}  {n = "http-enumerator";}  {n = "http-types";}
-      {n = "monads-fd";}  {n = "old-locale";}  {n = "text";}
-      {n = "time";}  {n = "wai";}  {n = "web-encodings";}
-    ];
-  };
-  sha256 = "1iihi4nfn7x58wghpxj9qfj0cwcynkv50x1x276vcykda3b0a4wz";
-  tsdeps = [];
-}
-{
   name = "PCLT";  version = "0.1";  edeps = [];
   ldeps = 
   {
@@ -22681,7 +23149,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "wai-logger-prefork";  version = "0.2.0";  edeps = [];
+  name = "wai-logger-prefork";  version = "0.2.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -22693,7 +23161,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "wai-logger";}
     ];
   };
-  sha256 = "03zc7mj614x5inbwp1bvkbld9v0cailwf1cz2l3ijk2fxl87k9c3";
+  sha256 = "133yg242xj1vnn4c766in7m329iqgw0lq6a72z0n2q6dhrcvcdxc";
   tsdeps = [];
 }
 {
@@ -22737,6 +23205,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "0insqi63q6gvz39l0k584w583cw9m85vdx5dhpyx9qbb5zxyb0rm";
+  tsdeps = [];
+}
+{
+  name = "unix-time";  version = "0.1.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "bytestring";}  {n = "old-time";}
+    ];
+  };
+  sha256 = "1b7njfs33vqmprpmbpi8hvy1lc5ryvdiy5526q8s7vkzsi2iky1p";
   tsdeps = [];
 }
 {
@@ -22860,21 +23342,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "02zh9jqq46gg3hrsfjfq2skajr4jni3cisak4nd3shl6aqapw9d6";
-  tsdeps = [];
-}
-{
-  name = "simple-actors";  version = "0.2.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "chan-split";}  {gte = "2";  n = "mtl";}
-      {n = "transformers";}  {n = "contravariant";}
-    ];
-  };
-  sha256 = "19wgshzc5iqgbgbb9w2rzj8nln0zwvnlprc2a8dzd2g6h86i00i9";
   tsdeps = [];
 }
 {
@@ -23170,28 +23637,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "snap-extras";  version = "0.1.7";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "containers";}  {n = "filepath";}
-      {gte = "0.6";  n = "aeson";}  {gte = "0.7";  n = "snap-core";}
-      {gte = "0.7";  n = "snap";}  {gte = "0.7";  n = "heist";}
-      {gte = "0.1.6";  n = "xmlhtml";}  {n = "bytestring";}
-      {n = "text";}  {n = "safe";}  {gte = "2.0";  n = "data-lens";}
-      {n = "transformers";}  {n = "blaze-html";}
-      {gte = "0.3";  n = "digestive-functors";}
-      {gte = "0.3";  n = "digestive-functors-blaze";}
-      {gte = "0.3";  n = "digestive-functors-snap";}
-    ];
-  };
-  sha256 = "1y4h2s8vj0glzldi9giz5qx1a2masviykm6wbka1k4g8f7r04442";
-  tsdeps = [];
-}
-{
   name = "fresh";  version = "0.1.1";  edeps = [];
   ldeps = 
   {
@@ -23451,20 +23896,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "chan-split";  version = "0.3.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "contravariant";}
-    ];
-  };
-  sha256 = "0lz28xywjhkr9lx0f4mm01i0j44046qjib48dcknmj0d6nsar25i";
-  tsdeps = [];
-}
-{
   name = "layout";  version = "0.0.0.1";  edeps = [];
   ldeps = 
   {
@@ -23592,20 +24023,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "errors";  version = "1.1.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "either";}  {n = "safe";}  {n = "transformers";}
-    ];
-  };
-  sha256 = "1ycrxykz5i5j8mvdxa1sgsgknywhyzppsawhr62ag35dbhahdfi0";
-  tsdeps = [];
-}
-{
   name = "monad-state";  version = "0.1.1.2";  edeps = [];
   ldeps = 
   {
@@ -23618,6 +24035,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1h6gys9fc33nry2hj5diws0m2y97qqpjk7r0mayqpcjfzm80p2yn";
+  tsdeps = [];
+}
+{
+  name = "shake-extras";  version = "0.1.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "filepath";}  {n = "directory";}  {n = "bytestring";}
+      {n = "shake";  v = "0.3";}  {gte = "0.9";  n = "cmdargs";}
+    ];
+  };
+  sha256 = "0qqzdhd6q8hhix7lx4j1v4j37b8jnv710clilk2wxbyvz03rbblz";
   tsdeps = [];
 }
 {
@@ -23940,6 +24372,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1ks5h3vlla2d86wvf2a4z1qifsinya2skq8ygdk45ynnwk735y4x";
+  tsdeps = [];
+}
+{
+  name = "pipes";  version = "2.2.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "index-core";}  {n = "transformers";}
+      {n = "transformers-free";}  {n = "void";}
+    ];
+  };
+  sha256 = "0xsbvghrn8v3dxysc7vq37xmfclf5y62g0gdk9k47kz83sgfc03z";
   tsdeps = [];
 }
 {
@@ -24333,7 +24780,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "process-extras";  version = "0.1.0";  edeps = [];
+  name = "process-extras";  version = "0.1.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -24343,7 +24790,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "process";}  {n = "bytestring";}  {n = "text";}
     ];
   };
-  sha256 = "0bq8nz2iapmngmkx2vlyk4ffw20b34yw5q7h7j6r3zrjzq42prsp";
+  sha256 = "0qnkclmjd5y0jpdxp4y2ynqlcdlsvck65269k0j4hy5zkyydbpv6";
   tsdeps = [];
 }
 {
@@ -24863,7 +25310,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "monadloc";  version = "0.6";  edeps = [];
+  name = "monadloc";  version = "0.7";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -24873,7 +25320,23 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "template-haskell";}  {n = "transformers";}
     ];
   };
-  sha256 = "1ihjg1a9gr1qmfkxc30rfiwk6g0aq6rs56yjq54xnzc3p1gyp8gp";
+  sha256 = "0z99b4njv6wa0p0a57hckin46adw9p01nvw7fa86fxwwrjyn2pa4";
+  tsdeps = [];
+}
+{
+  name = "monad-logger";  version = "0.2.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "template-haskell";}  {n = "transformers";}  {n = "text";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "resourcet";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "fast-logger";}
+    ];
+  };
+  sha256 = "0rsp24lx9gcvayj5d6afq26qrggm9qrjqjpdm7088xbl5k0c71fz";
   tsdeps = [];
 }
 {
@@ -24993,7 +25456,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "shelly";  version = "0.13.0.1";  edeps = [];
+  name = "shelly";  version = "0.14.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -25003,10 +25466,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "directory";}  {n = "text";}  {n = "mtl";}
       {gte = "1.0";  n = "process";}  {lt = "0.4";  n = "unix-compat";}
       {lt = "0.5";  n = "system-filepath";}
-      {lt = "0.4";  n = "system-fileio";}
+      {lt = "0.4";  n = "system-fileio";}  {n = "bytestring";}
     ];
   };
-  sha256 = "1iw2hbnr9pwfvz6hhmnmg4h2h58ggppbjy3vs0i08hc33nms1lvy";
+  sha256 = "062c3zqr6ad61p0s423h8rhimqfld6p95z3qzrmag9f29a5f4fbz";
   tsdeps = 
   [{
      cdeps = [];
@@ -25016,8 +25479,9 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {n = "directory";}  {n = "text";}  {n = "mtl";}  {n = "process";}
        {lt = "0.4";  n = "unix-compat";}
        {lt = "0.5";  n = "system-filepath";}
-       {lt = "0.4";  n = "system-fileio";}  {n = "hspec-discover";}
-       {gte = "1.1";  n = "hspec";}  {n = "HUnit";}
+       {lt = "0.4";  n = "system-fileio";}  {n = "bytestring";}
+       {n = "hspec-discover";}  {gte = "1.1";  n = "hspec";}
+       {n = "HUnit";}
      ];
    }];
 }
@@ -25101,20 +25565,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "003k4pp6wgn30m9ksbh8680f0klzsvd90wsl9jpqs9lpg14hi6zj";
-  tsdeps = [];
-}
-{
-  name = "pipes";  version = "2.1.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "transformers";}  {n = "void";}  {n = "index-core";}
-    ];
-  };
-  sha256 = "1snzm38lb1bfsjk1c28npmbnx253lcarsxzv6l4lhwd6gdsqw8mn";
   tsdeps = [];
 }
 {
@@ -25271,7 +25721,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "select";  version = "0.2";  edeps = [];
+  name = "select";  version = "0.2.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -25281,7 +25731,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "vector";}  {n = "stm";}
     ];
   };
-  sha256 = "1cyxf5qza5qzdhfxlclxiby6rpk8j79ki97y8wk8q9wgkjsqxgfv";
+  sha256 = "0fv2ill8sq40hfxabdfh7yl0qk8kdwdgi3iz1x12v3yns05w8crg";
   tsdeps = [];
 }
 {
@@ -25781,6 +26231,25 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "graph-rewriting";  version = "0.7.3";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4.0";};  i2 = {lt = "4.6";};  n = "base";}
+      {
+        i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
+        n = "base-unicode-symbols";
+      }
+      {i1 = {gte = "1.1";};  i2 = {lt = "2.1";};  n = "mtl";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "containers";}
+    ];
+  };
+  sha256 = "02a4p2mh0ap09zzrjd910d6ww0r5dxn9zdrqnh49844w8bvcxf64";
+  tsdeps = [];
+}
+{
   name = "active";  version = "0.1.0.1";  edeps = [];
   ldeps = 
   {
@@ -25918,6 +26387,16 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {n = "largeword";  v = "1.0.2";}
      ];
    }];
+}
+{
+  name = "terminfo";  version = "0.3.2.5";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = [{i1 = {gte = "4.0";};  i2 = {lt = "5";};  n = "base";}];
+  };
+  sha256 = "1hadb1gv28c43xq78scalb4zzvbs6im2s0hq7ycrbsdgm6iryhbg";
+  tsdeps = [];
 }
 {
   name = "rewriting";  version = "0.2.2";  edeps = [];
@@ -26071,20 +26550,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "JuicyPixels-repa";  version = "0.3.1";  edeps = [];
+  name = "JuicyPixels-repa";  version = "0.4";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4.0";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "3.0";};  i2 = {lt = "3.1";};  n = "repa";}
-      {i1 = {gte = "1.1";};  i2 = {lt = "1.3";};  n = "JuicyPixels";}
+      {i1 = {gte = "3.0";};  i2 = {lt = "3.3";};  n = "repa";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.4";};  n = "JuicyPixels";}
       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "vector";}
       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
     ];
   };
-  sha256 = "05xc5hsr78ml74pj2zg40a3ayfxq2z3hln0w971m62hw4vwdfzdm";
+  sha256 = "1ayfc188h87jsc33kcm17qf2y55ab71p0f3rfan4gdcp4vdqqzcc";
   tsdeps = [];
 }
 {
@@ -26209,7 +26688,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "yi-contrib";  version = "0.6.5.0";  edeps = [];
+  name = "yi-contrib";  version = "0.6.6.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -26222,10 +26701,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
       {lt = "1.2";  n = "directory";}  {lt = "1.4";  n = "filepath";}
       {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "split";}
-      {n = "yi";  v = "0.6.5.0";}
+      {n = "yi";  v = "0.6.6.0";}
     ];
   };
-  sha256 = "0gf6iyh3ikph3rj491f3x95f5jf46f17pfgd31fwxnjiiq6d3kvn";
+  sha256 = "04z1ax7i6x7d4aczwrwkss0b6685z8dfg9in0k2fyh87ni6b91p0";
   tsdeps = [];
 }
 {
@@ -26341,7 +26820,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "ncurses";  version = "0.2.1";  edeps = [];
+  name = "ncurses";  version = "0.2.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -26352,7 +26831,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "0.2";  n = "transformers";}
     ];
   };
-  sha256 = "16cx4a2zr8irsp93rb5d4xxm4ky8slfw93z0j6p0rrgfsdhx7sp2";
+  sha256 = "0j001jz871h6yai0z03amf284bd8jkawz4cm9fjqmpiqk8k7xdca";
   tsdeps = [];
 }
 {
@@ -26762,7 +27241,22 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "thumbnail";  version = "0.5";  edeps = [];
+  name = "natural-sort";  version = "0.1.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4.0";};  i2 = {lt = "5.0";};  n = "base";}
+      {i1 = {gte = "3.0";};  i2 = {lt = "4.0";};  n = "parsec";}
+      {n = "text";}  {n = "bytestring";}
+    ];
+  };
+  sha256 = "0l3bkbqzrlpdhzazqqlx71ah0m13ypa0981qvw3sn9q8d0sbfwkv";
+  tsdeps = [];
+}
+{
+  name = "thumbnail";  version = "0.6";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -26773,7 +27267,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
     ];
   };
-  sha256 = "00pd6rxq9lgv54mvb1bmqirn5ffmv7hy6yqm75kkjbzvzp5jrwfq";
+  sha256 = "18cphyw10cmhhm0ng59fqq03k8vslxk86h2gqv29p0xyk5yywb9s";
   tsdeps = [];
 }
 {
@@ -27441,7 +27935,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "diagrams-lib";  version = "0.5";  edeps = [];
+  name = "diagrams-lib";  version = "0.5.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -27458,12 +27952,12 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
       {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "NumInstances";}
       {i1 = {gte = "2.3.2";};  i2 = {lt = "2.4";};  n = "colour";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "data-default";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.6";};  n = "data-default";}
       {i1 = {gte = "1.0.1.2";};  i2 = {lt = "1.2";};  n = "pretty";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "newtype";}
     ];
   };
-  sha256 = "08rpn80yh9x8y8dvvryfxjbwrjka95q0sykk9vxsy3fmylvaf5x5";
+  sha256 = "0spfsllr2z064cxkdqcij02f0ikxxmll2dqj7rfikp4738wj21dy";
   tsdeps = [];
 }
 {
@@ -27486,6 +27980,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "073fk9cxm1kh92alr51dgwps9wxc5w3470axc6q7w91sk5cskpxy";
+  tsdeps = [];
+}
+{
+  name = "cyclotomic";  version = "0.3.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4.2";};  i2 = {lt = "4.6";};  n = "base";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "containers";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "arithmoi";}
+    ];
+  };
+  sha256 = "13vx4x9i9k4axvml7cj0hvn4y1xagg67cpwlmfgjnqnlllrizafj";
   tsdeps = [];
 }
 {
@@ -28098,13 +28607,28 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "split-channel";  version = "0.1.2.0";  edeps = [];
+  name = "split-channel";  version = "0.1.2.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = [{i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}];
   };
-  sha256 = "0hii3kw7rqh0yrg4v4jjbi0gyfs175qclpr3596025ddknh87zvv";
+  sha256 = "0s6wg122wa21lj4h7qgj35j7j8xcb4d6fsm71vz8r3qd0vn5iv0s";
+  tsdeps = [];
+}
+{
+  name = "simple-actors";  version = "0.3.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}
+      {gte = "0.4.0";  n = "chan-split";}  {gte = "2";  n = "mtl";}
+      {gte = "0.3";  n = "transformers";}  {n = "contravariant";}
+    ];
+  };
+  sha256 = "1kkvq0chmg8w1nv7i7aq3kja83604kr2jc4hpwf36shcaz0jcqsz";
   tsdeps = [];
 }
 {
@@ -28184,7 +28708,51 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "network-transport-tcp";  version = "0.2.0.1";  edeps = [];
+  name = "yesod-test";  version = "0.3.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "attoparsec";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "persistent";}
+      {
+        i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
+      }
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai-test";}
+      {i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "network";}
+      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "http-types";}
+      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "HUnit";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "hspec";}
+      {gte = "0.9";  n = "bytestring";}
+      {gte = "0.2";  n = "case-insensitive";}  {n = "text";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "xml-conduit";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "xml-types";}
+      {n = "containers";}
+      {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "html-conduit";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
+      {
+        i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
+      }
+      {n = "pool-conduit";}  {n = "monad-control";}
+    ];
+  };
+  sha256 = "194m4va6am2fmnsvs60jclym6bvjmwp35nyv3srbdnqwg3r983h4";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {n = "base";}  {n = "yesod-test";}  {n = "hspec";}  {n = "HUnit";}
+       {n = "xml-conduit";}  {n = "bytestring";}  {n = "containers";}
+       {n = "html-conduit";}
+     ];
+   }];
+}
+{
+  name = "network-transport-tcp";  version = "0.2.0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -28195,12 +28763,12 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "network-transport";
       }
       {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "data-accessor";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "containers";}
+      {i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "bytestring";}
       {i1 = {gte = "2.3";};  i2 = {lt = "2.4";};  n = "network";}
     ];
   };
-  sha256 = "1ha5xkfc8715p4ybz2fs3bicg1a4vcscnrcixrqrr998b3pzaqvl";
+  sha256 = "020nkb2ndw2bz3kc2zb4mddrrwac45alnmdvgiv2xmbhn88w0y86";
   tsdeps = 
   [{
      cdeps = [];
@@ -28211,8 +28779,8 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
          i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "network-transport";
        }
        {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "data-accessor";}
-       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
-       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
+       {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "containers";}
+       {i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "bytestring";}
        {i1 = {gte = "2.3";};  i2 = {lt = "2.4";};  n = "network";}
        {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "random";}
        {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "ansi-terminal";}
@@ -28262,7 +28830,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "network-transport";  version = "0.2.0";  edeps = [];
+  name = "network-transport";  version = "0.2.0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -28270,11 +28838,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "binary";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
+      {i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "bytestring";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
     ];
   };
-  sha256 = "1lsxhx6igz30sw0f32wpjj4k28x23gw2cnj4ihsimwv07pqybg98";
+  sha256 = "1pipykqwbjmbkgkmk0ss2pvfp72rkxwmz49d1j5xi8b0rlfgw05c";
   tsdeps = [];
 }
 {
@@ -28377,7 +28945,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "Etage";  version = "0.1.9";  edeps = [];
+  name = "Etage";  version = "0.1.10";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -28393,7 +28961,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "7";  n = "ghc";}
     ];
   };
-  sha256 = "1lkr2aw4xv266xyjshmwpparbai31kd0x9iqghrz0zvza526k3d4";
+  sha256 = "05cr11gs7l45ljj7w4hqwlsa93k8qbqrkbyix9iwqsv58ky8qk0p";
   tsdeps = [];
 }
 {
@@ -28505,6 +29073,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "plist";  version = "0.0.3";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}
+      {n = "dataenc";}
+      {i1 = {gte = "9";};  i2 = {lt = "10";};  n = "hxt";}
+    ];
+  };
+  sha256 = "1zszb41zbb8qiqmfw5fsi0f00vb8dcq0dxwlwd9izzx8pyb5b533";
+  tsdeps = [];
+}
+{
   name = "text-json-qq";  version = "0.4.1";  edeps = [];
   ldeps = 
   {
@@ -28588,21 +29171,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "sodium";  version = "0.5.0.1";  edeps = [];
+  name = "sodium";  version = "0.5.0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {i1 = {gte = "4.3.0.0";};  i2 = {lt = "4.6.0.0";};  n = "base";}
+      {i1 = {gte = "4.3.0.0";};  i2 = {lt = "4.7.0.0";};  n = "base";}
       {
-        i1 = {gte = "0.4.0.0";};  i2 = {lt = "0.5.0.0";};
+        i1 = {gte = "0.4.0.0";};  i2 = {lt = "0.6.0.0";};
         n = "containers";
       }
       {i1 = {gte = "2.0.0.0";};  i2 = {lt = "2.2.0.0";};  n = "mtl";}
     ];
   };
-  sha256 = "125zlw5nviz8kkcwbn14jqai5rr9qfbi3mwbm2h2ipf3g4qaka1b";
+  sha256 = "12swf8plv5ryiq83dkam70ha6gs7r5skw1ahd1lpdgzadi6wkzg1";
   tsdeps = [];
 }
 {
@@ -28855,7 +29438,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "constraints";  version = "0.3.1";  edeps = [];
+  name = "constraints";  version = "0.3.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -28866,11 +29449,30 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "ghc-prim";}
     ];
   };
-  sha256 = "1d195hhi7a243p00z2l6m9frhcmqn14982m0b4a2qvdfw12fpihv";
+  sha256 = "1fmjl6dh2iswvmq8r3izplp6zg9m8yq1c4rj0zpqjbv2iqsi4kl1";
   tsdeps = [];
 }
 {
-  name = "distributed-process";  version = "0.2.1";  edeps = [];
+  name = "free-functors";  version = "0.1.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4.4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.3.2";};  i2 = {lt = "0.4";};  n = "constraints";}
+      {
+        i1 = {gte = "0.2.0.0";};  i2 = {lt = "0.4";};  n = "transformers";
+      }
+      {i1 = {gte = "3.0";};  i2 = {lt = "3.1";};  n = "comonad";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "void";}
+    ];
+  };
+  sha256 = "0zp9z69w807pws0pjs0g1jzq191m67gnd0l944cn6rhi72kdrlvz";
+  tsdeps = [];
+}
+{
+  name = "distributed-process";  version = "0.2.3.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -28885,10 +29487,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
       {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "data-accessor";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
+      {i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "bytestring";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "containers";}
       {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "old-locale";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "time";}
+      {i1 = {gte = "1.2";};  i2 = {lt = "1.5";};  n = "time";}
       {
         i1 = {gte = "2.6";};  i2 = {lt = "2.8";};  n = "template-haskell";
       }
@@ -28896,7 +29498,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "ghc-prim";}
     ];
   };
-  sha256 = "0j41pbchs9xrcf70kq29n06va6m0j1gdj8z2ffyygmz2sisv55nd";
+  sha256 = "0y4dirx49p85098p4hl23991lzl3b2b4pwgici6xkxrdxqj1dg8j";
   tsdeps = 
   [
     {
@@ -28916,10 +29518,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
         {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
         {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "data-accessor";}
-        {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
-        {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
+        {i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "bytestring";}
+        {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "containers";}
         {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "old-locale";}
-        {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "time";}
+        {i1 = {gte = "1.2";};  i2 = {lt = "1.5";};  n = "time";}
         {
           i1 = {gte = "2.6";};  i2 = {lt = "2.8";};  n = "template-haskell";
         }
@@ -28945,10 +29547,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
         {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
         {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "data-accessor";}
-        {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
-        {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
+        {i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "bytestring";}
+        {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "containers";}
         {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "old-locale";}
-        {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "time";}
+        {i1 = {gte = "1.2";};  i2 = {lt = "1.5";};  n = "time";}
         {
           i1 = {gte = "2.6";};  i2 = {lt = "2.8";};  n = "template-haskell";
         }
@@ -28960,7 +29562,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   ];
 }
 {
-  name = "distributed-process-simplelocalnet";  version = "0.2.0.1";
+  name = "distributed-process-simplelocalnet";  version = "0.2.0.3";
   edeps = [];
   ldeps = 
   {
@@ -28968,14 +29570,14 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = 
     [
       {i1 = {gte = "4.4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
+      {i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "bytestring";}
       {i1 = {gte = "2.3";};  i2 = {lt = "2.4";};  n = "network";}
       {
         i1 = {gte = "0.0";};  i2 = {lt = "0.1";};  n = "network-multicast";
       }
       {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "data-accessor";}
       {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "binary";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "containers";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
       {
         i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "network-transport";
@@ -28990,21 +29592,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
     ];
   };
-  sha256 = "17w54wyf4wqyxv74vjj8z9imfi3zwjf8jygkffp5gb17398r1qm5";
+  sha256 = "015fby1n4d6rgcl7f8gp9a65v5ypld9gl5v6r4jwbs3hsfxj1908";
   tsdeps = 
   [{
      cdeps = [];
      deps = 
      [
        {i1 = {gte = "4.4";};  i2 = {lt = "5";};  n = "base";}
-       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
+       {i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "bytestring";}
        {i1 = {gte = "2.3";};  i2 = {lt = "2.4";};  n = "network";}
        {
          i1 = {gte = "0.0";};  i2 = {lt = "0.1";};  n = "network-multicast";
        }
        {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "data-accessor";}
        {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "binary";}
-       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
+       {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "containers";}
        {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
        {
          i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "network-transport";
@@ -29092,13 +29694,27 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "kure";  version = "2.2.0";  edeps = [];
+  name = "kure";  version = "2.4.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = [{i1 = {gte = "4.5";};  i2 = {lt = "5";};  n = "base";}];
   };
-  sha256 = "1xj9731lgrvkbq9lgaaj1g5h25rc3bfkdlid2jywr14qm82li2m6";
+  sha256 = "0s5xwb91zr2zzadszxybbl8m8ygh546q43s0rnwhjp62vmvw28b2";
+  tsdeps = [];
+}
+{
+  name = "FPretty";  version = "1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4.5";};  i2 = {lt = "5";};  n = "base";}
+      {gte = "0.4";  n = "containers";}
+    ];
+  };
+  sha256 = "1lc31mid1a9pqb9py9f6nvzvlixhngpficczvhpdxlws3fn9drga";
   tsdeps = [];
 }
 {
@@ -29114,6 +29730,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1khviyvd5jxzn1ybak111w01lcb7100h6cvdww2n03hn5vw82278";
+  tsdeps = [];
+}
+{
+  name = "Contract";  version = "0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4.5";};  i2 = {lt = "5";};  n = "base";}
+      {gte = "2.7";  n = "template-haskell";}
+    ];
+  };
+  sha256 = "027dv53jrfk46dmiidnnrrdvhyin60i862znp414213w72yjrbhh";
   tsdeps = [];
 }
 {
@@ -29147,22 +29777,44 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "cmdtheline";  version = "0.1.1";  edeps = [];
+  name = "cmdtheline";  version = "0.2.1.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {i1 = {gte = "4.5";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "containers";}
       {i1 = {gte = "3.1";};  i2 = {lt = "3.2";};  n = "parsec";}
       {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "pretty";}
       {gte = "1.1";  n = "process";}  {gte = "1.1";  n = "directory";}
-      {gte = "0.4";  n = "data-default";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "transformers";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "filepath";}
     ];
   };
-  sha256 = "0pd9398k8pm9p7wrl1zzv2jkibz7sl3fymf69ss43d9lgssig9v6";
-  tsdeps = [];
+  sha256 = "029cp7ywdqidyzgwpbywphivsfwv87hfls8xnw0rmhh582n5pkcw";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+       {i1 = {gte = "1.2.4";};  i2 = {lt = "2";};  n = "HUnit";}
+       {
+         i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "test-framework";
+       }
+       {
+         i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
+         n = "test-framework-hunit";
+       }
+       {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "containers";}
+       {i1 = {gte = "3.1";};  i2 = {lt = "3.2";};  n = "parsec";}
+       {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "pretty";}
+       {gte = "1.1";  n = "process";}  {gte = "1.1";  n = "directory";}
+       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "transformers";}
+       {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "filepath";}
+     ];
+   }];
 }
 {
   name = "hails";  version = "0.1.1";  edeps = [];
@@ -29330,7 +29982,22 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "testing-feat";  version = "0.2";  edeps = [];
+  name = "tagshare";  version = "0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4.5";};  i2 = {lte = "5";};  n = "base";}
+      {i1 = {gte = "1";};  i2 = {lt = "3";};  n = "mtl";}
+      {lt = "1";  n = "containers";}
+    ];
+  };
+  sha256 = "1q3chp1rmwmxa8rxv7548wsvbqbng6grrnv1587p08385sp4ncfj";
+  tsdeps = [];
+}
+{
+  name = "testing-feat";  version = "0.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -29338,18 +30005,14 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {gte = "4.5";};  i2 = {lte = "5";};  n = "base";}
       {
-        i1 = {gte = "2.4";};  i2 = {lt = "2.8";};  n = "template-haskell";
+        i1 = {gte = "2.5";};  i2 = {lt = "2.8";};  n = "template-haskell";
       }
       {i1 = {gte = "1";};  i2 = {lt = "3";};  n = "mtl";}
       {i1 = {gt = "2";};  i2 = {lt = "3";};  n = "QuickCheck";}
-      {lt = "1";  n = "containers";}
-      {
-        i1 = {gte = "0.4.2";};  i2 = {lt = "0.5";};
-        n = "data-memocombinators";
-      }
+      {lt = "0.1";  n = "tagshare";}
     ];
   };
-  sha256 = "10v6pf6wd9myh82a7fz5x8ydmz98vi0h2kr18c4wmr10p1zyzlx6";
+  sha256 = "0rac2lby8kgrlbr7mkgwcvhjaga7zjxklb9lgifrfqk82v5x7354";
   tsdeps = [];
 }
 {
@@ -30145,7 +30808,22 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "timers";  version = "0.1.0.1";  edeps = [];
+  name = "metadata";  version = "0.1.0.3";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "4.6";};  i2 = {gte = "4.5";};  n = "base";}
+      {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
+      {i1 = {lt = "1.5";};  i2 = {gte = "1.4";};  n = "time";}
+    ];
+  };
+  sha256 = "0b8lgh57mybjpvvnvjpp3sdsjv72fmal3djf495b4mks6f5klhdh";
+  tsdeps = [];
+}
+{
+  name = "timers";  version = "0.2.0.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -30160,7 +30838,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "suspend";}
     ];
   };
-  sha256 = "0gn88vpfvsgq9bzlf07r5c2wn66a0szrjjgvidn44h3jqhzix4d1";
+  sha256 = "0w4jr5lvv5ah4n645qi09s5znjwgs6q77h1vb0nyyrxr5jbszqv6";
   tsdeps = [];
 }
 {
@@ -30178,6 +30856,34 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "13rvpjgyk1w3k80vyslry1s695bl5q8i1j89yr79qd1j653bnncd";
+  tsdeps = [];
+}
+{
+  name = "records-th";  version = "0.1.1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "4.6";};  i2 = {gte = "4.5";};  n = "base";}
+      {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "records";}
+      {
+        i1 = {lt = "2.8";};  i2 = {gte = "2.7";};  n = "template-haskell";
+      }
+      {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "aeson";}
+      {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
+      {i1 = {lt = "0.1";};  i2 = {gte = "0.0";};  n = "kinds";}
+      {
+        i1 = {lt = "0.3";};  i2 = {gte = "0.2";};  n = "type-functions";
+      }
+      {
+        i1 = {lt = "0.3";};  i2 = {gte = "0.2";};
+        n = "unordered-containers";
+      }
+      {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "data-default";}
+    ];
+  };
+  sha256 = "1m6v52kmh1clcgah07jjjxvsfpbp6z8lkdd78wap0v3mqiv8mdcg";
   tsdeps = [];
 }
 {
@@ -30229,6 +30935,24 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1ldxwvp3dqirnvda1y234d0hr5j8xnf63pfab51fzn986nlzlprw";
+  tsdeps = [];
+}
+{
+  name = "classy-parallel";  version = "0.1.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "4.6";};  i2 = {gte = "4.5";};  n = "base";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "transformers";}
+      {i1 = {lt = "3.3";};  i2 = {gte = "3.2";};  n = "parallel";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "resourcet";}
+      {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "lifted-base";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "monad-control";}
+    ];
+  };
+  sha256 = "0vfik37g2fwzc4p343hag5aidvi77396vfhfdx1207gahbzqf21v";
   tsdeps = [];
 }
 {
@@ -30285,6 +31009,70 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1k72v17cz2fchxsdmwby3yl9fwxphvbifvbv0qf137fk3k7ahhpw";
+  tsdeps = [];
+}
+{
+  name = "wai-lite";  version = "0.1.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "4.6";};  i2 = {gte = "4.5";};  n = "base";}
+      {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "conduit";}
+      {i1 = {lt = "1.4";};  i2 = {gte = "1.3";};  n = "wai";}
+      {i1 = {lt = "1.4";};  i2 = {gte = "1.3";};  n = "wai-extra";}
+      {n = "http-types";  v = "0.7.1";}
+      {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "transformers";}
+      {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
+      {i1 = {lt = "2.2";};  i2 = {gte = "2.1";};  n = "mtl";}
+    ];
+  };
+  sha256 = "1h16bm4a4jvqfgjhhprjd7xhd66avwdccm82y09pkvwl9921p2sh";
+  tsdeps = [];
+}
+{
+  name = "affine-invariant-ensemble-mcmc";  version = "0.1.0.0";
+  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "4.6";};  i2 = {gte = "4.5";};  n = "base";}
+      {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "containers";}
+      {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "vector";}
+      {i1 = {lt = "0.13";};  i2 = {gte = "0.12";};  n = "mwc-random";}
+      {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "primitive";}
+      {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "split";}
+    ];
+  };
+  sha256 = "1bvxi07y90w6qyc8ynh6rr9vqp9nb12m1p3f0pgan69gig39wq4l";
+  tsdeps = [];
+}
+{
+  name = "aeson-smart";  version = "0.1.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "4.6";};  i2 = {gte = "4.5";};  n = "base";}
+      {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "aeson";}
+      {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "data-default";}
+      {
+        i1 = {lt = "0.3";};  i2 = {gte = "0.2";};
+        n = "unordered-containers";
+      }
+      {
+        i1 = {lt = "2.8";};  i2 = {gte = "2.7";};  n = "template-haskell";
+      }
+      {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
+      {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "vector";}
+    ];
+  };
+  sha256 = "0z3zxx48rd7v4vidw3y77aym24h1f41yb0drgg12k2jzyi0irvqa";
   tsdeps = [];
 }
 {
@@ -30350,6 +31138,30 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "yesod-test-json";  version = "0.1.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "4.6";};  i2 = {gte = "4.5";};  n = "base";}
+      {i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "HUnit";}
+      {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
+      {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
+      {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "aeson";}
+      {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "http-types";}
+      {i1 = {lt = "1.4";};  i2 = {gte = "1.3";};  n = "hspec";}
+      {i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "wai";}
+      {i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "wai-test";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "transformers";}
+      {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "yesod-default";}
+      {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "conduit";}
+    ];
+  };
+  sha256 = "1adqnmk35xiv54xr5arqa1la83xkxnbyp8f6304ya8pj92gixn7w";
+  tsdeps = [];
+}
+{
   name = "hotswap";  version = "0.1.9.13";  edeps = [];
   ldeps = 
   {
@@ -30364,7 +31176,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "not-gloss";  version = "0.4.1";  edeps = [];
+  name = "not-gloss";  version = "0.4.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -30380,7 +31192,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "1.7.4";};  i2 = {lt = "1.7.5";};  n = "gloss";}
     ];
   };
-  sha256 = "1l39iakv4amnf67lmsv2i7ldcxmk5r29a3ki325f9h5wv08hvrlb";
+  sha256 = "0fi1436fnkcfxsm878145rjkzqyks3q95wbi7faxnl4nb3klm6hp";
   tsdeps = [];
 }
 {
@@ -30436,6 +31248,25 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "03rs6l13r4yhly3p0pvxzx2v1z6c0gngpcalskk1yvfv4d94mrwn";
+  tsdeps = [];
+}
+{
+  name = "dynamic-linker-template";  version = "0.1.0.0";
+  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "4.6";};  i2 = {gte = "4.5";};  n = "base";}
+      {
+        i1 = {lt = "2.8";};  i2 = {gte = "2.7";};  n = "template-haskell";
+      }
+      {i1 = {lt = "2.6";};  i2 = {gte = "2.5";};  n = "unix";}
+      {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "containers";}
+    ];
+  };
+  sha256 = "18zqwmvhggm385qnz4qdi3fakpssvwhi0as1wlr1xf80zcvlp3nf";
   tsdeps = [];
 }
 {
@@ -30559,6 +31390,35 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {n = "bytestring";}
      ];
    }];
+}
+{
+  name = "really-simple-xml-parser";  version = "0.4.0.0";
+  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "4.6";};  i2 = {gte = "4.5";};  n = "base";}
+      {n = "parsec";}
+    ];
+  };
+  sha256 = "1qmrfisnvm9a25a9ssg4r466yna69vzbwn7s7f4zql28cndg3syy";
+  tsdeps = [];
+}
+{
+  name = "attoparsec-csv";  version = "0.1.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "4.6";};  i2 = {gte = "4.5";};  n = "base";}
+      {n = "text";}  {n = "attoparsec";}
+    ];
+  };
+  sha256 = "0vaicswn21mmz6mxfzr7mnj07ihakxmh2kid7n45hg0wl4243aqx";
+  tsdeps = [];
 }
 {
   name = "ArrayRef";  version = "0.1.3.1";  edeps = [];
@@ -30898,6 +31758,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
+  name = "wai-dispatch";  version = "0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {gte = "0.7";  n = "text";}  {n = "yesod-routes";}  {n = "wai";}
+    ];
+  };
+  sha256 = "1qyarjbpnngb2x272gkmvrhy3f8kqygxj4nvi6giz09rdx9pfrza";
+  tsdeps = [];
+}
+{
   name = "BerkeleyDBXML";  version = "0.7.2";  edeps = [];
   ldeps = 
   {
@@ -30984,6 +31858,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "Command";  version = "0.0.7";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {gte = "1.0";  n = "process";}  {gte = "1.1";  n = "directory";}
+    ];
+  };
+  sha256 = "043dwvjkc1m2cz0rgiib7gv19ds1vn4cmf27lyw68nmc0lcm2v3d";
+  tflags = ["small_base"];  tsdeps = [];
+}
+{
   name = "MissingPy";  version = "0.10.5";  edeps = [];
   ldeps = 
   {
@@ -31040,6 +31928,52 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "089l8n1yjcf6sypr76r8p0djwpcqaa5xdk1d0m2k9piig9fnzr40";
+  tsdeps = [];
+}
+{
+  name = "Pup-Events-PQueue";  version = "1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {gte = "2.3";  n = "stm";}
+    ];
+  };
+  sha256 = "0sngiqxzj5kif452s2hn3x1kv257815c5v19dp4wqazbyc373iwx";
+  tsdeps = [];
+}
+{
+  name = "Pup-Events-Client";  version = "1.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {gte = "2.3";  n = "stm";}  {gte = "3.1.1";  n = "parsec";}
+      {n = "Pup-Events-PQueue";}  {n = "network";}
+      {n = "transformers";}
+    ];
+  };
+  sha256 = "1ppqyf6r55955y0a1gdmxfijf0xgqsy53b922p8cafn5p5pj01gn";
+  tsdeps = [];
+}
+{
+  name = "Pup-Events-Server";  version = "1.1.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {gte = "2.3";  n = "stm";}  {gte = "3.1.1";  n = "parsec";}
+      {n = "Pup-Events-PQueue";}  {n = "network";}
+      {n = "transformers";}
+    ];
+  };
+  sha256 = "1py00vsg71lzx9m5n43jyan8j9ivg77nmlf3vhw4akpa48z1w33w";
   tsdeps = [];
 }
 {
@@ -31215,6 +32149,41 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "optparse-applicative";  version = "0.4.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
+      {i1 = {lt = "1.2";};  i2 = {gte = "1.1";};  n = "process";}
+    ];
+  };
+  sha256 = "01spksrxcbq061lnz0kwcj40jrygpff9cjiinfsgavvr5gmb9gjp";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+       {i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "HUnit";}
+       {n = "optparse-applicative";}
+       {
+         i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "test-framework";
+       }
+       {
+         i1 = {lt = "0.3";};  i2 = {gte = "0.2";};
+         n = "test-framework-hunit";
+       }
+       {
+         i1 = {lt = "0.1";};  i2 = {gte = "0.0";};
+         n = "test-framework-th-prime";
+       }
+     ];
+   }];
+}
+{
   name = "stm-conduit";  version = "0.4.2";  edeps = [];
   ldeps = 
   {
@@ -31338,6 +32307,29 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1zb0lba3m9pq2b55pc7gbn9prqrsf8ygs1g3ii0dxa9bcy2v7aym";
+  tsdeps = [];
+}
+{
+  name = "hcron";  version = "0.0.0.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "containers";}
+      {i1 = {gte = "1.1";};  i2 = {lte = "1.3";};  n = "time";}
+      {i1 = {gte = "1.0";};  i2 = {lte = "1.2";};  n = "directory";}
+      {i1 = {gte = "2.0";};  i2 = {lt = "3.0";};  n = "mtl";}
+      {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "old-locale";}
+      {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "process";}
+      {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "random";}
+      {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "pretty";}
+      {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
+      {i1 = {lt = "2.3";};  i2 = {gte = "2.2";};  n = "stm";}
+    ];
+  };
+  sha256 = "0av4i2359n0i635arhavhx4wvvx004c8jww4pmbs38hi3p242x1j";
   tsdeps = [];
 }
 {
@@ -31619,6 +32611,31 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "snaplet-typed-sessions";  version = "0.5";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {i1 = {gte = "0.9.1";};  i2 = {lt = "0.10";};  n = "bytestring";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "cereal";}
+      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "clientsession";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "containers";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "hashtables";}
+      {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "PSQueue";}
+      {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "random";}
+      {i1 = {gte = "0.94";};  i2 = {lt = "0.96";};  n = "regex-posix";}
+      {i1 = {gte = "0.6";};  i2 = {lt = "0.10";};  n = "snap";}
+      {i1 = {gte = "0.6";};  i2 = {lt = "0.10";};  n = "snap-core";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.5";};  n = "time";}
+    ];
+  };
+  sha256 = "0gc6vnxsbwgciv281p6jff8ylcni4qpkmak2zqz710in86grjbgw";
+  tsdeps = [];
+}
+{
   name = "mysnapsession";  version = "0.4.1";  edeps = [];
   ldeps = 
   {
@@ -31657,7 +32674,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "irc";  version = "0.5.0.0";  edeps = [];
+  name = "irc";  version = "0.5.1.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -31667,7 +32684,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "2.1";};  i2 = {lt = "3.2";};  n = "parsec";}
     ];
   };
-  sha256 = "0bid9iqgrppkl7hl1cd2m1pvvk5qva53fqfl0v5ld52j904c50sr";
+  sha256 = "1xkgqcjxlxqg60qlv26ypmvf9x288sjz1n47rb7zfvjhdimws8gj";
   tsdeps = [];
 }
 {
@@ -31947,7 +32964,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "msgpack-rpc";  version = "0.7.1.2";  edeps = [];
+  name = "msgpack-rpc";  version = "0.8.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -31958,14 +32975,46 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
       {i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "network";}
       {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "random";}
-      {gte = "2.0";  n = "mtl";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "conduit";}
-      {n = "attoparsec-conduit";}
-      {i1 = {gte = "1.1";};  i2 = {lt = "1.4";};  n = "deepseq";}
+      {gte = "2.0";  n = "mtl";}  {gte = "0.3";  n = "monad-control";}
+      {gte = "0.5";  n = "conduit";}
+      {gte = "0.5";  n = "network-conduit";}
+      {gte = "0.5";  n = "attoparsec-conduit";}
       {i1 = {lt = "0.8";};  i2 = {gte = "0.7";};  n = "msgpack";}
     ];
   };
-  sha256 = "1bzn06w47pw98fl454701jw69awhpmaxar5dylarra27lb6jfpjw";
+  sha256 = "0z9glbql7c51n1rrf8pnrzcg37bav8ipnnkxxbwc74rc93rwy99d";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {n = "base";}  {n = "mtl";}  {n = "network";}
+       {gte = "2.0";  n = "async";}  {gte = "1.3";  n = "hspec";}
+       {n = "msgpack-rpc";}
+     ];
+   }];
+}
+{
+  name = "matchers";  version = "0.2.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
+      {
+        i1 = {lt = "0.2";};  i2 = {gte = "0.1";};
+        n = "explicit-exception";
+      }
+      {i1 = {lt = "0.94";};  i2 = {gte = "0.93";};  n = "regex-base";}
+      {i1 = {lt = "1.2";};  i2 = {gte = "1.1";};  n = "regex-tdfa";}
+      {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "utf8-string";}
+      {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "pcre-light";}
+    ];
+  };
+  sha256 = "1bbwcapy0bf1qabqmfkdivpvmb95kd0nmx4v0cbvlbh8lkpm6ksl";
   tsdeps = [];
 }
 {
@@ -32034,7 +33083,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "dropbox-sdk";  version = "0.2.0";  edeps = [];
+  name = "dropbox-sdk";  version = "0.3.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -32046,23 +33095,29 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "utf8-string";}
       {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "urlencoded";}
       {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "json";}
-      {i1 = {lt = "0.3";};  i2 = {gte = "0.2";};  n = "transformers";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "transformers";}
       {i1 = {lt = "1.5";};  i2 = {gte = "1.4";};  n = "time";}
       {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "old-locale";}
       {i1 = {lt = "2.4";};  i2 = {gte = "2.3";};  n = "network";}
-      {i1 = {lt = "0.1";};  i2 = {gte = "0.0";};  n = "conduit";}
+      {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "conduit";}
+      {i1 = {lt = "0.3.4";};  i2 = {gte = "0.3.3";};  n = "resourcet";}
       {
         i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "case-insensitive";
       }
-      {i1 = {gte = "0.6.5";};  i2 = {lt = "0.7";};  n = "http-types";}
-      {i1 = {lt = "1.2";};  i2 = {gte = "1.1";};  n = "http-conduit";}
+      {i1 = {lt = "0.8";};  i2 = {gte = "0.7";};  n = "http-types";}
+      {i1 = {lt = "1.6";};  i2 = {gte = "1.5";};  n = "http-conduit";}
+      {
+        i1 = {lt = "0.3.2";};  i2 = {gte = "0.3.1";};  n = "monad-control";
+      }
       {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "blaze-builder";}
-      {i1 = {lt = "0.9";};  i2 = {gte = "0.8";};  n = "tls";}
+      {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "tls";}
       {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "tls-extra";}
       {i1 = {lt = "2";};  i2 = {gte = "1";};  n = "certificate";}
+      {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "pem";}
+      {n = "template-haskell";}
     ];
   };
-  sha256 = "0ivm1ly5cwsgpi3qrpx5b165qy8vgcvm56gjh5msgzgzl344afb7";
+  sha256 = "1s0aki1ayjickkkwmn1mc38gnd257v24wy6yj9p05qm2g8gm7xy2";
   tsdeps = [];
 }
 {
@@ -32820,6 +33875,29 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "gpx-conduit";  version = "0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "xml-conduit";}
+      {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "conduit";}
+      {i1 = {lt = "0.11";};  i2 = {gte = "0.10";};  n = "attoparsec";}
+      {i1 = {lt = "1.5";};  i2 = {gte = "1.4";};  n = "time";}
+      {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "xml-types";}
+      {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "old-locale";}
+      {i1 = {lt = "1.4";};  i2 = {gte = "1.3";};  n = "filepath";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "monad-control";}
+      {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "void";}
+    ];
+  };
+  sha256 = "14rsl1hfz7nac8kynv3h3rfwi0bfh8pr956gwiaxnim4vzw2jbny";
+  tsdeps = [];
+}
+{
   name = "SessionLogger";  version = "0.3.0.0";  edeps = [];
   ldeps = 
   {
@@ -32950,7 +34028,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "tamarin-prover-term";  version = "0.6.0.0";  edeps = [];
+  name = "tamarin-prover-term";  version = "0.8.0.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -32973,16 +34051,16 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {lt = "2.6";};  i2 = {gte = "2.5";};  n = "derive";}
       {i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "HUnit";}
       {
-        i1 = {lt = "0.7";};  i2 = {gte = "0.6";};
+        i1 = {lt = "0.9";};  i2 = {gte = "0.8";};
         n = "tamarin-prover-utils";
       }
     ];
   };
-  sha256 = "0dwjivrkiangqikc4j5b1g7wfhx0m732iz1ym87xqyzjdbcdzc2c";
+  sha256 = "0hpki6k8i5a74mkwz5hibircbxi9fl3fz8d4pbl4qcpb409f3xjb";
   tsdeps = [];
 }
 {
-  name = "tamarin-prover-utils";  version = "0.6.0.0";  edeps = [];
+  name = "tamarin-prover-utils";  version = "0.8.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -33010,7 +34088,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "dlist";}
     ];
   };
-  sha256 = "0sf06kism0vkcg3g54mk0hdyp28hn4spkydy06jbynv0kgp0sapb";
+  sha256 = "1vdsl79583vwx5r2w9pjixqrn7li8r2q1z165c97mkm87ihyzvzd";
   tsdeps = [];
 }
 {
@@ -33062,45 +34140,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   };
   sha256 = "0qyzwpvajvqywbnfhj3vzb5xl4wjjywyqr4szywd8qwb7kly29w6";
   tsdeps = [];
-}
-{
-  name = "optparse-applicative";  version = "0.1.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
-      {i1 = {lt = "2.11";};  i2 = {gte = "2.10";};  n = "data-lens";}
-      {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "data-default";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
-    ];
-  };
-  sha256 = "08ffrdknwsh8f0bfnab29y52smbagxsnl9i0mfjvrcgl80npnvkh";
-  tsdeps = 
-  [{
-     cdeps = [];
-     deps = 
-     [
-       {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
-       {i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "HUnit";}
-       {
-         i1 = {lt = "0.2";};  i2 = {gte = "0.1";};
-         n = "optparse-applicative";
-       }
-       {
-         i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "test-framework";
-       }
-       {
-         i1 = {lt = "0.3";};  i2 = {gte = "0.2";};
-         n = "test-framework-hunit";
-       }
-       {
-         i1 = {lt = "0.1";};  i2 = {gte = "0.0";};
-         n = "test-framework-th-prime";
-       }
-     ];
-   }];
 }
 {
   name = "Clipboard";  version = "2.2.0.1";  edeps = [];
@@ -33652,7 +34691,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "persistent-protobuf";  version = "0.1.4";  edeps = [];
+  name = "persistent-protobuf";  version = "0.1.5";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -33660,12 +34699,12 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
       {n = "bytestring";}
-      {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "persistent";}
+      {i1 = {gte = "0.9.0";};  i2 = {lt = "1.1";};  n = "persistent";}
       {n = "protocol-buffers";}  {n = "protocol-buffers-descriptor";}
       {n = "template-haskell";}  {n = "text";}
     ];
   };
-  sha256 = "1gpy6nlg6bp7xvra49ycwzfd2ic0m8wq7c6si4nbn8c5apr7n7hs";
+  sha256 = "046dpasgv6bwcm17w0z9dz4bvaa622cdb8paj7j6accmsc4rvs9z";
   tsdeps = [];
 }
 {
@@ -33798,7 +34837,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "hastache";  version = "0.4.1";  edeps = [];
+  name = "hastache";  version = "0.4.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -33811,7 +34850,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "ieee754";}
     ];
   };
-  sha256 = "1d6d3bmmfx1jh38hhmvaq1ncdxlfjc0mc7jvbxqgr00dg73wfgdk";
+  sha256 = "1ad691qxnnx0a6ik0cjdzd8aw7z88p06zckbb3cb1r8pk6m0g7vi";
   tsdeps = [];
 }
 {
@@ -33839,6 +34878,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "fast-tagsoup";  version = "1.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {n = "bytestring";}  {n = "text";}  {n = "text-icu";}
+      {n = "tagsoup";}
+    ];
+  };
+  sha256 = "0w6kr2isppp0yz1g6vykmn9aaa4y4z905vrmcm5qqmnwrjnvg7wh";
+  tsdeps = [];
+}
+{
   name = "nme";  version = "0.2";  edeps = [];
   ldeps = 
   {
@@ -33851,6 +34905,34 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   };
   sha256 = "14qzc4af1pm1myjdfs7z4b1jxxj0gz9c4cl9qgpm06hjzvjjf8wm";
   tsdeps = [];
+}
+{
+  name = "openpgp";  version = "0.4";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {n = "bytestring";}  {n = "utf8-string";}  {n = "binary";}
+      {n = "zlib";}  {n = "bzlib";}
+    ];
+  };
+  sha256 = "0v1dq133x015af2n1zsl1g26pdcw25p3r1bm4bglmr5m8fizpwqc";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+       {n = "bytestring";}  {n = "utf8-string";}  {n = "binary";}
+       {n = "zlib";}  {n = "bzlib";}  {n = "HUnit";}
+       {gte = "2.4.1.1";  n = "QuickCheck";}
+       {n = "quickcheck-instances";}  {n = "test-framework";}
+       {n = "test-framework-hunit";}
+       {n = "test-framework-quickcheck2";}
+     ];
+   }];
 }
 {
   name = "git-date";  version = "0.2";  edeps = [];
@@ -34027,21 +35109,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "openpgp";  version = "0.3";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
-      {n = "containers";}  {n = "bytestring";}  {n = "utf8-string";}
-      {n = "binary";}  {n = "zlib";}  {n = "bzlib";}  {n = "Crypto";}
-    ];
-  };
-  sha256 = "0blfnci7cgsmaklxjfczc2d2rk16whzdbj6ci7vx5jmh5jwn79xq";
-  tsdeps = [];
-}
-{
   name = "PriorityChansConverger";  version = "0.1";  edeps = [];
   ldeps = 
   {
@@ -34120,21 +35187,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "06bknb2izwgxn4fpmqwz8f91zxicyb5zkilcghyandgcpkasslqs";
-  tsdeps = [];
-}
-{
-  name = "vacuum";  version = "1.0.0.2";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
-      {n = "ghc-prim";}  {n = "array";}  {n = "containers";}
-      {n = "pretty";}
-    ];
-  };
-  sha256 = "1amlzd89952fvw1sbajf9kv3f2s2i6xbqs1zjxw442achg465y7i";
   tsdeps = [];
 }
 {
@@ -34304,20 +35356,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "Command";  version = "0.0.4";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
-      {n = "process";}
-    ];
-  };
-  sha256 = "1mnwm68a34c1cs42flww3gx2swd2sv3dzh3yxm0yxr6gxn2qkw6d";
-  tflags = ["small_base"];  tsdeps = [];
-}
-{
   name = "io-memoize";  version = "1.0.0.0";  edeps = [];
   ldeps = 
   {
@@ -34382,6 +35420,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1jyj42xrja8ic3lajgrfmign9n2bdfkaplnlhzcifd5wf30qj6fa";
+  tsdeps = [];
+}
+{
+  name = "stm-sbchan";  version = "0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}  {n = "stm";}
+      {n = "stm-tlist";}
+    ];
+  };
+  sha256 = "0fz4vfbyr848b32vbdm3pjj9gwi7wj39l3vsqmdpjnbfwvkw0y0s";
   tsdeps = [];
 }
 {
@@ -34971,9 +36023,9 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "parsec1";  version = "1.0.0.4";  edeps = [];
+  name = "parsec1";  version = "1.0.0.5";  edeps = [];
   ldeps = {cdeps = [];  deps = [{lt = "5";  n = "base";}];};
-  sha256 = "0jvb9kwka7jcwc80dlf76aa0r0g2mnaqqyfdai4c6a850rp1wrmz";
+  sha256 = "1nrmq1ihyir49sppqxffccqcc2lc4sik8ffxdwa1agcia5izjs4d";
   tsdeps = [];
 }
 {
@@ -35200,7 +36252,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "timerep";  version = "1.0.0";  edeps = [];
+  name = "timerep";  version = "1.0.3";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -35210,7 +36262,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "old-locale";}
     ];
   };
-  sha256 = "17yplll0ya2inslk82q7shq3g8j4iarx25rx364ad48az5af46bp";
+  sha256 = "14lz8nzfy1j7snvifbwjkk1fjc8wy4jk67xk9n87r25v3cva3x0p";
   tsdeps = [];
 }
 {
@@ -35252,6 +36304,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "egison-quote";  version = "0.1.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {lt = "5";  n = "base";}  {gte = "2.0";  n = "mtl";}
+      {gte = "2.4.0";  n = "egison";}  {n = "parsec";}
+      {n = "template-haskell";}
+    ];
+  };
+  sha256 = "1272dch3m9a9hws1ns8hk3y72m9jn6fyv16bc53llijba5w2ps0n";
+  tsdeps = [];
+}
+{
   name = "checked";  version = "0.1.0.1";  edeps = [];
   ldeps = 
   {
@@ -35260,6 +36327,39 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [{lt = "5";  n = "base";}  {gte = "3.0.1.0";  n = "base";}];
   };
   sha256 = "00l04qxdid2pi885ixnyh91bsigsmk5rxb0jw6dl6j1mlcq27smd";
+  tsdeps = [];
+}
+{
+  name = "cse-ghc-plugin";  version = "0.1.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = [{lt = "5";  n = "base";}  {gte = "7.4";  n = "ghc";}];
+  };
+  sha256 = "123x10ircbj8lrsqapf6cb9b3ibjgp1q8l862a3i6i0ak7ash49f";
+  tsdeps = [];
+}
+{
+  name = "unroll-ghc-plugin";  version = "0.1.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = [{lt = "5";  n = "base";}  {gte = "7.4";  n = "ghc";}];
+  };
+  sha256 = "0n05777fqqpbgnh9jab04ayw1j1as4wkkbrjixi1288fhi44m87p";
+  tsdeps = [];
+}
+{
+  name = "strict-ghc-plugin";  version = "0.1.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {lt = "5";  n = "base";}  {gte = "7.4";  n = "ghc";}  {n = "syb";}
+    ];
+  };
+  sha256 = "0hx1zp99npwdp5w3q93xfidcw59lxskilmbqc80xi97d4w4h8jrb";
   tsdeps = [];
 }
 {
@@ -35382,7 +36482,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "quickcheck-instances";  version = "0.2.0";  edeps = [];
+  name = "quickcheck-instances";  version = "0.3.0";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -35391,14 +36491,14 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {lt = "5";  n = "base";}
       {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "array";}
       {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "containers";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.6";};  n = "containers";}
       {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "old-time";}
-      {i1 = {gte = "2.1";};  i2 = {lt = "2.5";};  n = "QuickCheck";}
+      {i1 = {gte = "2.1";};  i2 = {lt = "2.6";};  n = "QuickCheck";}
       {i1 = {gte = "0.7";};  i2 = {lt = "0.12";};  n = "text";}
       {i1 = {gte = "1.1";};  i2 = {lt = "1.5";};  n = "time";}
     ];
   };
-  sha256 = "1gvn0p32niv1ibs66k1na5v9mga8kbkzgn1qwp4ri501fcnn6v8w";
+  sha256 = "1b3gsk264z0b84frg2wgf16rdvlnsbksql8j8wzhmiw86rbv70q9";
   tsdeps = [];
 }
 {
@@ -35666,7 +36766,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "fclabels";  version = "1.1.3";  edeps = [];
+  name = "fclabels";  version = "1.1.4";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -35680,7 +36780,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
     ];
   };
-  sha256 = "1f8aav4gcpixmnnwcml0aqsqswb8fc0rp986nbyap22gmcw4hflx";
+  sha256 = "0b15nvnsxckw75q7dgrfxnnjc93ah140gi3s5wpb41q0fnvl9npz";
   tsdeps = [];
 }
 {
@@ -35703,7 +36803,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "notcpp";  version = "0.1.0.1";  edeps = [];
+  name = "notcpp";  version = "0.2";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -35715,7 +36815,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
     ];
   };
-  sha256 = "0y87rqh444f7npgdrp7x5m4jxcgp7sp8i1w883bkjcflw43f1wlb";
+  sha256 = "1f1nyz6zxlcc6jb1wb9bhiih1cgfdwf6lp0ysc200cdg510qix3v";
   tsdeps = [];
 }
 {
@@ -35751,6 +36851,46 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1m4kid6d06dx18565dd00qzhhw8ghzf4l6i7lf1mnjgm394aaw4r";
+  tsdeps = [];
+}
+{
+  name = "happstack-foundation";  version = "0.1.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {lt = "5";  n = "base";}
+      {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "acid-state";}
+      {i1 = {lt = "7.2";};  i2 = {gte = "7.1";};  n = "happstack-hsp";}
+      {
+        i1 = {lt = "7.1";};  i2 = {gte = "7.0";};  n = "happstack-server";
+      }
+      {i1 = {lt = "0.8";};  i2 = {gte = "0.7";};  n = "hsp";}
+      {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "lifted-base";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "monad-control";}
+      {i1 = {lt = "2.2";};  i2 = {gte = "2.1";};  n = "mtl";}
+      {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "reform";}
+      {
+        i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "reform-happstack";
+      }
+      {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "reform-hsp";}
+      {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "safecopy";}
+      {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
+      {i1 = {lt = "0.28";};  i2 = {gte = "0.27";};  n = "web-routes";}
+      {
+        i1 = {lt = "0.24";};  i2 = {gte = "0.23";};
+        n = "web-routes-happstack";
+      }
+      {
+        i1 = {lt = "0.24";};  i2 = {gte = "0.23";};  n = "web-routes-hsp";
+      }
+      {
+        i1 = {lt = "0.23";};  i2 = {gte = "0.22";};  n = "web-routes-th";
+      }
+    ];
+  };
+  sha256 = "1ab2fd1s9mp927c67gav6hrs1vwcvp00v29y7abxrk6cxq1fms95";
   tsdeps = [];
 }
 {
@@ -35875,7 +37015,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "directory-tree";  version = "0.10.0";  edeps = [];
+  name = "directory-tree";  version = "0.10.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -35885,7 +37025,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {lt = "2";  n = "directory";}
     ];
   };
-  sha256 = "08b0w9j55x6c06pri7yvv84n24inhpb4miybdnkyjkjy7r3yy7m4";
+  sha256 = "02acmfdw1yjb0h9dpjy04xxclsasm1p0m6w1dvccd4x2aqc6ybbw";
   tsdeps = [];
 }
 {
@@ -35936,22 +37076,23 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "cypher";  version = "0.7";  edeps = [];
+  name = "cypher";  version = "0.8.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
-      {lt = "5";  n = "base";}  {n = "aeson";}  {n = "http-conduit";}
-      {n = "transformers";}  {n = "conduit";}  {n = "text";}
-      {n = "bytestring";}  {lt = "1";  n = "http-types";}
-      {lt = "1";  n = "vector";}
-      {lt = "1";  n = "unordered-containers";}
-      {lt = "1";  n = "attoparsec";}  {lt = "1";  n = "data-default";}
-      {gte = "2.7";  n = "template-haskell";}
+      {lt = "5";  n = "base";}  {n = "aeson";}
+      {n = "unordered-containers";}
+      {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "vector";}
+      {n = "http-conduit";}  {n = "transformers";}  {n = "conduit";}
+      {n = "text";}  {n = "bytestring";}
+      {lt = "1";  n = "http-types";}  {lt = "1";  n = "attoparsec";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "resourcet";}
+      {n = "classy-parallel";}  {n = "transformers-base";}
     ];
   };
-  sha256 = "02llcwl18fh0jzrcbgcnq96i0hz3kk4zramjd8dxia2rq2jl0lv7";
+  sha256 = "0f79791j9nczm80cifpc4iq5pqkhca67s94c5wqm0kiprlxblc53";
   tsdeps = [];
 }
 {
@@ -36485,7 +37626,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "test-simple";  version = "0.1.3";  edeps = [];
+  name = "test-simple";  version = "0.1.4";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -36495,7 +37636,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "state-plus";}  {gt = "2.4";  n = "QuickCheck";}
     ];
   };
-  sha256 = "00s3v0rgmx307yh7afinbcf9sdbkm59prnjd7na84i7f2h98knw9";
+  sha256 = "1xb7h4yknb0zfkjz24987bdr00lrzbj8y8h28ck09njhydf6aqbk";
   tsdeps = 
   [{
      cdeps = [];
@@ -36561,20 +37702,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "164ivzgrnvqvx7r1jagsng9m47ql0jkayzahhcvs8wd78ksbbsfh";
-  tsdeps = [];
-}
-{
-  name = "monad-parallel";  version = "0.7.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {lt = "5";  n = "base";}  {n = "parallel";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "transformers";}
-    ];
-  };
-  sha256 = "1bk869l7ic7ckpvqakjhhh7pv9rjs8gk0m4679cymmfk3a77cl3x";
   tsdeps = [];
 }
 {
@@ -36757,6 +37884,22 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   };
   sha256 = "1s0djw1qarjn1fkyf21fd6pacfpfy4cvyw3wbd63ccaf9g0s1gs5";
   tsdeps = [];
+}
+{
+  name = "minimorph";  version = "0.1.0.0";  edeps = [];
+  ldeps = 
+  {cdeps = [];  deps = [{lt = "5";  n = "base";}  {n = "text";}];};
+  sha256 = "0kad2d95fcmgjy0q9zw5j0ljilqrlbg3f5msiwig07hfdwand49z";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {lt = "5";  n = "base";}  {n = "HUnit";}  {n = "minimorph";}
+       {n = "test-framework";}  {n = "test-framework-hunit";}
+       {n = "text";}
+     ];
+   }];
 }
 {
   name = "bson";  version = "0.2.1";  edeps = [];
@@ -36989,7 +38132,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "circ";  version = "0.0.3";  edeps = [];
+  name = "circ";  version = "0.0.4";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -36999,7 +38142,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {lt = "2.0";  n = "directory";}
     ];
   };
-  sha256 = "1d9sw8h1znhz8j365z1989qqwvf3cpc0ppzbr2mbavz6ydblran8";
+  sha256 = "0n3m7kjyqic10dl06zic5qjb1yb1ff8jn9d1wchrarkprcw25knc";
   tsdeps = [];
 }
 {
@@ -37218,14 +38361,14 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "Vec";  version = "1.0";  edeps = [];
+  name = "Vec";  version = "1.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [{lte = "5";  n = "base";}  {n = "array";}  {n = "ghc-prim";}];
   };
-  sha256 = "1lyi7di92q1f0k08nj7766nm0ygaqdrjdphnb6imvyrsmjrspaqk";
+  sha256 = "1v0v0ph881vynx8q8xwmn9da6qrd16g83q5i132nxys3ynl5s76m";
   tsdeps = [];
 }
 {
@@ -37620,7 +38763,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "hOpenPGP";  version = "0.3.1";  edeps = [];
+  name = "hOpenPGP";  version = "0.4";  edeps = [];
   ldeps = 
   {
     cdeps = [];
@@ -37639,7 +38782,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "split";}  {n = "zlib";}
     ];
   };
-  sha256 = "0n4s1qrrpbb9vrayirhqlbakb373mrgwnnvfjyiymsaw70ybb9kg";
+  sha256 = "0ayihnclxw247qf58ap38lpgcp8hh8fyv2n302fiskd58bf35jzx";
   tsdeps = 
   [{
      cdeps = [];
@@ -40420,19 +41563,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "Agata";  version = "0.2.1";  edeps = [];
+  name = "Agata";  version = "0.2.1.1";  edeps = [];
   ldeps = 
   {
     cdeps = [];
     deps = 
     [
       {n = "mtl";}  {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {lt = "2.5";  n = "template-haskell";}
-      {i1 = {gte = "2.1";};  i2 = {lt = "2.2";};  n = "QuickCheck";}
-      {n = "containers";}  {n = "tagged";  v = "0.0";}
+      {lt = "2.8";  n = "template-haskell";}
+      {i1 = {gte = "2.1";};  i2 = {lt = "2.6";};  n = "QuickCheck";}
+      {n = "containers";}
+      {i1 = {gte = "0.4.2.1";};  i2 = {lt = "1";};  n = "tagged";}
     ];
   };
-  sha256 = "1rbpwjr9lisx3vhc707m9v09i86xg5d09gpshx797hc3ivp39zmx";
+  sha256 = "0v8gy2gdbn9133yki7s71a7ph50xzawdvciiahr463apbn6439hm";
   tsdeps = [];
 }
 {
@@ -40786,7 +41930,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "language-c-quote";  version = "0.3.2";  edeps = [];
+  name = "language-c-quote";  version = "0.4.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -40844,15 +41988,15 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "haskell-src-meta";
       }
       {
-        i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "mainland-pretty";
+        i1 = {lt = "0.3";};  i2 = {gte = "0.2";};  n = "mainland-pretty";
       }
       {i1 = {gte = "2.0";};  i2 = {lt = "3";};  n = "mtl";}
-      {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "srcloc";}
+      {i1 = {lt = "0.3";};  i2 = {gte = "0.2";};  n = "srcloc";}
       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "syb";}
       {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "symbol";}
     ];
   };
-  sha256 = "1pxrag9ws93rsqrsxcyxg07pvp2qw0f19yj2b40ynwzk112nkd16";
+  sha256 = "1qbl81c8fw2gz96n8505yxhw1d3zhxq436ikv173x1zz0b4z26g1";
   tsdeps = 
   [{
      cdeps = [];
@@ -40861,9 +42005,9 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "HUnit";}
        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
        {
-         i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "language-c-quote";
+         i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "language-c-quote";
        }
-       {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "srcloc";}
+       {i1 = {lt = "0.3";};  i2 = {gte = "0.2";};  n = "srcloc";}
        {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "symbol";}
      ];
    }];
@@ -41571,7 +42715,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "lenses";  version = "0.1.4";  edeps = [];
+  name = "lenses";  version = "0.1.5";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -41585,7 +42729,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
               cdeps = [];
               deps = 
               [{
-                 i1 = {gte = "2.4";};  i2 = {lt = "2.6";};  n = "template-haskell";
+                 i1 = {gte = "2.4";};  i2 = {lt = "2.8";};  n = "template-haskell";
                }];
             }
             {
@@ -41605,7 +42749,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "1.1";};  i2 = {lt = "3";};  n = "mtl";}
     ];
   };
-  sha256 = "1nvy6dm610kihdrz6yana4m12qnb052inqs49598f3wn2wqljans";
+  sha256 = "165wyjqbrhxyxwygr4d7gl058yy4mb982kmvqmb651jm5gd0v9kh";
   tsdeps = [];
 }
 {
@@ -41942,7 +43086,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "pugs-compat";  version = "0.0.6.20120229.163800";
+  name = "pugs-compat";  version = "0.0.6.20120717.204800";
   edeps = [];
   ldeps = 
   {
@@ -41967,11 +43111,12 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "directory";}  {n = "process";}  {n = "regex-pcre-builtin";}
       {n = "regex-base";}  {n = "random";}  {n = "network";}
       {n = "containers";}  {n = "bytestring";}  {n = "array";}
-      {lt = "2.0.0.0";  n = "mtl";}  {n = "stm";}  {n = "utf8-string";}
-      {n = "syb";}  {gte = "0.0.6.1";  n = "stringtable-atom";}
+      {gte = "2.0.0.0";  n = "mtl";}  {n = "stm";}
+      {n = "utf8-string";}  {n = "syb";}
+      {gte = "0.0.6.1";  n = "stringtable-atom";}
     ];
   };
-  sha256 = "1xgpdb7saqc5i36f6n1nqqwzlpr8iwwj9znmw1z6pbvh15rqkas8";
+  sha256 = "03pi603mnl36f7r1jch5bp6wgz7b2h0rmkaxhvkyz9vkpw4d27rd";
   tsdeps = [];
 }
 {
@@ -42032,22 +43177,8 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "0.9";  n = "bytestring";}  {n = "deepseq";}
     ];
   };
-  sha256 = "1z2jc7588fkv42dxf0dxsrgk5pmj3xapshy1vyfwipp1q6y20x4j";
-  tsdeps = 
-  [{
-     cdeps = 
-     [[
-        {compilerFlavor = "GHC";  versionRange = {gte = "6.10";};}
-        {cdeps = [];  deps = [{gte = "4";  n = "base";}];}
-      ]];
-     deps = 
-     [
-       {i1 = {lt = "2.5";};  i2 = {gte = "2.4";};  n = "QuickCheck";}
-       {lt = "5";  n = "base";}  {n = "bloomfilter";}
-       {n = "bytestring";}  {n = "random";}  {n = "test-framework";}
-       {n = "test-framework-quickcheck2";}
-     ];
-   }];
+  sha256 = "162vp9riwf5q2l1hnw3g157fpwnw185fk41hkgyf8qaavcrz6slv";
+  tsdeps = [];
 }
 {
   name = "rclient";  version = "0.1.0.0";  edeps = [];
@@ -42710,7 +43841,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "bytestring-show";  version = "0.3.5.1";  edeps = [];
+  name = "haskeline";  version = "0.7.0.2";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -42720,58 +43851,77 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         {
           cdeps = [];
           deps = 
-          [{i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "integer-gmp";}];
+          [
+            {i1 = {gte = "4.1";};  i2 = {lt = "4.7";};  n = "base";}
+            {i1 = {gte = "0.1";};  i2 = {lt = "0.6";};  n = "containers";}
+            {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "directory";}
+            {i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "bytestring";}
+          ];
+        }
+        {
+          cdeps = [];
+          deps = 
+          [
+            {i1 = {gte = "3";};  i2 = {lt = "4.1";};  n = "base";}
+            {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "containers";}
+            {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "directory";}
+            {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
+          ];
         }
       ]
       [
         {and = 
          [
-           {compilerFlavor = "GHC";  versionRange = {gte = "6.9";};}
-           {compilerFlavor = "GHC";  versionRange = {lt = "6.11";};}
+           {not = {flag = "legacy_encoding";};}
+           {compilerFlavor = "GHC";  versionRange = {gte = "7.4";};}
          ];}
+        {cdeps = [];  deps = [];}
         {
           cdeps = [];
           deps = 
-          [{i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "integer";}];
+          [{
+             i1 = {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};};
+             i2 = {gte = "0.3.6";};  n = "utf8-string";
+           }];
+        }
+      ]
+      [
+        {os = "Windows";}
+        {cdeps = [];  deps = [{gte = "2.0";  n = "Win32";}];}
+        {
+          cdeps = 
+          [
+            [
+              {or = 
+               [
+                 {flag = "legacy_encoding";}
+                 {compilerFlavor = "GHC";  versionRange = {lt = "7.4";};}
+               ];}
+              {cdeps = [];  deps = [];}
+            ]
+            [
+              {flag = "terminfo";}
+              {
+                cdeps = [];
+                deps = 
+                [{i1 = {gte = "0.3.1.3";};  i2 = {lt = "0.4";};  n = "terminfo";}];
+              }
+            ]
+            [{os = "Solaris";}  {cdeps = [];  deps = [];}]
+          ];
+          deps = 
+          [{i1 = {gte = "2.0";};  i2 = {lt = "2.7";};  n = "unix";}];
         }
       ]
     ];
     deps = 
     [
-      {lt = "5";  n = "base";}  {lt = "0.6";  n = "binary";}
-      {i1 = {gte = "0.9";};  i2 = {lte = "1";};  n = "bytestring";}
-      {lt = "0.5";  n = "array";}  {lt = "0.5";  n = "containers";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.4";};  n = "filepath";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
     ];
   };
-  sha256 = "0bsizy0ryflwz5k2h36rvn42fkxicwjh7pjbymw9zam1dmvzbih6";
-  tsdeps = [];
-}
-{
-  name = "HsOpenSSL";  version = "0.10.3.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = 
-    [
-      [
-        {compilerFlavor = "GHC";  versionRange = {gte = "6.11";};}
-        {cdeps = [];  deps = [{n = "integer-gmp";}];}
-        {cdeps = [];  deps = [{n = "integer";}];}
-      ]
-      [
-        {os = "Windows";}  {cdeps = [];  deps = [];}
-        {cdeps = [];  deps = [];}
-      ]
-    ];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "bytestring";}  {n = "ghc-prim";}
-      {gte = "2.1.0.0";  n = "network";}  {n = "old-locale";}
-      {gte = "1.1.1";  n = "time";}
-    ];
-  };
-  sha256 = "0dilmaibx18mfg4c8g96c1svhynhkrq4i5zzv3wg0a550g3xc0py";
-  tsdeps = [];
+  sha256 = "0mmflw8mslvif8w1app4zwrlpynpfvzqdb9srs6bgicawwgkb2r0";
+  tflags = ["terminfo"];  tsdeps = [];
 }
 {
   name = "ghc-syb";  version = "0.1.2.2";  edeps = [];
@@ -43012,24 +44162,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "09jb9ij78fdkz2qk66rw99q19qnm504dpv0yq0pjsl6xwjmndsjq";
-  tsdeps = [];
-}
-{
-  name = "unix-time";  version = "0.1.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = 
-    [[
-       {compilerFlavor = "GHC";  versionRange = {gte = "6.12";};}
-       {cdeps = [];  deps = [];}  {cdeps = [];  deps = [];}
-     ]];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "bytestring";}  {n = "old-time";}
-    ];
-  };
-  sha256 = "063mssiq57g4bsalp653fa4yj9wmaynvg0x7vk67gds2l2zpd2gy";
   tsdeps = [];
 }
 {
@@ -43469,30 +44601,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "hslogger-template";  version = "2.0.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = 
-    [[
-       {compilerFlavor = "GHC";  versionRange = {gte = "6.8";};}
-       {cdeps = [];  deps = [];}
-     ]];
-    deps = 
-    [
-      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {lt = "2";};  i2 = {gte = "1";};  n = "haskell98";}
-      {i1 = {lt = "2";};  i2 = {gte = "1";};  n = "hslogger";}
-      {
-        n = "mtl";  u1 = {i1 = {lt = "2";};  i2 = {gte = "1";};};
-        u2 = {i1 = {lt = "2.1";};  i2 = {gte = "2.0";};};
-      }
-      {i1 = {lt = "3";};  i2 = {gte = "2";};  n = "template-haskell";}
-    ];
-  };
-  sha256 = "1x8c132ckxjhnhlrnm92h0hkalkrgcc91cn73kv9kvcwy9b2fqcr";
-  tsdeps = [];
-}
-{
   name = "Binpack";  version = "0.4";  edeps = [];
   ldeps = 
   {
@@ -43530,7 +44638,27 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "IntervalMap";  version = "0.2.3.3";  edeps = [];
+  name = "hslogger-template";  version = "2.0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {compilerFlavor = "GHC";  versionRange = {gte = "6.8";};}
+       {cdeps = [];  deps = [];}
+     ]];
+    deps = 
+    [
+      {i1 = {gte = "3.0";};  i2 = {lt = "4.6";};  n = "base";}
+      {i1 = {lt = "2";};  i2 = {gte = "1";};  n = "hslogger";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "2.2";};  n = "mtl";}
+      {i1 = {lt = "3";};  i2 = {gte = "2";};  n = "template-haskell";}
+    ];
+  };
+  sha256 = "1m8h4i8cxxw83vhbw61njvv86qdcff6zi3bf0nyhc4cq7pfrzqvj";
+  tsdeps = [];
+}
+{
+  name = "IntervalMap";  version = "0.3.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -43544,7 +44672,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "containers";}  {n = "deepseq";}
     ];
   };
-  sha256 = "1pz1bldahg2gkxggaqcq30h51iqgblzkbm64x4br7fbpf7cmwf12";
+  sha256 = "0wjbcfb5pwwfbxdpzpa4yg1wfah65dh2a0za10d3k230bwn3vdg9";
   tsdeps = 
   [
     {
@@ -44100,6 +45228,24 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
+  name = "monad-parallel";  version = "0.7.1.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {compilerFlavor = "GHC";  versionRange = {gte = "7.0.0";};}
+       {cdeps = [];  deps = [];}
+     ]];
+    deps = 
+    [
+      {lt = "5";  n = "base";}  {n = "parallel";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
+    ];
+  };
+  sha256 = "0kjvakffh2xx24aqyz7sfar5qlvl3d6dgimy67sl8p49nxb6fy69";
+  tsdeps = [];
+}
+{
   name = "Win32";  version = "2.2.2.0";  edeps = [];
   ldeps = 
   {
@@ -44453,7 +45599,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "shakespeare-css";  version = "1.0.1.2";  edeps = [];
+  name = "shakespeare-css";  version = "1.0.1.3";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -44471,7 +45617,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "parsec";}
     ];
   };
-  sha256 = "055nzffn5zlbwilm8624iaqzxchi247rwpca8adbxai1n2ja9fh7";
+  sha256 = "1jj609fcp14b7nzjzsiiy0apbdmap2wi7vlyzdhadirjskxvsvc1";
   tsdeps = 
   [{
      cdeps = [];
@@ -44486,7 +45632,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "shakespeare-text";  version = "1.0.0.2";  edeps = [];
+  name = "shakespeare-text";  version = "1.0.0.3";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -44502,7 +45648,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.7";};  i2 = {lt = "0.12";};  n = "text";}
     ];
   };
-  sha256 = "1dnw6aipx68cd832vs5rwxv2hr7kfk1y83mzd1xl2b3am1g0izfc";
+  sha256 = "0rwdlx7926gjkjymn3h6fdw1ic6s44nn5h8r8791gxknz668ydd7";
   tsdeps = 
   [{
      cdeps = [];
@@ -44538,6 +45684,52 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "hamlet";  version = "1.1.0.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {compilerFlavor = "GHC";  versionRange = {gte = "7.4";};}
+       {cdeps = [];  deps = [];}
+     ]];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "1.0.1";};  i2 = {lt = "1.1";};  n = "shakespeare";}
+      {gte = "0.9";  n = "bytestring";}  {n = "template-haskell";}
+      {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "parsec";}
+      {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "failure";}
+      {i1 = {gte = "0.7";};  i2 = {lt = "0.12";};  n = "text";}
+      {gte = "0.2";  n = "containers";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "blaze-builder";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "process";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
+      {
+        i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
+      }
+    ];
+  };
+  sha256 = "14qlpdfnj90ilgcgll96rrpc4cjc218q7p7kc6y391rkf393453p";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {n = "hamlet";}
+       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+       {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "parsec";}
+       {i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "containers";}
+       {i1 = {gte = "0.7";};  i2 = {lt = "1";};  n = "text";}
+       {n = "HUnit";}
+       {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "hspec";}
+       {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
+       {
+         i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
+       }
+     ];
+   }];
+}
+{
   name = "wai-handler-fastcgi";  version = "1.3.0";  edeps = [];
   ldeps = 
   {
@@ -44558,7 +45750,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "persistent-template";  version = "0.9.0.2";  edeps = [];
+  name = "persistent-template";  version = "1.0.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -44570,14 +45762,14 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {n = "template-haskell";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "persistent";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "persistent";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "monad-control";}
       {i1 = {gte = "0.5";};  i2 = {lt = "1.0";};  n = "text";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
       {n = "containers";}  {n = "aeson";}
     ];
   };
-  sha256 = "1x3xn5dxv41hbadb0riss046lcr3k0h4rg6cvk60x8zxblrswabw";
+  sha256 = "14hg2f0v14m34qvj9m75nn3h4c33bh3gg1xixn0q318hwj9vpfcn";
   tsdeps = 
   [{
      cdeps = [];
@@ -44591,7 +45783,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "shakespeare-js";  version = "1.0.0.3";  edeps = [];
+  name = "shakespeare-js";  version = "1.0.0.4";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -44606,12 +45798,14 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare";}
+      {
+        i1 = {gte = "1.0.0.3";};  i2 = {lt = "1.1";};  n = "shakespeare";
+      }
       {n = "template-haskell";}
       {i1 = {gte = "0.7";};  i2 = {lt = "0.12";};  n = "text";}
     ];
   };
-  sha256 = "00x5xvjlaivl42q75cvbwbh055kgvk9i8s4y3xcmk4h7lnpfyzd6";
+  sha256 = "19v5jas2lcbya1x3mm3fhvhwk643vyy8vpfx0zk3gsw91h34pkyf";
   tsdeps = 
   [{
      cdeps = [];
@@ -44625,6 +45819,37 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {n = "template-haskell";}
      ];
    }];
+}
+{
+  name = "th-orphans";  version = "0.5.2.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {compilerFlavor = "GHC";  versionRange = {gte = "7.4";};}
+       {
+         cdeps = [];
+         deps = 
+         [{
+            i1 = {gte = "2.7";};  i2 = {lt = "2.9";};  n = "template-haskell";
+          }];
+       }
+       {
+         cdeps = [];
+         deps = 
+         [{
+            i1 = {gte = "2.4";};  i2 = {lt = "2.7";};  n = "template-haskell";
+          }];
+       }
+     ]];
+    deps = 
+    [
+      {i1 = {gte = "4.2";};  i2 = {lt = "4.6";};  n = "base";}
+      {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "th-lift";}
+    ];
+  };
+  sha256 = "08zfzavbnglqmc2jpgwlm7y7xfdhp3d3xmhjbb3i0929jqkbqmzc";
+  tsdeps = [];
 }
 {
   name = "haskell-src-meta";  version = "0.5.1.2";  edeps = [];
@@ -44699,6 +45924,63 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
+  name = "lens";  version = "1.9.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {compilerFlavor = "GHC";  versionRange = {gte = "7.4";};}
+       {cdeps = [];  deps = [{n = "ghc-prim";}];}
+     ]];
+    deps = 
+    [
+      {i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.4.2";};  i2 = {lt = "0.6";};  n = "containers";}
+      {i1 = {gte = "2.0.1";};  i2 = {lt = "2.2";};  n = "mtl";}
+      {
+        i1 = {gte = "2.4";};  i2 = {lt = "2.8";};  n = "template-haskell";
+      }
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "transformers";}
+      {i1 = {gte = "0.3.0.2";};  i2 = {lt = "0.5";};  n = "array";}
+      {
+        i1 = {gte = "0.9.1.10";};  i2 = {lt = "0.10";};  n = "bytestring";
+      }
+      {i1 = {gte = "0.11.1.5";};  i2 = {lt = "0.12";};  n = "text";}
+      {i1 = {gte = "3.1.0.1";};  i2 = {lt = "3.3";};  n = "parallel";}
+    ];
+  };
+  sha256 = "0yd7h9nf859g7s7pvhyzlrbway7nd1fsrjvyjyj27y6lhqxdm3sw";
+  tsdeps = 
+  [
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+        {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "directory";}
+        {i1 = {gte = "0.8";};  i2 = {lte = "0.9";};  n = "doctest";}
+        {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "filepath";}
+      ];
+    }
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}  {n = "lens";}
+      ];
+    }
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}  {n = "lens";}
+        {i1 = {gte = "2.4";};  i2 = {lt = "2.6";};  n = "QuickCheck";}
+        {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "transformers";}
+      ];
+    }
+  ];
+}
+{
   name = "regexdot";  version = "0.11.0.1";  edeps = [];
   ldeps = 
   {
@@ -44749,7 +46031,45 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["havedeepseq"  "threaded"];  tsdeps = [];
 }
 {
-  name = "vector-space";  version = "0.8.1";  edeps = [];
+  name = "vacuum";  version = "2.0.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [
+      [
+        {
+          compilerFlavor = "GHC";
+          versionRange = {i1 = {lt = "7.1";};  i2 = {gte = "7.0";};};
+        }
+        {cdeps = [];  deps = [];}
+      ]
+      [
+        {
+          compilerFlavor = "GHC";
+          versionRange = {i1 = {lt = "7.3";};  i2 = {gte = "7.2";};};
+        }
+        {cdeps = [];  deps = [];}
+      ]
+      [
+        {
+          compilerFlavor = "GHC";
+          versionRange = {i1 = {lt = "7.5";};  i2 = {gte = "7.4";};};
+        }
+        {cdeps = [];  deps = [];}
+      ]
+    ];
+    deps = 
+    [
+      {n = "ghc-prim";}
+      {i1 = {gt = "3";};  i2 = {lt = "5";};  n = "base";}
+      {gte = "0.3";  n = "array";}  {gte = "0.4";  n = "containers";}
+    ];
+  };
+  sha256 = "0a810ql4lp1pyvys9a5aw28gxn7h2p4hkc0by4pmpw5d7kdhn9y3";
+  tsdeps = [];
+}
+{
+  name = "vector-space";  version = "0.8.2";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -44764,7 +46084,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "1.0";  n = "NumInstances";}
     ];
   };
-  sha256 = "0khbi46i9q585nhxhf842wsdifcj1i1dqm84hj0r36474rfh55z5";
+  sha256 = "09gndxxscyc9w85fih370gag8yd1xbfg94nxkwdvhzvbkns9k2ad";
   tsdeps = [];
 }
 {
@@ -45362,20 +46682,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "ivar-simple";  version = "0.1.0.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = 
-    [[
-       {compilerFlavor = "GHC";  versionRange = {lte = "6.10.1";};}
-       {cdeps = [];  deps = [];}
-     ]];
-    deps = [{n = "base";}];
-  };
-  sha256 = "051sdw476cb3xv14y7xi81daiwb0cdzvca36lmhadjwg0xvybj4f";
-  tsdeps = [];
-}
-{
   name = "compact-string";  version = "0.3.1";  edeps = [];
   ldeps = 
   {
@@ -45531,84 +46837,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   };
   sha256 = "14cmfdi4cmirbrc3x2h6ly08j0mb4p59mxbqkqw8rnbsr4g0rap5";
   tflags = ["applicativeinbase"];  tsdeps = [];
-}
-{
-  name = "haskeline";  version = "0.6.4.7";  edeps = [];
-  ldeps = 
-  {
-    cdeps = 
-    [
-      [
-        {flag = "base2";}
-        {
-          cdeps = [];
-          deps = [{i1 = {lt = "3";};  i2 = {gte = "2";};  n = "base";}];
-        }
-        {
-          cdeps = 
-          [[
-             {compilerFlavor = "GHC";  versionRange = {gte = "6.11";};}
-             {
-               cdeps = [];
-               deps = 
-               [
-                 {i1 = {gte = "4.1";};  i2 = {lt = "4.6";};  n = "base";}
-                 {i1 = {gte = "0.1";};  i2 = {lt = "0.6";};  n = "containers";}
-                 {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "directory";}
-                 {i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "bytestring";}
-               ];
-             }
-             {
-               cdeps = [];
-               deps = 
-               [
-                 {i1 = {gte = "3";};  i2 = {lt = "4.1";};  n = "base";}
-                 {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "containers";}
-                 {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "directory";}
-                 {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
-               ];
-             }
-           ]];
-          deps = [];
-        }
-      ]
-      [
-        {os = "Windows";}
-        {cdeps = [];  deps = [{gte = "2.0";  n = "Win32";}];}
-        {
-          cdeps = 
-          [
-            [
-              {flag = "terminfo";}
-              {
-                cdeps = [];
-                deps = 
-                [{i1 = {gte = "0.3.1.3";};  i2 = {lt = "0.4";};  n = "terminfo";}];
-              }
-            ]
-            [{os = "Solaris";}  {cdeps = [];  deps = [];}]
-          ];
-          deps = 
-          [{i1 = {gte = "2.0";};  i2 = {lt = "2.6";};  n = "unix";}];
-        }
-      ]
-    ];
-    deps = 
-    [
-      {i1 = {gte = "1.1";};  i2 = {lt = "1.4";};  n = "filepath";}
-      {i1 = {gte = "1.1";};  i2 = {lt = "2.2";};  n = "mtl";}
-      {
-        i1 = {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};};
-        i2 = {gte = "0.3.6";};  n = "utf8-string";
-      }
-      {
-        i1 = {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};};
-        i2 = {gte = "0.1.1.0";};  n = "extensible-exceptions";
-      }
-    ];
-  };
-  sha256 = "18ma4i2i6hx8bhbkh1d7mqzsqbfj0zc2bkv3czjyylizqwhpq6ih";
-  tflags = ["base2"  "terminfo"];  tsdeps = [];
 }
 {
   name = "HXQ";  version = "0.19.0";  edeps = [];
@@ -45846,6 +47074,27 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = [{lt = "5";  n = "base";}  {n = "array";}];
   };
   sha256 = "13flyzh2vnqnap78qjawdh3150rmp9bxnlgynsf793lm1b3z15fl";
+  tflags = ["base4"];  tsdeps = [];
+}
+{
+  name = "HUnit";  version = "1.2.5.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [
+      [
+        {flag = "base4";}
+        {cdeps = [];  deps = [{gte = "4";  n = "base";}];}
+        {cdeps = [];  deps = [{lt = "4";  n = "base";}];}
+      ]
+      [
+        {compilerFlavor = "GHC";  versionRange = {gte = "6.10";};}
+        {cdeps = [];  deps = [{gte = "4";  n = "base";}];}
+      ]
+    ];
+    deps = [{lt = "5";  n = "base";}  {n = "deepseq";}];
+  };
+  sha256 = "0wa4yqgfyrfxzhdyd04xvzi4qaswbg0rrbywz8sxzkp71v91a35w";
   tflags = ["base4"];  tsdeps = [];
 }
 {
@@ -47397,297 +48646,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["blaze_html_0_5"];  tsdeps = [];
 }
 {
-  name = "yesod-newsfeed";  version = "1.0.0.2";  edeps = [];
-  ldeps = 
-  {
-    cdeps = 
-    [[
-       {flag = "blaze_html_0_5";}
-       {
-         cdeps = [];
-         deps = 
-         [
-           {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
-           {
-             i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
-           }
-         ];
-       }
-       {
-         cdeps = [];
-         deps = 
-         [{i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "blaze-html";}];
-       }
-     ]];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-core";}
-      {gte = "1.1.4";  n = "time";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "hamlet";}
-      {gte = "0.9.1.4";  n = "bytestring";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.12";};  n = "text";}
-      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "xml-conduit";}
-    ];
-  };
-  sha256 = "0h6c64y0nxdkg1lv7f60afki7f1rq43815z6a0x61zc4l8m4yi5j";
-  tflags = ["blaze_html_0_5"];  tsdeps = [];
-}
-{
-  name = "yesod-form";  version = "1.0.0.4";  edeps = [];
-  ldeps = 
-  {
-    cdeps = 
-    [[
-       {flag = "blaze_html_0_5";}
-       {
-         cdeps = [];
-         deps = 
-         [
-           {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
-           {
-             i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
-           }
-         ];
-       }
-       {
-         cdeps = [];
-         deps = 
-         [{i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "blaze-html";}];
-       }
-     ]];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-core";}
-      {
-        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-persistent";
-      }
-      {gte = "1.1.4";  n = "time";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "hamlet";}
-      {
-        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare-css";
-      }
-      {
-        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare-js";
-      }
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "persistent";}
-      {n = "template-haskell";}
-      {
-        i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
-      }
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "data-default";}
-      {
-        i1 = {gte = "0.3.0.1";};  i2 = {lt = "0.4";};  n = "xss-sanitize";
-      }
-      {
-        i1 = {gte = "0.2.1.4";};  i2 = {lt = "0.4";};  n = "blaze-builder";
-      }
-      {i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "network";}
-      {
-        i1 = {gte = "0.2.6";};  i2 = {lt = "0.3";};  n = "email-validate";
-      }
-      {gte = "0.9.1.4";  n = "bytestring";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "1.0";};  n = "text";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai";}
-      {gte = "0.2";  n = "containers";}
-    ];
-  };
-  sha256 = "1wc7nrsf7r9zs24q2amy1zij5sfycs1arnrf8g769c7gihjhdqfd";
-  tflags = ["blaze_html_0_5"];  tsdeps = [];
-}
-{
-  name = "yesod-auth";  version = "1.0.2.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = 
-    [[
-       {flag = "blaze_html_0_5";}
-       {
-         cdeps = [];
-         deps = 
-         [
-           {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
-           {
-             i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
-           }
-         ];
-       }
-       {
-         cdeps = [];
-         deps = 
-         [{i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "blaze-html";}];
-       }
-     ]];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {
-        i1 = {gte = "1.2.1";};  i2 = {lt = "1.3";};  n = "authenticate";
-      }
-      {gte = "0.9.1.4";  n = "bytestring";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-core";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai";}
-      {n = "template-haskell";}
-      {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "pureMD5";}
-      {i1 = {gte = "1.0.0.2";};  i2 = {lt = "1.1";};  n = "random";}
-      {i1 = {gte = "0.7";};  i2 = {lt = "0.12";};  n = "text";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "mime-mail";}
-      {
-        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-persistent";
-      }
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "hamlet";}
-      {
-        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare-css";
-      }
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-json";}
-      {n = "containers";}  {n = "unordered-containers";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-form";}
-      {
-        i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
-      }
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "persistent";}
-      {
-        i1 = {gte = "0.9";};  i2 = {lt = "0.10";};
-        n = "persistent-template";
-      }
-      {i1 = {gte = "1.4.1.3";};  i2 = {lt = "1.6";};  n = "SHA";}
-      {
-        i1 = {gte = "1.4.1.1";};  i2 = {lt = "1.5";};  n = "http-conduit";
-      }
-      {gte = "0.5";  n = "aeson";}
-      {i1 = {gte = "2.2";};  i2 = {lt = "3";};  n = "pwstore-fast";}
-      {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "lifted-base";}
-    ];
-  };
-  sha256 = "0fkk9vyb8z9hr77d771f74ka6s95fbzk5zw359cx8m2d5rc9fqvr";
-  tflags = ["blaze_html_0_5"];  tsdeps = [];
-}
-{
-  name = "yesod-test";  version = "0.2.1";  edeps = [];
-  ldeps = 
-  {
-    cdeps = 
-    [[
-       {flag = "blaze_html_0_5";}
-       {
-         cdeps = [];
-         deps = 
-         [
-           {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
-           {
-             i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
-           }
-         ];
-       }
-       {
-         cdeps = [];
-         deps = 
-         [{i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "blaze-html";}];
-       }
-     ]];
-    deps = 
-    [
-      {i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}
-      {gte = "9.1.6";  n = "hxt";}
-      {i1 = {gte = "0.10";};  i2 = {lt = "0.11";};  n = "attoparsec";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "persistent";}
-      {
-        i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
-      }
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai-test";}
-      {i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "network";}
-      {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "http-types";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "HUnit";}
-      {i1 = {gte = "1.1";};  i2 = {lt = "1.3";};  n = "hspec";}
-      {gte = "0.9";  n = "bytestring";}
-      {gte = "0.2";  n = "case-insensitive";}  {n = "text";}
-      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "xml-conduit";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "xml-types";}
-      {n = "containers";}
-      {i1 = {gte = "0.1.2.3";};  i2 = {lt = "0.2";};  n = "xml2html";}
-      {
-        i1 = {gte = "0.0.1";};  i2 = {lt = "0.1";};  n = "html-conduit";
-      }
-    ];
-  };
-  sha256 = "1aj7q20zbqw4vfisza9l3bcld5y1mj9z0krvy73jz25k0lhg2gk9";
-  tflags = ["blaze_html_0_5"];
-  tsdeps = 
-  [{
-     cdeps = [];
-     deps = 
-     [
-       {n = "base";}  {n = "yesod-test";}  {n = "hspec";}  {n = "HUnit";}
-       {n = "xml-conduit";}  {n = "bytestring";}
-     ];
-   }];
-}
-{
-  name = "hamlet";  version = "1.0.1.4";  edeps = [];
-  ldeps = 
-  {
-    cdeps = 
-    [
-      [
-        {flag = "blaze_html_0_5";}
-        {
-          cdeps = [];
-          deps = 
-          [
-            {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
-            {
-              i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
-            }
-          ];
-        }
-        {
-          cdeps = [];
-          deps = 
-          [{i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "blaze-html";}];
-        }
-      ]
-      [
-        {compilerFlavor = "GHC";  versionRange = {gte = "7.4";};}
-        {cdeps = [];  deps = [];}
-      ]
-    ];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare";}
-      {gte = "0.9";  n = "bytestring";}  {n = "template-haskell";}
-      {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "parsec";}
-      {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "failure";}
-      {i1 = {gte = "0.7";};  i2 = {lt = "0.12";};  n = "text";}
-      {gte = "0.2";  n = "containers";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "blaze-builder";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "process";}
-    ];
-  };
-  sha256 = "0rvsp54wrhaz5pnn136w1xlny9dkwv48ihyhq02yg5gg510v08v7";
-  tflags = ["blaze_html_0_5"];
-  tsdeps = 
-  [{
-     cdeps = [];
-     deps = 
-     [
-       {n = "hamlet";}
-       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-       {i1 = {gte = "2";};  i2 = {lt = "4";};  n = "parsec";}
-       {i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "containers";}
-       {i1 = {gte = "0.7";};  i2 = {lt = "1";};  n = "text";}
-       {n = "HUnit";}
-       {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "hspec";}
-       {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
-       {
-         i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
-       }
-     ];
-   }];
-}
-{
   name = "accelerate-io";  version = "0.12.1.0";  edeps = [];
   ldeps = 
   {
@@ -48284,7 +49242,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "iteratee-compress";  version = "0.3.1.0";  edeps = [];
+  name = "iteratee-compress";  version = "0.3.2.0";  edeps = [];
   ldeps = 
   {
     cdeps = [[{flag = "debug";}  {cdeps = [];  deps = [];}]];
@@ -48292,11 +49250,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
-      {i1 = {gte = "0.8.7";};  i2 = {lt = "0.9";};  n = "iteratee";}
+      {i1 = {gte = "0.8.4";};  i2 = {lt = "0.9";};  n = "iteratee";}
       {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
     ];
   };
-  sha256 = "0cj4z5ads9c9j6klzpggshmnywby1sm0cx8frgkcfx5dvvm31nwf";
+  sha256 = "00n94fn3d6j0n3h8f0jg0m2lcrp5waj501j74jnrh9ggy8cnp3jq";
   tsdeps = [];
 }
 {
@@ -48343,6 +49301,34 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1vwm0gmgj8c7qdildplr3jng5gj9q6b669vgmnxw4v514y529bz5";
+  tsdeps = [];
+}
+{
+  name = "penny-lib";  version = "0.2.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [[{flag = "debug";}  {cdeps = [];  deps = [];}]];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
+      {
+        i1 = {lt = "0.2";};  i2 = {gte = "0.1";};
+        n = "explicit-exception";
+      }
+      {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "containers";}
+      {i1 = {lt = "0.3";};  i2 = {gte = "0.2";};  n = "transformers";}
+      {i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "time";}
+      {i1 = {gte = "0.2.2";};  i2 = {lt = "0.3";};  n = "Decimal";}
+      {i1 = {gte = "3.1.2";};  i2 = {lt = "3.2";};  n = "parsec";}
+      {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "multiarg";}
+      {i1 = {lt = "0.3";};  i2 = {gte = "0.2";};  n = "matchers";}
+      {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "old-locale";}
+      {i1 = {lt = "0.9";};  i2 = {gte = "0.8";};  n = "semigroups";}
+      {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "split";}
+    ];
+  };
+  sha256 = "1v4fbha3hhl7rrk9cn65ljby4zkml9gxk7ry5k4g7bmckfclqa4n";
   tsdeps = [];
 }
 {
@@ -48442,7 +49428,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "void";  version = "0.5.6";  edeps = [];
+  name = "void";  version = "0.5.7";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -48453,11 +49439,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.8.2";};  i2 = {lt = "0.9";};  n = "semigroups";}
     ];
   };
-  sha256 = "168xp4jxrlhxdw47y3xyr3hi57xharsrll8521a1phh8vzrbpi4z";
+  sha256 = "1rkc32122mkyxl0a4spbcqz908wh49l5ab8gfvsy0y02d3lldfd4";
   tflags = ["derivedatatypeable"];  tsdeps = [];
 }
 {
-  name = "data-lens";  version = "2.10.0";  edeps = [];
+  name = "data-lens";  version = "2.10.2";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -48465,21 +49451,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "1.1.1.3";};  i2 = {lt = "1.2";};  n = "comonad";}
+      {i1 = {gte = "1.1.1.3";};  i2 = {lt = "3.1";};  n = "comonad";}
       {
-        i1 = {gte = "2.0";};  i2 = {lt = "2.2";};
+        i1 = {gte = "2.0";};  i2 = {lt = "3.1";};
         n = "comonad-transformers";
       }
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "containers";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.6";};  n = "containers";}
       {
-        i1 = {gte = "1.2.4";};  i2 = {lt = "1.4";};  n = "semigroupoids";
+        i1 = {gte = "1.2.4";};  i2 = {lt = "3.1";};  n = "semigroupoids";
       }
       {
         i1 = {gte = "0.2.0";};  i2 = {lt = "0.4";};  n = "transformers";
       }
     ];
   };
-  sha256 = "0y3rl9axakvz6kwmh08aabbz1z7y38wyrygmg4m6xby02cqbq5gk";
+  sha256 = "1mv4lh5rhmq09d89ci07kj9anv7ckrlqh9x3xr4jq9idf7sf54b5";
   tflags = ["derivedatatypeable"];  tsdeps = [];
 }
 {
@@ -48533,7 +49519,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "zigbee-znet25";  version = "0.1";  edeps = [];
+  name = "zigbee-znet25";  version = "0.1.1.0";  edeps = [];
   ldeps = 
   {
     cdeps = [[{flag = "developer";}  {cdeps = [];  deps = [];}]];
@@ -48544,7 +49530,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "mtl";}  {n = "transformers";}
     ];
   };
-  sha256 = "0vwjakpjl8bv0q74yyj4zgb1yjkzqa75rwhmjid4sckd3g76flrf";
+  sha256 = "0kv52f7zhgd2x44a2dg89jrsxiis73m8884f4zmxdbznhq1prqf5";
   tsdeps = 
   [{
      cdeps = [[{flag = "developer";}  {cdeps = [];  deps = [];}]];
@@ -48591,17 +49577,18 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "subtitleParser";  version = "0.2";  edeps = [];
+  name = "subtitleParser";  version = "0.3";  edeps = [];
   ldeps = 
   {
     cdeps = [[{flag = "developer";}  {cdeps = [];  deps = [];}]];
     deps = 
     [
       {lt = "5";  n = "base";}  {n = "containers";}
-      {gte = "0.11.1.5";  n = "text";}  {n = "attoparsec";}
+      {gte = "0.11.1.5";  n = "text";}
+      {gte = "0.10.2.0";  n = "attoparsec";}
     ];
   };
-  sha256 = "1fs6pqm3s2kg6md176qzaild19hgkgdzz2s5kqrpwfi6ycyij6kr";
+  sha256 = "1yc61p04bbgmsgbhvfjchcpwrizcslwrbs3mclapl0w9madgq12z";
   tsdeps = [];
 }
 {
@@ -48832,7 +49819,8 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "control-monad-exception";  version = "0.10.3";  edeps = [];
+  name = "control-monad-exception";  version = "0.10.3.1";
+  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -48857,10 +49845,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = 
     [
       {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "failure";}
-      {gte = "0.2";  n = "transformers";}  {n = "monadloc";}
+      {gte = "0.2";  n = "transformers";}
+      {gte = "0.7";  n = "monadloc";}
     ];
   };
-  sha256 = "10v2zbzwj1r315dq0xdc5q8gmnqsb0ppvqm82sndarzjgn6qf9yy";
+  sha256 = "135950k0wjca7yrpb47v1r2m7hdq9ya7kx81kykkscrykas6sxl0";
   tsdeps = [];
 }
 {
@@ -48933,6 +49922,40 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   };
   sha256 = "0qr8d4qbvkncv4im0iwwdr9khvkyy4ky8wnwxri1jqhylcq8vdks";
   tsdeps = [];
+}
+{
+  name = "HsOpenSSL";  version = "0.10.3.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [
+      [
+        {flag = "fast_bignum";}
+        {
+          cdeps = 
+          [[
+             {compilerFlavor = "GHC";  versionRange = {gte = "6.11";};}
+             {cdeps = [];  deps = [{n = "integer-gmp";}];}
+             {cdeps = [];  deps = [{n = "integer";}];}
+           ]];
+          deps = [];
+        }
+      ]
+      [
+        {os = "Windows";}  {cdeps = [];  deps = [];}
+        {cdeps = [];  deps = [];}
+      ]
+    ];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "bytestring";}  {n = "ghc-prim";}
+      {gte = "2.1.0.0";  n = "network";}  {n = "old-locale";}
+      {gte = "1.1.1";  n = "time";}
+    ];
+  };
+  sha256 = "15mlllzw8ahvrx259bz5vwisdig7bvkany1qjhmz6y8v2rcplr7f";
+  tflags = ["fast-bignum"];  tsdeps = [];
 }
 {
   name = "skein";  version = "0.1.0.7";  edeps = [];
@@ -49422,6 +50445,55 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["instancest"];  tsdeps = [];
 }
 {
+  name = "bytestring-show";  version = "0.3.5.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [
+      [
+        {flag = "integer_simple";}
+        {cdeps = [];  deps = [{n = "integer-simple";}];}
+      ]
+      [
+        {and = 
+         [
+           {compilerFlavor = "GHC";  versionRange = {gte = "6.11";};}
+           {not = {flag = "integer_simple";};}
+         ];}
+        {
+          cdeps = [];
+          deps = 
+          [{i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "integer-gmp";}];
+        }
+      ]
+      [
+        {and = 
+         [
+           {and = 
+            [
+              {compilerFlavor = "GHC";  versionRange = {gte = "6.9";};}
+              {compilerFlavor = "GHC";  versionRange = {lt = "6.11";};}
+            ];}
+           {not = {flag = "integer_simple";};}
+         ];}
+        {
+          cdeps = [];
+          deps = 
+          [{i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "integer";}];
+        }
+      ]
+    ];
+    deps = 
+    [
+      {lt = "5";  n = "base";}  {lt = "0.6";  n = "binary";}
+      {i1 = {gte = "0.9";};  i2 = {lte = "1";};  n = "bytestring";}
+      {lt = "0.5";  n = "array";}  {lt = "0.5";  n = "containers";}
+    ];
+  };
+  sha256 = "0bz9q1v2sifk6kjfpp8vq1v1gp0cn8xa3dmnkj1nbi88c4p79g5p";
+  tsdeps = [];
+}
+{
   name = "OpenCLWrappers";  version = "0.1.0.1";  edeps = [];
   ldeps = 
   {
@@ -49805,6 +50877,74 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
+  name = "happstack-server";  version = "7.0.4";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [
+      [
+        {flag = "network_2_2_3";}
+        {cdeps = [];  deps = [{gte = "2.2.3";  n = "network";}];}
+        {
+          cdeps = [];
+          deps = 
+          [{lt = "2.2.3";  n = "network";}  {n = "network-bytestring";}];
+        }
+      ]
+      [
+        {and = [{flag = "template_haskell";}  {not = {arch = "Arm";};}];}
+        {cdeps = [];  deps = [{n = "template-haskell";}];}
+      ]
+      [
+        {not = {os = "Windows";};}  {cdeps = [];  deps = [{n = "unix";}];}
+      ]
+      [
+        {compilerFlavor = "GHC";  versionRange = {lt = "7.0";};}
+        {cdeps = [];  deps = [];}
+      ]
+    ];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {
+        i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "base64-bytestring";
+      }
+      {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "blaze-html";}
+      {n = "bytestring";}  {n = "containers";}  {n = "directory";}
+      {n = "extensible-exceptions";}  {n = "filepath";}
+      {gte = "1.0.2";  n = "hslogger";}  {n = "html";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "monad-control";}
+      {i1 = {gte = "2";};  i2 = {lt = "2.2";};  n = "mtl";}
+      {n = "old-locale";}  {n = "old-time";}
+      {lt = "4";  n = "parsec";}  {n = "process";}
+      {i1 = {gte = "0.7.1";};  i2 = {lt = "0.8";};  n = "sendfile";}
+      {gte = "0.3.1";  n = "system-filepath";}  {n = "syb";}
+      {i1 = {gte = "0.10";};  i2 = {lt = "0.12";};  n = "text";}
+      {n = "time";}
+      {
+        i1 = {gte = "0.1.3";};  i2 = {lt = "0.4";};  n = "transformers";
+      }
+      {
+        i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "transformers-base";
+      }
+      {i1 = {gte = "0.3.4";};  i2 = {lt = "0.4";};  n = "utf8-string";}
+      {n = "xhtml";}  {n = "zlib";}
+    ];
+  };
+  sha256 = "168201z5slm6mrkckpdpshgaiz29k9j1j97vmbrybprj0zhcrl7r";
+  tflags = ["network_2_2_3"  "template_haskell"];
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {n = "HUnit";}  {n = "base";}  {n = "bytestring";}
+       {n = "containers";}  {n = "happstack-server";}
+       {lt = "4";  n = "parsec";}  {n = "zlib";}
+     ];
+   }];
+}
+{
   name = "network-conduit";  version = "0.5.0";  edeps = [];
   ldeps = 
   {
@@ -49947,7 +51087,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "warp";  version = "1.3.0";  edeps = [];
+  name = "warp";  version = "1.3.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -50001,7 +51141,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "0.2";  n = "unix-compat";}  {n = "ghc-prim";}
     ];
   };
-  sha256 = "0prdjk6pkxawad1rz64wc5h8b17c82692vyxpzczh3dvd2cdrmcc";
+  sha256 = "0bgmz2kd2z9agpid0w2whfz1cyrmiaiyap20za1l56d88m0p1z45";
   tsdeps = 
   [{
      cdeps = [];
@@ -50455,7 +51595,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["newbase"];  tsdeps = [];
 }
 {
-  name = "persistent";  version = "0.9.0.4";  edeps = [];
+  name = "persistent";  version = "1.0.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -50490,19 +51630,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "1.1.4";  n = "time";}
       {i1 = {gte = "0.8";};  i2 = {lt = "1";};  n = "text";}
       {gte = "0.2";  n = "containers";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "conduit";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "resourcet";}
       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "monad-control";}
       {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "lifted-base";}
       {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "pool-conduit";}
       {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "path-pieces";}
       {i1 = {gte = "0.5";};  i2 = {lt = "0.7";};  n = "aeson";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "monad-logger";}
       {n = "transformers-base";}  {n = "base64-bytestring";}
       {n = "unordered-containers";}  {n = "vector";}
-      {n = "attoparsec";}
+      {n = "attoparsec";}  {n = "template-haskell";}
     ];
   };
-  sha256 = "1igml2hmc8ga9871dfq4mxqvy639vvlgl3cs48j3b27ci3qwd9jr";
+  sha256 = "1rrvq3girsjxfvdvvr9zxgc3252hrwcy84zj2mj0a5w057jahhhg";
   tflags = ["blaze_html_0_5"];
   tsdeps = 
   [{
@@ -50682,7 +51823,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "CV";  version = "0.3.5.4";  edeps = [];
+  name = "CV";  version = "0.3.6.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -50714,7 +51855,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "1.3.0.0";};  i2 = {lt = "1.4";};  n = "filepath";}
     ];
   };
-  sha256 = "14ak642wbah197vz2mrp925q3jaw2xqqmi0rxfnqndc6wlbvv2k6";
+  sha256 = "1hamdm2zr96kmysdqnsk40242p388hr9mbc1yb0h9bq2p92i5s5w";
   tflags = ["opencv23"];  tsdeps = [];
 }
 {
@@ -50916,7 +52057,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["poppler"];  tsdeps = [];
 }
 {
-  name = "hakyll";  version = "3.4.0.0";  edeps = [];
+  name = "hakyll";  version = "3.4.1.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -50955,7 +52096,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "cryptohash";}
       {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "directory";}
       {i1 = {gte = "1.0";};  i2 = {lt = "1.4";};  n = "filepath";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "hamlet";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "hamlet";}
       {i1 = {gte = "1";};  i2 = {lt = "2.2";};  n = "mtl";}
       {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "old-locale";}
       {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "old-time";}
@@ -50967,9 +52108,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.12.6";};  i2 = {lt = "0.13";};  n = "tagsoup";}
       {i1 = {gte = "0.11";};  i2 = {lt = "1.12";};  n = "text";}
       {i1 = {gte = "1.1";};  i2 = {lt = "1.5";};  n = "time";}
+      {i1 = {gte = "1.1.1";};  i2 = {lt = "1.2";};  n = "lrucache";}
     ];
   };
-  sha256 = "1m69kzjbsspf69qc3yq6qhpnk3vd3k5qa7zssazm8717sgrb2z9m";
+  sha256 = "028wq61kvh2nkz8dxbpcnvic1vlqnz1a2l1xrvficmvk25qyqmvy";
   tflags = ["previewserver"  "unixfilter"];
   tsdeps = 
   [{
@@ -51001,7 +52143,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "cryptohash";}
        {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "directory";}
        {i1 = {gte = "1.0";};  i2 = {lt = "1.4";};  n = "filepath";}
-       {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "hamlet";}
+       {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "hamlet";}
        {i1 = {gte = "1";};  i2 = {lt = "2.2";};  n = "mtl";}
        {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "old-locale";}
        {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "old-time";}
@@ -51013,6 +52155,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {gte = "0.12.6";};  i2 = {lt = "0.13";};  n = "tagsoup";}
        {i1 = {gte = "0.11";};  i2 = {lt = "1.12";};  n = "text";}
        {i1 = {gte = "1.1";};  i2 = {lt = "1.5";};  n = "time";}
+       {i1 = {gte = "1.1.1";};  i2 = {lt = "1.2";};  n = "lrucache";}
        {i1 = {gte = "2.4";};  i2 = {lt = "2.6";};  n = "unix";}
      ];
    }];
@@ -51197,7 +52340,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "language-objc";  version = "0.4.2.1";  edeps = [];
+  name = "language-objc";  version = "0.4.2.2";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -51232,7 +52375,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {lt = "1.2";};  i2 = {gte = "1.1";};  n = "pretty";}
     ];
   };
-  sha256 = "0p4qwysny6l4s2b5mp14zql88rh0agkqyrpcl5xpdnskmgihf2hj";
+  sha256 = "0xjn1cz5qfrjynignwvjw2d9sa3cghc6hx8xxa13b2rgz0scfxim";
   tflags = ["usebytestrings"  "separatesyb"];  tsdeps = [];
 }
 {
@@ -51868,7 +53011,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["small_base"];  tsdeps = [];
 }
 {
-  name = "protocol-buffers-descriptor";  version = "2.0.10";
+  name = "protocol-buffers-descriptor";  version = "2.0.11";
   edeps = [];
   ldeps = 
   {
@@ -51886,15 +53029,15 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
      ]];
     deps = 
     [
-      {n = "protocol-buffers";  v = "2.0.10";}  {n = "bytestring";}
+      {n = "protocol-buffers";  v = "2.0.11";}  {n = "bytestring";}
       {n = "containers";}
     ];
   };
-  sha256 = "0z2d45ay5jf4fri8kdqvvbgd79sjvji0ilg97pkic18vypcxdgj4";
+  sha256 = "0c6bd9i4jzvgl7dsrl5x4nsif9h26rj0jcy47xxpmibvpzgl6ifw";
   tflags = ["small_base"];  tsdeps = [];
 }
 {
-  name = "protocol-buffers";  version = "2.0.10";  edeps = [];
+  name = "protocol-buffers";  version = "2.0.11";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -51919,7 +53062,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "mtl";}  {n = "utf8-string";}
     ];
   };
-  sha256 = "0d6xc7wkb6bs4fgaxvrz8phmbga091d3bv04qprl1l6824wqvqf2";
+  sha256 = "05xlmska7nwk5x297z5zwnc931b8yr3lxj5mz9b55il7ra6svicg";
   tflags = ["small_base"];  tsdeps = [];
 }
 {
@@ -52816,49 +53959,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["splitbase"];  tsdeps = [];
 }
 {
-  name = "fft";  version = "0.1.6";  edeps = [];
-  ldeps = 
-  {
-    cdeps = 
-    [
-      [
-        {flag = "splitbase";}
-        {
-          cdeps = [];
-          deps = 
-          [
-            {gte = "3";  n = "base";}  {n = "array";}  {n = "carray";}
-            {n = "storable-complex";}  {n = "ix-shapable";}
-          ];
-        }
-        {
-          cdeps = [];
-          deps = 
-          [
-            {lt = "3";  n = "base";}  {n = "carray";}
-            {n = "storable-complex";}  {n = "ix-shapable";}
-          ];
-        }
-      ]
-      [
-        {flag = "base4";}
-        {
-          cdeps = [];
-          deps = 
-          [
-            {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-            {gte = "0.1";  n = "syb";}
-          ];
-        }
-        {cdeps = [];  deps = [{lt = "4";  n = "base";}];}
-      ]
-    ];
-    deps = [];
-  };
-  sha256 = "1lrncbhp6iczp1ixiiv6v2zi6lqq4h4vcs0yy98wwd4k7w6dw0dv";
-  tflags = ["splitbase"  "base4"];  tsdeps = [];
-}
-{
   name = "libGenI";  version = "0.16.1";  edeps = [];
   ldeps = 
   {
@@ -53692,7 +54792,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["splitbase"  "newopengl"];  tsdeps = [];
 }
 {
-  name = "hTensor";  version = "0.8.0";  edeps = [];
+  name = "hTensor";  version = "0.8.1";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -53710,7 +54810,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "random";}
     ];
   };
-  sha256 = "0wbb9j8z4vs8136jf7ncyv31z29iyg0s8ahylxyjs4qwp04z5c64";
+  sha256 = "155wm2hzg9yjl4vrafx7mb1cynhxadwd1p2qf5f9rhkc7igzc642";
   tflags = ["splitbase"];  tsdeps = [];
 }
 {
@@ -53889,7 +54989,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["splitbase"];  tsdeps = [];
 }
 {
-  name = "Chart";  version = "0.15";  edeps = [];
+  name = "Chart";  version = "0.16";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -53917,11 +55017,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "2.2.1";  n = "colour";}
     ];
   };
-  sha256 = "1357gqn2ifalknl85n2z9ysf195dnaxm175rp0kmmzbf4vik9gc4";
+  sha256 = "1mb8hgxj0i5s7l061pfn49m5f6qdwvmgy6ni7jmg85vpy6b7jra3";
   tflags = ["splitbase"];  tsdeps = [];
 }
 {
-  name = "Chart-gtk";  version = "0.15";  edeps = [];
+  name = "Chart-gtk";  version = "0.16";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -53950,7 +55050,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "Chart";  v = "0.15";}
     ];
   };
-  sha256 = "1lqgs6yzb8vdz2k77iqywckmvpvd15biasaxl4fhgpclakwhk4id";
+  sha256 = "12rngr3gfr58z8h327cbmf7iawwlldgri9bgfjq2yvz4fq4npv08";
   tflags = ["splitbase"];  tsdeps = [];
 }
 {
@@ -54390,7 +55490,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "HStringTemplate";  version = "0.6.8";  edeps = [];
+  name = "HStringTemplate";  version = "0.6.9";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -54436,7 +55536,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
     deps = [];
   };
-  sha256 = "1fybvb3v2b786n1hfzcvyanj3yfm5j8z4fm48vaskcggawh6rlkr";
+  sha256 = "0xa665q5gya51vjkg1i6f6qk67jx28xcbxs5v1d9yr1f8djh5d9v";
   tflags = ["smaller-base"  "syb-with-class"  "quasi-quotation"];
   tsdeps = [];
 }
@@ -54554,7 +55654,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "Hipmunk";  version = "5.2.0.9";  edeps = [];
+  name = "Hipmunk";  version = "5.2.0.10";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -54593,7 +55693,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
     deps = [];
   };
-  sha256 = "0c0s5spsyp67ajfzck8f29px2xid8aiws12l3dswvp50d74a9mlq";
+  sha256 = "0kq6dlx1g7dra7nsfmrc13yvnl7wh00fadmgln9v2vyf0ww82x95";
   tflags = ["small_base"];  tsdeps = [];
 }
 {
@@ -54637,7 +55737,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "persistent-sqlite";  version = "0.9.0.2";  edeps = [];
+  name = "persistent-sqlite";  version = "1.0.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -54652,15 +55752,15 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {
         i1 = {gte = "0.2.1";};  i2 = {lt = "0.4";};  n = "transformers";
       }
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "persistent";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "persistent";}
       {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "monad-control";}
       {gte = "0.2";  n = "containers";}
       {i1 = {gte = "0.7";};  i2 = {lt = "1";};  n = "text";}
       {gte = "0.5";  n = "aeson";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "conduit";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
     ];
   };
-  sha256 = "19wmz13k3qbpam2siykczgacgaj48yw4p7iz3y6v8a2z8wha73zb";
+  sha256 = "0ak9x6w9566mjc0ggsqxr69x4w5w7igdxkq6wwm6ysy5cvs8fwc8";
   tsdeps = [];
 }
 {
@@ -54719,43 +55819,23 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["test"];  tsdeps = [];
 }
 {
-  name = "yesod-core";  version = "1.0.1.3";  edeps = [];
+  name = "yesod-core";  version = "1.1.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
-    [
-      [{flag = "test";}  {cdeps = [];  deps = [{n = "wai-test";}];}]
-      [
-        {flag = "blaze_html_0_5";}
-        {
-          cdeps = [];
-          deps = 
-          [
-            {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
-            {
-              i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
-            }
-          ];
-        }
-        {
-          cdeps = [];
-          deps = 
-          [{i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "blaze-html";}];
-        }
-      ]
-    ];
+    [[{flag = "test";}  {cdeps = [];  deps = [{n = "wai-test";}];}]];
     deps = 
     [
       {i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}
       {gte = "1.1.4";  n = "time";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-routes";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai-extra";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-routes";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai-extra";}
       {gte = "0.9.1.4";  n = "bytestring";}
       {i1 = {gte = "0.7";};  i2 = {lt = "0.12";};  n = "text";}
       {n = "template-haskell";}
       {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "path-pieces";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "hamlet";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "hamlet";}
       {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare";}
       {
         i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare-js";
@@ -54772,9 +55852,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {
         i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
       }
-      {
-        i1 = {gte = "0.7.3.1";};  i2 = {lt = "0.8";};  n = "clientsession";
-      }
+      {i1 = {gte = "0.8";};  i2 = {lt = "0.9";};  n = "clientsession";}
       {i1 = {gte = "1.0.0.2";};  i2 = {lt = "1.1";};  n = "random";}
       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "cereal";}
       {
@@ -54785,28 +55863,31 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "monad-control";}
       {gte = "0.4";  n = "transformers-base";}
       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "cookie";}
-      {i1 = {gte = "0.6.5";};  i2 = {lt = "0.7";};  n = "http-types";}
+      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "http-types";}
       {gte = "0.2";  n = "case-insensitive";}
       {i1 = {gte = "2";};  i2 = {lt = "3.2";};  n = "parsec";}
       {i1 = {gte = "1";};  i2 = {lt = "1.2";};  n = "directory";}
       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "vector";}
       {gte = "0.5";  n = "aeson";}
-      {gte = "0.0.2";  n = "fast-logger";}
-      {gte = "0.0.1";  n = "wai-logger";}
-      {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "conduit";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "fast-logger";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "monad-logger";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "resourcet";}
       {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "lifted-base";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
+      {
+        i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
+      }
     ];
   };
-  sha256 = "1rdj622zi12v9d7cxkn8w4q43k8c6gfz8wrpmvya76gqmg6h2gil";
-  tflags = ["blaze_html_0_5"];
+  sha256 = "01jxb6skpwckvkgar847limqrcl91l50pr7iza2sfp0a6j5a2hmk";
   tsdeps = 
   [{
      cdeps = [];
      deps = 
      [
        {n = "base";}
-       {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "hspec";}
+       {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "hspec";}
        {n = "wai-test";}  {n = "wai";}  {n = "yesod-core";}
        {n = "bytestring";}  {n = "hamlet";}  {n = "shakespeare-css";}
        {n = "shakespeare-js";}  {n = "text";}  {n = "http-types";}
@@ -54816,7 +55897,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "shakespeare";  version = "1.0.0.2";  edeps = [];
+  name = "shakespeare";  version = "1.0.1";  edeps = [];
   ldeps = 
   {
     cdeps = [[{flag = "test_export";}  {cdeps = [];  deps = [];}]];
@@ -54829,7 +55910,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "process";}
     ];
   };
-  sha256 = "04nk9l7c5wk3rbkk57s5as30zvsa7wzrsmhdak59i6v30ww22c9f";
+  sha256 = "1qs2n16ncrw4c98lqzgxhxa5mi7aiq1q0gwq7m9mr32jv7qzwgcv";
   tsdeps = 
   [{
      cdeps = [];
@@ -54907,7 +55988,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "hmatrix";  version = "0.14.0.1";  edeps = [];
+  name = "hmatrix";  version = "0.14.1.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -54960,7 +56041,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "random";}  {gte = "0.8";  n = "vector";}  {n = "binary";}
     ];
   };
-  sha256 = "057ii711qsh5307bp3jqpvlhwp2iacr83whhjm5053b5psinj4z5";
+  sha256 = "10fvbk3k2fgac46a86mc8g0s5gsw1p1bz4k57gn6dzgwh73mxjx7";
   tflags = ["dd"];  tsdeps = [];
 }
 {
@@ -55004,6 +56085,23 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = [{i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}];
   };
   sha256 = "0ls5fxwq2lnb0rjqih4isfwiv0603ga12gxnf7w3rpqp5qhrhas8";
+  tsdeps = [];
+}
+{
+  name = "tardis";  version = "0.2.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {flag = "use_undecidable_instances";}  {cdeps = [];  deps = [];}
+     ]];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {i1 = {lt = "3";};  i2 = {gte = "2";};  n = "mtl";}
+    ];
+  };
+  sha256 = "17pndghh33v1rykr9lfk85qny2ksdxgxndcw8c06zyk9n5ndfsl5";
   tsdeps = [];
 }
 {
@@ -55476,7 +56574,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "happstack-yui";  version = "7351.4.1";  edeps = [];
+  name = "happstack-yui";  version = "7360.4.1";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -55531,7 +56629,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
     ];
   };
-  sha256 = "09wxcq3w8afr6302jxl2wbqspm6wdj0fzjslsz6imi0rzngmxazp";
+  sha256 = "1jrw2wc99fnkakva52myhma1czl6xc6wjzmz0rrz5qqrd926awlx";
   tsdeps = [];
 }
 {
@@ -56099,7 +57197,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "hscurses";  version = "1.4.1.0";  edeps = [];
+  name = "hscurses";  version = "1.4.1.1";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -56114,11 +57212,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = 
     [
       {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}  {n = "mtl";}
-      {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "old-time";}
+      {lt = "1.2";  n = "old-time";}
       {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "old-locale";}
     ];
   };
-  sha256 = "09yp1vag3ip8wysxg6ix92g4y8ia15alkkh79hs43i5r0vdmd82d";
+  sha256 = "0h0nbzq6q397qd606ghn0z0i8617vwmdvz2hcicix5ivcxpd1spp";
   tsdeps = [];
 }
 {
@@ -56418,6 +57516,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "stickyKeysHotKey";  version = "0.1.0.0";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {or = [{os = "Windows";}  {os = "Windows";}];}
+       {cdeps = [];  deps = [];}
+     ]];
+    deps = 
+    [{i1 = {lt = "4.6";};  i2 = {gte = "4.5";};  n = "base";}];
+  };
+  sha256 = "0bqxi7yry13wd09spmszskz7873gdyg2cwr4fwk0w64kwmdm0q3w";
+  tsdeps = [];
+}
+{
   name = "zeromq-haskell";  version = "0.8.4";  edeps = [];
   ldeps = 
   {
@@ -56478,7 +57591,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "simple-sendfile";  version = "0.2.4";  edeps = [];
+  name = "simple-sendfile";  version = "0.2.5";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -56497,7 +57610,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
                    deps = 
                    [
                      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}
-                     {i1 = {gte = "0.4.1";};  i2 = {lt = "0.5";};  n = "conduit";}
+                     {i1 = {gte = "0.4.1";};  i2 = {lt = "0.6";};  n = "conduit";}
                      {
                        i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
                      }
@@ -56516,7 +57629,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "network";}  {n = "bytestring";}
     ];
   };
-  sha256 = "1c7imvkb5aq5mlg6a1r36fp9klniicbj56n32yvzj4qqf1zy2pbx";
+  sha256 = "1g9plryh86lc03rf1s8m36wyc2yqp4y6f02viq9c4g1k85rkbs53";
   tsdeps = 
   [{
      cdeps = [];
@@ -56588,7 +57701,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "OpenCL";  version = "1.0.3.1";  edeps = [];
+  name = "OpenCL";  version = "1.0.3.2";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -56601,10 +57714,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {gte = "4.0";};  i2 = {lt = "5";};  n = "base";}
       {n = "bytestring";}
-      {i1 = {lt = "2.1";};  i2 = {gte = "2.0";};  n = "mtl";}
+      {i1 = {lt = "3";};  i2 = {gte = "2";};  n = "mtl";}
     ];
   };
-  sha256 = "1lk04xn3mdmaxckh9f1d8j886mkvq9wsy3bvy1ksn4wbxr3j27q2";
+  sha256 = "1lshdqzfmz4m6xp10d1cad78c9sc0f7mny11j1qrw831bivrs0mi";
   tsdeps = 
   [{
      cdeps = [];
@@ -56958,6 +58071,19 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "system-time-monotonic";  version = "0.2";  edeps = [];
+  ldeps = 
+  {
+    cdeps = [[{os = "Windows";}  {cdeps = [];  deps = [];}]];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}  {n = "time";}
+    ];
+  };
+  sha256 = "0f5grhh6x2fbawmdk0gq1nsjz47iz8f8r2592d1l69fqddwdhc3v";
+  tsdeps = [];
+}
+{
   name = "options";  version = "0.1.1";  edeps = [];
   ldeps = 
   {
@@ -57014,7 +58140,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "yesod-default";  version = "1.0.1.1";  edeps = [];
+  name = "yesod-default";  version = "1.1.0";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -57027,10 +58153,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = 
     [
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-core";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "warp";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai-extra";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-core";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "warp";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai-extra";}
       {gte = "0.9.1.4";  n = "bytestring";}
       {
         i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
@@ -57043,14 +58169,16 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare-js";
       }
       {n = "template-haskell";}
-      {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "yaml";}
+      {i1 = {gte = "0.8";};  i2 = {lt = "0.9";};  n = "yaml";}
       {
-        i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "network-conduit";
+        i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "network-conduit";
       }
       {n = "unordered-containers";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "hamlet";}
+      {n = "data-default";}
     ];
   };
-  sha256 = "0jv7fxrgh2x93saz0vrba0mzafq3wmq85b3idcsny4d8mgj6ngv0";
+  sha256 = "124407a0in474l71jja04ds0xh84ac5i3jv62iswxlcp1y9f52bq";
   tsdeps = [];
 }
 {
@@ -57255,7 +58383,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "conduit";  version = "0.5.2";  edeps = [];
+  name = "conduit";  version = "0.5.2.3";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -57287,39 +58415,19 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.5.5";};  i2 = {lt = "0.6";};  n = "void";}
     ];
   };
-  sha256 = "0wh61wsxzwdk1rngm6n59s35k12kmiy3ri4nfpri7g10w8b4nlq1";
+  sha256 = "1snyh9zxdmvjb1ilaz6c2z5220r7ygshmcq013nch44b6w3r3cp9";
   tflags = ["debug"  "nohandles"];
   tsdeps = 
   [{
      cdeps = [];
      deps = 
      [
-       {n = "conduit";}  {n = "base";}  {gte = "0.9.1";  n = "hspec";}
-       {n = "HUnit";}  {n = "QuickCheck";}  {n = "bytestring";}
-       {n = "transformers";}  {n = "text";}  {n = "resourcet";}
-       {n = "void";}
+       {n = "conduit";}  {n = "base";}
+       {i1 = {lt = "1.4";};  i2 = {gte = "1.3";};  n = "hspec";}
+       {n = "QuickCheck";}  {n = "bytestring";}  {n = "transformers";}
+       {n = "text";}  {n = "resourcet";}  {n = "void";}
      ];
    }];
-}
-{
-  name = "fast-logger";  version = "0.2.0";  edeps = [];
-  ldeps = 
-  {
-    cdeps = 
-    [[
-       {os = "Windows";}  {cdeps = [];  deps = [];}
-       {cdeps = [];  deps = [{n = "unix";}];}
-     ]];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-      {n = "blaze-builder";}  {n = "bytestring";}  {n = "directory";}
-      {n = "filepath";}  {n = "old-locale";}  {n = "text";}
-      {n = "time";}
-    ];
-  };
-  sha256 = "130gsb0rrv9agy0kyv5w2s6dgi19qnwk3h5vbaw6c517w5qs22ka";
-  tsdeps = [];
 }
 {
   name = "uni-posixutil";  version = "2.2.1.0";  edeps = [];
@@ -57447,7 +58555,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "accelerate-cuda";  version = "0.12.1.0";  edeps = [];
+  name = "accelerate-cuda";  version = "0.12.1.1";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -57465,25 +58573,37 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = 
     [
       {i1 = {gte = "0.12.1";};  i2 = {lt = "0.13";};  n = "accelerate";}
-      {gte = "0.3";  n = "array";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "array";}
       {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
-      {gte = "0.5";  n = "binary";}
-      {gte = "0.3";  n = "blaze-builder";}
-      {gte = "0.9";  n = "bytestring";}
-      {gte = "0.4";  n = "containers";}
-      {gte = "0.7";  n = "cryptohash";}  {gte = "0.4.1";  n = "cuda";}
-      {gte = "1.0";  n = "directory";}  {gte = "1.0";  n = "fclabels";}
-      {gte = "1.0";  n = "filepath";}  {gte = "1.1";  n = "hashable";}
-      {gte = "1.0.1";  n = "hashtables";}
-      {gte = "0.3";  n = "language-c-quote";}
-      {gte = "0.1.1";  n = "mainland-pretty";}
-      {gte = "2.0";  n = "mtl";}  {gte = "1.0";  n = "pretty";}
-      {gte = "1.0";  n = "process";}  {gte = "0.1";  n = "srcloc";}
-      {gte = "0.2";  n = "transformers";}
-      {gte = "0.1.4";  n = "unordered-containers";}
+      {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "binary";}
+      {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "blaze-builder";}
+      {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
+      {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "containers";}
+      {i1 = {lt = "0.8";};  i2 = {gte = "0.7";};  n = "cryptohash";}
+      {i1 = {gte = "0.4.1";};  i2 = {lt = "0.5";};  n = "cuda";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "directory";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "fclabels";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.4";};  n = "filepath";}
+      {i1 = {lt = "1.2";};  i2 = {gte = "1.1";};  n = "hashable";}
+      {i1 = {gte = "1.0.1";};  i2 = {lt = "1.1";};  n = "hashtables";}
+      {
+        i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "language-c-quote";
+      }
+      {
+        i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "mainland-pretty";
+      }
+      {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "pretty";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "process";}
+      {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "srcloc";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
+      {
+        i1 = {gte = "0.1.4";};  i2 = {lt = "0.3";};
+        n = "unordered-containers";
+      }
     ];
   };
-  sha256 = "1y6viivizv4frdh3xk5wqhs7wwnhqyjr9wid1y1d5l42mz41vp84";
+  sha256 = "1kj9i6djjb46ad3dnzk72mf33r8h1mjxljs7x5rf2d658hqk5yfv";
   tflags = ["bounds-checks"];  tsdeps = [];
 }
 {
@@ -57644,7 +58764,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "dyre";  version = "0.8.7";  edeps = [];
+  name = "dyre";  version = "0.8.8";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -57661,7 +58781,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "io-storage";}
     ];
   };
-  sha256 = "1n3wj530gm6zgs1kv1q8yfqqxwd87pqwhaw4cz94d406qrdna0gp";
+  sha256 = "1jgfmba2665rhjc4np3rn1pqd2fzahqpid7qgi1ka7glv2niis2f";
   tsdeps = [];
 }
 {
@@ -57688,7 +58808,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "acid-state";  version = "0.6.4";  edeps = [];
+  name = "acid-state";  version = "0.6.6";  edeps = [];
   ldeps = 
   {
     cdeps = 
@@ -57713,7 +58833,27 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "network";}
     ];
   };
-  sha256 = "1ck3818x7s2zf3rzcnvirmnr745x5x4jkm69jk3zmdssq6vqlw9r";
+  sha256 = "0cljkx0wb5j3vwvy8yykpihcinq7dhfx41q4pz18y4ls9janb8y9";
+  tsdeps = [];
+}
+{
+  name = "fast-logger";  version = "0.2.1";  edeps = [];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {os = "Windows";}
+       {cdeps = [];  deps = [{n = "old-locale";}  {n = "time";}];}
+       {cdeps = [];  deps = [{n = "unix";}  {n = "unix-time";}];}
+     ]];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "blaze-builder";}  {n = "bytestring";}  {n = "directory";}
+      {n = "filepath";}  {n = "text";}
+    ];
+  };
+  sha256 = "12avan85dkwipp8hqsya8yslirykz2yvqmns3wjhwl9j30idj7r3";
   tsdeps = [];
 }
 {
@@ -58736,7 +59876,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "derive";  version = "2.5.9";
+  name = "derive";  version = "2.5.10";
   edeps = [{cdeps = [];  deps = [];}];
   ldeps = 
   {
@@ -58754,7 +59894,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "1.5";};  i2 = {lt = "1.7";};  n = "uniplate";}
     ];
   };
-  sha256 = "1rws401dpdck7c9jxfv9h46r06vn730lw1fsxvvidnf3hlr0yyk5";
+  sha256 = "0r5qcchs6kw080pw95r442yk1ld48lk2imn7apk0ibkx53i4mqls";
   tsdeps = [];
 }
 {
@@ -59125,38 +60265,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "graph-rewriting-ski";  version = "0.5.7";
-  edeps = [{cdeps = [];  deps = [];}  {cdeps = [];  deps = [];}];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "4";};  i2 = {lt = "4.5";};  n = "base";}
-      {
-        i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
-        n = "base-unicode-symbols";
-      }
-      {
-        i1 = {gte = "0.4.4";};  i2 = {lt = "0.6";};  n = "graph-rewriting";
-      }
-      {
-        i1 = {gte = "0.4.2";};  i2 = {lt = "0.5";};
-        n = "graph-rewriting-layout";
-      }
-      {
-        i1 = {gte = "0.6.5";};  i2 = {lt = "0.7";};
-        n = "graph-rewriting-gl";
-      }
-      {i1 = {gte = "2.1";};  i2 = {lt = "2.2";};  n = "parsec";}
-      {i1 = {gte = "2.2";};  i2 = {lt = "2.3";};  n = "GLUT";}
-      {i1 = {gte = "2.4";};  i2 = {lt = "2.5";};  n = "OpenGL";}
-    ];
-  };
-  sha256 = "1rrm4yxgbm076ld0sklj6ylv12798iqmz108dnp1hw051zdmqa8v";
-  tsdeps = [];
-}
-{
   name = "manatee-mplayer";  version = "0.1.1";
   edeps = [{cdeps = [];  deps = [];}  {cdeps = [];  deps = [];}];
   ldeps = 
@@ -59361,7 +60469,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["small_base"];  tsdeps = [];
 }
 {
-  name = "Craft3e";  version = "0.1.0.3";
+  name = "Craft3e";  version = "0.1.0.4";
   edeps = 
   [
     {cdeps = [];  deps = [];}  {cdeps = [];  deps = [];}
@@ -59376,11 +60484,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "2.1";};  i2 = {lt = "3";};  n = "QuickCheck";}
       {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "old-locale";}
       {i1 = {gte = "1.1";};  i2 = {lt = "1.3";};  n = "time";}
-      {i1 = {gte = "1.1";};  i2 = {lt = "2.1";};  n = "mtl";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "2.2";};  n = "mtl";}
       {i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "HUnit";}
     ];
   };
-  sha256 = "0r1rrjjn01csf7jnpfkg3szkvpdyj16cl6x0f2pfaa09yrqv9cy2";
+  sha256 = "1ldybcy7mcgzxfxjzqgq94aj089nww66jvyq8n6ki5243bh754yr";
   tsdeps = [];
 }
 {
@@ -61043,7 +62151,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "repa-v4l2";  version = "0.1.0.0";
+  name = "repa-v4l2";  version = "0.2.0.0";
   edeps = 
   [{
      cdeps = [];
@@ -61060,7 +62168,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = 
     [
       {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
-      {gte = "3.0";  n = "repa";}
+      {gte = "3.2.1.1";  n = "repa";}
       {gte = "0.2.2";  n = "transformers";}
       {gte = "0.2";  n = "containers";}  {gte = "1.3";  n = "deepseq";}
       {gte = "0.1";  n = "v4l2";}  {gte = "2.0.1.0";  n = "mtl";}
@@ -61068,7 +62176,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {gte = "0.9.2";  n = "bytestring";}
     ];
   };
-  sha256 = "14wsnvk2sn06gjdkcrsz0ih4dpgi90ra2h4yw4jw38846vgpcx8x";
+  sha256 = "1d8spppfjbcb9smk735zxgpz1v1f5p1sm50nfzry68bdb1p29xnz";
   tsdeps = [];
 }
 {
@@ -61800,6 +62908,30 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
   sha256 = "1qcay15g6g2c9h6vfc7pi7rl4d8fsl09vrq33pdqvgg2fp2xclh3";
   tsdeps = [];
+}
+{
+  name = "hascal";  version = "1.4.1";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gt = "2";};  i2 = {lt = "5";};  n = "base";}
+       {gte = "3000";  n = "numbers";}
+     ];
+   }];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = [{i1 = {gt = "2";};  i2 = {lt = "5";};  n = "base";}];
+  };
+  sha256 = "17rf4bcmr7r1dfv2k0ad16sv4xziwaf5f9jvxkcd2chg4l9hagsf";
+  tsdeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [{i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "HUnit";}];
+   }];
 }
 {
   name = "estreps";  version = "0.3.1";
@@ -62787,7 +63919,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "stylish-haskell";  version = "0.3.1.0";
+  name = "stylish-haskell";  version = "0.3.2.0";
   edeps = 
   [{
      cdeps = [];
@@ -62810,7 +63942,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {gte = "0.7";};  i2 = {lt = "0.9";};  n = "yaml";}
      ];
    }];
-  sha256 = "04db26xlcvmy604fm5wvwzf2cg5pzv70dcsizdnllhbm9z12z3i8";
+  sha256 = "02gv07nam8xpah5b0liqagz2bmq5cz9gf1ssbj2z7xhbghbzds5n";
   tsdeps = 
   [{
      cdeps = [];
@@ -63208,7 +64340,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "BirdPP";  version = "1.0";
+  name = "BirdPP";  version = "1.1";
   edeps = 
   [{
      cdeps = [];
@@ -63218,7 +64350,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {n = "haskell98";}
      ];
    }];
-  sha256 = "1gxcp73xbzpdbd8q90dn5ws216qz6rzbj6iylh7wm4z2kz2lj9zv";
+  sha256 = "14wbnxjyg75vc7zwg42cpk8a1cb7gm4881c52yaq1bq053g5dsz2";
   tsdeps = [];
 }
 {
@@ -63701,25 +64833,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "ssv";  version = "0.2";
-  edeps = 
-  [{
-     cdeps = [];
-     deps = [{i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}];
-   }];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "1";};  n = "containers";}
-    ];
-  };
-  sha256 = "1q74l64yyj9kivxhi5fikfjka0nq2wr984qpljrfyd2jy778gn4x";
-  tsdeps = [];
-}
-{
   name = "wol";  version = "0.1.2";
   edeps = 
   [{
@@ -64033,44 +65146,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "sbv";  version = "2.1";
-  edeps = 
-  [{
-     cdeps = [];
-     deps = 
-     [
-       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-       {gte = "1.0.1.1";  n = "directory";}
-       {gte = "1.2.4.2";  n = "HUnit";}
-       {gte = "1.1.0.4";  n = "filepath";}
-       {gte = "1.0.1.3";  n = "process";}  {n = "sbv";}
-     ];
-   }];
-  ldeps = 
-  {
-    cdeps = [];
-    deps = 
-    [
-      {gte = "0.3.0.1";  n = "array";}
-      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-      {gte = "0.3.0.0";  n = "containers";}
-      {gte = "1.1.0.2";  n = "deepseq";}
-      {gte = "1.0.1.1";  n = "directory";}
-      {gte = "1.1.0.4";  n = "filepath";}
-      {gte = "2.0.1.0";  n = "mtl";}
-      {gte = "1.0.0.5";  n = "old-time";}
-      {gte = "1.0.1.1";  n = "pretty";}
-      {gte = "1.0.1.3";  n = "process";}
-      {gte = "2.4.0.1";  n = "QuickCheck";}
-      {gte = "1.0.1.1";  n = "random";}
-      {gte = "0.2.4.1";  n = "strict-concurrency";}
-      {gte = "0.3.6";  n = "syb";}
-    ];
-  };
-  sha256 = "18sn0lj9hzvrgmps2598qn925yz3q132hhgr6m32a16yp0zkyayc";
-  tsdeps = [];
-}
-{
   name = "pb";  version = "0.1.0";
   edeps = 
   [{
@@ -64340,6 +65415,29 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "ssv";  version = "0.2.1";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+       {i1 = {gte = "0.3";};  i2 = {lt = "1";};  n = "containers";}
+     ];
+   }];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "1";};  n = "containers";}
+    ];
+  };
+  sha256 = "18yswlx4wfkvf87n42g5wnbs5i629w7msxay62rjcq0wlm5zmzbs";
+  tsdeps = [];
+}
+{
   name = "barchart";  version = "0.1.1.1";
   edeps = 
   [{
@@ -64368,7 +65466,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "kit";  version = "0.7.8";
+  name = "kit";  version = "0.7.9";
   edeps = 
   [{
      cdeps = [];
@@ -64376,18 +65474,17 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
      [
        {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
        {i1 = {gte = "0.5.1";};  i2 = {lt = "6";};  n = "Glob";}
-       {gte = "4000.0.9";  n = "HTTP";}
+       {n = "attoparsec";}  {n = "HTTP";}
        {gte = "0.5.5";  n = "ansi-terminal";}  {n = "bytestring";}
-       {gte = "0.1";  n = "cabal-file-th";}
+       {gte = "0.2.2";  n = "cabal-file-th";}
        {gte = "0.6.2";  n = "cmdargs";}  {n = "containers";}
-       {n = "data-object";}  {n = "data-object-yaml";}
-       {n = "directory";}  {n = "filepath";}
-       {i1 = {gte = "2.0";};  i2 = {lt = "3";};  n = "mtl";}
-       {n = "network";}  {n = "process";}  {n = "template-haskell";}
-       {i1 = {gte = "2.4";};  i2 = {lt = "2.5";};  n = "unix";}
+       {n = "yaml";}  {n = "directory";}  {n = "filepath";}
+       {n = "mtl";}  {n = "network";}  {n = "process";}
+       {n = "template-haskell";}  {n = "unordered-containers";}
+       {n = "text";}  {n = "unix";}
      ];
    }];
-  sha256 = "0cn967l577gs8znswmdckic1a2iwmdm1x45wdvp400wqqmyf4wq7";
+  sha256 = "1gm47zrlzy30k71zrdq4qgwnz6z944v999kc34n52qnczxa8xl8i";
   tsdeps = [];
 }
 {
@@ -64563,7 +65660,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "confsolve";  version = "0.3.1";
+  name = "confsolve";  version = "0.3.2";
   edeps = 
   [{
      cdeps = [];
@@ -64571,7 +65668,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
      [
        {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
        {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "time";}
-       {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "process";}
+       {i1 = {gte = "1.1.0.1";};  i2 = {lt = "1.2";};  n = "process";}
        {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "haskell98";}
        {
          i1 = {gte = "0.2.1.0";};  i2 = {lt = "0.3";};
@@ -64590,7 +65687,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {gte = "0.9.5";};  i2 = {lt = "1.0";};  n = "cmdargs";}
      ];
    }];
-  sha256 = "13bgdrr1v78k69br6nwlplw26y60fl96hpsi3j8nv7vfqcbn2945";
+  sha256 = "09xnbd1mqym80425gnsamdrk9yf2f7ahg2lzjmx450rs9p7wgbd2";
   tsdeps = [];
 }
 {
@@ -65063,27 +66160,9 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "parallel";}  {n = "text";}  {n = "dlist";}
     ];
   };
-  sha256 = "0irmk83j1jqrxyhmy6wkppdz7cn5sxh2ndg9xlq70q3haimrxymk";
+  sha256 = "0kxfx3k2d8xy75s7cln3l1hiia5vjcr6k5almbpys63dkr3svcz2";
   tflags = ["with-fix40"  "with-fix41"  "with-fix42"];
-  tsdeps = 
-  [{
-     cdeps = 
-     [
-       [{flag = "with_fix40";}  {cdeps = [];  deps = [];}]
-       [{flag = "with_fix41";}  {cdeps = [];  deps = [];}]
-       [{flag = "with_fix42";}  {cdeps = [];  deps = [];}]
-       [{flag = "with_fix43";}  {cdeps = [];  deps = [];}]
-       [{flag = "with_fix44";}  {cdeps = [];  deps = [];}]
-     ];
-     deps = 
-     [
-       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
-       {n = "HaXml";}  {n = "MissingH";}  {n = "old-time";}
-       {n = "dlist";}  {n = "attoparsec";}  {n = "containers";}
-       {n = "QuickCheck";}  {n = "deepseq";}  {n = "text";}
-       {n = "bytestring";}
-     ];
-   }];
+  tsdeps = [];
 }
 {
   name = "LambdaINet";  version = "0.1.2.1";
@@ -66005,7 +67084,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "tup-functor";  version = "0.1";
+  name = "tup-functor";  version = "0.2.0.1";
   edeps = 
   [{
      cdeps = [];
@@ -66018,13 +67097,17 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   ldeps = 
   {
     cdeps = [];
-    deps = [{i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}];
+    deps = 
+    [
+      {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
+      {gte = "1.3";  n = "cpphs";}
+    ];
   };
-  sha256 = "1dcwj38ssdfkf4x2bni8hpk8qqjdxpiyhccyfg47rn8kjigzk2df";
+  sha256 = "1692zy7n8k06iyf628y6804qqgnj7zzm3kr0w2q2gw45h82px093";
   tsdeps = [];
 }
 {
-  name = "cabal2nix";  version = "1.37";
+  name = "cabal2nix";  version = "1.38";
   edeps = 
   [
     {
@@ -66048,7 +67131,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       ];
     }
   ];
-  sha256 = "0gd20nzr3bqscd4pn0j3vsmnhxiypbv5ppncmi0ck5n4ii8c6m94";
+  sha256 = "1kybxrkddbzr1cqpqplbflhakf9njb9hvamhdwvlanlk8985h8jg";
   tsdeps = [];
 }
 {
@@ -66423,7 +67506,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "morfette";  version = "0.3.4";
+  name = "morfette";  version = "0.3.5";
   edeps = 
   [{
      cdeps = [];
@@ -66436,7 +67519,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {gte = "2.3";  n = "QuickCheck";}
      ];
    }];
-  sha256 = "1z8p9wfqvd868ma2ybkcq2whjnc3nc5inm0vamx6nbzjlybi2zzi";
+  sha256 = "1w6i1dp8362hgy2bcdpr3w77dc3r7sph189cr72grm6r6blq96yx";
   tsdeps = [];
 }
 {
@@ -66804,38 +67887,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "graph-rewriting-ww";  version = "0.1";
-  edeps = 
-  [{
-     cdeps = [];
-     deps = 
-     [
-       {i1 = {gte = "4";};  i2 = {lt = "4.5";};  n = "base";}
-       {
-         i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
-         n = "base-unicode-symbols";
-       }
-       {
-         i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "graph-rewriting";
-       }
-       {
-         i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};
-         n = "graph-rewriting-layout";
-       }
-       {
-         i1 = {gte = "0.6.9";};  i2 = {lt = "0.8";};
-         n = "graph-rewriting-gl";
-       }
-       {i1 = {gte = "2.1";};  i2 = {lt = "2.2";};  n = "parsec";}
-       {i1 = {gte = "2.2";};  i2 = {lt = "2.3";};  n = "GLUT";}
-       {i1 = {gte = "2.4";};  i2 = {lt = "2.5";};  n = "OpenGL";}
-       {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "IndentParser";}
-     ];
-   }];
-  sha256 = "09r4j5dm9l2f0jk9hdbzxa2kglznhkdz8x4nhiqcmvlwk9qm4y67";
-  tsdeps = [];
-}
-{
   name = "graph-rewriting-lambdascope";  version = "0.5.2";
   edeps = 
   [{
@@ -66869,6 +67920,38 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
      ];
    }];
   sha256 = "06sib0fzmvz0gl6bwbwmkpjvikxvk5l38qabr5sbz5fp5vnr5s8i";
+  tsdeps = [];
+}
+{
+  name = "graph-rewriting-ww";  version = "0.3.1";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "4";};  i2 = {lt = "4.6";};  n = "base";}
+       {
+         i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
+         n = "base-unicode-symbols";
+       }
+       {
+         i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "graph-rewriting";
+       }
+       {
+         i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};
+         n = "graph-rewriting-layout";
+       }
+       {
+         i1 = {gte = "0.6.9";};  i2 = {lt = "0.8";};
+         n = "graph-rewriting-gl";
+       }
+       {i1 = {gte = "2.1";};  i2 = {lt = "2.2";};  n = "parsec";}
+       {i1 = {gte = "2.2";};  i2 = {lt = "2.3";};  n = "GLUT";}
+       {i1 = {gte = "2.4";};  i2 = {lt = "2.5";};  n = "OpenGL";}
+       {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "IndentParser";}
+     ];
+   }];
+  sha256 = "1n45dz3rgwi1vzy5k93pxm16w8nv66h04maqzn0hfhy1dgdlksgl";
   tsdeps = [];
 }
 {
@@ -67711,7 +68794,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "xkcd";  version = "0.1";
+  name = "xkcd";  version = "0.1.1";
   edeps = 
   [{
      cdeps = [];
@@ -67721,11 +68804,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {gte = "4000.1.2";  n = "HTTP";}
        {gte = "0.12.6";  n = "tagsoup";}
        {gte = "0.9";  n = "bytestring";}  {gte = "2.3";  n = "network";}
-       {gte = "1.1";  n = "haskell98";}
        {gte = "1.1";  n = "directory";}  {gte = "1.2";  n = "filepath";}
      ];
    }];
-  sha256 = "1v26fa43qkl5vx3y6jlqdnvz3qyjrznyq1sw9cx586w5w89xg4d7";
+  sha256 = "15zwx7rkxm52pnxjhx3p979h48cls1ipb7hmryxll5rcxz9aga29";
   tsdeps = [];
 }
 {
@@ -67869,14 +68951,14 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "mega-sdist";  version = "0.2";
+  name = "mega-sdist";  version = "0.2.0.2";
   edeps = 
   [{
      cdeps = [];
      deps = 
      [
        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-       {i1 = {gte = "0.12";};  i2 = {lt = "0.13";};  n = "shelly";}
+       {i1 = {gte = "0.13";};  i2 = {lt = "0.14";};  n = "shelly";}
        {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
        {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "zlib-conduit";}
        {i1 = {gte = "1.5";};  i2 = {lt = "1.6";};  n = "http-conduit";}
@@ -67888,7 +68970,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {n = "bytestring";}  {n = "containers";}  {n = "text";}
      ];
    }];
-  sha256 = "1l18wikf0q9dgdlv4w8x60v5q2zb6pkwdrz14rcg9ymi4pvr7r6g";
+  sha256 = "0y4xybsfzqq004a8as7dmnaprfq2gp59vssix1kng14626l6snf3";
   tsdeps = [];
 }
 {
@@ -68194,7 +69276,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "yackage";  version = "0.5.0.1";
+  name = "yackage";  version = "0.6.0";
   edeps = 
   [
     {
@@ -68202,17 +69284,17 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       deps = 
       [
         {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-        {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-core";}
-        {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "warp";}
+        {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-core";}
+        {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "warp";}
         {n = "Cabal";}  {n = "bytestring";}  {n = "text";}  {n = "zlib";}
         {n = "tar";}  {n = "containers";}  {n = "directory";}
         {n = "yaml";}  {n = "cmdargs";}
-        {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai";}
+        {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai";}
         {n = "transformers";}  {n = "hamlet";}
-        {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-form";}
-        {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "http-types";}
+        {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-form";}
+        {i1 = {gte = "0.6";};  i2 = {lt = "0.8";};  n = "http-types";}
         {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
-        {n = "vector";}  {n = "unordered-containers";}
+        {n = "vector";}  {n = "unordered-containers";}  {n = "conduit";}
       ];
     }
     {
@@ -68224,7 +69306,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
            deps = 
            [
              {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-             {i1 = {gte = "1.4";};  i2 = {lt = "1.5";};  n = "http-conduit";}
+             {i1 = {gte = "1.5";};  i2 = {lt = "1.6";};  n = "http-conduit";}
              {
                i1 = {gte = "0.2.1.3";};  i2 = {lt = "0.4";};  n = "blaze-builder";
              }
@@ -68236,22 +69318,22 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       deps = [];
     }
   ];
-  sha256 = "0sds3xx5dfrm22lkdfy2sl9rqrbb1ziynl1spgf4jrf6lwv0wm1n";
+  sha256 = "100kiziv3n6wy98cwdya8yb12pc1hj803sb8f47d5w1b487wdik6";
   tflags = ["upload"];  tsdeps = [];
 }
 {
-  name = "servius";  version = "1.0.0.2";
+  name = "servius";  version = "1.1.0";
   edeps = 
   [{
      cdeps = [];
      deps = 
      [
        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-       {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "warp";}
+       {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "warp";}
        {
-         i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai-app-static";
+         i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai-app-static";
        }
-       {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai-extra";}
+       {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai-extra";}
        {gte = "0.6.7";  n = "cmdargs";}
        {gte = "1.0";  n = "directory";}
        {gte = "0.2";  n = "containers";}
@@ -68259,15 +69341,16 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {gte = "0.7";  n = "text";}  {n = "blaze-builder";}
        {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
        {n = "http-types";}
-       {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "hamlet";}
+       {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "hamlet";}
        {
          i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare-css";
        }
        {n = "transformers";}
-       {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai";}
+       {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai";}
+       {i1 = {gte = "0.1";};  i2 = {lt = "0.2";};  n = "mime-types";}
      ];
    }];
-  sha256 = "0r5yfvq669p94qjv5vmwbsgx1n8icvbg78kn39js5h1pbzkzbhx1";
+  sha256 = "0g4009hl12f2dwg4mndy0qax80qgmy9x31lqjhqj5hcynf503azi";
   tsdeps = [];
 }
 {
@@ -69041,6 +70124,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "una";  version = "2.0.0";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+       {n = "cmdargs";}  {n = "io-storage";}  {n = "directory";}
+       {n = "process";}  {n = "filepath";}  {n = "bytestring";}
+     ];
+   }];
+  sha256 = "1bdkrymwvwcpibfrbhmjfvcsrq3q9fsps40n3jg8mdvfb1m41k33";
+  tsdeps = [];
+}
+{
   name = "CMCompare";  version = "0.0.1.2";
   edeps = 
   [{
@@ -69199,7 +70297,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "archiver";  version = "0.6.0";
+  name = "archiver";  version = "0.6.1";
   edeps = 
   [{
      cdeps = [];
@@ -69219,7 +70317,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "network";}  {n = "HTTP";}  {n = "curl";}
     ];
   };
-  sha256 = "1221495dsy7qkqzd2yv5vq299xkfm18dq9p287mar24w3xmxb4rf";
+  sha256 = "11bg0v5w9fm11kzzp9gbiz6p11x8r29j3v70sjs4y29d1gij23x3";
   tsdeps = [];
 }
 {
@@ -69381,6 +70479,42 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "07cdz1706icbwz3mpx6spsk6hhbh3axyhs9xffzcn4i9i6qwv0ga";
+  tsdeps = [];
+}
+{
+  name = "sbv";  version = "2.3";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+       {n = "directory";  v = "1.1.0.2";}
+       {n = "filepath";  v = "1.3.0.0";}
+       {n = "process";  v = "1.1.0.1";}  {n = "HUnit";  v = "1.2.4.3";}
+       {n = "sbv";}
+     ];
+   }];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+      {n = "array";  v = "0.4.0.0";}
+      {n = "containers";  v = "0.4.2.1";}
+      {n = "deepseq";  v = "1.3.0.0";}
+      {n = "directory";  v = "1.1.0.2";}
+      {n = "filepath";  v = "1.3.0.0";}
+      {n = "old-time";  v = "1.1.0.0";}
+      {n = "pretty";  v = "1.1.1.0";}  {n = "process";  v = "1.1.0.1";}
+      {gte = "2.1.2";  n = "mtl";}  {gte = "2.5";  n = "QuickCheck";}
+      {gte = "1.0.1.1";  n = "random";}
+      {gte = "0.2.4.1";  n = "strict-concurrency";}
+      {gte = "0.3.7";  n = "syb";}
+    ];
+  };
+  sha256 = "1asmgaqg6phm5dx5mab98dqgfy6l01z2819l1m9yrr2993sk47cx";
   tsdeps = [];
 }
 {
@@ -69835,6 +70969,60 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "fay";  version = "0.5.2.0";
+  edeps = 
+  [
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}  {n = "mtl";}
+        {n = "haskell-src-exts";}  {n = "json";}  {n = "process";}
+        {n = "data-default";}  {n = "safe";}
+        {n = "language-javascript";}
+      ];
+    }
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}  {n = "mtl";}
+        {n = "haskell-src-exts";}  {n = "json";}  {n = "HUnit";}
+        {n = "process";}  {n = "filepath";}  {n = "directory";}
+        {n = "data-default";}  {n = "safe";}
+        {n = "language-javascript";}
+      ];
+    }
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}  {n = "mtl";}
+        {n = "haskell-src-exts";}  {n = "json";}  {n = "HUnit";}
+        {n = "process";}  {n = "filepath";}  {n = "directory";}
+        {n = "blaze-html";}  {n = "blaze-markup";}  {n = "bytestring";}
+        {n = "time";}  {n = "data-default";}  {n = "safe";}
+        {n = "language-javascript";}
+      ];
+    }
+  ];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}  {n = "mtl";}
+      {n = "haskell-src-exts";}  {n = "json";}  {n = "pretty-show";}
+      {n = "data-default";}  {n = "safe";}
+      {n = "language-javascript";}  {n = "HUnit";}  {n = "process";}
+      {n = "filepath";}  {n = "directory";}  {n = "blaze-html";}
+      {n = "blaze-markup";}  {n = "bytestring";}  {n = "time";}
+    ];
+  };
+  sha256 = "1a97ssfk84rdirddxnpxjzna0s54svc0jaa6pm7gg13bhja1zzhc";
+  tsdeps = [];
+}
+{
   name = "lambdacube-examples";  version = "0.2.2";
   edeps = 
   [
@@ -69990,7 +71178,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "pugs-DrIFT";  version = "2.2.3.20120203";
+  name = "pugs-DrIFT";  version = "2.2.3.20120717";
   edeps = 
   [{
      cdeps = [];
@@ -69999,7 +71187,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
        {n = "old-time";}  {n = "random";}  {n = "bytestring";}
        {n = "utf8-string";}  {n = "pretty";}  {n = "containers";}
-       {lt = "2.0.0.0";  n = "mtl";}  {n = "stm";}  {n = "HsSyck";}
+       {gte = "2.0.0.0";  n = "mtl";}  {n = "stm";}  {n = "HsSyck";}
      ];
    }];
   ldeps = 
@@ -70010,10 +71198,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
       {n = "old-time";}  {n = "random";}  {n = "bytestring";}
       {n = "utf8-string";}  {n = "pretty";}  {n = "containers";}
-      {lt = "2.0.0.0";  n = "mtl";}  {n = "stm";}  {n = "HsSyck";}
+      {gte = "2.0.0.0";  n = "mtl";}  {n = "stm";}  {n = "HsSyck";}
     ];
   };
-  sha256 = "1msm96fvrximwpwf3zdb88xlgwin4mnrl07m8bmlk586wpvljl9v";
+  sha256 = "0p3kawq44j0161a5s5x71h0v5sha8r9d0isavr3cpn0fjgcimxcy";
   tsdeps = [];
 }
 {
@@ -70188,6 +71376,22 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "git-all";  version = "1.0.1";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+       {n = "shelly";}  {n = "cmdargs";}  {n = "hslogger";}
+       {n = "regex-posix";}  {n = "system-filepath";}  {n = "text";}
+       {n = "monad-loops";}
+     ];
+   }];
+  sha256 = "0m40bpdazaqzfbbx70y5mxrj5amsh2r9yns7s60h55x28k236hw8";
+  tsdeps = [];
+}
+{
   name = "interpol";  version = "0.2.3";
   edeps = 
   [{
@@ -70294,7 +71498,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "cursedcsv";  version = "0.1";
+  name = "cursedcsv";  version = "0.1.1";
   edeps = 
   [{
      cdeps = [];
@@ -70310,7 +71514,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {gt = "0.9";  n = "bytestring";}
      ];
    }];
-  sha256 = "1rrk5wx6kjcqsi9w282b1ci5z3p13yrpbdcz32s198bkqcjrdc0j";
+  sha256 = "1qcld5mg8vla6fb9biriyx3lldn69spq9halg46in6lg5qw45ycz";
   tsdeps = [];
 }
 {
@@ -70723,6 +71927,32 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "proctest";  version = "0.1.0.1";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "4";};  i2 = {lte = "5";};  n = "base";}
+       {n = "process";}  {n = "bytestring";}  {n = "text";}
+       {n = "hspec";}  {n = "HUnit";}
+       {gte = "2.4.2";  n = "QuickCheck";}
+     ];
+   }];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4";};  i2 = {lte = "5";};  n = "base";}
+      {gte = "1.1.0.1";  n = "process";}  {n = "bytestring";}
+      {n = "text";}
+    ];
+  };
+  sha256 = "0dpk4qxzk6wr73wxxb3pc2aad5818hfax8aqlbbr47hx50vfki9k";
+  tsdeps = [];
+}
+{
   name = "cabal2arch";  version = "1.1";
   edeps = 
   [{
@@ -70851,7 +72081,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "doctest";  version = "0.7.0";
+  name = "doctest";  version = "0.8.0";
   edeps = 
   [{
      cdeps = [];
@@ -70869,12 +72099,12 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "4.0";};  i2 = {lt = "4.6";};  n = "base";}
       {i1 = {gte = "6.12";};  i2 = {lt = "7.6";};  n = "ghc";}
       {n = "syb";}  {n = "deepseq";}  {n = "directory";}
-      {n = "process";}
+      {n = "filepath";}  {n = "process";}
       {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "ghc-paths";}
       {n = "transformers";}
     ];
   };
-  sha256 = "06b8qyqsj4vji86p205vlsd9jihz1wmx0n6paxvlrsrn4ix0y6mm";
+  sha256 = "0mai47qabgfvhdhlkaa9gpmbqd97b65jxrcw3s33xz2gwgk6gax5";
   tsdeps = 
   [
     {
@@ -70888,7 +72118,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "ghc-paths";}
         {n = "transformers";}
         {i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "HUnit";}
-        {n = "hspec-discover";}  {n = "hspec-shouldbe";}
+        {gte = "1.3";  n = "hspec";}  {n = "QuickCheck";}
         {n = "stringbuilder";}  {n = "silently";}  {n = "filepath";}
       ];
     }
@@ -70945,7 +72175,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "mighttpd2";  version = "2.7.0";
+  name = "mighttpd2";  version = "2.7.1";
   edeps = 
   [
     {
@@ -70984,7 +72214,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       ];
     }
   ];
-  sha256 = "0911prrkwy54l23bc5hr5kvhz4q5ffnxwchlkj8lq40pslfpjyff";
+  sha256 = "18dik6y8ajvbsml6149aiqsvsbwhakvrlcnn4sbfc4prlqxfbrz7";
   tsdeps = 
   [{
      cdeps = [];
@@ -72112,7 +73342,65 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "NXT";  version = "0.2.1";
+  name = "graph-rewriting-ski";  version = "0.6.2";
+  edeps = 
+  [
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {gte = "4.3";};  i2 = {lt = "4.6";};  n = "base";}
+        {
+          i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
+          n = "base-unicode-symbols";
+        }
+        {
+          i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "graph-rewriting";
+        }
+        {
+          i1 = {gte = "0.5";};  i2 = {lt = "0.6";};
+          n = "graph-rewriting-layout";
+        }
+        {
+          i1 = {gte = "0.6.9";};  i2 = {lt = "0.8";};
+          n = "graph-rewriting-gl";
+        }
+        {i1 = {gte = "2.1";};  i2 = {lt = "2.2";};  n = "parsec";}
+        {i1 = {gte = "2.2";};  i2 = {lt = "2.3";};  n = "GLUT";}
+        {i1 = {gte = "2.4";};  i2 = {lt = "2.5";};  n = "OpenGL";}
+      ];
+    }
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {gte = "4.3";};  i2 = {lt = "4.6";};  n = "base";}
+        {
+          i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
+          n = "base-unicode-symbols";
+        }
+        {
+          i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "graph-rewriting";
+        }
+        {
+          i1 = {gte = "0.5";};  i2 = {lt = "0.6";};
+          n = "graph-rewriting-layout";
+        }
+        {
+          i1 = {gte = "0.6.9";};  i2 = {lt = "0.8";};
+          n = "graph-rewriting-gl";
+        }
+        {i1 = {gte = "2.1";};  i2 = {lt = "2.2";};  n = "parsec";}
+        {i1 = {gte = "2.2";};  i2 = {lt = "2.3";};  n = "GLUT";}
+        {i1 = {gte = "2.4";};  i2 = {lt = "2.5";};  n = "OpenGL";}
+      ];
+    }
+  ];
+  sha256 = "1ihmyz5blx3a7a59c28a11dvk4llb2ingi326ifql06xdnszvczl";
+  tsdeps = [];
+}
+{
+  name = "NXT";  version = "0.2.2";
   edeps = 
   [
     {
@@ -72121,7 +73409,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       [
         {i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}
         {i1 = {gte = "1.1";};  i2 = {lt = "3";};  n = "mtl";}
-        {n = "NXT";  v = "0.2.1";}
+        {n = "NXT";  v = "0.2.2";}
       ];
     }
     {
@@ -72130,7 +73418,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       [
         {i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}
         {i1 = {gte = "1.1";};  i2 = {lt = "3";};  n = "mtl";}
-        {n = "NXT";  v = "0.2.1";}
+        {n = "NXT";  v = "0.2.2";}
       ];
     }
     {
@@ -72141,7 +73429,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         {i1 = {gte = "1.1";};  i2 = {lt = "3";};  n = "mtl";}
         {i1 = {gte = "0.9";};  i2 = {lt = "1";};  n = "bytestring";}
         {i1 = {gte = "1.1";};  i2 = {lt = "2";};  n = "filepath";}
-        {n = "NXT";  v = "0.2.1";}
+        {n = "NXT";  v = "0.2.2";}
       ];
     }
   ];
@@ -72167,7 +73455,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.4.3";};  i2 = {lt = "1";};  n = "serialport";}
     ];
   };
-  sha256 = "1qxssic9dyzwxcr5z61myi75kdl1mwbjih80s5rfc71vf3mfnfww";
+  sha256 = "0jshrjkdf9nmvz120rawylsx9syxiz4g3kzj2cyfvcm0fnwj2bb9";
   tsdeps = 
   [{
      cdeps = [];
@@ -72189,12 +73477,12 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {gte = "1.2";};  i2 = {lt = "2";};  n = "time";}
        {i1 = {gte = "0.9";};  i2 = {lt = "1.0";};  n = "bytestring";}
        {i1 = {gte = "1.2";};  i2 = {lt = "2";};  n = "filepath";}
-       {n = "NXT";  v = "0.2.1";}
+       {n = "NXT";  v = "0.2.2";}
      ];
    }];
 }
 {
-  name = "Etage-Graph";  version = "0.1.4";
+  name = "Etage-Graph";  version = "0.1.6";
   edeps = 
   [{
      cdeps = [];
@@ -72209,7 +73497,8 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {gte = "0.3";};  i2 = {lt = "1";};  n = "array";}
        {i1 = {gte = "1.1";};  i2 = {lt = "2";};  n = "time";}
        {i1 = {gte = "3.1";};  i2 = {lt = "4";};  n = "parallel";}
-       {n = "Etage";  v = "0.1.8";}  {n = "Etage-Graph";  v = "0.1.4";}
+       {i1 = {gte = "0.1.10";};  i2 = {lt = "0.2";};  n = "Etage";}
+       {n = "Etage-Graph";  v = "0.1.6";}
      ];
    }];
   ldeps = 
@@ -72218,13 +73507,38 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = 
     [
       {i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "0.1.8";};  i2 = {lt = "0.2";};  n = "Etage";}
+      {i1 = {gte = "0.1.10";};  i2 = {lt = "0.2";};  n = "Etage";}
       {i1 = {gte = "5.4.2";};  i2 = {lt = "5.5";};  n = "fgl";}
       {i1 = {gte = "2.0";};  i2 = {lt = "3";};  n = "mtl";}
       {i1 = {gte = "0.4";};  i2 = {lt = "1";};  n = "containers";}
     ];
   };
-  sha256 = "1k9n0vz6g1xb2fw614r2simmz7nc230n4n33ib698zx2l7akqygq";
+  sha256 = "1ynx7dgjccbgp8p9n56m21vn74qrkd6a25bdz9fgrxp822qp3bs4";
+  tsdeps = [];
+}
+{
+  name = "network-metrics";  version = "0.2.2";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}
+       {n = "network";}  {n = "binary";}  {n = "bytestring";}
+       {n = "data-default";}  {n = "random";}  {n = "cmdargs";}
+     ];
+   }];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}
+      {n = "network";}  {n = "binary";}  {n = "bytestring";}
+      {n = "data-default";}  {n = "random";}  {n = "time";}
+    ];
+  };
+  sha256 = "1balyjryhfcj2ikwqp0fmzr4jcpcafh48fykwks7v4a2sb3s7w25";
   tsdeps = [];
 }
 {
@@ -72403,7 +73717,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "kevin";  version = "0.1.5";
+  name = "kevin";  version = "0.1.5.3";
   edeps = 
   [{
      cdeps = [];
@@ -72436,7 +73750,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "tls-extra";}
      ];
    }];
-  sha256 = "0gx4alas4p350nwgmprgx2m3rlwciy5h28g3bn3jhfmfhnaaqb4i";
+  sha256 = "1j5dn7mqr3v697mmyc818la7h90c1andnmld7qyibiymva0qkrdf";
   tsdeps = [];
 }
 {
@@ -72554,7 +73868,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "operational";  version = "0.2.1.2";
+  name = "operational";  version = "0.2.1.3";
   edeps = 
   [{
      cdeps = [];
@@ -72566,10 +73880,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = 
     [
       {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
-      {i1 = {gte = "1.1";};  i2 = {lt = "2.1.0";};  n = "mtl";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "2.2.0";};  n = "mtl";}
     ];
   };
-  sha256 = "0bz302vy85zd00dsmnqx4p302l0nrggjg21wqlika0q9xmbcjr3y";
+  sha256 = "1na8hiiryc3lh4d24q1s3lrvi47sdr6n8xab046dalif3rqxminn";
   tsdeps = [];
 }
 {
@@ -72821,7 +74135,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "google-html5-slide";  version = "0.1.1.0";
+  name = "google-html5-slide";  version = "2011.0";
   edeps = 
   [{
      cdeps = [];
@@ -72837,7 +74151,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {gte = "0.9.5";  n = "cmdargs";}
      ];
    }];
-  sha256 = "187had0mmwbfpy63z06v25ghh97xf1p8mgim9bafmca0n8sgxilz";
+  sha256 = "0wkblf0i4lfw6s8adf2clcqj3161863vbsq1cip3rcn9djqbimzl";
   tsdeps = [];
 }
 {
@@ -73382,6 +74696,41 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "Pup-Events";  version = "1.0";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = [{i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}];
+   }];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {n = "Pup-Events-Server";}  {n = "Pup-Events-Client";}
+      {n = "Pup-Events-PQueue";}
+    ];
+  };
+  sha256 = "13zjhxq8q1qd7sbc17d73g6mfsfls6rl3ndawbcfjgj73b7xajyj";
+  tsdeps = [];
+}
+{
+  name = "route-generator";  version = "0.2";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+       {gte = "0.7";  n = "text";}
+       {gte = "0.10.0.0";  n = "attoparsec";}  {n = "yesod-routes";}
+     ];
+   }];
+  sha256 = "1b9p188ha4rh6ba28kdrl3mkmzkl6w5v1vby0fi2azy034j1byhl";
+  tsdeps = [];
+}
+{
   name = "htar";  version = "0.4";
   edeps = 
   [{
@@ -73402,6 +74751,34 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "Pup-Events-Demo";  version = "1.2";
+  edeps = 
+  [
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+        {gte = "1.1.2";  n = "Pup-Events-Server";}
+        {gte = "3.1.1";  n = "parsec";}
+      ];
+    }
+    {
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+        {gte = "1.1";  n = "Pup-Events-Client";}
+        {gte = "2.2";  n = "stm";}  {n = "OpenGL";}
+        {n = "Pup-Events-PQueue";}  {gte = "3.1.1";  n = "parsec";}
+        {n = "GLUT";}
+      ];
+    }
+  ];
+  sha256 = "0dh46m84jh7c1ijdmfbsh2xy30xybgs4qg0ldphj7hsp0k02xshk";
+  tsdeps = [];
+}
+{
   name = "cmdargs-browser";  version = "0.1.1";
   edeps = 
   [{
@@ -73419,7 +74796,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "hums";  version = "0.4.2";
+  name = "hums";  version = "0.4.3";
   edeps = 
   [{
      cdeps = [];
@@ -73428,13 +74805,13 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
        {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "blaze-builder";}
        {gte = "0.9.0.1";  n = "bytestring";}
-       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "conduit";}
+       {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "conduit";}
        {gte = "1.0.5";  n = "ConfigFile";}
        {gte = "0.1.0.1";  n = "containers";}
        {gte = "1.0.0.0";  n = "directory";}
        {gte = "1.1.0.0";  n = "filepath";}
        {i1 = {gte = "1.22";};  i2 = {lt = "1.23";};  n = "HaXml";}
-       {i1 = {gte = "0.6.9";};  i2 = {lt = "0.7";};  n = "http-types";}
+       {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "http-types";}
        {i1 = {gte = "9.1";};  i2 = {lt = "9.2";};  n = "hxt";}
        {gte = "1.0.1";  n = "MissingH";}
        {i1 = {lt = "2.1";};  i2 = {gte = "2.0";};  n = "mtl";}
@@ -73445,17 +74822,17 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {gte = "0.2";};  i2 = {lt = "0.3";};  n = "transformers";}
        {gte = "2.3.0.0";  n = "unix";}
        {
-         i1 = {gte = "0.1";};  i2 = {lt = "0.2";};
+         i1 = {gte = "0.2";};  i2 = {lt = "0.3";};
          n = "unordered-containers";
        }
        {
          i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "case-insensitive";
        }
-       {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai";}
-       {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "warp";}
+       {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai";}
+       {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "warp";}
      ];
    }];
-  sha256 = "1vk1lmx36abklpw62bnhm25ffz5cyi63cfz06mx2qwqaj8s686f3";
+  sha256 = "0kg7f4k1q59mxr0hdy1qrba10pq22l2j983ajqr6zjssv4fx5siq";
   tsdeps = [];
 }
 {
@@ -76206,6 +77583,22 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "hdevtools";  version = "0.1.0.2";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+       {n = "cmdargs";}  {n = "directory";}  {n = "ghc";}
+       {n = "ghc-paths";}  {n = "ghc-syb-utils";}  {n = "syb";}
+       {n = "network";}  {n = "time";}  {n = "unix";}
+     ];
+   }];
+  sha256 = "17kj0n2dr7kg2zg47fn3m93gl62nrqwly34g41y02k64w60p8ajw";
+  tsdeps = [];
+}
+{
   name = "hothasktags";  version = "0.2.1";
   edeps = 
   [{
@@ -76292,7 +77685,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "lambdabot";  version = "4.2.3.2";
+  name = "lambdabot";  version = "4.2.3.3";
   edeps = 
   [{
      cdeps = [];
@@ -76326,7 +77719,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "filepath";}
     ];
   };
-  sha256 = "0jy48s4z1yn0wiaxzi3pws7j9j4ih2vqr8gr8md2i35g4bwxmxp2";
+  sha256 = "1fxxmrm390pnqpf7v4kap2asaqh02sphl8r6inq4sdy1zs2rxrvk";
   tsdeps = [];
 }
 {
@@ -76827,6 +78220,37 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "cabal-rpm";  version = "0.6.1";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {lt = "5";  n = "base";}  {gt = "1.10";  n = "Cabal";}
+       {n = "directory";}  {n = "filepath";}  {n = "old-locale";}
+       {n = "process";}  {n = "time";}  {n = "unix";}
+     ];
+   }];
+  sha256 = "1hj6wh2xzg3f85iiampgb0p4sqc79dayiaxdp40s89bw2yglinq0";
+  tsdeps = [];
+}
+{
+  name = "haskarrow";  version = "0.0";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {lt = "5";  n = "base";}  {gte = "0";  n = "containers";}
+       {gte = "0.1";  n = "her-lexer";}  {gte = "0";  n = "split";}
+       {gte = "1.13";  n = "cpphs";}  {gte = "1.1";  n = "directory";}
+       {gte = "0.9.5";  n = "cmdargs";}
+     ];
+   }];
+  sha256 = "01l90qningjlb4wn02avjy9lmi4ry4yxzw0a9sd29qbzfpnf3viy";
+  tsdeps = [];
+}
+{
   name = "skypelogexport";  version = "0.2";
   edeps = 
   [{
@@ -77093,7 +78517,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "buildwrapper";  version = "0.6.0";
+  name = "buildwrapper";  version = "0.6.1";
   edeps = 
   [{
      cdeps = [];
@@ -77124,7 +78548,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "bytestring";}  {n = "attoparsec";}  {n = "transformers";}
     ];
   };
-  sha256 = "0j802lccxds70l0pmyalkk6dhsgc1ax564bx6jrpk949j8jfgm16";
+  sha256 = "1vr9lkgv3av0r5x0nxgkhaiyxd2j288spd4m427isygpabrzdbld";
   tsdeps = 
   [{
      cdeps = [];
@@ -77430,12 +78854,21 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "scan";  version = "0.1.0.7";
+  name = "pandoc-unlit";  version = "0.1.0";
+  edeps = 
+  [{
+     cdeps = [];  deps = [{lt = "5";  n = "base";}  {n = "pandoc";}];
+   }];
+  sha256 = "0jdlfqhp7h6jsp9qq2ndnm8fs96m19cmmd5rnjpqb76ilg6kn7l9";
+  tsdeps = [];
+}
+{
+  name = "scan";  version = "0.1.0.8";
   edeps = 
   [{
      cdeps = [];  deps = [{lt = "5";  n = "base";}  {n = "parsec";}];
    }];
-  sha256 = "0d5gwf99p2dlaj11fp3dq8pyxn1rsgpy4c6wc4mnkafv1p2263il";
+  sha256 = "0nwzvxangvi2gg03k22ca05hk3p1bjg0rfvw94yh5mjs3i5007qz";
   tsdeps = [];
 }
 {
@@ -78744,7 +80177,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "BlogLiterately";  version = "0.5";
+  name = "BlogLiterately";  version = "0.5.1";
   edeps = 
   [{
      cdeps = [];
@@ -78775,7 +80208,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "1.9.3";};  i2 = {lt = "1.10";};  n = "pandoc";}
     ];
   };
-  sha256 = "131ss0sc4s2xm7mpryaf92myicn7qx2igvfsfw3sk4aq4zrqm57w";
+  sha256 = "0ds25dygc5rbqszv752dflk2xsd0z89nm8kmkg7mc7immyp1gv8q";
   tsdeps = [];
 }
 {
@@ -80425,7 +81858,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "egison";  version = "2.1.16";
+  name = "egison";  version = "2.4.1";
   edeps = 
   [
     {
@@ -80437,7 +81870,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         {n = "array";}  {n = "containers";}  {n = "haskeline";}
         {n = "transformers";}  {n = "mtl";}
         {gte = "3.0";  n = "parsec";}  {n = "directory";}  {n = "ghc";}
-        {n = "ghc-paths";}  {n = "regex-posix";}
+        {n = "ghc-paths";}  {n = "regex-posix";}  {n = "strict-io";}
       ];
     }
     {
@@ -80449,7 +81882,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         {n = "array";}  {n = "containers";}  {n = "transformers";}
         {n = "mtl";}  {gte = "3.0";  n = "parsec";}  {n = "directory";}
         {n = "ghc";}  {n = "ghc-paths";}  {n = "filepath";}
-        {n = "process";}
+        {n = "process";}  {n = "strict-io";}
       ];
     }
   ];
@@ -80462,10 +81895,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "array";}  {n = "containers";}  {n = "haskeline";}
       {n = "transformers";}  {n = "mtl";}
       {gte = "3.0";  n = "parsec";}  {n = "directory";}  {n = "ghc";}
-      {n = "ghc-paths";}
+      {n = "ghc-paths";}  {n = "strict-io";}
     ];
   };
-  sha256 = "1w3iynwlpyb0wv5bvppb090xqidsnsba2rnhrk47cg2gagghw4sj";
+  sha256 = "1n04rxywra98zvwva25yai40zrj96pswc6c87n9aclr5l240py2g";
   tsdeps = [];
 }
 {
@@ -80689,22 +82122,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
      ];
    }];
   sha256 = "1cspr1v0dm4lbjrb654n8lax9nvmj94a89cp3vqir8xccaxhggpz";
-  tsdeps = [];
-}
-{
-  name = "BNFC";  version = "2.4.2.0";
-  edeps = 
-  [{
-     cdeps = [];
-     deps = 
-     [
-       {n = "haskell98";}
-       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-       {n = "mtl";}  {n = "directory";}  {n = "array";}
-       {n = "process";}
-     ];
-   }];
-  sha256 = "0nnalzsql1k5y3s93g5y2hy2gcdsrbi8r7cwzmdcy4vyy589pin0";
   tsdeps = [];
 }
 {
@@ -80967,7 +82384,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "imm";  version = "0.1.1.0";
+  name = "imm";  version = "0.4.0.0";
   edeps = 
   [{
      cdeps = [];
@@ -80982,14 +82399,17 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = 
     [
       {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
-      {n = "bytestring";}  {n = "cmdargs";}  {n = "directory";}
-      {n = "dyre";}  {n = "feed";}  {n = "filepath";}  {n = "HTTP";}
-      {n = "mime-mail";}  {n = "network";}  {n = "old-locale";}
-      {n = "random";}  {n = "text";}  {n = "time";}  {n = "timerep";}
+      {n = "bytestring";}  {n = "case-insensitive";}  {n = "cmdargs";}
+      {n = "cond";}  {n = "data-default";}  {n = "directory";}
+      {n = "dyre";}  {n = "feed";}  {n = "filepath";}
+      {n = "http-conduit";}  {n = "http-types";}  {n = "mime-mail";}
+      {n = "mtl";}  {n = "network";}  {n = "old-locale";}
+      {n = "opml";}  {n = "random";}  {n = "text";}  {n = "text-icu";}
+      {n = "time";}  {n = "timerep";}  {n = "tls";}
       {n = "utf8-string";}  {n = "xdg-basedir";}  {n = "xml";}
     ];
   };
-  sha256 = "0c80ah1sj6ks7ywwqxnjrmhl9n1a92l2b6frprhvixw9xy0dajnp";
+  sha256 = "17vzy1fhkf0x41sfv29g4psk2wlq6bakdn0wxs2vyym2ni6by3ip";
   tsdeps = [];
 }
 {
@@ -81050,6 +82470,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     ];
   };
   sha256 = "1yczvxcaqaax70sfy8myn01s4ylbn0x9r6k4wc4rp01msynqqszf";
+  tsdeps = [];
+}
+{
+  name = "BNFC";  version = "2.4.2.1";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = 
+     [
+       {n = "mtl";}  {n = "directory";}  {n = "array";}  {n = "process";}
+       {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+     ];
+   }];
+  sha256 = "0a6ic9mqkxk2gql7dzik2bhm5iikgx035wxlz8iafxf45159dl14";
   tsdeps = [];
 }
 {
@@ -81251,7 +82685,32 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "hoogle";  version = "4.2.11";
+  name = "rpc-framework";  version = "1.0.0.0";
+  edeps = 
+  [{
+     cdeps = [];
+     deps = [{n = "rpc-framework";}  {gte = "4.0";  n = "base";}];
+   }];
+  ldeps = 
+  {
+    cdeps = [];
+    deps = 
+    [
+      {i1 = {gte = "4.3";};  i2 = {lt = "5.0";};  n = "base";}
+      {i1 = {gte = "0.4";};  i2 = {lt = "0.6";};  n = "containers";}
+      {
+        i1 = {lt = "2.8";};  i2 = {gte = "2.7";};  n = "template-haskell";
+      }
+      {i1 = {gte = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
+      {i1 = {gte = "2.0";};  i2 = {lt = "2.5";};  n = "network";}
+    ];
+  };
+  sha256 = "09xjdal12yxynmsw4h6z6iavv111g5307x6qwsgzm1k8vwqgjpk4";
+  tsdeps = [];
+}
+{
+  name = "hoogle";  version = "4.2.12";
   edeps = 
   [{
      cdeps = [];
@@ -81261,13 +82720,13 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {gte = "0.7";};  i2 = {lt = "0.10";};  n = "cmdargs";}
        {i1 = {gte = "0.11";};  i2 = {lt = "0.13";};  n = "tagsoup";}
        {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "blaze-builder";}
-       {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "http-types";}
+       {i1 = {lt = "0.8";};  i2 = {gte = "0.7";};  n = "http-types";}
        {
          i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "case-insensitive";
        }
-       {i1 = {gte = "0.2";};  i2 = {lt = "0.5";};  n = "conduit";}
-       {i1 = {gte = "1.1";};  i2 = {lt = "1.3";};  n = "wai";}
-       {i1 = {gte = "1.1";};  i2 = {lt = "1.3";};  n = "warp";}
+       {i1 = {gte = "0.2";};  i2 = {lt = "0.6";};  n = "conduit";}
+       {i1 = {gte = "1.1";};  i2 = {lt = "1.4";};  n = "wai";}
+       {i1 = {gte = "1.1";};  i2 = {lt = "1.4";};  n = "warp";}
        {i1 = {gte = "1.8";};  i2 = {lt = "1.15";};  n = "Cabal";}
      ];
    }];
@@ -81291,7 +82750,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
     ];
   };
-  sha256 = "0m708qlj3q8s9vywg51gj7bwwasz5nxqxqhqh8f0k96iawqd9gid";
+  sha256 = "1j726bm8sx4qamaib6l14s4a4jz4z6szhj1vk8n5b6f3g38s7hwy";
   tsdeps = [];
 }
 {
@@ -81515,35 +82974,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   };
   sha256 = "1nykyywrqmf5nyszfg3acm0ydr9z8q78wc7bgabfmjwrnpq1dw68";
   tflags = ["hsdotnet"];  tsdeps = [];
-}
-{
-  name = "cmdargs";  version = "0.9.5";
-  edeps = 
-  [{
-     cdeps = 
-     [[
-        {and = [{flag = "testprog";}  {flag = "quotation";}];}
-        {cdeps = [];  deps = [];}  {cdeps = [];  deps = [];}
-      ]];
-     deps = [];
-   }];
-  ldeps = 
-  {
-    cdeps = 
-    [[
-       {flag = "quotation";}
-       {cdeps = [];  deps = [{n = "template-haskell";}];}
-     ]];
-    deps = 
-    [
-      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
-      {n = "filepath";}
-      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "process";}
-    ];
-  };
-  sha256 = "0ihanswhq5d29d9ll5q4grkbaq64dwfsayws7y4xa387d5s9p3iv";
-  tflags = ["testprog"  "quotation"];  tsdeps = [];
 }
 {
   name = "mandulia";  version = "0.7";
@@ -82440,34 +83870,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "cab";  version = "0.1.13";
-  edeps = 
-  [{
-     cdeps = 
-     [
-       [
-         {compilerFlavor = "GHC";  versionRange = {gte = "6.12";};}
-         {cdeps = [];  deps = [];}  {cdeps = [];  deps = [];}
-       ]
-       [
-         {os = "Windows";}  {cdeps = [];  deps = [];}
-         {cdeps = [];  deps = [{n = "unix";}];}
-       ]
-     ];
-     deps = 
-     [
-       {i1 = {gte = "4.0";};  i2 = {lt = "5";};  n = "base";}
-       {n = "Cabal";}  {gte = "0.10";  n = "attoparsec";}
-       {gte = "0.3";  n = "attoparsec-conduit";}  {n = "bytestring";}
-       {gte = "0.3";  n = "conduit";}  {n = "containers";}
-       {n = "directory";}  {n = "filepath";}  {n = "process";}
-       {gte = "0.1";  n = "process-conduit";}
-     ];
-   }];
-  sha256 = "15salx60cbvyf39zc4i7hpxc5349vrkm4gp0qxxf4vyy4i9qw63q";
-  tsdeps = [];
-}
-{
   name = "boomslang";  version = "0.0.4";
   edeps = 
   [{
@@ -82533,7 +83935,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "snap";  version = "0.9.0.1";
+  name = "snap";  version = "0.9.1.1";
   edeps = 
   [{
      cdeps = 
@@ -82552,7 +83954,9 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        }
        {i1 = {gte = "1.1";};  i2 = {lt = "1.4";};  n = "filepath";}
        {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "old-time";}
-       {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "snap-server";}
+       {
+         i1 = {gte = "0.9.0";};  i2 = {lt = "0.10";};  n = "snap-server";
+       }
        {
          i1 = {gte = "2.2";};  i2 = {lt = "2.8";};  n = "template-haskell";
        }
@@ -82608,8 +84012,10 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gt = "2.0";};  i2 = {lt = "2.2";};  n = "mtl";}
       {i1 = {gte = "0.8";};  i2 = {lt = "0.13";};  n = "mwc-random";}
       {i1 = {gte = "2.2";};  i2 = {lt = "2.3";};  n = "pwstore-fast";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "snap-core";}
-      {i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "snap-server";}
+      {i1 = {gte = "0.9.0";};  i2 = {lt = "0.10";};  n = "snap-core";}
+      {
+        i1 = {gte = "0.9.0";};  i2 = {lt = "0.10";};  n = "snap-server";
+      }
       {i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "stm";}
       {i1 = {gte = "0.1";};  i2 = {lt = "0.4";};  n = "syb";}
       {
@@ -82630,7 +84036,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "0.1";};  i2 = {lt = "0.3";};  n = "xmlhtml";}
     ];
   };
-  sha256 = "0n3qmyvqqcds3c56ml77d2cr0ghs1c7wwd20m44zzmxxmpbnfmgh";
+  sha256 = "1g8jvnwrhna5g064dmv4v4khrpwwn0vcqw8l7rcpkp75l46fq29z";
   tsdeps = [];
 }
 {
@@ -84893,90 +86299,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "HUnit";  version = "1.2.4.3";
-  edeps = 
-  [
-    {
-      cdeps = 
-      [
-        [
-          {flag = "base4";}
-          {cdeps = [];  deps = [{gte = "4";  n = "base";}];}
-          {cdeps = [];  deps = [{lt = "4";  n = "base";}];}
-        ]
-        [
-          {compilerFlavor = "GHC";  versionRange = {gte = "6.10";};}
-          {cdeps = [];  deps = [{gte = "4";  n = "base";}];}
-        ]
-      ];
-      deps = [{lt = "5";  n = "base";}  {n = "deepseq";}];
-    }
-    {
-      cdeps = 
-      [
-        [
-          {flag = "base4";}
-          {cdeps = [];  deps = [{gte = "4";  n = "base";}];}
-          {cdeps = [];  deps = [{lt = "4";  n = "base";}];}
-        ]
-        [
-          {compilerFlavor = "GHC";  versionRange = {gte = "6.10";};}
-          {cdeps = [];  deps = [{gte = "4";  n = "base";}];}
-        ]
-      ];
-      deps = [{lt = "5";  n = "base";}  {n = "deepseq";}];
-    }
-    {
-      cdeps = 
-      [
-        [
-          {flag = "base4";}
-          {cdeps = [];  deps = [{gte = "4";  n = "base";}];}
-          {cdeps = [];  deps = [{lt = "4";  n = "base";}];}
-        ]
-        [
-          {compilerFlavor = "GHC";  versionRange = {gte = "6.10";};}
-          {cdeps = [];  deps = [{gte = "4";  n = "base";}];}
-        ]
-      ];
-      deps = [{lt = "5";  n = "base";}  {n = "deepseq";}];
-    }
-    {
-      cdeps = 
-      [
-        [
-          {flag = "base4";}
-          {cdeps = [];  deps = [{gte = "4";  n = "base";}];}
-          {cdeps = [];  deps = [{lt = "4";  n = "base";}];}
-        ]
-        [
-          {compilerFlavor = "GHC";  versionRange = {gte = "6.10";};}
-          {cdeps = [];  deps = [{gte = "4";  n = "base";}];}
-        ]
-      ];
-      deps = [{lt = "5";  n = "base";}  {n = "deepseq";}];
-    }
-  ];
-  ldeps = 
-  {
-    cdeps = 
-    [
-      [
-        {flag = "base4";}
-        {cdeps = [];  deps = [{gte = "4";  n = "base";}];}
-        {cdeps = [];  deps = [{lt = "4";  n = "base";}];}
-      ]
-      [
-        {compilerFlavor = "GHC";  versionRange = {gte = "6.10";};}
-        {cdeps = [];  deps = [{gte = "4";  n = "base";}];}
-      ]
-    ];
-    deps = [{lt = "5";  n = "base";}  {n = "deepseq";}];
-  };
-  sha256 = "0sk2s0g28wly64nisgrj4wr914zx940pvj5zvkv9n467vssywzbr";
-  tflags = ["base4"];  tsdeps = [];
-}
-{
   name = "tempus";  version = "0.1.0";
   edeps = 
   [{
@@ -86087,7 +87409,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
    }];
 }
 {
-  name = "spreadsheet";  version = "0.1.3.1";
+  name = "spreadsheet";  version = "0.1.3.2";
   edeps = 
   [{
      cdeps = 
@@ -86096,7 +87418,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         {
           cdeps = [];
           deps = 
-          [{i1 = {gte = "0.9";};  i2 = {lt = "0.10";};  n = "bytestring";}];
+          [{i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "bytestring";}];
         }
         {cdeps = [];  deps = [];}
       ]];
@@ -86126,7 +87448,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
     ];
   };
-  sha256 = "1jfmzqpdv7876jcjjnvpsqycwnacx4lnhis299slfhmiirniprcr";
+  sha256 = "0jn1r0glvcq4hkylzif8hk1zlijgl8l71vwr2zyhrny8rjr20jix";
   tflags = ["splitbase"];  tsdeps = [];
 }
 {
@@ -86699,25 +88021,35 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "LDAP";  version = "0.6.6";
+  name = "LDAP";  version = "0.6.7";
   edeps = 
   [{
      cdeps = 
-     [[
-        {flag = "buildtests";}  {cdeps = [];  deps = [];}
-        {cdeps = [];  deps = [];}
-      ]];
+     [
+       [
+         {flag = "buildtests";}  {cdeps = [];  deps = [];}
+         {cdeps = [];  deps = [];}
+       ]
+       [
+         {os = "OpenBSD";}  {cdeps = [];  deps = [];}
+         {cdeps = [];  deps = [];}
+       ]
+     ];
      deps = [{i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}];
    }];
   ldeps = 
   {
-    cdeps = [];
+    cdeps = 
+    [[
+       {os = "OpenBSD";}  {cdeps = [];  deps = [];}
+       {cdeps = [];  deps = [];}
+     ]];
     deps = 
     [
       {n = "base";}  {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
     ];
   };
-  sha256 = "1z55slz0xqciiclxzb1jgfd2cc2b7lf6dapyrx77rzrn1ig3rg9z";
+  sha256 = "18xj6ihb1j58n26pzqmf4723rv04maraz40ivrlaacbz5mv85pji";
   tsdeps = [];
 }
 {
@@ -87081,6 +88413,63 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   };
   sha256 = "1rqbymi0n7kdhl272qfjhx9s3gspd5k0bjrhclj9l8mjf033vdmf";
   tsdeps = [];
+}
+{
+  name = "fft";  version = "0.1.7.1";
+  edeps = 
+  [{
+     cdeps = 
+     [[
+        {flag = "buildtests";}
+        {
+          cdeps = [];
+          deps = 
+          [{i1 = {gte = "2.5";};  i2 = {lt = "2.6";};  n = "QuickCheck";}];
+        }
+        {cdeps = [];  deps = [];}
+      ]];
+     deps = [];
+   }];
+  ldeps = 
+  {
+    cdeps = 
+    [
+      [
+        {flag = "splitbase";}
+        {
+          cdeps = [];
+          deps = 
+          [
+            {gte = "3";  n = "base";}  {n = "array";}  {n = "carray";}
+            {n = "storable-complex";}  {n = "ix-shapable";}
+          ];
+        }
+        {
+          cdeps = [];
+          deps = 
+          [
+            {lt = "3";  n = "base";}  {n = "carray";}
+            {n = "storable-complex";}  {n = "ix-shapable";}
+          ];
+        }
+      ]
+      [
+        {flag = "base4";}
+        {
+          cdeps = [];
+          deps = 
+          [
+            {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+            {gte = "0.1";  n = "syb";}
+          ];
+        }
+        {cdeps = [];  deps = [{lt = "4";  n = "base";}];}
+      ]
+    ];
+    deps = [];
+  };
+  sha256 = "10xwlcx71skd1lswgzvcjf4afawa8pg263wwz3b3pdhgmhmqdgfb";
+  tflags = ["splitbase"  "base4"];  tsdeps = [];
 }
 {
   name = "iteratee";  version = "0.8.9.1";
@@ -88325,6 +89714,20 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "penny-bin";  version = "0.2.0.0";
+  edeps = 
+  [{
+     cdeps = [[{flag = "debug";}  {cdeps = [];  deps = [];}]];
+     deps = 
+     [
+       {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+       {i1 = {lt = "0.3";};  i2 = {gte = "0.2";};  n = "penny-lib";}
+     ];
+   }];
+  sha256 = "1n1xwzyzzwi2alx55pmkq6ssyzmgprcx1cy2z9s0cdfk1a6255v7";
+  tsdeps = [];
+}
+{
   name = "Snusmumrik";  version = "0.0.1";
   edeps = 
   [
@@ -88503,20 +89906,8 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {n = "time";}  {n = "MissingH";}
      ];
    }];
-  sha256 = "16m2kj7qhsqffqgxrkahwrvxj63rg38mj15dp0lq1zsd25m8249q";
-  tsdeps = 
-  [{
-     cdeps = [[{flag = "dev";}  {cdeps = [];  deps = [];}]];
-     deps = 
-     [
-       {i1 = {gte = "4";};  i2 = {lte = "5";};  n = "base";}
-       {n = "haskell98";}  {n = "regex-posix";}  {n = "process";}
-       {n = "containers";}  {n = "gtk";}  {n = "cairo";}
-       {n = "hinotify";}  {n = "filepath";}  {n = "directory";}
-       {n = "time";}  {n = "MissingH";}  {n = "QuickCheck";}
-       {n = "hspec";}  {n = "HUnit";}
-     ];
-   }];
+  sha256 = "14jywd60mxbj5q1srxj4igs1ah0ddf8ww5k4n5d9g7cp1b1yv1mc";
+  tsdeps = [];
 }
 {
   name = "tkyprof";  version = "0.0.6.3";
@@ -88601,7 +89992,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "swish";  version = "0.6.5.2";
+  name = "swish";  version = "0.7.0.2";
   edeps = 
   [{
      cdeps = [[{flag = "developer";}  {cdeps = [];  deps = [];}]];
@@ -88624,7 +90015,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
         {
           cdeps = [];
           deps = 
-          [{i1 = {lt = "0.9";};  i2 = {gte = "0.8";};  n = "intern";}];
+          [{i1 = {gte = "0.8";};  i2 = {lt = "1.0";};  n = "intern";}];
         }
       ]
       [{flag = "developer";}  {cdeps = [];  deps = [];}]
@@ -88633,7 +90024,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     [
       {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
       {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "binary";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.5";};  n = "containers";}
+      {i1 = {gte = "0.3";};  i2 = {lt = "0.6";};  n = "containers";}
       {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "directory";}
       {i1 = {gte = "1.1";};  i2 = {lt = "1.4";};  n = "filepath";}
       {i1 = {lt = "1.2";};  i2 = {gte = "1.1";};  n = "hashable";}
@@ -88641,11 +90032,12 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {gte = "2.2";};  i2 = {lt = "2.4";};  n = "network";}
       {i1 = {lt = "1.1";};  i2 = {gte = "1.0";};  n = "old-locale";}
       {i1 = {gte = "1.6";};  i2 = {lt = "1.9";};  n = "polyparse";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.9";};  n = "semigroups";}
       {i1 = {lt = "0.12";};  i2 = {gte = "0.11";};  n = "text";}
       {i1 = {gte = "1.1";};  i2 = {lt = "1.5";};  n = "time";}
     ];
   };
-  sha256 = "11zm24xggvbdgklq88pg5hfkql3liim0i4jmsg4lv50p6k8p0vbk";
+  sha256 = "0sf0ac5v94103sj5arlfnhgrsk5kf0cc11ncq2687648qg13zsv4";
   tsdeps = 
   [
     {
@@ -88663,6 +90055,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       [
         {i1 = {gte = "3";};  i2 = {lt = "5";};  n = "base";}
         {i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "HUnit";}
+        {i1 = {gte = "0.5";};  i2 = {lt = "0.9";};  n = "semigroups";}
         {n = "swish";}
       ];
     }
@@ -89563,7 +90956,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "certificate";  version = "1.2.3";
+  name = "certificate";  version = "1.2.4";
   edeps = 
   [
     {
@@ -89620,7 +91013,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "directory";}  {n = "process";}  {n = "time";}
     ];
   };
-  sha256 = "0xn46327a50vj70d26gc4z2rn4l6qk77j7mkdwg1j2yh6mcn0n7a";
+  sha256 = "079364567cshfj2bc0lbj933jcgdqisvv8m0czlyscb4hd10vfg7";
   tsdeps = [];
 }
 {
@@ -89738,7 +91131,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "cabal-meta";  version = "0.2.2";
+  name = "cabal-meta";  version = "0.2.3.2";
   edeps = 
   [{
      cdeps = 
@@ -89756,7 +91149,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
      deps = 
      [
        {gte = "0.9";  n = "shelly";}  {n = "text";}
-       {n = "system-filepath";}
+       {n = "system-filepath";}  {n = "system-fileio";}
      ];
    }];
   ldeps = 
@@ -89779,7 +91172,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {n = "system-filepath";}
     ];
   };
-  sha256 = "1rsp1mrhcr6p7gg1cjk5pg4jrzxq55v0awyhbgzl1rr2dk97vdvc";
+  sha256 = "1344828jsnqlj5xm90j8qgd3nc44k24wrp8n3acq1zaqrj886736";
   tflags = ["ghc7"];
   tsdeps = 
   [{
@@ -90984,29 +92377,29 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["splitbase"];  tsdeps = [];
 }
 {
-  name = "Pugs";  version = "6.2.13.20120203";
+  name = "Pugs";  version = "6.2.13.20120717";
   edeps = 
   [{
      cdeps = [[{flag = "perl5";}  {cdeps = [];  deps = [];}]];
      deps = 
      [
        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
-       {n = "filepath";}  {lt = "2.0.0.0";  n = "mtl";}
+       {n = "filepath";}  {gte = "2.0.0.0";  n = "mtl";}
        {gte = "3.0.0.0";  n = "parsec";}  {n = "network";}
        {n = "pretty";}  {n = "time";}  {n = "random";}  {n = "process";}
        {n = "containers";}  {n = "bytestring";}  {n = "array";}
        {n = "directory";}  {n = "utf8-string";}  {n = "binary";}
-       {gte = "0.6.4.0";  n = "haskeline";}  {n = "FindBin";}
+       {gte = "0.6.4.7";  n = "haskeline";}  {n = "FindBin";}
        {gte = "0.1.2";  n = "control-timeout";}
        {gte = "0.0.4";  n = "MetaObject";}
-       {gte = "0.0.2";  n = "HsParrot";}
-       {gte = "0.0.5";  n = "pugs-compat";}
-       {gte = "2.2.3.2";  n = "pugs-DrIFT";}
+       {gte = "0.0.2.20120717";  n = "HsParrot";}
+       {gte = "0.0.6.20120717.204800";  n = "pugs-compat";}
+       {gte = "2.2.3.20120717";  n = "pugs-DrIFT";}
        {gte = "0.0.4";  n = "stringtable-atom";}
        {gte = "0.44";  n = "HsSyck";}  {gte = "2.1.2.1";  n = "stm";}
      ];
    }];
-  sha256 = "1axgykan4l7fiv3f85q7sm8jmc2l1yq8wa9011p2w2qr1fg31q3g";
+  sha256 = "0h8c2li8cl95w86wdqplabrd0rfg627k970n5q4vxjvrm374my6s";
   tflags = ["perl5"];  tsdeps = [];
 }
 {
@@ -91200,6 +92593,38 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
+  name = "cmdargs";  version = "0.10";
+  edeps = 
+  [{
+     cdeps = 
+     [
+       [{flag = "quotation";}  {cdeps = [];  deps = [];}]
+       [
+         {and = [{flag = "testprog";}  {flag = "quotation";}];}
+         {cdeps = [];  deps = [];}  {cdeps = [];  deps = [];}
+       ]
+     ];
+     deps = [];
+   }];
+  ldeps = 
+  {
+    cdeps = 
+    [[
+       {flag = "quotation";}
+       {cdeps = [];  deps = [{n = "template-haskell";}];}
+     ]];
+    deps = 
+    [
+      {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+      {n = "filepath";}
+      {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "transformers";}
+      {i1 = {gte = "1.0";};  i2 = {lt = "1.2";};  n = "process";}
+    ];
+  };
+  sha256 = "1xx4cks3hr2ldb0hd5hnc53dpns2zm4gc1dw25gs1vc977kga3hz";
+  tflags = ["testprog"  "quotation"];  tsdeps = [];
+}
+{
   name = "CPL";  version = "0.0.6";
   edeps = 
   [{
@@ -91254,7 +92679,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["repl"];  tsdeps = [];
 }
 {
-  name = "git-annex";  version = "3.20120629";
+  name = "git-annex";  version = "3.20120807";
   edeps = 
   [{
      cdeps = 
@@ -91285,7 +92710,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {n = "edit-distance";}
      ];
    }];
-  sha256 = "128rrl4lfa2a8ch5n8wzlhnvi7c1pdark0gvf4154qpfxnn3iig6";
+  sha256 = "1ys9l7jxhbwzylc3yb53nyv9yw211x3yx0csh1i223jpql2abhl9";
   tflags = ["s3"  "inotify"  "assistant"];
   tsdeps = 
   [{
@@ -92108,7 +93533,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["small_base"];  tsdeps = [];
 }
 {
-  name = "hprotoc";  version = "2.0.10";
+  name = "hprotoc";  version = "2.0.11";
   edeps = 
   [{
      cdeps = 
@@ -92125,8 +93550,8 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       ]];
      deps = 
      [
-       {n = "protocol-buffers";  v = "2.0.10";}
-       {n = "protocol-buffers-descriptor";  v = "2.0.10";}
+       {n = "protocol-buffers";  v = "2.0.11";}
+       {n = "protocol-buffers-descriptor";  v = "2.0.11";}
        {n = "array";}  {n = "binary";}  {n = "bytestring";}
        {n = "containers";}  {gte = "1.0.0.1";  n = "directory";}
        {gte = "1.1.0.0";  n = "filepath";}
@@ -92134,7 +93559,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {n = "parsec";}  {n = "utf8-string";}
      ];
    }];
-  sha256 = "0nn2cr4lqsn6v7w3nygmvvc0wnz3qanxf0d534cy6jmd9gjcl1iv";
+  sha256 = "1dbgnsmqrwyjpzphm3hlqhla9g57fd8fsc3g910zaw3phg3pfzb1";
   tflags = ["small_base"];  tsdeps = [];
 }
 {
@@ -92668,7 +94093,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["splitbase"];  tsdeps = [];
 }
 {
-  name = "splot";  version = "0.3.3";
+  name = "splot";  version = "0.3.4";
   edeps = 
   [{
      cdeps = 
@@ -92685,10 +94110,11 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {n = "cairo";}  {n = "bytestring";}  {n = "bytestring-lexing";}
        {gte = "0.1.7";  n = "strptime";}  {n = "time";}
        {n = "containers";}  {n = "colour";}  {n = "Chart";}
-       {n = "mtl";}  {n = "HUnit";}
+       {n = "mtl";}  {n = "HUnit";}  {n = "template-haskell";}
+       {n = "vcs-revision";}
      ];
    }];
-  sha256 = "05iq5il7dnsgdccli7na324hby473d9lapygfflvk5gmxqfcq10d";
+  sha256 = "1qfi8vqm4zliz0lmi6njicm8xha6w8w55il09k0d1w5akwi93x5j";
   tflags = ["splitbase"];  tsdeps = [];
 }
 {
@@ -92993,38 +94419,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     deps = [];
   };
   sha256 = "04jslgxw601g6wh8f2wrdnipzh6x0487kfxb89fkgfgjhxrkfyr3";
-  tflags = ["splitbase"];  tsdeps = [];
-}
-{
-  name = "cabal-rpm";  version = "0.5.1";
-  edeps = 
-  [{
-     cdeps = 
-     [[
-        {flag = "splitbase";}
-        {
-          cdeps = [];
-          deps = 
-          [
-            {n = "base";}
-            {i1 = {gte = "1.2.3.0";};  i2 = {lt = "1.3";};  n = "Cabal";}
-            {n = "directory";}  {n = "filepath";}  {n = "old-locale";}
-            {n = "process";}  {n = "time";}  {n = "unix";}
-          ];
-        }
-        {
-          cdeps = [];
-          deps = 
-          [
-            {n = "base";}
-            {i1 = {gte = "1.2.3.0";};  i2 = {lt = "1.3";};  n = "Cabal";}
-            {n = "filepath";}  {gte = "1.1";  n = "time";}  {n = "unix";}
-          ];
-        }
-      ]];
-     deps = [];
-   }];
-  sha256 = "03dbankv7k169zxzzyp72i2vj6cyy587hkw9lsbrjanx4v8fspnx";
   tflags = ["splitbase"];  tsdeps = [];
 }
 {
@@ -93780,7 +95174,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "tls";  version = "0.9.6";
+  name = "tls";  version = "0.9.8";
   edeps = 
   [{
      cdeps = 
@@ -93817,7 +95211,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
     ];
   };
-  sha256 = "0bcmq7pvdbgnc8ls949m3x9sxj5svsrdpagjns1iq575jg38jx3g";
+  sha256 = "022hak5wy47j4zpf2f89zvz4j2586s3d0a5jkxvz54dkqimy63r6";
   tsdeps = [];
 }
 {
@@ -95003,90 +96397,6 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["base4"];  tsdeps = [];
 }
 {
-  name = "happstack-server";  version = "7.0.3";
-  edeps = 
-  [{
-     cdeps = 
-     [[
-        {flag = "tests";}
-        {
-          cdeps = [];  deps = [{n = "HUnit";}  {lt = "4";  n = "parsec";}];
-        }
-        {cdeps = [];  deps = [];}
-      ]];
-     deps = [];
-   }];
-  ldeps = 
-  {
-    cdeps = 
-    [
-      [{flag = "tests";}  {cdeps = [];  deps = [];}]
-      [
-        {flag = "network_2_2_3";}
-        {cdeps = [];  deps = [{gte = "2.2.3";  n = "network";}];}
-        {
-          cdeps = [];
-          deps = 
-          [{lt = "2.2.3";  n = "network";}  {n = "network-bytestring";}];
-        }
-      ]
-      [
-        {and = [{flag = "template_haskell";}  {not = {arch = "Arm";};}];}
-        {cdeps = [];  deps = [{n = "template-haskell";}];}
-      ]
-      [{flag = "tests";}  {cdeps = [];  deps = [];}]
-      [
-        {not = {os = "Windows";};}  {cdeps = [];  deps = [{n = "unix";}];}
-      ]
-      [
-        {flag = "base4";}
-        {
-          cdeps = [];
-          deps = 
-          [
-            {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}  {n = "syb";}
-          ];
-        }
-      ]
-      [{flag = "tests";}  {cdeps = [];  deps = [{n = "HUnit";}];}]
-      [
-        {compilerFlavor = "GHC";  versionRange = {gte = "6.12";};}
-        {cdeps = [];  deps = [];}  {cdeps = [];  deps = [];}
-      ]
-    ];
-    deps = 
-    [
-      {n = "base";}
-      {
-        i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "base64-bytestring";
-      }
-      {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "blaze-html";}
-      {n = "bytestring";}  {n = "containers";}  {n = "directory";}
-      {n = "extensible-exceptions";}  {n = "filepath";}
-      {gte = "1.0.2";  n = "hslogger";}  {n = "html";}
-      {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "monad-control";}
-      {i1 = {gte = "2";};  i2 = {lt = "2.2";};  n = "mtl";}
-      {n = "old-locale";}  {n = "old-time";}
-      {lt = "4";  n = "parsec";}  {n = "process";}
-      {i1 = {gte = "0.7.1";};  i2 = {lt = "0.8";};  n = "sendfile";}
-      {gte = "0.3.1";  n = "system-filepath";}
-      {i1 = {gte = "0.10";};  i2 = {lt = "0.12";};  n = "text";}
-      {n = "time";}
-      {
-        i1 = {gte = "0.1.3";};  i2 = {lt = "0.4";};  n = "transformers";
-      }
-      {
-        i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "transformers-base";
-      }
-      {i1 = {gte = "0.3.4";};  i2 = {lt = "0.4";};  n = "utf8-string";}
-      {n = "xhtml";}  {n = "zlib";}
-    ];
-  };
-  sha256 = "06r5h1jhb4h9hra7radhr3rq404283nwv4mhppfxsh4adk5ng0qy";
-  tflags = ["base4"  "network_2_2_3"  "template_haskell"];
-  tsdeps = [];
-}
-{
   name = "happstack-util";  version = "6.0.3";
   edeps = 
   [{
@@ -95324,7 +96634,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tflags = ["threaded"];  tsdeps = [];
 }
 {
-  name = "tamarin-prover";  version = "0.6.1.0";
+  name = "tamarin-prover";  version = "0.8.0.0";
   edeps = 
   [{
      cdeps = 
@@ -95337,6 +96647,8 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
            cdeps = [];
            deps = 
            [
+             {n = "fast-logger";  v = "0.0.2";}
+             {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "wai-logger";}
              {i1 = {lt = "0.10";};  i2 = {gte = "0.9";};  n = "bytestring";}
              {i1 = {lt = "0.5";};  i2 = {gte = "0.4";};  n = "blaze-html";}
              {i1 = {lt = "0.7";};  i2 = {gte = "0.6";};  n = "http-types";}
@@ -95384,16 +96696,16 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {lt = "3.3";};  i2 = {gte = "3.2";};  n = "parallel";}
        {i1 = {lt = "1.3";};  i2 = {gte = "1.2";};  n = "HUnit";}
        {
-         i1 = {lt = "0.7";};  i2 = {gte = "0.6";};
+         i1 = {lt = "0.9";};  i2 = {gte = "0.8";};
          n = "tamarin-prover-utils";
        }
        {
-         i1 = {lt = "0.7";};  i2 = {gte = "0.6";};
+         i1 = {lt = "0.9";};  i2 = {gte = "0.8";};
          n = "tamarin-prover-term";
        }
      ];
    }];
-  sha256 = "1yp3csn4p1mc0nrdy0ld5g17bj6153bjg3qcimxg92qxbwlf32br";
+  sha256 = "0x5nvaxc66xpcbvyn88axd9jka6i2k67q4yb42xqjxglxy41qpvw";
   tflags = ["threaded"  "test-coverage"];  tsdeps = [];
 }
 {
@@ -100359,7 +101671,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "scion-browser";  version = "0.2.9";
+  name = "scion-browser";  version = "0.2.10";
   edeps = 
   [{
      cdeps = 
@@ -100397,7 +101709,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
      ];
      deps = 
      [
-       {gte = "0.6";  n = "haskeline";}
+       {i1 = {gte = "0.6";};  i2 = {lt = "0.7";};  n = "haskeline";}
        {gte = "0.10";  n = "attoparsec";}
        {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
        {gte = "2";  n = "mtl";}
@@ -100483,7 +101795,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "ghc-paths";}
     ];
   };
-  sha256 = "0chxc3nndjm6bnma1ghmx5yiy2db067mqbj5wzh88572abnv34kz";
+  sha256 = "0z9pxp32qpf298khshknjl58ks5i520gfxpnc1b1mnqmvslknk3s";
   tsdeps = [];
 }
 {
@@ -100673,7 +101985,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "yi";  version = "0.6.5.0";
+  name = "yi";  version = "0.6.6.0";
   edeps = 
   [
     {
@@ -100698,6 +102010,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       cdeps = 
       [
         [{flag = "dochack";}  {cdeps = [];  deps = [];}]
+        [{flag = "profiling";}  {cdeps = [];  deps = [];}]
         [
           {not = {flag = "dochack";};}  {cdeps = [];  deps = [{n = "yi";}];}
         ]
@@ -100710,11 +102023,9 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     cdeps = 
     [
       [{flag = "hacking";}  {cdeps = [];  deps = [];}]
+      [{flag = "profiling";}  {cdeps = [];  deps = [];}]
+      [{flag = "profiling";}  {cdeps = [];  deps = [];}]
       [{flag = "hacking";}  {cdeps = [];  deps = [];}]
-      [
-        {compilerFlavor = "GHC";  versionRange = {gte = "7.2";};}
-        {cdeps = [];  deps = [];}
-      ]
       [
         {compilerFlavor = "GHC";  versionRange = {gte = "7.2";};}
         {cdeps = [];  deps = [];}
@@ -100722,6 +102033,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       [
         {not = {os = "Windows";};}  {cdeps = [];  deps = [{n = "unix";}];}
       ]
+      [{os = "Windows";}  {cdeps = [];  deps = [{n = "Win32";}];}]
       [
         {flag = "testing";}
         {
@@ -100837,7 +102149,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
       }
     ];
   };
-  sha256 = "1q865rviqc80nxpxgdsa2r320s9xx34jzw2n5l0nkp8djwm1mmpp";
+  sha256 = "14yxhhzmx48jay4g7imwq9lgxzrsb92505v6jafndb6msvh9k43l";
   tflags = ["vty"  "testing"];  tsdeps = [];
 }
 {
@@ -100880,7 +102192,7 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
   tsdeps = [];
 }
 {
-  name = "yesod";  version = "1.0.1.6";
+  name = "yesod";  version = "1.1.0";
   edeps = 
   [{
      cdeps = [[{os = "Windows";}  {cdeps = [];  deps = [];}]];
@@ -100899,65 +102211,56 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
        {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "unix-compat";}
        {gte = "0.2";  n = "containers";}
        {gte = "0.10";  n = "attoparsec";}
-       {i1 = {gte = "0.6.1";};  i2 = {lt = "0.7";};  n = "http-types";}
+       {i1 = {gte = "0.7";};  i2 = {lt = "0.8";};  n = "http-types";}
        {
          i1 = {gte = "0.2.1.4";};  i2 = {lt = "0.4";};  n = "blaze-builder";
        }
-       {gte = "1.1";  n = "filepath";}
-       {i1 = {gte = "0.0.2";};  i2 = {lt = "0.1";};  n = "fast-logger";}
-       {n = "process";}
+       {gte = "1.1";  n = "filepath";}  {n = "process";}
+       {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "zlib";}
+       {i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "tar";}
+       {
+         i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "system-filepath";
+       }
+       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "system-fileio";}
+       {n = "unordered-containers";}
+       {i1 = {gte = "0.8";};  i2 = {lt = "0.9";};  n = "yaml";}
      ];
    }];
   ldeps = 
   {
-    cdeps = 
-    [[
-       {flag = "blaze_html_0_5";}
-       {
-         cdeps = [];
-         deps = 
-         [
-           {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
-           {
-             i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
-           }
-         ];
-       }
-       {
-         cdeps = [];
-         deps = 
-         [{i1 = {gte = "0.4";};  i2 = {lt = "0.5";};  n = "blaze-html";}];
-       }
-     ]];
+    cdeps = [];
     deps = 
     [
       {i1 = {gte = "4.3";};  i2 = {lt = "5";};  n = "base";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-core";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-auth";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-json";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-core";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-auth";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-json";}
       {
-        i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-persistent";
+        i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-persistent";
       }
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "yesod-form";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "yesod-form";}
       {i1 = {gte = "0.3";};  i2 = {lt = "0.4";};  n = "monad-control";}
       {
         i1 = {gte = "0.2.2";};  i2 = {lt = "0.4";};  n = "transformers";
       }
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai";}
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "wai-extra";}
-      {gte = "0.1.2";  n = "wai-logger";}
-      {i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "hamlet";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "wai-extra";}
+      {i1 = {gte = "1.1";};  i2 = {lt = "1.2";};  n = "hamlet";}
       {
         i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare-js";
       }
       {
         i1 = {gte = "1.0";};  i2 = {lt = "1.1";};  n = "shakespeare-css";
       }
-      {i1 = {gte = "1.2";};  i2 = {lt = "1.3";};  n = "warp";}
+      {i1 = {gte = "1.3";};  i2 = {lt = "1.4";};  n = "warp";}
+      {i1 = {gte = "0.5";};  i2 = {lt = "0.6";};  n = "blaze-html";}
+      {
+        i1 = {gte = "0.5.1";};  i2 = {lt = "0.6";};  n = "blaze-markup";
+      }
     ];
   };
-  sha256 = "0w5k5bcv50fjpyja6ydknk78dk50swx6b0myhizj8rcf851xga43";
-  tflags = ["blaze_html_0_5"];  tsdeps = [];
+  sha256 = "01jwp9i77rmk4iwjqri9jafm809nzlb5bvgyz5my8dnpcfvnf2sz";
+  tsdeps = [];
 }
 {
   name = "Scurry";  version = "0.0.3";
@@ -101017,6 +102320,28 @@ Here should be a description. It got too long and is contained in my ~/.hack-nix
     }
   ];
   sha256 = "18hlsh3ndlybkiblcfqzjm1pa4myc01yzr9hx7p48yp86q519hvr";
+  tsdeps = [];
+}
+{
+  name = "cab";  version = "0.1.14";
+  edeps = 
+  [{
+     cdeps = 
+     [[
+        {os = "Windows";}  {cdeps = [];  deps = [];}
+        {cdeps = [];  deps = [{n = "unix";}];}
+      ]];
+     deps = 
+     [
+       {i1 = {gte = "4.0";};  i2 = {lt = "5";};  n = "base";}
+       {n = "Cabal";}  {gte = "0.10";  n = "attoparsec";}
+       {gte = "0.3";  n = "attoparsec-conduit";}  {n = "bytestring";}
+       {gte = "0.3";  n = "conduit";}  {n = "containers";}
+       {n = "directory";}  {n = "filepath";}  {n = "process";}
+       {gte = "0.1";  n = "process-conduit";}
+     ];
+   }];
+  sha256 = "0q8ch5bnzr638399nns8isdwafhfcvymn2giisxhij18aca2p7rk";
   tsdeps = [];
 }
 {
