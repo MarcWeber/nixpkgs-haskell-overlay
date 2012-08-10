@@ -267,7 +267,7 @@ let
                 };
                 bzlib = { propagatedBuildNativeInputs = [ pkgs.bzip2 ]; };
                 X11 = {
-                  propagatedBuildNativeInputs = [ pkgs.xorg.libX11 ]; 
+                  propagatedBuildNativeInputs = with pkgs.xorg; [ libX11 libXext libXinerama libXrandr libXrender ]; 
                   # configureFlags = ["--extra-include-dirs=${pkgs.pcre}/include" "--extra-lib-dirs=${pkgs.pcre}/lib"];
                 };
                 xmonad = { noHaddock = true; };

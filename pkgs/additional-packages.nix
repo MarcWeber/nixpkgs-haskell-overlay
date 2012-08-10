@@ -33,7 +33,7 @@
         ];
       }
     ];
-    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/nix-repository-manager-git-0c74f.tar.bz2"; sha256 = "b042bf8e0a0b2569b90c9304b273f508903ab7850fbe58ee52827b0b90dcec8f"; });
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/nix-repository-manager-git-d7135.tar.bz2"; sha256 = "213e4a0879c0b210fae262a65b28db6367d4511e2225ee5347b522b525e8078c"; });
   }
   # END
 
