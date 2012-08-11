@@ -548,5 +548,7 @@ let
       inherit ghcjs;
     });
 
+    xmobarUsable = exeByName { name = "xmobar-usable"; };
+
   };
 in haskellPackages

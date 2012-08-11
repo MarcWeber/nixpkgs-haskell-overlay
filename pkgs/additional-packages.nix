@@ -33,7 +33,7 @@
         ];
       }
     ];
-    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/nix-repository-manager-git-d7135.tar.bz2"; sha256 = "213e4a0879c0b210fae262a65b28db6367d4511e2225ee5347b522b525e8078c"; });
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/nix-repository-manager-git-1c5cb.tar.bz2"; sha256 = "3175acadb8c93e1719a117d825401af19443f33ad7ac91fa605b1989d405bfbd"; });
   }
   # END
 
@@ -570,5 +570,123 @@
     srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/atto-lisp-git-0562e.tar.bz2"; sha256 = "b0e4e81dd5e43fcd19f593bd1ec4b71de8e6a6a22461ef3ece6858dbba5bd36e"; });
   }
   # END
+
+ # manually renaming it to xmobar-usable !
+ # REGION HACK_NIX:                         { name = "xmobar-usable"; type = "git"; url = "git://github.com/dmalikov/xmobar-usable.git"; }
+ {
+   name = "xmobar-usable";  version = "0.15";  edeps = [];
+   ldeps = 
+   {
+     cdeps = 
+     [
+       [{bool = true;}  {cdeps = [];  deps = [];}]
+       [
+         {compilerFlavor = "GHC";  versionRange = {gte = "6.12.1";};}
+         {cdeps = [];  deps = [];}
+       ]
+       [
+         {compilerFlavor = "GHC";  versionRange = {lt = "7";};}
+         {cdeps = [];  deps = [];}
+       ]
+       [
+         {flag = "small_base";}
+         {
+           cdeps = [];
+           deps = 
+           [
+             {i1 = {lt = "5";};  i2 = {gte = "4";};  n = "base";}
+             {n = "containers";}  {n = "process";}  {n = "old-locale";}
+             {n = "bytestring";}  {n = "directory";}
+           ];
+         }
+         {cdeps = [];  deps = [{lt = "3";  n = "base";}];}
+       ]
+       [
+         {or = [{flag = "with_xft";}  {flag = "all_extensions";}];}
+         {
+           cdeps = [];
+           deps = 
+           [
+             {i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "utf8-string";}
+             {i1 = {gte = "0.2";};  i2 = {lt = "0.4";};  n = "X11-xft";}
+           ];
+         }
+       ]
+       [
+         {or = [{flag = "with_utf8";}  {flag = "all_extensions";}];}
+         {
+           cdeps = [];
+           deps = 
+           [{i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "utf8-string";}];
+         }
+       ]
+       [
+         {or = [{flag = "with_inotify";}  {flag = "all_extensions";}];}
+         {
+           cdeps = [];
+           deps = 
+           [{i1 = {lt = "0.4";};  i2 = {gte = "0.3";};  n = "hinotify";}];
+         }
+       ]
+       [
+         {or = [{flag = "with_iwlib";}  {flag = "all_extensions";}];}
+         {cdeps = [];  deps = [];}
+       ]
+       [
+         {or = [{flag = "with_mpd";}  {flag = "all_extensions";}];}
+         {
+           cdeps = [];
+           deps = 
+           [{i1 = {gte = "0.6";};  i2 = {lt = "0.8";};  n = "libmpd";}];
+         }
+       ]
+       [
+         {or = [{flag = "with_alsa";}  {flag = "all_extensions";}];}
+         {
+           cdeps = [];
+           deps = 
+           [
+             {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "alsa-mixer";}
+             {i1 = {lt = "0.6";};  i2 = {gte = "0.5";};  n = "alsa-core";}
+           ];
+         }
+       ]
+       [
+         {or = [{flag = "with_datezone";}  {flag = "all_extensions";}];}
+         {
+           cdeps = [];
+           deps = 
+           [
+             {i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "timezone-olson";}
+             {
+               i1 = {lt = "0.2";};  i2 = {gte = "0.1";};  n = "timezone-series";
+             }
+           ];
+         }
+       ]
+       [
+         {or = [{flag = "with_mpris";}  {flag = "all_extensions";}];}
+         {
+           cdeps = [];
+           deps = 
+           [
+             {gte = "0.9.2.1";  n = "dbus-core";}
+             {i1 = {gte = "0.11.1.5";};  i2 = {lt = "0.12";};  n = "text";}
+           ];
+         }
+       ]
+     ];
+     deps = 
+     [
+       {n = "unix";}  {n = "time";}  {n = "filepath";}
+       {i1 = {lt = "1.7";};  i2 = {gte = "1.6";};  n = "X11";}
+       {i1 = {lt = "2.1";};  i2 = {gte = "2.0";};  n = "mtl";}
+       {i1 = {lt = "3.2";};  i2 = {gte = "3.1";};  n = "parsec";}
+       {i1 = {lt = "2.4";};  i2 = {gte = "2.3";};  n = "stm";}
+     ];
+   };
+   srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/xmobar-usable-git-f09cd.tar.bz2"; sha256 = "3347f7e2c41a40144ed2ded2542e93b86d1e1757ec37480c62cf7d5b6a87f562"; });
+ }
+ # END
 
 ]
