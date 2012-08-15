@@ -550,6 +550,7 @@ let
     });
 
     xmobarUsable = exeByName { name = "xmobar-usable"; };
+    gitAll = exeByName { haskellPackages = pkgs.haskellPackages_ghc742; name = "git-all"; };
 
   };
 in haskellPackages
