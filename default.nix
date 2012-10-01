@@ -18,16 +18,17 @@
 # TODO use callPackage style ?
 
 let
-
   mainConfig = { inherit system stdenvType bootStdenv noSysDirs gccWithCC gccWithProfiling config; };
 
-
   pkgs = import nixpkgs mainConfig;
+
+in let
+  # override config in scope by the one defined in pkgs
+  config = pkgs.config;
+
   gnome = pkgs.gnome;
 
   lib = pkgs.lib // import ./pkgs/lib-amendment.nix { inherit (pkgs) lib; };
-
-  getConfig = pkgs.getConfig;
 
   inherit (lib) attrSingleton;
 
@@ -39,7 +40,7 @@ let
 
   haskellPackages = rec {
 
-    inherit pkgs lib getConfig;
+    inherit pkgs lib config;
 
     defaultHaskellPackages = pkgs.haskellPackages_ghc722;
 
@@ -322,11 +323,11 @@ let
                 ++ (import ./pkgs/haskelldb.nix { inherit (pkgs) fetchurl; })
                 ++ fixed.packageOverrides
                 ++ oldGtk2hsPackages
-                ++ (getConfig ["hackNix" "additionalPackages"] [])
+                ++ (config.hackNix.additionalPackages or [])
               );
 
             globalFlags = {}
-              // getConfig ["hackNix" "globalFlags"] {};
+              // (config.hackNix.globalFlags or {} );
             packageFlags = {
               # without this gtk doesn't build:
 
@@ -379,7 +380,7 @@ let
                };
                yesod = { ghc7 = true; };
                "yesod-auth" = { ghc7 = true; };
-            } // getConfig ["hackNix" "packageFlags"] {};
+            } // (config.hackNix.packageFlags or {});
 
             mkHaskellDerivation = a@{ name, fullName, src, dependencies, flags, patches, version, ... }:
               # Use special builder for gtk2hs-meta-package-hack only
@@ -517,7 +518,7 @@ let
     gtk2hsBuildtools = exeByName { haskellPackages = pkgs.haskellPackages_ghc6104; name = "gtk2hs-buildtools"; };
     gtk11 = exeByName { name = { n = "glib"; v = "0.11.2"; }; };
     gtk12 = exeByName { name = { n = "gtk"; gte = "0.12"; }; };
-    derive = exeByName { name = "derive"; };
+    derive = exeByName { haskellPackages =pkgs.haskellPackages_ghc6123; name = "derive"; };
     hakyll = exeByName { name = "hakyll"; };
     alex = exeByName { name = "alex"; };
     happy = exeByName { name = "happy"; };
