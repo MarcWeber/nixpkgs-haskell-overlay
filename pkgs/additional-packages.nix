@@ -55,7 +55,7 @@
          {n = "unix";}
        ];
      }];
-    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-git-cfd95.tar.bz2"; sha256 = "7b2ffd7c1042710eb4a9df92d9ba8d2bdd25166d7b3fc9fdd3618958df180c71"; });
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hack-nix-git-92d4c.tar.bz2"; sha256 = "cfc609d47b72dbf413eb185cb9c76734a50dda8bac0bbfb4c0bb2af591fe26a0"; });
   }
   # END
 
@@ -686,6 +686,28 @@
      ];
    };
    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/xmobar-usable-git-f09cd.tar.bz2"; sha256 = "3347f7e2c41a40144ed2ded2542e93b86d1e1757ec37480c62cf7d5b6a87f562"; });
+ }
+ # END
+
+
+ # REGION HACK_NIX: { name = "hgit2"; type = "git"; url = "git://github.com/norm2782/hgit2.git"; }
+ {
+   name = "hgit2";  version = "0.1";
+   edeps = 
+   [{
+      cdeps = [];
+      deps = 
+      [
+        {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+        {n = "hgit2";}  {gte = "1.1";  n = "directory";}
+      ];
+    }];
+   ldeps = 
+   {
+     cdeps = [];
+     deps = [{i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}];
+   };
+   srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hgit2-git-83a14.tar.bz2"; sha256 = "8fec42def803a7250419a966c763ccb7a1b351d7b2db63071f8d24ef1fe98cb7"; });
  }
  # END
 

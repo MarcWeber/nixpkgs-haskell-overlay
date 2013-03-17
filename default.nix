@@ -189,23 +189,28 @@ in let
             ammendments =
               {
                 hasktags.postInstall = " set -x; ln -s $out/bin/{hasktags,hasktags-modified}"; # this alias is used by sourceAndTags only 
-                happy.propagatedBuildNativeInputs = [pkgs.perl];
-                alex.propagatedBuildNativeInputs = [pkgs.perl];
-                zlib.propagatedBuildNativeInputs = [pkgs.zlib];
-                digest.propagatedBuildNativeInputs = [pkgs.zlib];
-                OpenGLRaw.propagatedBuildNativeInputs = [pkgs.mesa];
-                GLUT.propagatedBuildNativeInputs = [pkgs.freeglut];
-                readline.propagatedBuildNativeInputs = [pkgs.readline];
-                GLFW.propagatedBuildNativeInputs = [pkgs.glefw] ++ pkgs.glefw.buildInputs /* to get X libs into buildPath */;
-                wxcore.propagatedBuildNativeInputs = [pkgs.wxGTK28];
-                terminfo.propagatedBuildNativeInputs = [pkgs.ncurses];
-                berkeleydb.propagatedBuildNativeInputs = [pkgs.db45];
-                BerkeleyDB.propagatedBuildNativeInputs = [pkgs.db45];
+                happy.propagatedNativeBuildInputs = [pkgs.perl];
+                alex.propagatedNativeBuildInputs = [pkgs.perl];
+                zlib = {
+                  extraLibraries = [pkgs.zlib];
+                  # configureFlags = ["--extra-include-dirs=${pkgs.zlib}/include" "--extra-lib-dirs=${pkgs.zlib}/lib"];
+                  # propagatedNativeBuildInputs = [pkgs.zlib];
+                };
+                digest.propagatedNativeBuildInputs = [pkgs.zlib];
+                OpenGLRaw.propagatedNativeBuildInputs = [pkgs.mesa];
+                GLUT.propagatedNativeBuildInputs = [pkgs.freeglut];
+                readline.propagatedNativeBuildInputs = [pkgs.readline];
+                GLFW.propagatedNativeBuildInputs = [pkgs.glefw] ++ pkgs.glefw.buildInputs /* to get X libs into buildPath */;
+                wxcore.propagatedNativeBuildInputs = [pkgs.wxGTK28];
+                terminfo.propagatedNativeBuildInputs = [pkgs.ncurses];
+                berkeleydb.propagatedNativeBuildInputs = [pkgs.db45];
+                BerkeleyDB.propagatedNativeBuildInputs = [pkgs.db45];
+                hgit2 = { buildInputs = [ c2hsFixed ]; propagatedNativeBuildInputs = [ pkgs.libgit2 pkgs.zlib ]; };
                 hubris = {
                 # note! it does compile. The author recommends adding "--enable-library-for-ghci --enable-shared --ghc-options=-dynamic"
                 # flags to reduce binary size (30MB) which doesn't built yet.
                     buildInputs = [ c2hsFixed ];
-                    propagatedBuildNativeInputs = [ pkgs.ruby ];
+                    propagatedNativeBuildInputs = [ pkgs.ruby ];
                     configureFlags = ["--extra-lib-dirs=${pkgs.ruby}/lib --extra-include-dirs=${pkgs.glibc}/include"]
 
                       ++ # TODO find a better solution. This won't work for other ruby versions!
@@ -220,13 +225,13 @@ in let
                 svgcairo = { buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.glibc g_libs.glib g_libs.librsvg]; };
                 "gtksourceview2" = { 
                   buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig  pkgs.gnome.gtksourceview ];
-                  propagatedBuildNativeInputs = [ pkgs.glibc g_libs.glib g_libs.gtk ];
+                  propagatedNativeBuildInputs = [ pkgs.glibc g_libs.glib g_libs.gtk ];
                 };
                 gtk = {
                   buildInputs = [
                     pkgs.pkgconfig gtk2hsBuildToolsFixed g_libs.gtk pkgs.glibc
                   ];
-                  propagatedBuildNativeInputs = [
+                  propagatedNativeBuildInputs = [
                     g_libs.cairo g_libs.glib g_libs.pango 
                   ];
                 };
@@ -239,43 +244,49 @@ in let
                   buildInputs = [gtk2hsBuildToolsFixed pkgs.pkgconfig pkgs.cairo pkgs.glibc];
                   configureFlags = ["--extra-lib-dirs=${pkgs.zlib}/lib"];
                 };
-                "pcre-light" = { propagatedBuildNativeInputs = [ pkgs.pcre ]; };
+                "pcre-light" = { propagatedNativeBuildInputs = [ pkgs.pcre ]; };
                 "language-c" = { buildInputs = [ happyFixed alexFixed ]; };
                 yi = { buildInputs = [ happyFixed alexFixed ]; };
                 "gtk2hs-buildtools" = { buildInputs = [alexFixed happyFixed]; };
                 "Agda" = { buildInputs = [ happyFixed alexFixed ]; };
                 "hopenssl" = {
-                  propagatedBuildNativeInputs = [ pkgs.openssl ]; 
+                  propagatedNativeBuildInputs = [ pkgs.openssl ]; 
                   configureFlags = ["--extra-include-dirs=${pkgs.openssl}/include" "--extra-lib-dirs=${pkgs.openssl}/lib"];
                 };
                 "regex-pcre" = {
-                  propagatedBuildNativeInputs = [ pkgs.pcre ]; 
+                  propagatedNativeBuildInputs = [ pkgs.pcre ]; 
                   configureFlags = ["--extra-include-dirs=${pkgs.pcre}/include" "--extra-lib-dirs=${pkgs.pcre}/lib"];
                 };
-                "HDBC-mysql" = { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.zlib pkgs.zlibStatic ]; };
-                "HDBC-sqlite3" = { propagatedBuildNativeInputs = [ pkgs.mysql pkgs.sqlite ]; };
+                "HDBC-mysql" = { propagatedNativeBuildInputs = [ pkgs.mysql pkgs.zlib pkgs.zlibStatic ]; };
+                "HDBC-sqlite3" = { propagatedNativeBuildInputs = [ pkgs.mysql pkgs.sqlite ]; };
                 "HDBC-odbc" = {
-                    propagatedBuildNativeInputs = [ pkgs.unixODBC ];
+                    propagatedNativeBuildInputs = [ pkgs.unixODBC ];
                     configureFlags = ["--extra-include-dirs=${pkgs.unixODBC}/include" "--extra-lib-dirs=${pkgs.unixODBC}/lib"];
                 };
-                "HDBC-postgresql" = { propagatedBuildNativeInputs = [ pkgs.postgresql ]; };
+                "HDBC-postgresql" = { propagatedNativeBuildInputs = [ pkgs.postgresql ]; };
                 "haskell-src" = { buildInputs = [ happyFixed ]; };
                 "haskell-src-exts" = { buildInputs = [ happyFixed ]; };
                 "happs-hsp" = { buildInputs = [ happyFixed ]; };
+                "happstack-server" = {
+                  # buildInputs = [ pkgs.zlib ]; 
+                  # configureFlags = ["--extra-include-dirs=${pkgs.zlib}/include" "--extra-lib-dirs=${pkgs.zlib}/lib"];
+                  # why do I need this ??
+                  # LD_LIBRARY_PATH="-L ${pkgs.zlib}/lib";
+                };
                 "hsql-mysql" = {
-                  propagatedBuildNativeInputs = [ pkgs.mysql ];
+                  propagatedNativeBuildInputs = [ pkgs.mysql ];
                   configureFlags = ["--extra-include-dirs=${pkgs.mysql}/include/mysql" "--extra-lib-dirs=${pkgs.mysql}/lib/mysql"];
                 };
-                bzlib = { propagatedBuildNativeInputs = [ pkgs.bzip2 ]; };
+                bzlib = { propagatedNativeBuildInputs = [ pkgs.bzip2 ]; };
                 X11 = {
-                  propagatedBuildNativeInputs = with pkgs.xorg; [ libX11 libXext libXinerama libXrandr libXrender ]; 
+                  propagatedNativeBuildInputs = with pkgs.xorg; [ libX11 libXext libXinerama libXrandr libXrender ]; 
                   # configureFlags = ["--extra-include-dirs=${pkgs.pcre}/include" "--extra-lib-dirs=${pkgs.pcre}/lib"];
                 };
                 xmonad = { noHaddock = true; };
-                "git-annex" = { propagatedBuildNativeInputs = [ pkgs.libuuid pkgs.which pkgs.rsync pkgs.perl]; };
+                "git-annex" = { propagatedNativeBuildInputs = [ pkgs.libuuid pkgs.which pkgs.rsync pkgs.perl]; };
                 QuickCheck = { noHaddock = true; };
                 "X11-xft" = {
-                  propagatedBuildNativeInputs = [ pkgs.pkgconfig pkgs.xorg.libXft pkgs.freetype pkgs.fontconfig ];
+                  propagatedNativeBuildInputs = [ pkgs.pkgconfig pkgs.xorg.libXft pkgs.freetype pkgs.fontconfig ];
                   configureFlags=["--extra-include-dirs=${pkgs.freetype}/include/freetype2"];
                 };
 
@@ -393,7 +404,7 @@ in let
                   // { inherit deps; }
 
               else let
-                  deps = dependencies ++ (lib.attrByPath [name "propagatedBuildNativeInputs"] [] ammendmentsFixed);
+                  deps = dependencies ++ (lib.attrByPath [name "propagatedNativeBuildInputs"] [] ammendmentsFixed);
                   deps_of_haskell_packages = d: [d] ++ (if d ? propagatedHaskellDeps then d.propagatedHaskellDeps else []);
                   # for tag generation we need all "propagated build inputs" at nix level. propagatedBuild*Inputs keeps track
                   # of those at builder level only. Why tagging dependencies of
@@ -403,10 +414,15 @@ in let
                   (haskellDerivation (self: (removeAttrs (lib.attrByPath [name] {} ammendmentsFixed) ["buildInputs"]) // {
                   pname = name;
                   name = fullName;
+                  # TODO: make hack-nix also store information about test suites, and the solver take care about dependencies
+                  # see commented # testsuite deps
+                  # the problem about the tests is that they cause circular dependencies.
+                  # eg "text" has "xml" in its testsuite dependencies, and xml depends on "text"
+                  doCheck = false;
                   inherit src patches version;
                   extraBuildInputs = 
                        (lib.attrByPath [name "buildInputs"] [] ammendmentsFixed);
-                  propagatedBuildNativeInputs = deps;               
+                  propagatedNativeBuildInputs = deps;               
                   configureFlags = ( lib.concatStringsSep " " (
                            (lib.mapAttrsFlatten (a: v: "-f${if v then "" else "-"}${a}") flags)
                         ++ (lib.attrByPath [name "configureFlags"] [] ammendmentsFixed)
@@ -450,7 +466,7 @@ in let
     envFromHaskellLibs = { buildInputs, createHaskellTagsFor ? [], extraCmd ? null, ...}:
       let tagDerivations = map runHasktags (lib.filter (x: x ? src) createHaskellTagsFor);
       in pkgs.runCommand "haskell-env" {
-        buildNativeInputs = buildInputs ++ tagDerivations;
+        nativeBuildInputs = buildInputs ++ tagDerivations;
       } ''
         ensureDir $out/source-me
         
@@ -487,7 +503,7 @@ in let
 
     ### executables:
     hledger = exeByName { name = "hledger"; };
-    hackNix = exeByName { /* haskellPackages = pkgs.haskellPackages_ghc703; */ name = "hack-nix"; };
+    hackNix = exeByName { haskellPackages = pkgs.haskellPackages_ghc742; name = "hack-nix"; };
     nixRepositoryManager = exeByName { name = "nix-repository-manager"; };
     # doesn't build
     yi = exeByName { name = "yi"; haskellPackages = pkgs.haskellPackages_ghc704; };
@@ -540,6 +556,16 @@ in let
 
     cabal_install = exeByName { name = "cabal-install"; };
     cabal_install_ghc72 = exeByName { name = "cabal-install-ghc72"; };
+    cabal_install_ghc_7_4 = exeByName { haskellPackages = pkgs.haskellPackages_ghc742; name = "cabal-install-ghc74"; };
+
+
+    ddcBase = exeByName { name = "ddc-base"; };
+    ddcCore = exeByName { name = "ddc-core"; };
+    ddciCore = exeByName { name = "ddci-core"; };
+    ddcCoreEval = exeByName { name = "ddc-core-eval"; };
+    ddcCoreSimpl = exeByName { name = "ddc-core-simpl"; };
+
+    c2hs = exeByName { name = "c2hs"; };
 
     pipesCore = exeByName { name = "pipes-core"; };
     scion = exeByName { haskellPackages = pkgs.haskellPackages; name = "scion"; };

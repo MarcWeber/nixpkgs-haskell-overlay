@@ -422,16 +422,29 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
         gtk2hsHack = lib.maybeAttr "gtk2hsHack" false pkg; 
         fullName = lm.mkNixId { inherit (pkg) name version; }; 
         # TODO: take Buildable into account
-        edeps = lm.addErrorContext2 "edeps in pkgFromDb " (if hasAttr "edeps" pkg then
+        edeps = lm.addErrorContext2 "edeps in pkgFromDb " (
                   # put all the executable dependencies into one sub deps entry
                   { deps = [];
-                    cdeps = map (edep: {
+                    cdeps = 
+                    (map (edep: {
                         cond = true;
                         if_deps = mapCDeps edep;
                         else_deps = lm.emptyDeps;
-                      }) pkg.edeps;
+                      }) (pkg.edeps or []));
+                    # ++ # testsuite deps
+                    # (map (edep: {
+                    #     cond = true;
+                    #     if_deps = mapCDeps edep;
+                    #     else_deps = lm.emptyDeps;
+                    #   }) (pkg.tsdeps or []))
+                    # ++ # benchmark deps
+                    # (map (edep: {
+                    #     cond = true;
+                    #     if_deps = mapCDeps edep;
+                    #     else_deps = lm.emptyDeps;
+                    #   }) (pkg.bench_deps or []));
                   }
-                else lm.emptyDeps);
+                );
         ldeps = lm.addErrorContext2 "ldeps in pkgFromDb" (if hasAttr "ldeps" pkg then
                     mapCDeps pkg.ldeps
                 else lm.emptyDeps);
@@ -476,7 +489,7 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
       # pkg
       preparePkg = availablePackages : pkg : lm.funcBody "preparePkg" (
       let # input : i-dep-node(v-ranges)
-          mapDepNode = strictifyArgs 1 "mapDepNode" ( {deps, cdeps} : {
+          mapDepNode = strictifyArgs 1 "mapDepNode" ( {deps, cdeps, ...} : {
             deps = lm.mergeDepsIList (map (lm.versionRangeToAttr availablePackages)
                                           (filter (x: x.n != pkg.name) deps) # eg scion's executable dependencies depend on scion library itself. Thus drop dependencies on the same packages
                                      );
