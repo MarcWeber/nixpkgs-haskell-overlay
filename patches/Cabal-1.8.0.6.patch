@@ -1,0 +1,21 @@
+diff -r -U 3 a/Cabal.cabal b/Cabal.cabal
+--- a/Cabal.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/Cabal.cabal	2011-08-09 09:15:58.213998761 +0200
+@@ -42,14 +42,14 @@
+ 
+ Library
+   build-depends:   base       >= 1   && < 5,
+-                   filepath   >= 1   && < 1.2
++                   filepath   >= 1
+   if flag(base4) { build-depends: base >= 4 } else { build-depends: base < 4 }
+   if flag(base3) { build-depends: base >= 3 } else { build-depends: base < 3 }
+   if flag(base3)
+-    Build-Depends: directory  >= 1   && < 1.1,
++    Build-Depends: directory  >= 1   ,
+                    process    >= 1   && < 1.1,
+                    old-time   >= 1   && < 1.1,
+-                   containers >= 0.1 && < 0.4,
++                   containers >= 0.1 ,
+                    array      >= 0.1 && < 0.4,
+                    pretty     >= 1   && < 1.1
+ 

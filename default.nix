@@ -380,6 +380,9 @@ in let
                 "type-witnesses" = false;
                 "deps-only" = false;
               };
+              transformers = {
+                ApplicativeInBase = true;
+              };
                yi = {
                   ghcInterpreter = false; # Use the "hint" interpreter for extended commands (M-x) (experimental)
                   ghcAPI = false; # Enable linking with GHC API for advanced features.

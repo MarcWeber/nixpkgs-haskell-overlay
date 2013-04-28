@@ -1,0 +1,21 @@
+diff -r -U 3 a/buildbox.cabal b/buildbox.cabal
+--- a/buildbox.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/buildbox.cabal	2012-02-27 18:50:26.884290545 +0100
+@@ -24,7 +24,8 @@
+ 
+ Library
+   Build-Depends: 
+-        base           == 4.5.*,
++        -- base           == 4.5.*,
++        base           >= 4.5,
+         containers     >= 0.4    && <  0.5,
+         time           >= 1.1    && <= 1.4,
+         directory      >= 1.0    && <= 1.2,
+Only in b: default-env
+Only in b: dist
+Only in b: .hack-nix-cabal-config
+Only in b: hack-nix-envs
+Only in b: Setup
+Only in b: Setup.hi
+Only in b: Setup.o
+Only in b: sources-of-deps-auto

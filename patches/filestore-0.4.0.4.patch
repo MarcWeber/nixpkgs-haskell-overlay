@@ -1,0 +1,16 @@
+diff -r -U 3 a/Data/FileStore/Types.hs b/Data/FileStore/Types.hs
+--- a/Data/FileStore/Types.hs	1970-01-01 01:00:01.000000000 +0100
++++ b/Data/FileStore/Types.hs	2012-02-27 21:27:38.308884442 +0100
+@@ -1,4 +1,4 @@
+-{-# LANGUAGE Rank2Types, TypeSynonymInstances, DeriveDataTypeable #-}
++{-# LANGUAGE Rank2Types, TypeSynonymInstances, DeriveDataTypeable, FlexibleInstances #-}
+ {- |
+    Module      : Data.FileStore.Types
+    Copyright   : Copyright (C) 2009 John MacFarlane
+Only in b: default-env
+Only in b: dist
+Only in b: hack-nix-envs
+Only in b: Setup
+Only in b: Setup.hi
+Only in b: Setup.o
+Only in b: sources-of-deps-auto

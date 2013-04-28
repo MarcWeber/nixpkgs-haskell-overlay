@@ -1,0 +1,12 @@
+diff -r -U 3 a/git-annex.cabal b/git-annex.cabal
+--- a/git-annex.cabal	1970-01-01 01:00:01.000000000 +0100
++++ b/git-annex.cabal	2012-05-11 17:33:26.492434269 +0200
+@@ -32,7 +32,7 @@
+    unix, containers, utf8-string, network, mtl, bytestring, old-locale, time,
+    pcre-light, extensible-exceptions, dataenc, SHA, process, hS3, json, HTTP,
+    base < 5, monad-control, transformers-base, lifted-base, IfElse,
+-   QuickCheck >= 2.1
++   QuickCheck >= 2.1, text
+ 
+ Executable git-annex-shell
+   Main-Is: git-annex-shell.hs
