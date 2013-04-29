@@ -1043,13 +1043,16 @@ let inherit (builtins) add getAttr hasAttr head tail lessThan sub
                         in if r == true then resolveDeps st tail # has been resolved by resolving dependency of a previous item of set
                            else concatMap (s: resolveDeps s tail) r;
 
+                        sortByVersion = lib.sort (a: b: builtins.lessThan 0 (builtins.compareVersions a.version b.version));
+
                    in resolveDeps state
                        # [ [ a-1.0  a-2.0 ] [ b-1.0  b-2.0 ] ] where a-1.0 is { name=, version, fullName } etc
-                       (mapAttrsFlatten (name: mapAttrsFlatten (fullName: version: {inherit name fullName version;}) ) set);
+                       (mapAttrsFlatten (name: value: sortByVersion (mapAttrsFlatten (fullName: version: {inherit name fullName version;}) value)) set);
                  finishtrace = var: 
                    let r = finish var;
                    in if debugS then
                       builtins.trace
+                       # \n${lib.concatStringsSep "->" resolvingDepsOf} ${name}
                        ("variation : ${concatStringsSep "" ( map (x: "\"") state.resolvingDepsOf)} => (${dep.fullName}) flags: ${toStr var.flags}")
                        r
                    else r;
