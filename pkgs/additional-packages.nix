@@ -2,38 +2,37 @@
 [
 
   # REGION HACK_NIX:                         { name = "nix-repository-manager"; type = "git"; url = "git://github.com/MarcWeber/nix-repository-manager.git"; }
-  {
-    name = "nix-repository-manager";  version = "0.0.1";
+  { name = "nix-repository-manager";  version = "0.0.1";
+    bench_deps = [];
     edeps = 
-    [
-      {
-        cdeps = 
-        [[
-           {flag = "use_interlude";}
-           {cdeps = [];  deps = [{n = "interlude";}];}
+    [ { cdeps = 
+        [[ {flag = "use_interlude";}
+           {cdeps = [];  deps = [{n = "interlude";}];  tools = [];}
          ]];
         deps = 
-        [
-          {n = "mtl";}  {n = "directory";}  {gte = "4";  n = "base";}
+        [ {n = "mtl";}  {n = "directory";}  {gte = "4";  n = "base";}
           {n = "old-time";}  {n = "filepath";}  {n = "process";}
           {n = "old-locale";}  {n = "Glob";}  {n = "bytestring";}
           {n = "containers";}  {n = "unix";}  {gte = "3";  n = "parsec";}
           {n = "tar";}  {n = "bzlib";}
         ];
+        tools = [];
       }
-      {
-        cdeps = [[{not = {flag = "tests";};}  {cdeps = [];  deps = [];}]];
+      { cdeps = 
+        [[ {not = {flag = "tests";};}
+           {cdeps = [];  deps = [];  tools = [];}
+         ]];
         deps = 
-        [
-          {n = "mtl";}  {n = "directory";}  {gte = "4";  n = "base";}
+        [ {n = "mtl";}  {n = "directory";}  {gte = "4";  n = "base";}
           {n = "old-time";}  {n = "filepath";}  {n = "process";}
           {n = "old-locale";}  {n = "Glob";}  {n = "bytestring";}
           {n = "HUnit";}  {gte = "3";  n = "parsec";}  {n = "tar";}
           {n = "bzlib";}
         ];
+        tools = [];
       }
     ];
-    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/nix-repository-manager-git-1c5cb.tar.bz2"; sha256 = "3175acadb8c93e1719a117d825401af19443f33ad7ac91fa605b1989d405bfbd"; });
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/nix-repository-manager-git-ddfba.tar.bz2"; sha256 = "b0f9d17110727abb53b85edb973210c627c4eaa91eff4e0861d0d833ebfaf4f3"; });
   }
   # END
 

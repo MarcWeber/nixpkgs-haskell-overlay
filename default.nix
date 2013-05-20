@@ -506,7 +506,7 @@ in let
 
     ### executables:
     hledger = exeByName { name = "hledger"; };
-    hackNix = exeByName { haskellPackages = pkgs.haskellPackages_ghc742; name = "hack-nix"; };
+    hackNix = exeByName { haskellPackages = pkgs.haskellPackages_ghc761; name = "hack-nix"; };
     nixRepositoryManager = exeByName { name = "nix-repository-manager"; };
     # doesn't build
     yi = exeByName { name = "yi"; haskellPackages = pkgs.haskellPackages_ghc704; };
