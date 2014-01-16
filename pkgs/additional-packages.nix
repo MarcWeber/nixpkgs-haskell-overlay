@@ -515,19 +515,25 @@
   # END
   */
 
-  # REGION HACK_NIX:                                { name = "hasktags"; type = "darcs"; url = "http://code.haskell.org/hasktags/"; }
-  {
-    name = "hasktags";  version = "0.68.1";
+  # REGION HACK_NIX:                                { name = "hasktags"; type = "git"; url = "https://github.com/MarcWeber/hasktags.git"; }
+  { name = "hasktags";  version = "0.68.5";  bench_deps = [];
     edeps = 
-    [{
-       cdeps = [];
-       deps = 
-       [
-         {n = "base";}  {n = "bytestring";}  {n = "directory";}
-         {n = "filepath";}
+    [{ cdeps = 
+       [ [ {not = {os = "Windows";};}
+           {cdeps = [];  deps = [{n = "unix";}];  tools = [];}
+         ]
+         [{flag = "debug";}  {cdeps = [];  deps = [];  tools = [];}]
        ];
+       deps = 
+       [ {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+         {i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "bytestring";}
+         {i1 = {gte = "1.1";};  i2 = {lt = "1.3";};  n = "directory";}
+         {n = "filepath";}
+         {i1 = {gte = "0.5";};  i2 = {lt = "0.8";};  n = "json";}
+       ];
+       tools = [];
      }];
-    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hasktags-darcs-F_17-29-40.tar.bz2"; sha256 = "b4f97d104e291cb15adaf107b44113866d71d93830ea8f2df5c0cf49e43091f2"; });
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hasktags-git-6ba55.tar.bz2"; sha256 = "76b991f69b0057d700f5cbaef7627dc35ad0a3d7cfb295558329a7bc49a80180"; });
   }
   # END
 

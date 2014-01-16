@@ -188,7 +188,6 @@ in let
             # add additional build inputs such as C libraries here, used by mkHaskellDerivation below
             ammendments =
               {
-                hasktags.postInstall = " set -x; ln -s $out/bin/{hasktags,hasktags-modified}"; # this alias is used by sourceAndTags only 
                 happy.propagatedNativeBuildInputs = [pkgs.perl];
                 alex.propagatedNativeBuildInputs = [pkgs.perl];
                 zlib = {
@@ -417,6 +416,7 @@ in let
                   (haskellDerivation (self: (removeAttrs (lib.attrByPath [name] {} ammendmentsFixed) ["buildInputs"]) // {
                   pname = name;
                   name = fullName;
+                  noHaddock = true; # eg fails on csv-conduit
                   # TODO: make hack-nix also store information about test suites, and the solver take care about dependencies
                   # see commented # testsuite deps
                   # the problem about the tests is that they cause circular dependencies.
@@ -425,7 +425,7 @@ in let
                   inherit src patches version;
                   extraBuildInputs = 
                        (lib.attrByPath [name "buildInputs"] [] ammendmentsFixed);
-                  propagatedNativeBuildInputs = deps;               
+                  propagatedNativeBuildInputs = deps;
                   configureFlags = ( lib.concatStringsSep " " (
                            (lib.mapAttrsFlatten (a: v: "-f${if v then "" else "-"}${a}") flags)
                         ++ (lib.attrByPath [name "configureFlags"] [] ammendmentsFixed)
@@ -506,7 +506,10 @@ in let
 
     ### executables:
     hledger = exeByName { name = "hledger"; };
-    hackNix = exeByName { haskellPackages = pkgs.haskellPackages_ghc761; name = "hack-nix"; };
+    hackNix = exeByName {
+      haskellPackages = pkgs.haskellPackages_ghc761; 
+      name = "hack-nix";
+    };
     nixRepositoryManager = exeByName { name = "nix-repository-manager"; };
     # doesn't build
     yi = exeByName { name = "yi"; haskellPackages = pkgs.haskellPackages_ghc761; };
