@@ -516,7 +516,7 @@
   */
 
   # REGION HACK_NIX:                                { name = "hasktags"; type = "git"; url = "https://github.com/MarcWeber/hasktags.git"; }
-  { name = "hasktags";  version = "0.68.5";  bench_deps = [];
+  { name = "hasktags";  version = "0.68.7";  bench_deps = [];
     edeps = 
     [{ cdeps = 
        [ [ {not = {os = "Windows";};}
@@ -525,7 +525,8 @@
          [{flag = "debug";}  {cdeps = [];  deps = [];  tools = [];}]
        ];
        deps = 
-       [ {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
+       [ {n = "utf8-string";}
+         {i1 = {gte = "4";};  i2 = {lt = "5";};  n = "base";}
          {i1 = {gte = "0.9";};  i2 = {lt = "0.11";};  n = "bytestring";}
          {i1 = {gte = "1.1";};  i2 = {lt = "1.3";};  n = "directory";}
          {n = "filepath";}
@@ -533,7 +534,7 @@
        ];
        tools = [];
      }];
-    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hasktags-git-6ba55.tar.bz2"; sha256 = "76b991f69b0057d700f5cbaef7627dc35ad0a3d7cfb295558329a7bc49a80180"; });
+    srcFile = (fetchurl { url = "http://mawercer.de/~nix/repos/hasktags-git-c8c85.tar.bz2"; sha256 = "b8560b3e1751d2ab2148a1bc76f18ecac84a73a93d6858388a8183c0b465e946"; });
   }
   # END
 
