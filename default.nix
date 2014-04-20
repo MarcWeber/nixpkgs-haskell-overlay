@@ -234,6 +234,7 @@ in let
                     g_libs.cairo g_libs.glib g_libs.pango 
                   ];
                 };
+                "language-java" = { buildInputs = [ alexFixed happyFixed ]; };
                 "language-javascript" = { buildInputs = [ alexFixed happyFixed ]; };
                 haddock = { buildInputs = [ alex235Fixed happyFixed ]; };
                 leksah = { noHaddock = true; }; # ghc-7, error "can't find transitive deps of haddock"
@@ -277,6 +278,7 @@ in let
                   configureFlags = ["--extra-include-dirs=${pkgs.mysql}/include/mysql" "--extra-lib-dirs=${pkgs.mysql}/lib/mysql"];
                 };
                 bzlib = { propagatedNativeBuildInputs = [ pkgs.bzip2 ]; };
+                "wai-handler-fastcgi".propagatedNativeBuildInputs = [ pkgs.fcgi ];
                 X11 = {
                   propagatedNativeBuildInputs = with pkgs.xorg; [ libX11 libXext libXinerama libXrandr libXrender ]; 
                   # configureFlags = ["--extra-include-dirs=${pkgs.pcre}/include" "--extra-lib-dirs=${pkgs.pcre}/lib"];
@@ -547,6 +549,8 @@ in let
     xmonad = exeByName { name = "xmonad"; };
     xmonadExtras = exeByName { name = "xmonad-extras"; };
     gitAnnex = exeByName { haskellPackages =pkgs.haskellPackages_ghc741; name = "git-annex"; };
+
+    idris = exeByName { name = "idris"; };
 
     leksah_6 = exeByName { haskellPackages = pkgs.haskellPackages_ghc6123; name = "leksah"; };
     leksahServer_6 = exeByName { haskellPackages = pkgs.haskellPackages_ghc6123; name = "leksah-server"; };
